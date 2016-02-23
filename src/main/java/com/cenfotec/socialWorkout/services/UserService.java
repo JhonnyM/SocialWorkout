@@ -1,6 +1,7 @@
 package com.cenfotec.socialWorkout.services;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -15,6 +16,7 @@ import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.UserRepository;
 
+@Service
 public class UserService implements UserServiceInterface {
 	
 @Autowired private UserRepository usersRepository;
