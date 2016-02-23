@@ -1,5 +1,5 @@
 package com.cenfotec.socialWorkout.pojo;
-//hueputa
+
 public class TipoUsuarioPOJO {
 
 	private int idTipoUsuario;
