@@ -9,13 +9,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Proyecto 3 | To Do List</title>
+  <title>SocialWorkout</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/appLogin.css">
+  <link rel="stylesheet" href="resources/css/app.css">
+  <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -34,5 +36,6 @@
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/appLogin.js"></script>
   <script src="resources/loginView/loginView.js"></script>
+  
 </body>
 </html>
