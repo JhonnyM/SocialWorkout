@@ -15,7 +15,9 @@
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/appLogin.css">
+  <link rel="stylesheet" href="resources/css/app.css">
+  <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
@@ -34,5 +36,6 @@
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/appLogin.js"></script>
   <script src="resources/loginView/loginView.js"></script>
+  
 </body>
 </html>
