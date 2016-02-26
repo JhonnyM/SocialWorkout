@@ -17,6 +17,10 @@
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css">
   <link rel="stylesheet" href="resources/app.css">
+  <link rel="stylesheet" href="resources/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="resources/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="resources/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="resources/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
