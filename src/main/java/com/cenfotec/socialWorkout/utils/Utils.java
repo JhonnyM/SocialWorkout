@@ -49,6 +49,7 @@ public class Utils {
 	    int dot = filename.lastIndexOf(extensionSeparator);
 	    return "."+filename.substring(dot + 1);
 	}
+	
 	public static <T, E>  E copyProperties(T source, E target) {
 		BeanUtils.copyProperties(source, target);
 		return target;

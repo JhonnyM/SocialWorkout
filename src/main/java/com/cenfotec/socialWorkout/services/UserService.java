@@ -3,7 +3,7 @@ package com.cenfotec.socialWorkout.services;
 import java.util.ArrayList;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,12 @@ import com.cenfotec.socialWorkout.contracts.UserRequest;
 import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.UserRepository;
+import com.cenfotec.socialWorkout.utils.Utils;
 
 @Service
-public class UserService implements UserServiceInterface {
-	
-@Autowired private UserRepository usersRepository;
+public class UserService implements UserServiceInterface{
+
+	@Autowired private UserRepository usersRepository;
 	
 	@Override
 	@Transactional
@@ -36,29 +37,35 @@ public class UserService implements UserServiceInterface {
 	}
 	
 	private List<UsuarioPOJO> generateUserDtos(List<Usuario> users){
-		List<UsuarioPOJO> uiUsers = new ArrayList<UsuarioPOJO>();
-		users.stream().forEach(u -> {
-			UsuarioPOJO dto = new UsuarioPOJO();
-			BeanUtils.copyProperties(u,dto);
-			dto.setClave("");
-			uiUsers.add(dto);
-		});	
-		return uiUsers;
-	}
+		return users.stream()
+		      .map(u -> Utils.copyProperties(u, UsuarioPOJO::new))
+		      .peek(dto -> dto.setClave(""))
+		      .collect(Collectors.toList());
+	} 
 
 	@Override
 	@Transactional
-	public Boolean saveUser(UserRequest ur) {
-	
-		Usuario user = new Usuario();
+	public boolean saveUser(UserRequest ur) {
+	    Usuario user = new Usuario();
 		BeanUtils.copyProperties(ur.getUser(), user);
-		user.setClave("set md5 password");
+		user.setClave("set md5 password"); 
 		
 		Usuario nuser = usersRepository.save(user);
 		
-		return (nuser == null) ? false : true;
-		
+		return nuser != null;
 	}
-
-
+/* este codigo se va a utilizar mas adelante para devolver la lista de rutinas de un usuario
+	@Override
+	@Transactional
+	public List<UsuarioPOJO> getRutinas(UserRequest ur) {
+		
+		Usuario user = usersRepository.findOne(ur.getUser().getIdUsuario());
+		
+		UsuarioPOJO dtoU = user.getRutinas()
+				               .stream()
+				               .map(rut -> Utils.copyProperties(alq, RutinaPOJO::new))
+				               .collect(Collectors.collectingAndThen(Collectors.toList(), 
+				                        p -> Utils.copyProperties(user, new UsuarioPOJO(p))));
+		return Arrays.asList(dtoU);
+	}*/
 }

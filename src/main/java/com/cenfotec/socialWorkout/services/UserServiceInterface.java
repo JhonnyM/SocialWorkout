@@ -7,6 +7,6 @@ import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 public interface UserServiceInterface {
 	List<UsuarioPOJO> getAll(UserRequest ur);
 	List<UsuarioPOJO> getAllByName(UserRequest ur);
-	Boolean saveUser(UserRequest ur);
+	boolean saveUser(UserRequest ur);
 
 }
