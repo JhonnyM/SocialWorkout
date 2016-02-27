@@ -47,8 +47,8 @@ public class UserService implements UserServiceInterface{
 	@Transactional
 	public boolean saveUser(UserRequest ur) {
 	    Usuario user = new Usuario();
-		BeanUtils.copyProperties(ur.getUser(), user);
-		user.setClave("set md5 password"); 
+		Utils.copyProperties(ur.getUser(), user);
+		user.setClave(Utils.devolverMD5(user.getClave())); 
 		
 		Usuario nuser = usersRepository.save(user);
 		
