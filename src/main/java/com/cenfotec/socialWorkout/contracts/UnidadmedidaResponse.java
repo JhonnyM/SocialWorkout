@@ -3,11 +3,11 @@ import java.util.List;
 
 import com.cenfotec.socialWorkout.pojo.*;
 
-public class UnidadMedidaResponse extends BaseResponse {
+public class UnidadmedidaResponse extends BaseResponse {
 
 	public List<UnidadmedidaPOJO> unidadesMedidas;
 	
-	public UnidadMedidaResponse(){
+	public UnidadmedidaResponse(){
 		
 	}
 	
