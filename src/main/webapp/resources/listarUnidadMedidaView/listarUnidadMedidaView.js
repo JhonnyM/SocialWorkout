@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('myApp.listarUnidadMedidaView',['ng-route'])
+angular.module('myApp.listarUnidadMedidaView',[])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/listarUnidadMedida', {
