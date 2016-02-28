@@ -29,7 +29,7 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-  <!-- header -->
+
   <!-- header -->
   <header id="header" class="navbar navbar-fixed-top bg-white-only padder-v"  data-spy="affix" data-offset-top="1">
     <div class="container">
@@ -65,7 +65,6 @@
       </div>
     </div>
   </header>
-  <!-- / header -->
   <!-- / header -->
   <div ng-view></div>
   <br/>
@@ -165,6 +164,7 @@
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
+  <script src="resources/objetivos/objetivos.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
