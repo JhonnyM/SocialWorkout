@@ -6,7 +6,7 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
-  'myApp.listarUnidadMedidaView',
+  'myApp.listar_Unidad_Medida',
   'ui.grid',
   'angularFileUpload'
 ])

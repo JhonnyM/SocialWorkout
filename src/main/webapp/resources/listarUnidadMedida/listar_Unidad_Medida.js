@@ -1,10 +1,10 @@
 'use strict'
 
-angular.module('myApp.listarUnidadMedidaView',[])
+angular.module('myApp.listar_Unidad_Medida',['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/listarUnidadMedida', {
-    templateUrl: 'resources/listarUnidadMedidaView/listarUnidadMedidaView.html',
+  $routeProvider.when('/listar_Unidad_Medida', {
+	templateUrl: 'resources/listarUnidadMedida/listar_Unidad_Medida.html',
     controller: 'listarUnidadMedidaViewCtrl'
   });
 }])
@@ -18,5 +18,4 @@ angular.module('myApp.listarUnidadMedidaView',[])
 			$scope.unidadesMedida = response.unidadesMedida;
 			console.log("$scope.unidadesMedida",$scope.unidadesMedida)		
 		});	
-		
 }]);
