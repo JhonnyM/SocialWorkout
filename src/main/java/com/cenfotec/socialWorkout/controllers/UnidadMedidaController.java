@@ -15,7 +15,7 @@ import com.cenfotec.socialWorkout.services.UnidadMedidaServiceInterface;
 @RequestMapping(value ="rest/protected/UnidadesMedidas")
 public class UnidadMedidaController {
 	
-	@Autowired private UnidadMedidaServiceInterface unidadMedidaService;
+	@Autowired private UnidadMedidaServiceInterface	 unidadMedidaService;
 	@Autowired private HttpServletRequest request;
 
 	@RequestMapping(value="/getAll", method = RequestMethod.POST)

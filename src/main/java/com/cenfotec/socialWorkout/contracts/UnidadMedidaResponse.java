@@ -8,7 +8,7 @@ public class UnidadMedidaResponse extends BaseResponse {
 	public List<UnidadmedidaPOJO> unidadesMedidas;
 	
 	public UnidadMedidaResponse(){
-		
+		super();
 	}
 	
 	public List<UnidadmedidaPOJO> getUnidadesMedidas(){
