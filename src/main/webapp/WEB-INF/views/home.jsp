@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css">
-    <link rel="stylesheet" href="resources/css/app.css">
+  <link rel="stylesheet" href="resources/css/app.css">
   <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
   <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
   <link rel="stylesheet" href="resources/assets/animate.css/animate.css" type="text/css" />
@@ -29,556 +29,129 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-    <div class="app app-header-fixed ">
-  
-
-    <!-- header -->
-  <header id="header" class="app-header navbar" role="menu">
-      <!-- navbar header -->
-      <div class="navbar-header bg-dark">
-        <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-          <i class="glyphicon glyphicon-cog"></i>
+  <!-- header -->
+  <!-- header -->
+  <header id="header" class="navbar navbar-fixed-top bg-white-only padder-v"  data-spy="affix" data-offset-top="1">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <i class="fa fa-bars"></i>
         </button>
-        <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
-          <i class="glyphicon glyphicon-align-justify"></i>
-        </button>
-        <!-- brand -->
-        <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-btc"></i>
-          <img src="img/logo.png" alt="." class="hide">
-          <span class="hidden-folded m-l-xs">Angulr</span>
-        </a>
-        <!-- / brand -->
+        <a href="#" class="navbar-brand m-r-lg"><img src="img/logo.png" class="m-r-sm hide"><span class="h3 font-bold">SocialWorkout</span></a>
       </div>
-      <!-- / navbar header -->
-
-      <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
-        <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-            <i class="fa fa-dedent fa-fw text"></i>
-            <i class="fa fa-indent fa-fw text-active"></i>
-          </a>
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-            <i class="icon-user fa-fw"></i>
-          </a>
-        </div>
-        <!-- / buttons -->
-
-        <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown pos-stc">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <span>Link</span> 
-              <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu wrapper w-full bg-white">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Link <span class="badge badge-sm bg-success">10</span></div>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Link</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Sign in</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Sign up</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 b-l b-light">
-                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Link <span class="label label-sm bg-primary">12</span></div>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink <span class="badge badge-sm bg-warning">1000+</span></a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>LinkLink</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav font-bold">
+          <li>
+            <a href="#what" data-ride="scroll">Home</a>
           </li>
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span translate="header.navbar.new.NEW">Link</span> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Link</a></li>
-              <li>
-                <a href>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Link</span>
-                </a>
-              </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
-              <li class="divider"></li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
-                </a>
-              </li>
-            </ul>
+          <li>
+            <a href="#why" data-ride="scroll">Rutinas</a>
+          </li>
+          <li>
+            <a href="#features" data-ride="scroll">Objectivos</a>
+          </li>
+          <li>
+            <a href="http://themeforest.net/item/angulr-bootstrap-admin-web-app-with-angularjs/8437259">Usuarios</a>
           </li>
         </ul>
-        <!-- / link and dropdown -->
-
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </div>
-        </form>
-        <!-- / search form -->
-
-        <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
-              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-            </a>
-            <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
-              <div class="panel bg-white">
-                <div class="panel-heading b-light bg-light">
-                  <strong>You have <span>2</span> notifications</strong>
-                </div>
-                <div class="list-group">
-                  <a href class="list-group-item">
-                    <span class="pull-left m-r thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
-                    </span>
-                    <span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-                      <small class="text-muted">10 minutes ago</small>
-                    </span>
-                  </a>
-                  <a href class="list-group-item">
-                    <span class="clear block m-b-none">
-                      1.0 initial released<br>
-                      <small class="text-muted">1 hour ago</small>
-                    </span>
-                  </a>
-                </div>
-                <div class="panel-footer text-sm">
-                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
-                </div>
-              </div>
+          <li>
+            <div class="m-t-sm">
+              <a href="../angular/#/access/signin" class="btn btn-link btn-sm">Sign in</a> or 
+              <a href="../angular/#/access/signup" class="btn btn-sm btn-success btn-rounded m-l"><strong>Sign up</strong></a>
             </div>
-            <!-- / dropdown -->
           </li>
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/a0.jpg" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
-              <span class="hidden-sm hidden-md">Default User</span> <b class="caret"></b>
-            </a>
-            <!-- dropdown -->
-            <ul class="dropdown-menu animated fadeInRight w">
-              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
-                <div>
-                  <p>300mb of 500mb used</p>
-                </div>
-                <div class="progress progress-xs m-b-none dker">
-                  <div class="progress-bar progress-bar-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">30%</span>
-                  <span>Settings</span>
-                </a>
-              </li>
-              <li>
-                <a ui-sref="app.page.profile">Profile</a>
-              </li>
-              <li>
-                <a ui-sref="app.docs">
-                  <span class="label bg-info pull-right">new</span>
-                  Help
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a ui-sref="access.signin">Logout</a>
-              </li>
-            </ul>
-            <!-- / dropdown -->
-          </li>
-        </ul>
-        <!-- / navbar right -->
+        </ul>     
       </div>
-      <!-- / navbar collapse -->
+    </div>
   </header>
-    <aside id="aside" class="app-aside hidden-xs bg-dark">
-      <div class="aside-wrap">
-        <div class="navi-wrap">
-          <!-- user -->
-          <div class="clearfix hidden-xs text-center hide" id="aside-user">
-            <div class="dropdown wrapper">
-              <a href="app.page.profile">
-                <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="img/a0.jpg" class="img-full" alt="...">
-                </span>
-              </a>
-              <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
-                <span class="clear">
-                  <span class="block m-t-sm">
-                    <strong class="font-bold text-lt">John.Smith</strong> 
-                    <b class="caret"></b>
-                  </span>
-                  <span class="text-muted text-xs block">Art Director</span>
-                </span>
-              </a>
-              <!-- dropdown -->
-              <ul class="dropdown-menu animated fadeInRight w hidden-folded">
-                <li class="wrapper b-b m-b-sm bg-info m-t-n-xs">
-                  <span class="arrow top hidden-folded arrow-info"></span>
-                  <div>
-                    <p>300mb of 500mb used</p>
-                  </div>
-                  <div class="progress progress-xs m-b-none dker">
-                    <div class="progress-bar bg-white" data-toggle="tooltip" data-original-title="50%" style="width: 50%"></div>
-                  </div>
-                </li>
-                <li>
-                  <a href>Settings</a>
-                </li>
-                <li>
-                  <a href="">Profile</a>
-                </li>
-                <li>
-                  <a href>
-                    <span class="badge bg-danger pull-right">3</span>
-                    Notifications
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="">Logout</a>
-                </li>
-              </ul>
-              <!-- / dropdown -->
-            </div>
-            <div class="line dk hidden-folded"></div>
+  <!-- / header -->
+  <!-- / header -->
+  <div ng-view></div>
+  <br/>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="bg-info">
+      <div class="container">
+        <div class="row m-t-xl m-b-xl">
+          <div class="col-sm-6 text-white text-center">
+            <h4 class="m-b">Que rutina deseas Realizar?</h4>
           </div>
-          <!-- / user -->
-
-          <!-- nav -->
-          <nav ui-nav class="navi clearfix">
-            <ul class="nav">
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Link</span>
-              </li>
-              <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                  <span class="font-bold">Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="mail.html">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
-              <li class="line dk"></li>
-
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Link</span>
-              </li>
-              <li>
-                <a href class="auto">      
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-th"></i>
-                  <span>Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="layout_app.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="layout_fullwidth.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="layout_boxed.html">
-                      <span>Link</span>
-                    </a>
-                  </li>      
-                </ul>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-briefcase icon"></i>
-                  <span>Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_button.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_icon.html">
-                      <b class="badge bg-info pull-right">3</b>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_grid.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_widget.html">
-                      <b class="badge bg-success pull-right">13</b>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_sortable.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_portlet.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_timeline.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="ui_jvectormap.html">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <b class="label bg-primary pull-right">2</b>
-                  <i class="glyphicon glyphicon-list"></i>
-                  <span>Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-edit"></i>
-                  <span>Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="">
-                      <span>Link</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a href="">
-                  <i class="glyphicon glyphicon-signal"></i>
-                  <span>Link</span>
-                </a>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-file icon"></i>
-                  <span>Link</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Link</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="line dk hidden-folded"></li>
-
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-                <span>Your Stuff</span>
-              </li>  
-              <li>
-                <a href="page_profile.html">
-                  <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Link</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <!-- nav -->
-
-          <!-- aside footer -->
-          <div class="wrapper m-t">
-            <div class="text-center-folded">
-              <span class="hidden-folded">Aside Footer</span>
-            </div>
+          <div class="col-sm-6 text-center">
+            <a href="http://themeforest.net/item/angulr-bootstrap-admin-web-app-with-angularjs/8437259?ref=flatfull" class="btn btn-lg btn-default btn-rounded">Ver Rutinas Disponibles</a>
           </div>
-          <!-- / aside footer -->
         </div>
       </div>
-  </aside>
-  <br/>
-  <div ng-view></div>
-  <div id="content">
-  
-  </div>
-  <br/>
-  <footer id="footer" class="app-footer" role="footer">
-    <div class="wrapper b-t bg-light">
-      <span class="pull-right">2.2.0 <a href ui-scroll="app" class="m-l-sm text-muted"><i class="fa fa-long-arrow-up"></i></a></span>
-      &copy; 2016 Copyright.
+    </div>
+    <div class="bg-white">
+      <div class="container">
+        <div class="row m-t-xl m-b-xl">
+          <div class="col-sm-3">
+            <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Version</span> options</h4>
+            <ul class="list-unstyled">
+              <li><a href="../angular"><i class="fa fa-angle-right m-r-sm"></i>Angular App</a></li>
+              <li><a href="../html"><i class="fa fa-angle-right m-r-sm"></i>Html Template</a></li>
+              <li><a href="../angular/#music/home"><i class="fa fa-angle-right m-r-sm"></i>Music single page application</a></li>
+              <li><a href="#"><i class="fa fa-angle-right m-r-sm"></i>App landing page</a></li>
+            </ul>
+            <p class="m-b-xl">More coming...</p>
+          </div>
+          <div class="col-sm-3">
+            <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">Find</span> Us</h4>
+            <p class="text-sm">23 soe Midlokls <br>
+              120002 Loki — UNITED KINGDOM <br>
+              +333 432 321 322
+             </p>
+             <p>Sale: <a href="mailto:hey@example.com">info@example.com</a></p>
+             <p class="m-b-xl">Job: <a href="mailto:hey@example.com">job@example.com</a></p>
+          </div>
+          <div class="col-sm-3">
+            <h4 class="text-u-c m-b-xl font-thin"><span class="b-b b-dark font-bold">Follow</span> Us</h4>
+            <div class="m-b-xl">
+              <a href="#" class="btn btn-icon btn-rounded btn-dark"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="btn btn-icon btn-rounded btn-dark"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="btn btn-icon btn-rounded btn-dark"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="btn btn-icon btn-rounded btn-dark"><i class="fa fa-linkedin"></i></a>
+              <a href="#" class="btn btn-icon btn-rounded btn-dark"><i class="fa fa-pinterest"></i></a>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h4 class="text-u-c m-b font-thin"><span class="b-b b-dark font-bold">News</span> Letter</h4>
+            <p>Do not want to miss anything? Subscribe to our newsletter box</p>
+            <form class="form-inline m-t m-b text-center m-b-xl">
+              <div class="aside-xl inline">
+                <div class="input-group">
+                    <input type="text" id="address" name="address" class="form-control btn-rounded" placeholder="Your email">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default btn-rounded" type="submit">Subscribe</button>
+                    </span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-light dk">
+      <div class="container">
+        <div class="row padder-v m-t">
+          <div class="col-xs-8">
+            <ul class="list-inline">
+              <li><a href="#">Sales</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">API</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Job</a></li>
+            </ul> 
+          </div>
+          <div class="col-xs-4 text-right">
+            Angulr &copy; 2015
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
+  <!-- / footer -->
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->	
