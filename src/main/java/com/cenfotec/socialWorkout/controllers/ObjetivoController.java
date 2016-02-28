@@ -18,6 +18,7 @@ import com.cenfotec.socialWorkout.ejb.Objetivo;
 public class ObjetivoController {
 	
 	@Autowired private ObjetivoServiceInterface objetivoService;
+	@Autowired private HttpServletRequest request;
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
 	public ObjetivoResponse create(@RequestBody Objetivo objetivo){	
@@ -33,13 +34,13 @@ public class ObjetivoController {
 	
 	}
 	
-	@RequestMapping(value ="/getAll", method = RequestMethod.GET)
-	public ObjetivoResponse getAll(){	
+	@RequestMapping(value ="/getAll", method = RequestMethod.POST)
+	public ObjetivoResponse getAll(@RequestBody ObjetivoRequest or){	
 			
 		ObjetivoResponse response = new ObjetivoResponse();
 		response.setCode(200);
 		response.setCodeMessage("Tipo fetch success");
-		response.setObjetivoList(objetivoService.getAll());
+		response.setObjetivoList(objetivoService.getAll(or));
 		return response;		
 	}
 }

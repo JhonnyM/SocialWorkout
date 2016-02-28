@@ -20,25 +20,23 @@ import com.cenfotec.socialWorkout.repositories.ObjetivoRepository;
 @Service
 public class ObjetivoService implements ObjetivoServiceInterface {
 	
-@Autowired private ObjetivoRepository objetivoRepository;
+	@Autowired private ObjetivoRepository objetivoRepository;
 	
 	@Override
 	@Transactional
-	public List<ObjetivoPOJO> getAll() {
+	public List<ObjetivoPOJO> getAll(ObjetivoRequest or) {
 		List<Objetivo> objetivos =  objetivoRepository.findAll();
-		List<ObjetivoPOJO> dtos = new ArrayList<ObjetivoPOJO>();
-		objetivos.stream().forEach(ta ->{
-			ObjetivoPOJO dto = new ObjetivoPOJO();
-			BeanUtils.copyProperties(ta, dto);
-			dtos.add(dto);
-		});
-		return dtos;
-
+		return generateObjetivosDtos(objetivos);
 	}
-	
-	@Override
-	public Objetivo getObjetivoById(int idObjetivo) {
-		return objetivoRepository.findOne(idObjetivo);
+
+	private List<ObjetivoPOJO> generateObjetivosDtos(List<Objetivo> objetivos){
+		List<ObjetivoPOJO> uiObjetivos = new ArrayList<ObjetivoPOJO>();
+		objetivos.stream().forEach(u -> {
+			ObjetivoPOJO dto = new ObjetivoPOJO();
+			BeanUtils.copyProperties(u,dto);
+			uiObjetivos.add(dto);
+		});	
+		return uiObjetivos;
 	}
 
 	@Override

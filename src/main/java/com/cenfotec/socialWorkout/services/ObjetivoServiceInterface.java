@@ -6,7 +6,6 @@ import com.cenfotec.socialWorkout.pojo.ObjetivoPOJO;
 import com.cenfotec.socialWorkout.ejb.Objetivo;
 
 public interface ObjetivoServiceInterface {
-	List<ObjetivoPOJO> getAll();
-	Objetivo getObjetivoById(int idObjetivo);
+	List<ObjetivoPOJO> getAll(ObjetivoRequest or);
 	Boolean saveObjetivo(Objetivo ob);
 }
