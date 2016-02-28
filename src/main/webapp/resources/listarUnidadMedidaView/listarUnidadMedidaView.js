@@ -9,13 +9,14 @@ angular.module('myApp.listarUnidadMedidaView',['ng-route'])
   });
 }])
 
-.controller('listarUnidadMedidaView',['$scope','$http',function($scope,$http){
+.controller('listarUnidadMedidaViewCtrl',['$scope','$http',function($scope,$http){
 	$scope.unidadesMedida = [];
 	$scope.requestObject = {"idUnidadMedida":0,"descUnidadMedida":"","lugarmedicions":{}};				
-	$http.post('rest/protected/UnidadesMedidas',$scope.requestObject).success(function(response){
+	$http.post('rest/protected/UnidadesMedidas/getAll',$scope.requestObject).success(function(response){
 
 		console.log("response",response)
 		$scope.unidadesMedida = response.unidadesMedida;
 		console.log("$scope.unidadesMedida",$scope.unidadesMedida)
+	
 	});			
 }]);

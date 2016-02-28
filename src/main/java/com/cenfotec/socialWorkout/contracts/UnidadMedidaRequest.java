@@ -2,11 +2,11 @@ package com.cenfotec.socialWorkout.contracts;
 
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 
-public class UnidadmedidaRequest {
+public class UnidadMedidaRequest {
 
 	private UnidadmedidaPOJO unidadMedida;
 	
-	public UnidadmedidaRequest(){
+	public UnidadMedidaRequest(){
 		super();
 	}
 	

@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cenfotec.socialWorkout.contracts.UnidadmedidaRequest;
-import com.cenfotec.socialWorkout.contracts.UnidadmedidaResponse;
-import com.cenfotec.socialWorkout.ejb.Unidadmedida;
-import com.cenfotec.socialWorkout.services.UnidadmedidaServiceInterface;
+import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
+import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
+import com.cenfotec.socialWorkout.services.UnidadMedidaServiceInterface;
 
 @RestController
 @RequestMapping(value ="rest/protected/UnidadesMedidas")
-public class UnidadmedidaController {
+public class UnidadMedidaController {
 	
-	@Autowired private UnidadmedidaServiceInterface unidadMedidaService;
+	@Autowired private UnidadMedidaServiceInterface unidadMedidaService;
 	@Autowired private HttpServletRequest request;
 
 	@RequestMapping(value="/getAll", method = RequestMethod.POST)
-	public UnidadmedidaResponse getAll(@RequestBody UnidadmedidaRequest umr){
-		UnidadmedidaResponse um = new UnidadmedidaResponse();
+	public UnidadMedidaResponse getAll(@RequestBody UnidadMedidaRequest umr){
+		UnidadMedidaResponse um = new UnidadMedidaResponse();
 		um.setCode(200);
 		um.setUnidadesMedidas(unidadMedidaService.getAll(umr));
 		return um;

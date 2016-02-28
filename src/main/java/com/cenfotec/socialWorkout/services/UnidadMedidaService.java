@@ -5,33 +5,33 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.cenfotec.socialWorkout.contracts.UnidadmedidaRequest;
+import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
-import com.cenfotec.socialWorkout.repositories.UnidadmedidaRepository;
+import com.cenfotec.socialWorkout.repositories.UnidadMedidaRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-public class UnidadmedidaService implements UnidadmedidaServiceInterface {
+public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	
-	@Autowired UnidadmedidaRepository unidadMedidaRepository;
+	@Autowired UnidadMedidaRepository unidadMedidaRepository;
 
 	@Override
-	public List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadmedidaRequest umr) {
+	public List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadMedidaRequest umr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadmedidaRequest umr) {
+	public List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public List<UnidadmedidaPOJO> getAll(UnidadmedidaRequest umr) {
+	public List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr) {
 		List<Unidadmedida> unidadesMedidas =  unidadMedidaRepository.findAll();
 		return generateUnidadmedidaDtos(unidadesMedidas);
 	}

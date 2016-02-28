@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UnidadmedidaRepository extends CrudRepository<Unidadmedida,Integer>{
+public interface UnidadMedidaRepository extends CrudRepository<Unidadmedida,Integer>{
 	List<Unidadmedida> findAll();
 	Unidadmedida findByIdUnidadMedida(int idUnidadMedida);
 }
