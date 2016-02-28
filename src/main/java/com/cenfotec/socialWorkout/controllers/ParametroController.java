@@ -21,12 +21,11 @@ public class ParametroController {
 
 	@RequestMapping(value ="/getAll", method = RequestMethod.POST)
 	public ParametroResponse getAll(@RequestBody ParametroRequest pr){	
-			
-		ParametroResponse us = new ParametroResponse();
-		us.setCode(200);
-		us.setCodeMessage("Parametro fetch success");
-		us.setParametros(parametroService.getAll(pr));
-		return us;		
+		ParametroResponse ps = new ParametroResponse();
+		ps.setCode(200);
+		ps.setCodeMessage("Parametro fetch success");
+		ps.setParametros(parametroService.getAll(pr));
+		return ps;		
 	}
 		
 	@RequestMapping(value ="/getAllByName", method = RequestMethod.POST)

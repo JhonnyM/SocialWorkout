@@ -14,7 +14,7 @@ public class ParametroRequest extends BaseRequest{
 		super();
 	}
 	
-	public ParametroRequest(int pcantidad, String pnombre){
+	public ParametroRequest(String pnombre, int pcantidad){
 		super();
 		cantidadDiasCalculoPromedios = pcantidad;
 		nombreNegocio = pnombre;
