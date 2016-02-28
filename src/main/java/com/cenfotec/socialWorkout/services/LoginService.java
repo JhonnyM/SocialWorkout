@@ -20,7 +20,7 @@ public class LoginService implements LoginServiceInterface{
 	@Override
 	@Transactional
 	public void checkUser(LoginRequest lr, LoginResponse response, HttpSession currentSession) {
-		Usuario loggedUser = loginRepository.findBycorreoElectronico(lr.getEmail(), Utils.devolverMD5(lr.getPassword()));
+		Usuario loggedUser = loginRepository.findByCorreoElectronicoAndClave(lr.getCorreoElectronico(), Utils.devolverMD5(lr.getClave()));
 		if(loggedUser == null){
 			response.setCode(401);
 			response.setErrorMessage("Unauthorized User");
@@ -30,10 +30,10 @@ public class LoginService implements LoginServiceInterface{
 			
 			//CREATE AND SET THE VALUES FOR THE CONTRACT OBJECT
 			response.setIdUsuario(loggedUser.getIdUsuario());
-			response.setFirstName(loggedUser.getNombre());
+			response.setNombre(loggedUser.getNombre());
 
 			//
-			currentSession.setAttribute("idUser", loggedUser.getIdUsuario());
+			currentSession.setAttribute("idUsuario", loggedUser.getIdUsuario());
 		}
 	}		
 }

@@ -5,8 +5,8 @@ import com.cenfotec.socialWorkout.ejb.Usuario;
 
 public interface UserRepository  extends CrudRepository<Usuario,Integer>{
 	
-	Usuario findBycorreoElectronico(String email,String password);
+	Usuario findBycorreoElectronico(String correoElectronico,String clave);
 	List<Usuario> findAll();
-	List<Usuario> findBynombreContaining(String name);
+	List<Usuario> findBynombreContaining(String nombre);
 
 }

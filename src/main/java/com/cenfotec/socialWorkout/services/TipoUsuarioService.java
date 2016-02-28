@@ -10,7 +10,7 @@ import com.cenfotec.socialWorkout.contracts.TipoUsuarioRequest;
 import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.TipoUsuarioRepository;
 import com.cenfotec.socialWorkout.utils.Utils;
-import com.cenfotec.socialWorkout.ejb.Tipousuario;;
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 @Service
 public class TipoUsuarioService implements TipoUsuarioServiceInterface {
@@ -30,7 +30,7 @@ public class TipoUsuarioService implements TipoUsuarioServiceInterface {
 	
 	@Override
 	public boolean saveTipoUsuario(TipoUsuarioRequest r) {
-		TipoUsuario tu = repo.save(Utils.copyProperties(r.getTipo(), TipoUsuario::new));
+		Tipousuario tu = repo.save(Utils.copyProperties(r.getTipo(), Tipousuario::new));
 		return tu != null;
 	}
 
