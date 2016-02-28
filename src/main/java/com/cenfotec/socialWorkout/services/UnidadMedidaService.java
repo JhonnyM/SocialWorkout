@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	
-	@Autowired UnidadMedidaRepository unidadMedidaRepository;
+	@Autowired private UnidadMedidaRepository unidadMedidaRepository;
 
 	@Override
 	public List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadMedidaRequest umr) {

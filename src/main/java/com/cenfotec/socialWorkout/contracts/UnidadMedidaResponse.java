@@ -16,7 +16,7 @@ public class UnidadMedidaResponse extends BaseResponse {
 	}
 	
 	public void setUnidadesMedidas(List<UnidadmedidaPOJO> unidadesMedidas){
-		unidadesMedidas = this.unidadesMedidas;
+		this.unidadesMedidas = unidadesMedidas;
 	}
 	
 }
