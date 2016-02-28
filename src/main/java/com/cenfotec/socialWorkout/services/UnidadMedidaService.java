@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.ejb.Unidadmedida;
+import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 import com.cenfotec.socialWorkout.repositories.UnidadMedidaRepository;
 import org.springframework.beans.BeanUtils;
@@ -32,11 +33,13 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	
 	@Override
 	public List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr) {
+		
 		List<Unidadmedida> unidadesMedidas =  unidadMedidaRepository.findAll();
 		return generateUnidadmedidaDtos(unidadesMedidas);
 	}
 
 	private List<UnidadmedidaPOJO> generateUnidadmedidaDtos(List<Unidadmedida> unidadesMedidas){
+		
 		List<UnidadmedidaPOJO> uiUnidadesMedidas = new ArrayList<UnidadmedidaPOJO>();
 		unidadesMedidas.stream().forEach(um -> {
 			UnidadmedidaPOJO dto = new UnidadmedidaPOJO();
@@ -46,6 +49,16 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 		return uiUnidadesMedidas;
 	}
 
+	@Override
+	public Boolean saveUnidadMedida(UnidadMedidaRequest umr) {
+		
+		Unidadmedida unidadMedida = new Unidadmedida();
+		BeanUtils.copyProperties(umr.getUnidadMedida(), unidadMedida);
 
+		Unidadmedida nunidad = unidadMedidaRepository.save(unidadMedida);
+		
+		return (nunidad == null) ? false : true;
+
+	}
 
 }

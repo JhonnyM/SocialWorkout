@@ -8,5 +8,6 @@ public interface UnidadMedidaServiceInterface{
 	List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadMedidaRequest umr);
 	List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr);
 	List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr);
+	Boolean saveUnidadMedida(UnidadMedidaRequest umr);
 }
 

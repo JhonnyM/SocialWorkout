@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
+import com.cenfotec.socialWorkout.contracts.UserRequest;
+import com.cenfotec.socialWorkout.contracts.UserResponse;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 import com.cenfotec.socialWorkout.services.UnidadMedidaServiceInterface;
 
@@ -29,4 +31,17 @@ public class UnidadMedidaController {
 		return um;
 	}
 	
+	@RequestMapping(value ="/create", method = RequestMethod.POST)
+	public UnidadMedidaResponse create(@RequestBody UnidadMedidaRequest umr){	
+		
+		UnidadMedidaResponse um = new UnidadMedidaResponse();
+		Boolean state = unidadMedidaService.saveUnidadMedida(umr);
+	
+		if(state){
+			um.setCode(200);
+			um.setCodeMessage("Unidad medida");
+		}
+		return um;
+		
+	}
 }
