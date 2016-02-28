@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.ParametroRequest;
 import com.cenfotec.socialWorkout.contracts.ParametroResponse;
-import com.cenfotec.socialWorkout.services.ParametroService;
+import com.cenfotec.socialWorkout.services.ParametroServiceInterface;
 
 @RestController
 @RequestMapping(value ="rest/protected/parametro")
 public class ParametroController {
 	
-	@Autowired private ParametroService parametroService;
+	@Autowired private ParametroServiceInterface parametroService;
 	@Autowired private HttpServletRequest request;
 
 	@RequestMapping(value ="/getAll", method = RequestMethod.POST)

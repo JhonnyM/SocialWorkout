@@ -38,29 +38,29 @@ public class WSFilter implements Filter, ApplicationContextAware {
 	}
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException {
-		
-		HttpServletRequest servletRequest = (HttpServletRequest)request;
-	    HttpServletResponse servletResponse = (HttpServletResponse) response;
-		
-	    HttpSession currentSession = servletRequest.getSession();
-	    
-	    if(generalService.isLocal()){
-	    	chain.doFilter(servletRequest, servletResponse);
-	    }else{
-	    	
-	    	 System.out.println("Session Object ------> " + currentSession.getAttribute("idUser"));
-	 		if (currentSession.getAttribute("idUser") != null) {
-	 			chain.doFilter(servletRequest, servletResponse);
-	 		} else {
-	 			logger.debug("Rejected: " + servletRequest.toString());
-	 			servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-	 		}
-	 		
-	    }
-	    
-	}
+	 public void doFilter(ServletRequest request, ServletResponse response,
+	   FilterChain chain) throws IOException, ServletException {
+	  
+	  HttpServletRequest servletRequest = (HttpServletRequest)request;
+	     HttpServletResponse servletResponse = (HttpServletResponse) response;
+	  
+	     HttpSession currentSession = servletRequest.getSession();
+	     
+//	     if(generalService.isLocal()){
+	      chain.doFilter(servletRequest, servletResponse);
+//	     }else{
+//	      
+//	       System.out.println("Session Object ------> " + currentSession.getAttribute("idUser"));
+//	    if (currentSession.getAttribute("idUser") != null) {
+//	     chain.doFilter(servletRequest, servletResponse);
+//	    } else {
+//	     logger.debug("Rejected: " + servletRequest.toString());
+//	     servletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//	    }
+	//    
+//	     }
+	     
+	 }
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {

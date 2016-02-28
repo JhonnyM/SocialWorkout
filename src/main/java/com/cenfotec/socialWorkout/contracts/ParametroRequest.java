@@ -1,3 +1,5 @@
+
+
 package com.cenfotec.socialWorkout.contracts;
 
 import com.cenfotec.socialWorkout.pojo.ParametroPOJO;
@@ -52,9 +54,4 @@ public class ParametroRequest extends BaseRequest{
 	public void setParametro(ParametroPOJO parametro) {
 		this.parametro = parametro;
 	}
-	
-	
-	
-	
-
 }

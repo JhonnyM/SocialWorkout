@@ -15,7 +15,7 @@ import com.cenfotec.socialWorkout.repositories.ParametroRepository;
 @Service
 public class ParametroService implements ParametroServiceInterface{
 	
-	@Autowired private ParametroRepository parametroRepository;
+@Autowired private ParametroRepository parametroRepository;
 	
 	
 	@Override
