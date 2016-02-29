@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('myApp.listar_Unidad_Medida',['ngRoute'])
+angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.grid.moveColumns'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -18,8 +18,18 @@ angular.module('myApp.listar_Unidad_Medida',['ngRoute'])
 		$http.post('rest/protected/UnidadesMedidas/getAll',$scope.requestObject).success(function(response){
 			console.log("response",response)
 			$scope.unidadesMedida = response.unidadesMedidas;
-			console.log("$scope.unidadesMedida",$scope.unidadesMedida)		
+			console.log("$scope.unidadesMedida",$scope.gridOptions)
 		});	
+		
+		$scope.gridOptions = {
+			data:'unidadesMedida',
+			showGroupPanel: true,
+			enableSorting:true,
+			enableFiltering:true,
+			columnDefs:[{field:'idUnidadMedida',displayName:'Id Unidad de Medida'},
+			            {field:'descUnidadMedida',displayName:'Descripción'}]
+		};
+		
 }]);
 
 

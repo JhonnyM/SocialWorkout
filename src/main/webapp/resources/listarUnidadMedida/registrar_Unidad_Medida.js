@@ -1,7 +1,6 @@
 'use strict'
 
 angular.module('myApp.registrar_Unidad_Medida',['ngRoute'])
-
 .config(['$routeProvider', function($routeProvider) {
 	  $routeProvider
 	  	.when('/registrar_Unidad_Medida', {
@@ -11,15 +10,28 @@ angular.module('myApp.registrar_Unidad_Medida',['ngRoute'])
 }])
 
 .controller('registrarUnidadMedidaViewCtrl',['$scope','$http',function($scope,$http){
-	$scope.requestObject = {};
-	$scope.requestObject.idUnidadMedida = 1;
-	$scope.requestObject.descUnidadMedida = $scope.descUnidadMedida;
-	$scope.requestObject.lugarmedicions = {idLugarMedicion:0,descLugarMedicion:"test"};
-	$scope.working;
+	$scope.requestObject = {};	
+
+	$scope.saveUnidadMedida = function(event){
+		
+		var data = {};
+		
+		data = {
+				//idUnidadMedida: 0,
+				descUnidadMedida : $scope.requestObject.descUnidadMedida			
+		};
+
+        console.log("$scope.data",$scope.data)
+		$http.post('rest/protected/UnidadesMedidas/create', data)
+		.success(function(data, status, config) {
+	        $scope.message = data;
+
+	      }).error(function(data, status, config) {
+  	        console.log("$scope.data",$scope.data)
+	    	  alert( "failure message: " + JSON.stringify({data: data}));
+	    }); 
+	};
 	
-	$http.post('rest/protected/UnidadesMedidas/create',$scope.requestObject).success(function (response){
-		console.log("response",response)
-		$scope.working = response.nunidad
-		console.log("$scope.working",$scope.working)
-	});
 }]);
+
+

@@ -50,12 +50,10 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	}
 
 	@Override
-	public Boolean saveUnidadMedida(UnidadMedidaRequest umr) {
-		
-		Unidadmedida unidadMedida = new Unidadmedida();
-		BeanUtils.copyProperties(umr.getUnidadMedida(), unidadMedida);
-
-		Unidadmedida nunidad = unidadMedidaRepository.save(unidadMedida);
+	@Transactional
+	public Boolean saveUnidadMedida(Unidadmedida um) {
+	
+		Unidadmedida nunidad = unidadMedidaRepository.save(um);
 		
 		return (nunidad == null) ? false : true;
 

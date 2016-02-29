@@ -13,6 +13,7 @@ import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
 import com.cenfotec.socialWorkout.contracts.UserResponse;
+import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 import com.cenfotec.socialWorkout.services.UnidadMedidaServiceInterface;
 
@@ -32,16 +33,16 @@ public class UnidadMedidaController {
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public UnidadMedidaResponse create(@RequestBody UnidadMedidaRequest umr){	
+	public UnidadMedidaResponse create(@RequestBody Unidadmedida um){	
 		
-		UnidadMedidaResponse um = new UnidadMedidaResponse();
-		Boolean state = unidadMedidaService.saveUnidadMedida(umr);
+		UnidadMedidaResponse umr = new UnidadMedidaResponse();
+		Boolean state = unidadMedidaService.saveUnidadMedida(um);
 	
 		if(state){
-			um.setCode(200);
-			um.setCodeMessage("Unidad medida");
+			umr.setCode(200);
+			umr.setCodeMessage("Unidad medida");
 		}
-		return um;
+		return umr;
 		
 	}
 }
