@@ -45,11 +45,13 @@ public class ParametroService implements ParametroServiceInterface{
 	
 	@Override
 	@Transactional
-	public Boolean saveParametro(Parametro pr) {
-		Parametro parametro = new Parametro();
-		BeanUtils.copyProperties(pr.getIdRegistroParametro() ,parametro);
-		Parametro newParam = parametroRepository.save(parametro);
-		return (newParam == null) ? false : true;
+	public Boolean saveParametro(Parametro pparametro) {
+		
+		BeanUtils.copyProperties(pparametro.getNombreNegocio(), pparametro);
+		BeanUtils.copyProperties(pparametro.getCantidadDiasCalculoPromedios(), pparametro);
+		
+		Parametro nParam = parametroRepository.save(pparametro);
+		return (nParam == null) ? false : true;
 		
 	}
 }

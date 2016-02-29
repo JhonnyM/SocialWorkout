@@ -19,20 +19,15 @@ angular.module('myApp.crear_parametros', ['ngRoute'])
 		
 	});
 	
-	$scope.saveParametro = function(event){
-        
-        var data = {};
-        console.log($scope.requestObject.nombreNegocio);
-        console.log($scope.requestObject.cantidadDiasCalculoPromedios);
-        //Objeto JSON que lleva solo el tipo
-        data = {
-                parametro : $scope.requestObject.nombreNegocio,
-                parametro : $scope.requestObject.cantidadDiasCalculoPromedios,
-                
-        	   };
-        
-        $http.post('rest/protected/parametros/create', data)
-        .success(function(data, status, config) {
+$scope.saveParametro = function(event){
+    	
+    	var data = {};
+    	data = {
+    			nombreNegocio : $scope.requestObject.nombreNegocio,
+    			cantidadDiasCalculoPromedios : $scope.requestObject.cantidadDiasCalculoPromedios
+    	};
+    	$http.post('rest/protected/parametro/create', data)
+    	.success(function(data, status, config) {
             $scope.message = data;
           }).error(function(data, status, config) {
             alert( "failure message: " + JSON.stringify({data: data}));

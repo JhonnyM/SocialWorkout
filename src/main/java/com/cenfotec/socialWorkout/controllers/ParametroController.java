@@ -40,13 +40,13 @@ public class ParametroController {
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public ParametroResponse create(@RequestBody Parametro pr){	
+	public ParametroResponse create(@RequestBody Parametro pparametro){	
 		ParametroResponse ps = new ParametroResponse();
-		Boolean state = parametroService.saveParametro(pr);
+		Boolean state = parametroService.saveParametro(pparametro);
 	
 		if(state){
 			ps.setCode(200);
-			ps.setCodeMessage("parametro created succesfully");
+			ps.setCodeMessage("parametro creado satisfactoriamente");
 		}
 		return ps;
 		

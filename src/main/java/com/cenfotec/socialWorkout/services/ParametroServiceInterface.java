@@ -8,5 +8,5 @@ import com.cenfotec.socialWorkout.pojo.ParametroPOJO;
 public interface ParametroServiceInterface {
 	List<ParametroPOJO> getAll(ParametroRequest pr);
 	List<ParametroPOJO> getAllByName(ParametroRequest pr);
-	Boolean saveParametro(Parametro pr);
+	Boolean saveParametro(Parametro pparametro);
 }
