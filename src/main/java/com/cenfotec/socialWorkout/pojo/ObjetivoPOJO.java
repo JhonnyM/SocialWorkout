@@ -27,5 +27,9 @@ public class ObjetivoPOJO {
 	public void setDescObjetivo(String descObjetivo) {
 		this.descObjetivo = descObjetivo;
 	}
+	
+	public void setIdObjetivo(int idObjetivo) {
+		this.idObjetivo = idObjetivo;
+	}
 
 }
