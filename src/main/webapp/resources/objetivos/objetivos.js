@@ -25,7 +25,7 @@ angular.module('myApp.objetivos', ['ngRoute'])
     	console.log($scope.requestObject.desc);
     	//Objeto JSON que lleva solo el tipo
     	data = {
-    			objetivo : $scope.requestObject.desc
+    			descObjetivo : $scope.requestObject.desc
     	};
     	
     	$http.post('rest/protected/objetivos/create', data)
