@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.ParametroRequest;
 import com.cenfotec.socialWorkout.contracts.ParametroResponse;
+import com.cenfotec.socialWorkout.ejb.Parametro;
 import com.cenfotec.socialWorkout.services.ParametroServiceInterface;
 
 @RestController
@@ -39,7 +40,7 @@ public class ParametroController {
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public ParametroResponse create(@RequestBody ParametroRequest pr){	
+	public ParametroResponse create(@RequestBody Parametro pr){	
 		ParametroResponse ps = new ParametroResponse();
 		Boolean state = parametroService.saveParametro(pr);
 	

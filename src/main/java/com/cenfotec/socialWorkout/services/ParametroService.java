@@ -45,9 +45,9 @@ public class ParametroService implements ParametroServiceInterface{
 	
 	@Override
 	@Transactional
-	public Boolean saveParametro(ParametroRequest pr) {
+	public Boolean saveParametro(Parametro pr) {
 		Parametro parametro = new Parametro();
-		BeanUtils.copyProperties(pr.getParametro(), parametro);
+		BeanUtils.copyProperties(pr.getIdRegistroParametro() ,parametro);
 		Parametro newParam = parametroRepository.save(parametro);
 		return (newParam == null) ? false : true;
 		
