@@ -699,7 +699,8 @@
   <script src="resources/view2/view2.js"></script>
   <script src="resources/objetivos/objetivos.js"></script>
   <script src="resources/listarUnidadMedida/listar_Unidad_Medida.js"></script> 
-  <script src="resources/listarUnidadMedida/registrar_Unidad_Medida.js"></script>     
+  <script src="resources/listarUnidadMedida/registrar_Unidad_Medida.js"></script>
+  <script src="resources/listarMaquina/listar_Maquina.js"></script>       
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
@@ -709,6 +710,7 @@
   <script src="resources/js/ui-nav.js"></script>
   <script src="resources/js/ui-toggle.js"></script>
   <script src="resources/js/ui-client.js"></script>
+  <script src="resources/js/myModal.js"></script>
 
 </body>
 </html>

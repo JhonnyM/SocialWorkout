@@ -1,6 +1,8 @@
 'use strict'
 
-angular.module('myApp.registrar_Unidad_Medida',['ngRoute'])
+angular.module('myApp.registrar_Unidad_Medida',
+		['ngRoute',
+		 'mymodal'])
 .config(['$routeProvider', function($routeProvider) {
 	  $routeProvider
 	  	.when('/registrar_Unidad_Medida', {
@@ -17,7 +19,6 @@ angular.module('myApp.registrar_Unidad_Medida',['ngRoute'])
 		var data = {};
 		
 		data = {
-				//idUnidadMedida: 0,
 				descUnidadMedida : $scope.requestObject.descUnidadMedida			
 		};
 
