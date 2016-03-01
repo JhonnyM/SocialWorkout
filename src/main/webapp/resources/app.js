@@ -9,6 +9,7 @@ angular.module('myApp', [
   'myApp.listar_Unidad_Medida',
   'myApp.registrar_Unidad_Medida',
   'myApp.listar_Maquina',
+  'myApp.registrar_Maquina',
   'ui.grid',
   'mymodal',
   'angularFileUpload'

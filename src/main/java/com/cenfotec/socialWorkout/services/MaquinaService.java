@@ -2,12 +2,16 @@ package com.cenfotec.socialWorkout.services;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
 import com.cenfotec.socialWorkout.ejb.Maquina;
+import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 import com.cenfotec.socialWorkout.repositories.MaquinaRepository;
 
@@ -36,9 +40,13 @@ public class MaquinaService implements MaquinaServiceInterface {
 	}
 
 	@Override
+	@Transactional
 	public Boolean saveMaquina(Maquina m) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		Maquina nmaquina = maquinaRepository.save(m);
+		
+		return (nmaquina == null) ? false : true;
+
 	}
 
 }
