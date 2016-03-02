@@ -29,15 +29,6 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-<<<<<<< HEAD
-  <!-- header -->
-  <!-- header -->
-  <header id="header" class="navbar navbar-fixed-top bg-white-only padder-v"  data-spy="affix" data-offset-top="1">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="btn btn-link visible-xs pull-right m-r" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-          <i class="fa fa-bars"></i>
-=======
 <div class="app app-header-fixed ">
   
 
@@ -47,7 +38,6 @@
       <div class="navbar-header bg-dark">
         <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
->>>>>>> 07215ee... Common: Update teplate style
         </button>
         <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
           <i class="glyphicon glyphicon-align-justify"></i>
@@ -305,21 +295,6 @@
       <!-- / navbar collapse -->
   </header>
   <!-- / header -->
-<<<<<<< HEAD
-  <!-- / header -->
-  <div ng-view></div>
-  <br/>
-  <!-- footer -->
-  <footer id="footer">
-    <div class="bg-info">
-      <div class="container">
-        <div class="row m-t-xl m-b-xl">
-          <div class="col-sm-6 text-white text-center">
-            <h4 class="m-b">Que rutina deseas Realizar?</h4>
-          </div>
-          <div class="col-sm-6 text-center">
-            <a href="http://themeforest.net/item/angulr-bootstrap-admin-web-app-with-angularjs/8437259?ref=flatfull" class="btn btn-lg btn-default btn-rounded">Ver Rutinas Disponibles</a>
-=======
 
 
     <!-- aside -->
@@ -374,7 +349,6 @@
               <!-- / dropdown -->
             </div>
             <div class="line dk hidden-folded"></div>
->>>>>>> 07215ee... Common: Update teplate style
           </div>
           <!-- / user -->
 
@@ -725,7 +699,6 @@
   <script src="resources/view2/view2.js"></script>
   <script src="resources/crearParametros/crear_parametros.js"></script>
   <script src="resources/listarParametros/listar_parametros.js"></script>
-  
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

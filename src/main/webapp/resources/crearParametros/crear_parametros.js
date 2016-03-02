@@ -10,14 +10,14 @@ angular.module('myApp.crear_parametros', ['ngRoute'])
 }])
 
 .controller('ParametroCtrl', ['$scope','$http',function($scope,$http) {
-	$scope.parametros = [];
-	$scope.requestObject = {"nombreNegocio": "Matrix", "cantidadDiasCalculoPromedios": 5};
-	$http.post('rest/protected/parametro/getAll',$scope.requestObject).success(function(response) {
-		console.log("response",response)
-		$scope.parametros = response.parametros;
-		console.log("$scope.parametros",$scope.parametros)
-		
-	});
+//	$scope.parametros = [];
+//	$scope.requestObject = {"nombreNegocio": "Matrix", "cantidadDiasCalculoPromedios": 5};
+//	$http.post('rest/protected/parametro/getAll',$scope.requestObject).success(function(response) {
+//		console.log("response",response)
+//		$scope.parametros = response.parametros;
+//		console.log("$scope.parametros",$scope.parametros)
+//		
+//	});
 	
 $scope.saveParametro = function(event){
     	

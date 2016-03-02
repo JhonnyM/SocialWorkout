@@ -15,9 +15,7 @@ public class Parametro implements Serializable {
 
 	@Id
 	private int idRegistroParametro;
-
 	private int cantidadDiasCalculoPromedios;
-
 	private String nombreNegocio;
 
 	public Parametro() {

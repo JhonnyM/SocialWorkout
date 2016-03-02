@@ -47,8 +47,8 @@ public class ParametroService implements ParametroServiceInterface{
 	@Transactional
 	public Boolean saveParametro(Parametro pparametro) {
 		
-		BeanUtils.copyProperties(pparametro.getNombreNegocio(), pparametro);
-		BeanUtils.copyProperties(pparametro.getCantidadDiasCalculoPromedios(), pparametro);
+		//BeanUtils.copyProperties(pparametro.getNombreNegocio(), pparametro);
+		//BeanUtils.copyProperties(pparametro.getCantidadDiasCalculoPromedios(), pparametro);
 		
 		Parametro nParam = parametroRepository.save(pparametro);
 		return (nParam == null) ? false : true;
