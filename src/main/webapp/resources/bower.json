@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "homepage": "https://github.com/angular/angular-seed",
   "license": "MIT",
-  "private": true,
   "dependencies": {
     "angular": "~1.4.0",
     "angular-route": "~1.4.0",
@@ -15,5 +14,15 @@
     "bootstrap": "~3.3.6",
     "underscore": "~1.8.3",
     "angular-ui-grid": "~3.0.7"
-  }
+  },
+  "main": "",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+ 
 }

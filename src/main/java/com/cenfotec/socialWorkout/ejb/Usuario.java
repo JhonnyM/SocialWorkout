@@ -17,7 +17,11 @@ public class Usuario implements Serializable {
 
 	@Id
 	private int idUsuario;
-
+	
+	private String identificacion;
+	
+	private String nombre;
+	
 	private String apellidos;
 
 	private String clave;
@@ -34,10 +38,6 @@ public class Usuario implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date fechaPago;
-
-	private String identificacion;
-
-	private String nombre;
 
 	private boolean poseeVehiculo;
 
