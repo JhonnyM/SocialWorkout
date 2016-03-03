@@ -3,42 +3,52 @@
 angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
 
-.controller('ModalController', ['$scope','$uibModal','usuario', function($scope, $uibModal,usuario)
+.controller('ModalController', ['$scope','$uibModalInstance','usuario',  function($scope, $uibModalInstance,usuario)
 {
 	$scope.PersonSchema = {
-			  type: 'object',
+			  "type": "object",
 			  properties: {
+				identificacion: { type: 'string', title: 'Identificación' },
 			    nombre: { type: 'string', title: 'Nombre' },
-			    correoElectronico: { type: 'string', title: 'Email' },
+			    apellidos: { type: 'string', title: 'Apellidos' },
+			    correoElectronico: { type: 'string', pattern: "^\\S+@\\S+$", title: 'Email', validationMessage: "La dirección de correo no es válida" },
+			    fechaNac: { type: 'string', format: 'date' , title: 'Fecha de nacimiento' },
+			    fechaIngreso: { type: 'string', title: 'Fecha de ingreso', format:'date' },
+			    fechaPago: { type: 'string', title: 'Fecha de pago', format:'date' },
+			    poseeVehiculo: { type: 'string', title: 'Posee vehiculo' },
 			    estatus: { type: 'string', title: 'Habilitado' },
-			    
 			  }
 			};
-    $scope.usuario = usuario;
-    console.log("me dieron click dentro del modal",usuario.nombre);
+    
+	$scope.usuarioForm = angular.copy(usuario);
+    console.log("me dieron click dentro del modal",$scope.usuarioForm.nombre);
 	
- 
-    $scope.cancel = function () 
-    {
-    	$uibModal.dismiss('cancel');
-    };
-    
-    
-      var vm = this;
-	  vm.schema = $scope.PersonSchema;
-	  vm.entity = usuario;
-	  $scope.form = [
-	    'nombre',
-	    'correoElectronico',
+    	$scope.form = [
+		'identificacion',
+		'nombre',
+		'apellidos',
+		'correoElectronico',
+		'fechaNac',
+		'fechaIngreso',
+	    'fechaPago',
+	    'poseeVehiculo',
 	    'estatus',
 	  ];
 	  
-	  vm.save = save;
 	  
-	  function save() {
+	  $scope.save = function () {
 	    // Copy row values over
-	    row.entity = angular.extend(row.entity, vm.entity);
-	    $modalInstance.close(row.entity);
+	    usuario.identificacion = $scope.usuarioForm.identificacion;
+	    usuario.nombre = $scope.usuarioForm.nombre;
+	    usuario.apellidos = $scope.usuarioForm.apellidos;
+	    usuario.correoElectronico = $scope.usuarioForm.correoElectronico;
+	    usuario.fechaNac = $scope.usuarioForm.fechaNac;
+	    usuario.fechaIngreso = $scope.usuarioForm.fechaIngreso;
+	    usuario.fechaPago = $scope.usuarioForm.fechaPago;
+	    usuario.poseeVehiculo = $scope.usuarioForm.poseeVehiculo;
+	    usuario.estatus = $scope.usuarioForm.estatus;
+	   
+	    $uibModalInstance.close();
 	  }
     
 }]);
