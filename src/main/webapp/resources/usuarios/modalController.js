@@ -23,6 +23,39 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	$scope.usuarioForm = angular.copy(usuario);
     console.log("me dieron click dentro del modal",$scope.usuarioForm.nombre);
 	
+    var base = 'directives/decorators/bootstrap/';
+
+    schemaFormDecoratorsProvider.createDecorator('bootstrapDecorator', {
+      textarea: base + 'textarea.html',
+      fieldset: base + 'fieldset.html',
+      array: base + 'array.html',
+      tabarray: base + 'tabarray.html',
+      tabs: base + 'tabs.html',
+      section: base + 'section.html',
+      conditional: base + 'section.html',
+      actions: base + 'actions.html',
+      select: base + 'select.html',
+      checkbox: base + 'checkbox.html',
+      checkboxes: base + 'checkboxes.html',
+      number: base + 'default.html',
+      password: base + 'default.html',
+      submit: base + 'submit.html',
+      button: base + 'submit.html',
+      radios: base + 'radios.html',
+      'radios-inline': base + 'radios-inline.html',
+      radiobuttons: base + 'radio-buttons.html',
+      help: base + 'help.html',
+      'default': base + 'default.html'
+    }, [
+      function(form) {
+        if (form.readonly && form.key && form.type !== 'fieldset') {
+          return base + 'readonly.html';
+        }
+      }
+    ]);
+    
+    
+    
     	$scope.form = [
 		'identificacion',
 		'nombre',

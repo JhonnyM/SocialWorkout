@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -21,20 +21,20 @@ public class Registroingreso implements Serializable {
 	private Date fechaHoraIngreso;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaHoraSalida;
+	private Date horaSalida;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario1;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuarioInstructor")
 	private Usuario usuario2;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idRutina")
 	private Plantillarutinamaestro plantillarutinamaestro;
 
@@ -57,12 +57,12 @@ public class Registroingreso implements Serializable {
 		this.fechaHoraIngreso = fechaHoraIngreso;
 	}
 
-	public Date getFechaHoraSalida() {
-		return this.fechaHoraSalida;
+	public Date getHoraSalida() {
+		return this.horaSalida;
 	}
 
-	public void setFechaHoraSalida(Date fechaHoraSalida) {
-		this.fechaHoraSalida = fechaHoraSalida;
+	public void setHoraSalida(Date horaSalida) {
+		this.horaSalida = horaSalida;
 	}
 
 	public Usuario getUsuario1() {

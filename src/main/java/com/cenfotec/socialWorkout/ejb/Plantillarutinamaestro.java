@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -26,12 +26,12 @@ public class Plantillarutinamaestro implements Serializable {
 	private List<Plantillarutinadetalle> plantillarutinadetalles;
 
 	//bi-directional many-to-one association to Objetivo
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idObjetivo")
 	private Objetivo objetivo;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idRutinaBase")
 	private Plantillarutinamaestro plantillarutinamaestro;
 

@@ -46,7 +46,7 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 					keyboard:false,
 					templateUrl:'resources/usuarios/edit-modal.html',
 					controller:'ModalController',
-					size:"sl",
+					size:"sx",
 					windowClass:"modal",
 					resolve:{
 						usuario:function(){return row.entity}
