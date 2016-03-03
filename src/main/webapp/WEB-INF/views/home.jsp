@@ -694,6 +694,21 @@
   <script src="resources/bower_components/angular-ui-grid/ui-grid.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload-shim.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload.min.js"></script>
+  
+  <script src="resources/bower_components/pickadate/lib/themes/classic.css"></script>
+  <script src="resources/bower_components/pickadate/lib/themes/classic.date.css"></script>  
+  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+  <script src="resources/bower_components/angular-schema-form-dynamic-select/angular-schema-form-dynamic-select.js"></script>
+  <script src="resources/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="resources/bower_components/tv4/tv4.js"></script>
+  <script src="resources/bower_components/objectpath/lib/ObjectPath.js"></script>
+  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+  <script src="resources/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+  <script src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  
+  
+  
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
@@ -702,6 +717,7 @@
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
+  <script src="resources/listarParametros/modalController.js"></script>
   <script src="resources/js/ui-load.js"></script>
   <script src="resources/js/ui-jp.config.js"></script>
   <script src="resources/js/ui-jp.js"></script>
