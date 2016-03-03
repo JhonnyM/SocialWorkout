@@ -18,12 +18,6 @@ import org.springframework.stereotype.Service;
 public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	
 	@Autowired private UnidadMedidaRepository unidadMedidaRepository;
-
-	@Override
-	public List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadMedidaRequest umr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr) {
@@ -54,6 +48,36 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	public Boolean saveUnidadMedida(Unidadmedida um) {
 	
 		Unidadmedida nunidad = unidadMedidaRepository.save(um);
+		
+		return (nunidad == null) ? false : true;
+
+	}
+
+	@Override
+	public UnidadmedidaPOJO getAllByIdUnidadMedida(Unidadmedida um) {
+
+		Unidadmedida unidadMedida;
+		UnidadmedidaPOJO uiUnidadMedida = new UnidadmedidaPOJO();
+		
+		unidadMedida =  unidadMedidaRepository.findOne(um.getIdUnidadMedida());
+
+		BeanUtils.copyProperties(um,unidadMedida);
+
+		BeanUtils.copyProperties(unidadMedida,uiUnidadMedida);
+		
+		return uiUnidadMedida;
+	}
+
+	@Transactional
+	public Boolean editUnidadMedida(Unidadmedida um){
+		
+		UnidadmedidaPOJO unidadMedida = this.getAllByIdUnidadMedida(um);
+
+		Unidadmedida eUnidadMedida = new Unidadmedida();
+
+		BeanUtils.copyProperties(unidadMedida,eUnidadMedida);
+	
+		Unidadmedida nunidad = unidadMedidaRepository.save(eUnidadMedida);
 		
 		return (nunidad == null) ? false : true;
 

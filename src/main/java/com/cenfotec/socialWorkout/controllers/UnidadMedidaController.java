@@ -43,6 +43,19 @@ public class UnidadMedidaController {
 			umr.setCodeMessage("Unidad medida");
 		}
 		return umr;
-		
 	}
+	
+	@RequestMapping(value ="/edit", method = RequestMethod.POST)
+	public UnidadMedidaResponse edit(@RequestBody Unidadmedida um){	
+		
+		UnidadMedidaResponse umr = new UnidadMedidaResponse();
+		Boolean state = unidadMedidaService.editUnidadMedida(um);
+	
+		if(state){
+			umr.setCode(200);
+			umr.setCodeMessage("Unidad medida");
+		}
+		return umr;
+	}
+	
 }

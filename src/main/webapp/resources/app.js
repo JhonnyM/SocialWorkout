@@ -11,7 +11,7 @@ angular.module('myApp', [
   'myApp.listar_Maquina',
   'myApp.registrar_Maquina',
   'ui.grid',
-  'mymodal',
+  'myApp.modal',  
   'angularFileUpload'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {

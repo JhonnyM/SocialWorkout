@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.grid.moveColumns'])
+angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -11,7 +11,7 @@ angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.grid.moveCo
 
 }])
 
-.controller('listarUnidadMedidaViewCtrl',['$scope','$http',function($scope,$http){
+.controller('listarUnidadMedidaViewCtrl',['$scope','$http','$uibModal',function($scope,$http,$uibModal){
 	$scope.unidadesMedida = [];
 	$scope.requestObject = {"idUnidadMedida":1,"descUnidadMedida":"","lugarmedicions":[]};
 	
@@ -23,13 +23,36 @@ angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.grid.moveCo
 		
 		$scope.gridOptions = {
 			data:'unidadesMedida',
-			showGroupPanel: true,
-			enableSorting:true,
-			enableFiltering:true,
-			columnDefs:[{field:'idUnidadMedida',displayName:'Id Unidad de Medida'},
-			            {field:'descUnidadMedida',displayName:'Descripción'}]
+	        showGroupPanel: true,
+	        enableSorting: true,
+	        enableFiltering:true,
+	        enableColumnResizing : true,
+	        enableGridMenu : true,
+	        showGridFooter : true,
+	        showColumnFooter : true,
+	        fastWatch : true,
+	        columnDefs:[
+			            {field:'descUnidadMedida',displayName:'Descripción'},
+			            {field:'Acciones', displayName:'Acciones',
+			            cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'} 
+	                    ]
 		};
 		
+		$scope.editRow = function(row){
+			console.log("me dieron click",row.entity);
+			var dialogOpts = {
+					backdrop:'static',
+					keyboard:false,
+					templateUrl:'resources/listarUnidadMedida/edit-modal.html',
+					controller:'ModalController',
+					size:"sm",
+					windowClass:"modal",
+					resolve:{
+						unidadMedida:function(){return row.entity}
+					}
+			};
+			$uibModal.open(dialogOpts)
+		}
 }]);
 
 

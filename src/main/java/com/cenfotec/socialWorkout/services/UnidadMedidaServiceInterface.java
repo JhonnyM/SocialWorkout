@@ -5,9 +5,10 @@ import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 
 public interface UnidadMedidaServiceInterface{
-	List<UnidadmedidaPOJO> getAllByIdUnidadMedida(UnidadMedidaRequest umr);
 	List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr);
 	List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr);
+	UnidadmedidaPOJO getAllByIdUnidadMedida(Unidadmedida um);
 	Boolean saveUnidadMedida(Unidadmedida um);
+	Boolean editUnidadMedida(Unidadmedida um);
 }
 

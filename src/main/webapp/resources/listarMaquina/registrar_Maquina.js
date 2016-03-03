@@ -1,8 +1,7 @@
 'use strict'
 
 angular.module('myApp.registrar_Maquina',
-		['ngRoute',
-		 'mymodal'])
+		['ngRoute', 'ui.bootstrap'])
 .config(['$routeProvider', function($routeProvider) {
 	  $routeProvider
 	  	.when('/registrar_Maquina', {
@@ -35,6 +34,7 @@ angular.module('myApp.registrar_Maquina',
 	    	  alert( "failure message: " + JSON.stringify({data: data}));
 	    }); 
 	};
+	
 	
 }]);
 
