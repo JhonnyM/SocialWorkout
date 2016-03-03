@@ -1,6 +1,6 @@
 //'use strict';
 
-angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
+angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
 
 
 .controller('ModalController', ['$scope','$uibModalInstance','usuario',  function($scope, $uibModalInstance,usuario)
@@ -12,9 +12,9 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 			    nombre: { type: 'string', title: 'Nombre' },
 			    apellidos: { type: 'string', title: 'Apellidos' },
 			    correoElectronico: { type: 'string', pattern: "^\\S+@\\S+$", title: 'Email', validationMessage: "La dirección de correo no es válida" },
-			    fechaNac: { type: 'string', format: 'date' , title: 'Fecha de nacimiento' },
-			    fechaIngreso: { type: 'string', title: 'Fecha de ingreso', format:'date' },
-			    fechaPago: { type: 'string', title: 'Fecha de pago', format:'date' },
+			    fechaNac: {title: 'Fecha de nacimiento' },
+			    fechaIngreso: {title: 'Fecha de ingreso'},
+			    fechaPago: {title: 'Fecha de pago'},
 			    poseeVehiculo: { type: 'string', title: 'Posee vehiculo' },
 			    estatus: { type: 'string', title: 'Habilitado' },
 			  }
@@ -28,15 +28,21 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 		'nombre',
 		'apellidos',
 		'correoElectronico',
-		'fechaNac',
-		'fechaIngreso',
-	    'fechaPago',
+		{"key": "fechaNac",
+		 "type": "date",
+		},
+		{"key": "fechaIngreso",
+	     "type": "date",
+		},
+		{"key": "fechaPago",
+		 "type": "date",
+	    },
 	    'poseeVehiculo',
 	    'estatus',
+	    
 	  ];
 	  
-	  
-	  $scope.save = function () {
+    	$scope.save = function () {
 	    // Copy row values over
 	    usuario.identificacion = $scope.usuarioForm.identificacion;
 	    usuario.nombre = $scope.usuarioForm.nombre;
