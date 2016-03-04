@@ -46,6 +46,27 @@ public class ObjetivoService implements ObjetivoServiceInterface {
 		Objetivo nTObjetivo = objetivoRepository.save(objetivo);		
 		return (nTObjetivo == null) ? false : true;
 	}
+	
+	@Override
+	public ObjetivoPOJO getAllByIdObjetivo(Objetivo obj) {
+		Objetivo objetivo;
+		ObjetivoPOJO uiObjetivo = new ObjetivoPOJO();
+		objetivo =  objetivoRepository.findOne(obj.getIdObjetivo());
+		BeanUtils.copyProperties(obj,objetivo);
+		BeanUtils.copyProperties(objetivo,uiObjetivo);
+		return uiObjetivo;
+	}
+	
+	@Override
+	@Transactional
+	public Boolean edit(Objetivo obj){
+		ObjetivoPOJO objetivo = this.getAllByIdObjetivo(obj);
+		Objetivo eObjetivo = new Objetivo();
+		BeanUtils.copyProperties(objetivo,eObjetivo);
+		Objetivo nObjetivo = objetivoRepository.save(eObjetivo);
+		return (nObjetivo == null) ? false : true;
+
+	}
 
 
 }

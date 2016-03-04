@@ -15,7 +15,7 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 	$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
 	console.log("response",response)
 	$scope.objetivos = response.objetivoList;
-	console.log("$scope.objetivos",$scope.objetivos)
+	console.log("$scope.objetivos", $scope.gridOptions)
 		
 	});
 
@@ -63,6 +63,5 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
             alert( "failure message: " + JSON.stringify({data: data}));
         }); 
     };
-};
 	
 }]);

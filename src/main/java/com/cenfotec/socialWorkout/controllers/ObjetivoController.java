@@ -43,4 +43,17 @@ public class ObjetivoController {
 		response.setObjetivoList(objetivoService.getAll(or));
 		return response;		
 	}
+	
+	@RequestMapping(value ="/edit", method = RequestMethod.POST)
+	public ObjetivoResponse edit(@RequestBody Objetivo obj){	
+ 		
+		ObjetivoResponse objetivo = new ObjetivoResponse();
+		Boolean state = objetivoService.edit(obj);
+	
+		if(state){
+			objetivo.setCode(200);
+			objetivo.setCodeMessage("Objetivo ");
+		}
+		return objetivo;
+ 	}
 }
