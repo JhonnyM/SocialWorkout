@@ -63,5 +63,6 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
             alert( "failure message: " + JSON.stringify({data: data}));
         }); 
     };
+};
 	
 }]);

@@ -1,24 +1,22 @@
-<div id="content">
-  <div class="bg-white-only">
-    <div class="container">
-      <h1>Objetivos</h1>
-      <p>Por favor introdusca el objetivo para las diferentes rutinas.</p>
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <form  id="createObjetivoForm" name="createObjetivoForm" class="bs-example form-horizontal" role="form">
-              <div ng-class="{error: onError && createObjetivoForm.desc.$invalid}">
-                <div class="form-group">
+<div class="bg-white-only">
+  <div class="container">
+    <h1>Objetivos</h1>
+    <p>Por favor introdusca el objetivo para las diferentes rutinas.</p>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form  id="createObjetivoForm" name="createObjetivoForm" class="bs-example form-horizontal" role="form">
+            <div ng-class="{error: onError && createObjetivoForm.desc.$invalid}">
+              <div class="form-group">
 
-                  <label class="col-lg-2 control-label">Descripcion</label>
-                  <div class="col-lg-10">
-                    <input type="text" id="desc" class="form-control rounded" desc="desc" placeholder="Required" required ng-model="requestObject.desc">  
-                  </div>
+                <label class="col-lg-2 control-label">Descripcion</label>
+                <div class="col-lg-10">
+                  <input type="text" id="desc" class="form-control rounded" desc="desc" placeholder="Required" required ng-model="requestObject.desc">  
                 </div>
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-sm btn-info" ng-click="saveObjetivo($event)" >Guardar</button>
-                  </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button class="btn btn-sm btn-info" ng-click="saveObjetivo($event)" >Guardar</button>
                 </div>
               </div>
             </form>
