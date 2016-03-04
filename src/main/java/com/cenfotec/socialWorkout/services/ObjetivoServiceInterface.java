@@ -10,4 +10,7 @@ public interface ObjetivoServiceInterface {
 	Boolean saveObjetivo(Objetivo ob);
 	Boolean edit(Objetivo obj);
 	ObjetivoPOJO getAllByIdObjetivo(Objetivo obj);
+	public boolean delete(int idObj);
+	public boolean exists (Integer idObj);
+
 }

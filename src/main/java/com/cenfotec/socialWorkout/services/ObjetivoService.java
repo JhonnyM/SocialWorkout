@@ -69,4 +69,17 @@ public class ObjetivoService implements ObjetivoServiceInterface {
 	}
 
 
+	@Override
+	public boolean exists (Integer idObj){
+		return objetivoRepository.exists(idObj);
+	}
+
+	@Override
+	public boolean delete(int idObj) {
+		objetivoRepository.delete(idObj);
+		return !objetivoRepository.exists(idObj);
+		
+	}
+
+
 }

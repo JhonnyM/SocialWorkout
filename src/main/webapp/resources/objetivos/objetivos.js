@@ -27,7 +27,8 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
         columnDefs:[
             {field:'idObjetivo',displayName:'ID'},
             {field:'descObjetivo',displayName:'Descripción'},
-            {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'} 
+            {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'},
+            {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.delete(row)">Delete</p>'}
         ]
     };
 
@@ -49,19 +50,55 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
 	$scope.saveObjetivo = function(event){
     	
-    	var data = {};
-    	console.log($scope.requestObject.desc);
-    	//Objeto JSON que lleva solo el tipo
-    	data = {
-    			descObjetivo : $scope.requestObject.desc
-    	};
-    	
-    	$http.post('rest/protected/objetivos/create', data)
-    	.success(function(data, status, config) {
-            $scope.message = data;
-          }).error(function(data, status, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
-        }); 
+  	var data = {};
+  	console.log($scope.requestObject.desc);
+
+  	data = {
+  			descObjetivo : $scope.requestObject.desc
+  	};
+  	
+  	$http.post('rest/protected/objetivos/create', data)
+  	.success(function(data, status, config) {
+      $scope.message = data;
+      }).error(function(data, status, config) {
+        alert( "failure message: " + JSON.stringify({data: data}));
+    }); 
+  };
+
+  $scope.delete = function (row){
+    var data = {};
+    data = {
+        idObjetivo : row.entity.idObjetivo,
+        descObjetivo : row.entity.descObjetivo
     };
-	
+
+    $http.post("rest/protected/objetivos/delete", {objetivo: data})
+    .then(function (response){
+
+      /**
+       * Se muestra una notificación dependiendo del codigo de estatus recibido tras la llamada al servidor
+       */
+      switch(response.data.code)
+      {
+        case 200:
+          alert("Objetivo Eliminado")
+        break;
+
+        default:
+          alert(response.data.codeMessage);
+      }
+      
+      /**
+       * Se refresca la lista de todos los tipos de usuario existentes.
+       */
+      /**
+      Poner algo aqui para refrescar la lista
+      */
+
+    }, function (response){
+
+      console.log(response);
+    }); 
+  };
+
 }]);

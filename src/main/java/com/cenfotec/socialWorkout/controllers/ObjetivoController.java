@@ -56,4 +56,33 @@ public class ObjetivoController {
 		}
 		return objetivo;
  	}
+
+ 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ObjetivoResponse delete(@RequestBody ObjetivoRequest or) {
+
+		ObjetivoResponse objetivoResponse = new ObjetivoResponse();
+		
+		if (objetivoService.exists(or.getObjetivo().getIdObjetivo()))
+		{
+			if(objetivoService.delete(or.getObjetivo().getIdObjetivo()))
+			{
+				objetivoResponse.setCode(200);
+				objetivoResponse.setCodeMessage("El objetivo fue eliminado exitosamente");
+			}
+			else
+			{
+				objetivoResponse.setCode(500);
+				objetivoResponse.setCodeMessage("Hubo un error al momento de eliminar el objetivo");
+			}
+			
+		}
+		else
+		{
+			objetivoResponse.setCode(404);
+			objetivoResponse.setCodeMessage("El objetivo no existe");
+		}
+
+		return objetivoResponse;
+
+	}
 }
