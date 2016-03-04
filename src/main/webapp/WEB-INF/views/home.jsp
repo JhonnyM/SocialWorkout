@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css">
+  <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css"> 
   <link rel="stylesheet" href="resources/css/app.css">
   <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
   <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
@@ -45,7 +45,7 @@
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
           <i class="fa fa-btc"></i>
-          <img src="img/logo.png" alt="." class="hide">
+          <img src="resources/img/logo.png" alt="." class="hide">
           <span class="hidden-folded m-l-xs">Angulr</span>
         </a>
         <!-- / brand -->
@@ -227,7 +227,7 @@
                 <div class="list-group">
                   <a href class="list-group-item">
                     <span class="pull-left m-r thumb-sm">
-                      <img src="img/a0.jpg" alt="..." class="img-circle">
+                      <img src="resources/img/a0.jpg" alt="..." class="img-circle">
                     </span>
                     <span class="clear block m-b-none">
                       Use awesome animate.css<br>
@@ -252,7 +252,7 @@
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="img/a0.jpg" alt="...">
+                <img src="resources/img/a0.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
               </span>
               <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
@@ -306,7 +306,7 @@
             <div class="dropdown wrapper">
               <a href="app.page.profile">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="img/a0.jpg" class="img-full" alt="...">
+                  <img src="resources/img/a0.jpg" class="img-full" alt="...">
                 </span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -688,16 +688,27 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
   <script src="resources/bower_components/angular/angular.js"></script>
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/bower_components/angular-ui-grid/ui-grid.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload-shim.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload.min.js"></script>
+  <script src="resources/bower_components/pickadate/lib/themes/classic.css"></script>
+  <script src="resources/bower_components/pickadate/lib/themes/classic.date.css"></script>  
+  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+  <script src="resources/bower_components/angular-schema-form-dynamic-select/angular-schema-form-dynamic-select.js"></script>
+  <script src="resources/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
+  <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="resources/bower_components/tv4/tv4.js"></script>
+  <script src="resources/bower_components/objectpath/lib/ObjectPath.js"></script>
+  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+  <script src="resources/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+  <script src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
-  <script src="resources/objetivos/objetivos.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

@@ -7,8 +7,9 @@ angular.module('myApp', [
   'myApp.view2',
   'myApp.objetivos',
   'myApp.version',
+  'myApp.modal',
   'ui.grid',
-  'angularFileUpload'
+  'angularFileUpload',
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});
