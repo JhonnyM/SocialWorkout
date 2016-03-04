@@ -26,30 +26,7 @@
         </div>
       </div>
       <div class="table-responsive m-b-lg">
-       <div ui-grid="{ data: objetivos }" class="myGrid" ></div>
-      </div>
-      <div class="wrapper-md">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Objetivos
-          </div>
-          <div class="table-responsive">
-            <table ui-jq="dataTable" class="table table-striped b-t b-b">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Descripcion</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="objetivo in objetivos">
-                    <td style="width:20%">{{ objetivo.idObjetivo }}</td>
-                    <td style="width:20%">{{ objetivo.descObjetivo }}</td>
-                </tr>
-                </tbody>
-            </table>
-          </div>
-        </div>
+       <div ui-grid="gridOptions" class="myGrid" ></div>
       </div>
     </div>
   </div>
