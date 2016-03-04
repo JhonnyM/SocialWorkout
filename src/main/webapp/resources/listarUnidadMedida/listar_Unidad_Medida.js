@@ -34,7 +34,9 @@ angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.bootstrap']
 	        columnDefs:[
 			            {field:'descUnidadMedida',displayName:'Descripción'},
 			            {field:'Acciones', displayName:'Acciones',
-			            cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'} 
+			            cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'},
+			            {field:'Acciones', displayName:'Acciones',
+			            cellTemplate: '<p ng-click="grid.appScope.deleteUnidadMedida(row)">Delete</p>'}
 	                    ]
 		};
 		
@@ -52,7 +54,38 @@ angular.module('myApp.listar_Unidad_Medida',['ngRoute','ui.grid','ui.bootstrap']
 					}
 			};
 			$uibModal.open(dialogOpts)
-		}
+		};		
+
+		  $scope.deleteUnidadMedida = function(row){
+			    var data = {};
+			    
+			    data = {
+
+			    	idUnidadMedida : row.entity.idUnidadMedida,
+			   		descUnidadMedida : row.entity.descUnidadMedida
+			    };
+
+			    console.log("data",data);
+			    
+			    $http.post("rest/protected/UnidadesMedidas/delete", {unidadMedida:data} )
+			    .then(function (response){
+
+			      switch(response.data.code)
+			      {
+			        case 200:
+			          alert("Unidad de medida eliminada.")
+			        break;
+
+			        default:
+			          alert(response.data.codeMessage);
+			      }
+
+			    }, function (response){
+
+			      console.log(response);
+			    }); 
+			  };
+
 }]);
 
 

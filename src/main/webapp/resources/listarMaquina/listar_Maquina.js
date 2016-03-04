@@ -41,4 +41,20 @@ angular.module('myApp.listar_Maquina',['ngRoute','ui.grid','ui.grid.moveColumns'
 			            ]
 		};
 		
+		$scope.registerMaquina = function(){
+			var dialogOpts = {
+					backdrop:'static',
+					keyboard:false,
+					templateUrl:'resources/listarMaquina/register-modal-Maquina.html',
+					controller:'Modal_Registrar_Maquina_Controller',
+					size:"sm",
+					windowClass:"modal"
+//					,resolve:{
+//						unidadMedida:function(){return row.entity}
+//					}
+			};
+			$uibModal.open(dialogOpts)
+		};		
+
+		
 }]);

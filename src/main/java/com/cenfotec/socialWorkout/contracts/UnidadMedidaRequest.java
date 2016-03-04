@@ -5,21 +5,21 @@ import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 public class UnidadMedidaRequest {
 
 	private UnidadmedidaPOJO unidadMedida;
-	
-	public UnidadMedidaRequest(){
+
+	public UnidadMedidaRequest() {
 		super();
 	}
-	
-	public UnidadmedidaPOJO getUnidadMedida(){
+
+	public UnidadmedidaPOJO getUnidadMedida() {
 		return unidadMedida;
 	}
-	
-	public void setUnidadMedida(UnidadmedidaPOJO unidadMedida){
+
+	public void setUnidadMedida(UnidadmedidaPOJO unidadMedida) {
 		this.unidadMedida = unidadMedida;
 	}
-	
+
 	public String toString() {
 		return "UnidadMedidaRequest [unidadMedida=" + unidadMedida + "]";
 	}
-	
+
 }

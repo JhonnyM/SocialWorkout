@@ -16,70 +16,76 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UnidadMedidaService implements UnidadMedidaServiceInterface {
-	
-	@Autowired private UnidadMedidaRepository unidadMedidaRepository;
-	
+
+	@Autowired
+	private UnidadMedidaRepository unidadMedidaRepository;
+
 	@Override
 	public List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr) {
-		
-		List<Unidadmedida> unidadesMedidas =  unidadMedidaRepository.findAll();
+
+		List<Unidadmedida> unidadesMedidas = unidadMedidaRepository.findAll();
 		return generateUnidadmedidaDtos(unidadesMedidas);
 	}
 
-	private List<UnidadmedidaPOJO> generateUnidadmedidaDtos(List<Unidadmedida> unidadesMedidas){
-		
+	private List<UnidadmedidaPOJO> generateUnidadmedidaDtos(List<Unidadmedida> unidadesMedidas) {
+
 		List<UnidadmedidaPOJO> uiUnidadesMedidas = new ArrayList<UnidadmedidaPOJO>();
 		unidadesMedidas.stream().forEach(um -> {
 			UnidadmedidaPOJO dto = new UnidadmedidaPOJO();
-			BeanUtils.copyProperties(um,dto);
+			BeanUtils.copyProperties(um, dto);
 			uiUnidadesMedidas.add(dto);
-		});	
+		});
 		return uiUnidadesMedidas;
 	}
 
 	@Override
 	@Transactional
 	public Boolean saveUnidadMedida(Unidadmedida um) {
-	
+
 		Unidadmedida nunidad = unidadMedidaRepository.save(um);
-		
+
 		return (nunidad == null) ? false : true;
 
 	}
 
 	@Override
-	public UnidadmedidaPOJO getAllByIdUnidadMedida(Unidadmedida um) {
+	public Unidadmedida getAllByIdUnidadMedida(Unidadmedida um) {
 
 		Unidadmedida unidadMedida;
-		UnidadmedidaPOJO uiUnidadMedida = new UnidadmedidaPOJO();
-		
-		unidadMedida =  unidadMedidaRepository.findOne(um.getIdUnidadMedida());
 
-		BeanUtils.copyProperties(um,unidadMedida);
+		unidadMedida = unidadMedidaRepository.findOne(um.getIdUnidadMedida());
 
-		BeanUtils.copyProperties(unidadMedida,uiUnidadMedida);
-		
-		return uiUnidadMedida;
+		return unidadMedida;
 	}
 
 	@Transactional
-	public Boolean editUnidadMedida(Unidadmedida um){
-		
-		UnidadmedidaPOJO unidadMedida = this.getAllByIdUnidadMedida(um);
+	public Boolean editUnidadMedida(Unidadmedida um) {
 
-		Unidadmedida eUnidadMedida = new Unidadmedida();
+		Unidadmedida unidadMedida = this.getAllByIdUnidadMedida(um);
 
-		BeanUtils.copyProperties(unidadMedida,eUnidadMedida);
-	
-		Unidadmedida nunidad = unidadMedidaRepository.save(eUnidadMedida);
-		
+		BeanUtils.copyProperties(um, unidadMedida);
+
+		Unidadmedida nunidad = unidadMedidaRepository.save(unidadMedida);
+
 		return (nunidad == null) ? false : true;
+
+	}
+
+	@Override
+	public boolean delete(int idUnidadMedida) {
+		unidadMedidaRepository.delete(idUnidadMedida);
+		return !unidadMedidaRepository.exists(idUnidadMedida);
+	}
+
+	@Override
+	public boolean exists(Integer idUnidadMedida) {
+		return unidadMedidaRepository.exists(idUnidadMedida);
 
 	}
 

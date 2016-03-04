@@ -22,9 +22,6 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	  
 	  $scope.save = function() {
 
-    	  console.log("me dieron click dentro del modal",$scope.idUnidadMedida);
-    	  console.log("me dieron click dentro del modal",$scope.descUnidadMedida);
-		  
     	  $scope.data = {};
 		  data = {
 				  idUnidadMedida : $scope.unidadMedidaForm.idUnidadMedida,
