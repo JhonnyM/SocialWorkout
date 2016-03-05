@@ -712,12 +712,12 @@
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
-  <script src="resources/crearParametros/crear_parametros.js"></script>
-  <script src="resources/listarParametros/listar_parametros.js"></script>
+  <script src="resources/parametros/modal_Registrar_Parametro.js"></script>
+  <script src="resources/parametros/modal_Editar_Parametro.js"></script>
+  <script src="resources/parametros/parametros.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
-  <script src="resources/listarParametros/modalController.js"></script>
   <script src="resources/js/ui-load.js"></script>
   <script src="resources/js/ui-jp.config.js"></script>
   <script src="resources/js/ui-jp.js"></script>

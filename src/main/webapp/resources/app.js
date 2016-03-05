@@ -5,11 +5,11 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.view1',
   'myApp.view2',
-  'myApp.crear_parametros',
-  'myApp.listar_parametros',
+  'myApp.parametros',
+  'myApp.modal_Registrar_Parametro',
+  'myApp.modal_Editar_Parametro',  
   'myApp.version',
   'ui.grid',
-  'myApp.modal',
   'angularFileUpload'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {

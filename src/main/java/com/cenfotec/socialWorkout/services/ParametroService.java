@@ -52,6 +52,39 @@ public class ParametroService implements ParametroServiceInterface{
 		
 		Parametro nParam = parametroRepository.save(pparametro);
 		return (nParam == null) ? false : true;
-		
 	}
+	
+	@Transactional
+	public Boolean editarParametro(Parametro pparametro) {
+
+		Parametro parametro = this.getAllByIdRegistroParametro(pparametro);
+
+		BeanUtils.copyProperties(pparametro, parametro);
+
+		Parametro nparametro = parametroRepository.save(parametro);
+
+		return (nparametro == null) ? false : true;
+	}
+	@Override
+	public Parametro getAllByIdRegistroParametro(Parametro pparametro) {
+
+		Parametro parametro;
+
+		parametro = parametroRepository.findOne(pparametro.getIdRegistroParametro());
+
+		return parametro;
+	}
+	
+	@Override
+	 public Boolean delete(int pidPrametro) {
+		parametroRepository.delete(pidPrametro);
+	  return !parametroRepository.exists(pidPrametro);
+	 }
+
+	 @Override
+	 public Boolean exists(int pidPrametro) {
+	  return parametroRepository.exists(pidPrametro);
+
+	 }
+	
 }

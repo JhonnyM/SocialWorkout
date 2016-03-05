@@ -9,4 +9,8 @@ public interface ParametroServiceInterface {
 	List<ParametroPOJO> getAll(ParametroRequest pr);
 	List<ParametroPOJO> getAllByName(ParametroRequest pr);
 	Boolean saveParametro(Parametro pparametro);
+	Boolean editarParametro(Parametro pparametro);
+	Parametro getAllByIdRegistroParametro(Parametro pparametro);
+	Boolean delete(int pidParametro);
+	Boolean exists(int pidParametro);
 }

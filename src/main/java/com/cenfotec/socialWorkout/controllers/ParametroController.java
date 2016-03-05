@@ -12,7 +12,7 @@ import com.cenfotec.socialWorkout.ejb.Parametro;
 import com.cenfotec.socialWorkout.services.ParametroServiceInterface;
 
 @RestController
-@RequestMapping(value ="rest/protected/parametro")
+@RequestMapping(value ="rest/protected/parametros")
 public class ParametroController {
 	
 	@Autowired private ParametroServiceInterface parametroService;
@@ -46,6 +46,18 @@ public class ParametroController {
 			ps.setCodeMessage("parametro creado satisfactoriamente");
 		}
 		return ps;
-		
+	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public ParametroResponse edit(@RequestBody Parametro pparametro) {
+
+		ParametroResponse parametroResponse = new ParametroResponse();
+		Boolean state = parametroService.editarParametro(pparametro);
+
+		if (state) {
+			parametroResponse.setCode(200);
+			parametroResponse.setCodeMessage("Unidad medida");
+		}
+		return parametroResponse;
 	}
 }
