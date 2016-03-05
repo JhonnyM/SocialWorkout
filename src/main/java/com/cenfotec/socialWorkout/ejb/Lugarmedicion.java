@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -20,7 +20,7 @@ public class Lugarmedicion implements Serializable {
 	private String descLugarMedicion;
 
 	//bi-directional many-to-one association to Unidadmedida
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUnidadMedida")
 	private Unidadmedida unidadmedida;
 

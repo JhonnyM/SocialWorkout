@@ -1,7 +1,8 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -14,18 +15,19 @@ public class Actividadsistema implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idActividadSistema;
 
 	private String descActividadSistema;
 
 	//bi-directional many-to-one association to Tipoactividad
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoActividad")
 	private Tipoactividad tipoactividad;
 
-	//bi-directional one-to-one association to Actividadsistemahastipousuario
-	@OneToOne(mappedBy="actividadsistema")
-	private Actividadsistemahastipousuario actividadsistemahastipousuario;
+	//bi-directional many-to-one association to Actividadsistemahasusuario
+	@OneToMany(mappedBy="actividadsistema")
+	private List<Actividadsistemahasusuario> actividadsistemahasusuarios;
 
 	public Actividadsistema() {
 	}
@@ -54,12 +56,26 @@ public class Actividadsistema implements Serializable {
 		this.tipoactividad = tipoactividad;
 	}
 
-	public Actividadsistemahastipousuario getActividadsistemahastipousuario() {
-		return this.actividadsistemahastipousuario;
+	public List<Actividadsistemahasusuario> getActividadsistemahasusuarios() {
+		return this.actividadsistemahasusuarios;
 	}
 
-	public void setActividadsistemahastipousuario(Actividadsistemahastipousuario actividadsistemahastipousuario) {
-		this.actividadsistemahastipousuario = actividadsistemahastipousuario;
+	public void setActividadsistemahasusuarios(List<Actividadsistemahasusuario> actividadsistemahasusuarios) {
+		this.actividadsistemahasusuarios = actividadsistemahasusuarios;
+	}
+
+	public Actividadsistemahasusuario addActividadsistemahasusuario(Actividadsistemahasusuario actividadsistemahasusuario) {
+		getActividadsistemahasusuarios().add(actividadsistemahasusuario);
+		actividadsistemahasusuario.setActividadsistema(this);
+
+		return actividadsistemahasusuario;
+	}
+
+	public Actividadsistemahasusuario removeActividadsistemahasusuario(Actividadsistemahasusuario actividadsistemahasusuario) {
+		getActividadsistemahasusuarios().remove(actividadsistemahasusuario);
+		actividadsistemahasusuario.setActividadsistema(null);
+
+		return actividadsistemahasusuario;
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -22,12 +22,12 @@ public class Registroblog implements Serializable {
 	private Date fechaHora;
 
 	//bi-directional many-to-one association to Tipoblog
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoBlog")
 	private Tipoblog tipoblog;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 

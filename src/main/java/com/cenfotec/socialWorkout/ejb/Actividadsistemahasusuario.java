@@ -1,40 +1,40 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
 
 /**
- * The persistent class for the actividadsistemahastipousuario database table.
+ * The persistent class for the actividadsistemahasusuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Actividadsistemahastipousuario.findAll", query="SELECT a FROM Actividadsistemahastipousuario a")
-public class Actividadsistemahastipousuario implements Serializable {
+@NamedQuery(name="Actividadsistemahasusuario.findAll", query="SELECT a FROM Actividadsistemahasusuario a")
+public class Actividadsistemahasusuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idActividadSistema;
+	private int idActividadXUsuario;
 
-	//bi-directional one-to-one association to Actividadsistema
-	@OneToOne
+	//bi-directional many-to-one association to Actividadsistema
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idActividadSistema")
 	private Actividadsistema actividadsistema;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 
-	public Actividadsistemahastipousuario() {
+	public Actividadsistemahasusuario() {
 	}
 
-	public int getIdActividadSistema() {
-		return this.idActividadSistema;
+	public int getIdActividadXUsuario() {
+		return this.idActividadXUsuario;
 	}
 
-	public void setIdActividadSistema(int idActividadSistema) {
-		this.idActividadSistema = idActividadSistema;
+	public void setIdActividadXUsuario(int idActividadXUsuario) {
+		this.idActividadXUsuario = idActividadXUsuario;
 	}
 
 	public Actividadsistema getActividadsistema() {

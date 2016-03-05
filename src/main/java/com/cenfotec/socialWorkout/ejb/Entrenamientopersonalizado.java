@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -17,12 +17,12 @@ public class Entrenamientopersonalizado implements Serializable {
 	private int idRegistroEntrenadorXUsuario;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario1;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuarioEntrenador")
 	private Usuario usuario2;
 

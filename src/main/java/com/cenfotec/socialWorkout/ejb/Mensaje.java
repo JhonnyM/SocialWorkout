@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -26,12 +26,12 @@ public class Mensaje implements Serializable {
 	private String respuesta;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuarioAdmin")
 	private Usuario usuario1;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario2;
 

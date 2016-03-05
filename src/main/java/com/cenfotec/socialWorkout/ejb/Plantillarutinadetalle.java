@@ -1,4 +1,4 @@
-package com.cenfotec.socialWorkout.ejb;
+package sw;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,7 +14,7 @@ public class Plantillarutinadetalle implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idLineaEjercicioMaquina;
+	private int idPLantillaRutinaDetalle;
 
 	private double cantidadPeso;
 
@@ -23,24 +23,24 @@ public class Plantillarutinadetalle implements Serializable {
 	private int cantidadSeries;
 
 	//bi-directional many-to-one association to Maquinahasejercicio
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idEjercicioXMaquina")
 	private Maquinahasejercicio maquinahasejercicio;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idRutina")
 	private Plantillarutinamaestro plantillarutinamaestro;
 
 	public Plantillarutinadetalle() {
 	}
 
-	public int getIdLineaEjercicioMaquina() {
-		return this.idLineaEjercicioMaquina;
+	public int getIdPLantillaRutinaDetalle() {
+		return this.idPLantillaRutinaDetalle;
 	}
 
-	public void setIdLineaEjercicioMaquina(int idLineaEjercicioMaquina) {
-		this.idLineaEjercicioMaquina = idLineaEjercicioMaquina;
+	public void setIdPLantillaRutinaDetalle(int idPLantillaRutinaDetalle) {
+		this.idPLantillaRutinaDetalle = idPLantillaRutinaDetalle;
 	}
 
 	public double getCantidadPeso() {
