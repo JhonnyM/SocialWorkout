@@ -135,6 +135,4 @@ angular
 									console.log(response);
 								});
 							};
-
-							};
 						} ]);

@@ -10,5 +10,9 @@ public interface EjercicioServiceInterface {
 	
 	List<EjercicioPOJO> getAll(EjercicioRequest er);
 	Boolean saveEjercicio(Ejercicio e);
+	boolean exists(Integer idEjercicio);
+	boolean delete(int idEjercicio);
+	Ejercicio getAllByIdEjercicio(Ejercicio e);
+	Boolean editEjercicio(Ejercicio e);
 
 }

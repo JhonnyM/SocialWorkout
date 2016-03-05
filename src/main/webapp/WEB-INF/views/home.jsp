@@ -710,11 +710,10 @@
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
-  <script src="resources/objetivos/objetivos.js"></script>
-  <script src="resources/listarUnidadMedida/modalController.js"></script> 
-  <script src="resources/listarMaquina/modal_Controller_Registrar_Maquina.js"></script>    
-  <script src="resources/listarUnidadMedida/listar_Unidad_Medida.js"></script> 
-  <script src="resources/listarUnidadMedida/registrar_Unidad_Medida.js"></script>
+  <script src="resources/objetivos/objetivos.js"></script> 
+  <script src="resources/unidadesMedidas/unidadesMedidas.js"></script> 
+  <script src="resources/unidadesMedidas/modal_Registrar_Unidad_Medida.js"></script>
+  <script src="resources/unidadesMedidas/modal_Editar_Unidad_Medida.js"></script>
   <script src="resources/maquinas/maquinas.js"></script>       
   <script src="resources/maquinas/modal_Editar_Maquina.js"></script>
   <script src="resources/maquinas/modal_Registrar_Maquina.js"></script>

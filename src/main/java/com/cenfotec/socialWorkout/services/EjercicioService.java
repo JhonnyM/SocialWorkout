@@ -50,4 +50,38 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 	}
 
+	@Override
+	public Boolean editEjercicio(Ejercicio e) {
+
+		Ejercicio ejercicio = this.getAllByIdEjercicio(e);
+
+		BeanUtils.copyProperties(e, ejercicio);
+
+		Ejercicio nejercicio = ejercicioRepository.save(ejercicio);
+
+		return (nejercicio == null) ? false : true;
+	}
+
+	@Override
+	public Ejercicio getAllByIdEjercicio(Ejercicio e) {
+
+		Ejercicio ejercicio;
+
+		ejercicio = ejercicioRepository.findOne(e.getIdEjercicio());
+
+		return ejercicio;
+
+	}
+
+	@Override
+	public boolean delete(int idEjercicio) {
+		ejercicioRepository.delete(idEjercicio);
+		return !ejercicioRepository.exists(idEjercicio);	}
+
+	@Override
+	public boolean exists(Integer idEjercicio) {
+		return ejercicioRepository.exists(idEjercicio);
+	}
+
+	
 }
