@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css"> 
   <link rel="stylesheet" href="resources/css/app.css">
   <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
+  <link rel="stylesheet" href="resources/css/ui-grid-codes.css" type="text/css" />
   <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
   <link rel="stylesheet" href="resources/assets/animate.css/animate.css" type="text/css" />
   <link rel="stylesheet" href="resources/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
@@ -710,11 +711,13 @@
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
   <script src="resources/objetivos/objetivos.js"></script>
-  <script src="resources/listarUnidadMedida/modalController.js"></script>  
+  <script src="resources/listarUnidadMedida/modalController.js"></script> 
+  <script src="resources/listarMaquina/modal_Controller_Registrar_Maquina.js"></script>    
   <script src="resources/listarUnidadMedida/listar_Unidad_Medida.js"></script> 
   <script src="resources/listarUnidadMedida/registrar_Unidad_Medida.js"></script>
-  <script src="resources/listarMaquina/listar_Maquina.js"></script>       
-  <script src="resources/listarMaquina/registrar_Maquina.js"></script>
+  <script src="resources/maquinas/maquinas.js"></script>       
+  <script src="resources/maquinas/modal_Editar_Maquina.js"></script>
+  <script src="resources/maquinas/modal_Registrar_Maquina.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

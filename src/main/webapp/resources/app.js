@@ -8,10 +8,10 @@ angular.module('myApp', [
   'myApp.version',
   'myApp.listar_Unidad_Medida',
   'myApp.registrar_Unidad_Medida',
-  'myApp.listar_Maquina',
-  'myApp.registrar_Maquina',
   'ui.grid',
-  'myApp.modal',  
+  'myApp.maquinas',
+  'myApp.modal_Editar_Maquina',
+  'myApp.modal_Registrar_Maquina',
   'angularFileUpload'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {

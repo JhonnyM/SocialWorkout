@@ -42,11 +42,46 @@ public class MaquinaService implements MaquinaServiceInterface {
 	@Override
 	@Transactional
 	public Boolean saveMaquina(Maquina m) {
-	
+
 		Maquina nmaquina = maquinaRepository.save(m);
-		
+
 		return (nmaquina == null) ? false : true;
 
+	}
+
+	@Override
+	public Boolean editMaquina(Maquina m) {
+
+		Maquina maquina = this.getAllByIdMaquina(m);
+
+		BeanUtils.copyProperties(m, maquina);
+
+		Maquina nmaquina = maquinaRepository.save(maquina);
+
+		return (nmaquina == null) ? false : true;
+	}
+
+	@Override
+	public Maquina getAllByIdMaquina(Maquina m) {
+
+		Maquina maquina;
+
+		maquina = maquinaRepository.findOne(m.getIdMaquina());
+
+		return maquina;
+
+	}
+
+	@Override
+	public boolean delete(int idMaquina) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean exists(Integer idMaquina) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

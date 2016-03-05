@@ -43,5 +43,18 @@ public class MaquinaController {
 		return mr;
 		
 	}
+	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public MaquinaResponse edit(@RequestBody Maquina m) {
+
+		MaquinaResponse mr = new MaquinaResponse();
+		Boolean state = maquinaService.editMaquina(m);
+
+		if (state) {
+			mr.setCode(200);
+		}
+		return mr;
+	}
+
 
 }
