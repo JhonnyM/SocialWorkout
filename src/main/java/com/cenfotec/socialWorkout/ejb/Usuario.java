@@ -39,11 +39,11 @@ public class Usuario implements Serializable {
 
 	private String nombre;
 
-	private boolean poseeVehiculo;
+	private byte poseeVehiculo;
 
-	//bi-directional many-to-one association to Actividadsistemahastipousuario
+	//bi-directional many-to-one association to Actividadsistemahasusuario
 	@OneToMany(mappedBy="usuario")
-	private List<Actividadsistemahastipousuario> actividadsistemahastipousuarios;
+	private List<Actividadsistemahasusuario> actividadsistemahasusuarios;
 
 	//bi-directional many-to-one association to Entrenamientopersonalizado
 	@OneToMany(mappedBy="usuario1")
@@ -107,12 +107,12 @@ public class Usuario implements Serializable {
 	private List<Rutinahasusuario> rutinahasusuarios;
 
 	//bi-directional many-to-one association to Tipousuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoUsuario")
 	private Tipousuario tipousuario;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuarioInstructor")
 	private Usuario usuario;
 
@@ -203,34 +203,34 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public boolean getPoseeVehiculo() {
+	public byte getPoseeVehiculo() {
 		return this.poseeVehiculo;
 	}
 
-	public void setPoseeVehiculo(boolean poseeVehiculo) {
+	public void setPoseeVehiculo(byte poseeVehiculo) {
 		this.poseeVehiculo = poseeVehiculo;
 	}
 
-	public List<Actividadsistemahastipousuario> getActividadsistemahastipousuarios() {
-		return this.actividadsistemahastipousuarios;
+	public List<Actividadsistemahasusuario> getActividadsistemahasusuarios() {
+		return this.actividadsistemahasusuarios;
 	}
 
-	public void setActividadsistemahastipousuarios(List<Actividadsistemahastipousuario> actividadsistemahastipousuarios) {
-		this.actividadsistemahastipousuarios = actividadsistemahastipousuarios;
+	public void setActividadsistemahasusuarios(List<Actividadsistemahasusuario> actividadsistemahasusuarios) {
+		this.actividadsistemahasusuarios = actividadsistemahasusuarios;
 	}
 
-	public Actividadsistemahastipousuario addActividadsistemahastipousuario(Actividadsistemahastipousuario actividadsistemahastipousuario) {
-		getActividadsistemahastipousuarios().add(actividadsistemahastipousuario);
-		actividadsistemahastipousuario.setUsuario(this);
+	public Actividadsistemahasusuario addActividadsistemahasusuario(Actividadsistemahasusuario actividadsistemahasusuario) {
+		getActividadsistemahasusuarios().add(actividadsistemahasusuario);
+		actividadsistemahasusuario.setUsuario(this);
 
-		return actividadsistemahastipousuario;
+		return actividadsistemahasusuario;
 	}
 
-	public Actividadsistemahastipousuario removeActividadsistemahastipousuario(Actividadsistemahastipousuario actividadsistemahastipousuario) {
-		getActividadsistemahastipousuarios().remove(actividadsistemahastipousuario);
-		actividadsistemahastipousuario.setUsuario(null);
+	public Actividadsistemahasusuario removeActividadsistemahasusuario(Actividadsistemahasusuario actividadsistemahasusuario) {
+		getActividadsistemahasusuarios().remove(actividadsistemahasusuario);
+		actividadsistemahasusuario.setUsuario(null);
 
-		return actividadsistemahastipousuario;
+		return actividadsistemahasusuario;
 	}
 
 	public List<Entrenamientopersonalizado> getEntrenamientopersonalizados1() {

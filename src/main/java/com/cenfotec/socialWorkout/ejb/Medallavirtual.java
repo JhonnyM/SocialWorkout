@@ -19,7 +19,7 @@ public class Medallavirtual implements Serializable {
 	private int cantidadMinimaPuntos;
 
 	//bi-directional many-to-one association to Clasepremiacion
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idClasePremiacion")
 	private Clasepremiacion clasepremiacion;
 

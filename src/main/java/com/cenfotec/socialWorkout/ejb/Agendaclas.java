@@ -26,7 +26,7 @@ public class Agendaclas implements Serializable {
 	private Time horaInicio;
 
 	//bi-directional many-to-one association to Clase
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idClase")
 	private Clase clase;
 

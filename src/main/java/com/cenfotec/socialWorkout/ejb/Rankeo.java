@@ -1,4 +1,5 @@
 package com.cenfotec.socialWorkout.ejb;
+
 import java.io.Serializable;
 import javax.persistence.*;
 
@@ -20,17 +21,17 @@ public class Rankeo implements Serializable {
 	private byte logroAlcanzado;
 
 	//bi-directional many-to-one association to Clasepremiacion
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idClasePremiacion")
 	private Clasepremiacion clasepremiacion;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuarioEvaluador")
 	private Usuario usuario1;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario2;
 

@@ -18,12 +18,12 @@ public class Registroplanclas implements Serializable {
 	private int idAsignacionClases;
 
 	//bi-directional many-to-one association to Agendaclas
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idAgendaClase")
 	private Agendaclas agendaclas;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 

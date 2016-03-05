@@ -26,12 +26,12 @@ public class Rutinahasusuario implements Serializable {
 	private Date fechaVencimiento;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idRutina")
 	private Plantillarutinamaestro plantillarutinamaestro;
 
 	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idUsuario")
 	private Usuario usuario;
 
