@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
+import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
 import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Unidadmedida;
@@ -54,6 +55,29 @@ public class MaquinaController {
 			mr.setCode(200);
 		}
 		return mr;
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public MaquinaResponse delete(@RequestBody MaquinaRequest mr) {
+
+		MaquinaResponse objetivoResponse = new MaquinaResponse();
+
+		if (maquinaService.exists(mr.getMaquina().getIdMaquina())) {
+			if (maquinaService.delete(mr.getMaquina().getIdMaquina())) {
+				objetivoResponse.setCode(200);
+				objetivoResponse.setCodeMessage("El unidad medida fue eliminado exitosamente");
+			} else {
+				objetivoResponse.setCode(500);
+				objetivoResponse.setCodeMessage("Hubo un error al momento de eliminar la unidad");
+			}
+
+		} else {
+			objetivoResponse.setCode(404);
+			objetivoResponse.setCodeMessage("La unidad de medida no existe");
+		}
+
+		return objetivoResponse;
+
 	}
 
 

@@ -74,14 +74,12 @@ public class MaquinaService implements MaquinaServiceInterface {
 
 	@Override
 	public boolean delete(int idMaquina) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		maquinaRepository.delete(idMaquina);
+		return !maquinaRepository.exists(idMaquina);	}
 
 	@Override
 	public boolean exists(Integer idMaquina) {
-		// TODO Auto-generated method stub
-		return false;
+		return maquinaRepository.exists(idMaquina);
 	}
 
 }

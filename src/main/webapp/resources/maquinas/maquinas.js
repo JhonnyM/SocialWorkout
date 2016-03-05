@@ -43,13 +43,14 @@ angular
 								enableSorting : true,
 								enableFiltering : true,
 								columnDefs : [
-										{
-											field : 'cantidad',
-											displayName : 'Cantidad de máquinas'
-										},
+
 										{
 											field : 'descMaquina',
 											displayName : 'Descripción'
+										},
+										{
+											field : 'cantidad',
+											displayName : 'Cantidad de máquinas'
 										},
 										{
 											field : 'minutosXPersona',
@@ -80,9 +81,9 @@ angular
 									size : "sm",
 									windowClass : "modal"
 								};
-								
+
 								$uibModal.open(dialogOpts)
-							
+
 							};
 
 							$scope.edit = function(row) {
@@ -102,7 +103,38 @@ angular
 								};
 
 								$uibModal.open(dialogOpts)
-							
+
 							};
 
+							$scope.deleteM = function(row) {
+								var data = {};
+
+								data = {
+									idMaquina : row.entity.idMaquina,
+									descMaquina : row.entity.descMaquina,
+									cantidad : row.entity.cantidad,
+									personasXMaquina : row.entity.personasXMaquina,
+									minutosXPersona : row.entity.minutosXPersona
+								};
+
+								$http.post("rest/protected/Maquinas/delete", {
+									maquina : data
+								}).then(function(response) {
+
+									switch (response.data.code) {
+									case 200:
+										alert("Máquina eliminada.")
+										break;
+
+									default:
+										alert(response.data.codeMessage);
+									}
+
+								}, function(response) {
+
+									console.log(response);
+								});
+							};
+
+							};
 						} ]);
