@@ -53,13 +53,13 @@ public class EventoController {
 		if(eve.getIdEvento() > 0)
 		{
 			eventoResponse.setCode(200);
-			eventoResponse.setCodeMessage("Información del tipo de usuario encontrada");
+			eventoResponse.setCodeMessage("Información del evento encontrada");
 			eventoResponse.setEvento(eve);
 		}
 		else
 		{
 			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("No se encontro la informacion relativa al tipo de usuario buscado");
+			eventoResponse.setCodeMessage("No se encontro la informacion relativa al evento buscado");
 			eventoResponse.setEvento(eve);
 		}			
 		return eventoResponse;
@@ -73,12 +73,12 @@ public class EventoController {
 		
 		if(saved){
 			eventoResponse.setCode(200);
-			eventoResponse.setCodeMessage("El tipo de usuario ha sido guardado exitosamente");
+			eventoResponse.setCodeMessage("El evento ha sido guardado exitosamente");
 		}
 		else
 		{
 			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("Hubo un error al momento de guardar el tipo de usuario");
+			eventoResponse.setCodeMessage("Hubo un error al momento de guardar el evento");
 		}
 		return eventoResponse;
 	}
@@ -93,18 +93,18 @@ public class EventoController {
 			if(eventoService.save(eventoRequest))
 			{
 				eventoResponse.setCode(200);
-				eventoResponse.setCodeMessage("La información del tipo de usuario fue modificada exitosamente.");
+				eventoResponse.setCodeMessage("La información del evento fue modificada exitosamente.");
 			}
 			else
 			{
 				eventoResponse.setCode(500);
-				eventoResponse.setCodeMessage("Hubo un error al momento de modificar la información del tipo de usuario");
+				eventoResponse.setCodeMessage("Hubo un error al momento de modificar la información del evento");
 			}
 		}
 		else
 		{
 			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("El tipo de usuario a modificar no existe en la base de datos");
+			eventoResponse.setCodeMessage("El evento a modificar no existe en la base de datos");
 		}
 		
 		
@@ -122,18 +122,18 @@ public class EventoController {
 			if(eventoService.delete(eventoRequest.getEvento().getIdEvento()))
 			{
 				eventoResponse.setCode(200);
-				eventoResponse.setCodeMessage("El tipo de usuario fue eliminado exitosamente");
+				eventoResponse.setCodeMessage("El evento fue eliminado exitosamente");
 			}
 			else
 			{
 				eventoResponse.setCode(500);
-				eventoResponse.setCodeMessage("Hubo un error al momento de eliminar el tipo de usuario");
+				eventoResponse.setCodeMessage("Hubo un error al momento de eliminar el evento");
 			}	
 		}
 		else
 		{
 			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("El tipo de usuario no existe");
+			eventoResponse.setCodeMessage("El evento no existe");
 		}
 		return eventoResponse;
 
