@@ -1,4 +1,4 @@
-package sw;
+package com.cenfotec.socialWorkout.ejb;
 
 import java.io.Serializable;
 import javax.persistence.*;
