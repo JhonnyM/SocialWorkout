@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cenfotec.socialWorkout.contracts.TipoUsuarioRequest;
 import com.cenfotec.socialWorkout.contracts.TipoUsuarioResponse;
 import com.cenfotec.socialWorkout.services.TipoUsuarioServiceInterface;
-
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 /**
  * Handles requests for the application home page.
@@ -24,26 +24,64 @@ public class TipoUsuarioController {
 	@Autowired private HttpServletRequest request;
 	
 	@RequestMapping(value ="/getAll", method = RequestMethod.POST)
-	public TipoUsuarioResponse getAll(@RequestBody TipoUsuarioRequest ur){	
+	public TipoUsuarioResponse getAll(@RequestBody TipoUsuarioRequest or){	
 			
-		TipoUsuarioResponse tus = new TipoUsuarioResponse();
-		tus.setCode(200);
-		tus.setCodeMessage("tipousers fetch success");
-		tus.setTipoUsuariosList(tipoUsuarioService.getAll());
-		return tus;		
+		TipoUsuarioResponse response = new TipoUsuarioResponse();
+		response.setCode(200);
+		response.setCodeMessage("Tipo fetch success");
+		response.setTipoUsuariosList(tipoUsuarioService.getAll());
+		return response;		
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public TipoUsuarioResponse create(@RequestBody TipoUsuarioRequest ur){	
-		
-		TipoUsuarioResponse tus = new TipoUsuarioResponse();
-		Boolean state = tipoUsuarioService.saveTipoUsuario(ur);
+	public TipoUsuarioResponse create(@RequestBody Tipousuario tipoUsuario){	
+		TipoUsuarioResponse tResp = new TipoUsuarioResponse();
+		Boolean state = tipoUsuarioService.saveTipoUsuario(tipoUsuario);
+		if(state){
+			tResp.setCode(200);
+			tResp.setCodeMessage("Tipo de usuario creado satisfactoriamente");
+		}
+		return tResp;
+	}
+	
+	@RequestMapping(value ="/edit", method = RequestMethod.POST)
+	public TipoUsuarioResponse edit(@RequestBody Tipousuario obj){	
+ 		
+		TipoUsuarioResponse tipoUsuario = new TipoUsuarioResponse();
+		Boolean state = tipoUsuarioService.edit(obj);
 	
 		if(state){
-			tus.setCode(200);
-			tus.setCodeMessage("user created succesfully");
+			tipoUsuario.setCode(200);
+			tipoUsuario.setCodeMessage("Tipo de usuario modificado satisfactoriamente ");
 		}
-		return tus;
+		return tipoUsuario;
+ 	}
+
+ 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public TipoUsuarioResponse delete(@RequestBody Tipousuario tu) {
+
+		TipoUsuarioResponse tipoUsuarioResponse = new TipoUsuarioResponse();
 		
+		if (tipoUsuarioService.exists(tu.getIdTipoUsuario()))
+		{
+			if(tipoUsuarioService.delete(tu.getIdTipoUsuario()))
+			{
+				tipoUsuarioResponse.setCode(200);
+				tipoUsuarioResponse.setCodeMessage("El tipo de usuario fue eliminado exitosamente");
+			}
+			else
+			{
+				tipoUsuarioResponse.setCode(500);
+				tipoUsuarioResponse.setCodeMessage("Hubo un error al momento de eliminar el tipo de usuario");
+			}
+		}
+		else
+		{
+			tipoUsuarioResponse.setCode(404);
+			tipoUsuarioResponse.setCodeMessage("El tipo de usuario no existe");
+		}
+
+		return tipoUsuarioResponse;
+
 	}
 }

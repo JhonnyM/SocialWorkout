@@ -3,8 +3,9 @@
 angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
 
 
-.controller('ModalController', ['$scope','$uibModalInstance','usuario',  function($scope, $uibModalInstance,usuario)
+.controller('ModalController', ['$scope','$uibModalInstance','usuario', '$http',  function($scope, $uibModalInstance,usuario, $http)
 {
+	
 	$scope.PersonSchema = {
 			  "type": "object",
 			  properties: {
@@ -15,47 +16,37 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 			    fechaNac: {title: 'Fecha de nacimiento' },
 			    fechaIngreso: {title: 'Fecha de ingreso'},
 			    fechaPago: {title: 'Fecha de pago'},
-			    poseeVehiculo: { type: 'string', title: 'Posee vehiculo' },
-			    estatus: { type: 'string', title: 'Habilitado' },
-			  }
+			    tipoUsuario: { type: 'string', title: 'Tipo de usuario' },
+			    poseeVehiculo: { type: 'boolean', title: 'Posee vehiculo' },
+			    estatus: { type: 'boolean', title: 'Habilitado' },
+			   }
 			};
-    
-	$scope.usuarioForm = angular.copy(usuario);
-    console.log("me dieron click dentro del modal",$scope.usuarioForm.nombre);
+	$scope.tiposUsuario = [];
+	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","tiposusuario": {}};
+	$http.post('rest/protected/tipousers/getAll',$scope.requestObject)
+		.success(function(response) {
+			console.log("response",response)
+			$scope.tiposUsuario = response.tipoUsuariosList;
+			console.log("$scope.tiposUsuario",$scope.gridOptions)
+			
+	});
 	
-    var base = 'directives/decorators/bootstrap/';
+	
+	$scope.usuarioForm = angular.copy(usuario);
+    console.log("me dieron click dentro del modal",$scope.usuarioForm.idUsuario);
+    $scope.listaTipos = function(){
+    	angular.forEach($scope.tiposUsuario, function(value, key){
+    	     console.log("FORECAA"+key + ': ' + value);
+    	});
+    	return [
+                {value: "Cliente", name: "Cliente"},
+                {value: "Instructor", name: "Instructor"},
+                {value: "Administrador", name: "Administrador"}
+            ];
 
-    schemaFormDecoratorsProvider.createDecorator('bootstrapDecorator', {
-      textarea: base + 'textarea.html',
-      fieldset: base + 'fieldset.html',
-      array: base + 'array.html',
-      tabarray: base + 'tabarray.html',
-      tabs: base + 'tabs.html',
-      section: base + 'section.html',
-      conditional: base + 'section.html',
-      actions: base + 'actions.html',
-      select: base + 'select.html',
-      checkbox: base + 'checkbox.html',
-      checkboxes: base + 'checkboxes.html',
-      number: base + 'default.html',
-      password: base + 'default.html',
-      submit: base + 'submit.html',
-      button: base + 'submit.html',
-      radios: base + 'radios.html',
-      'radios-inline': base + 'radios-inline.html',
-      radiobuttons: base + 'radio-buttons.html',
-      help: base + 'help.html',
-      'default': base + 'default.html'
-    }, [
-      function(form) {
-        if (form.readonly && form.key && form.type !== 'fieldset') {
-          return base + 'readonly.html';
-        }
-      }
-    ]);
-    
-    
-    
+    };
+    $scope.listaTipos();
+    console.log("tipos",$scope.listaTipos());  
     	$scope.form = [
 		'identificacion',
 		'nombre',
@@ -70,13 +61,47 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 		{"key": "fechaPago",
 		 "type": "date",
 	    },
-	    'poseeVehiculo',
-	    'estatus',
+	    {"key": "tipoUsuarioPOJO.descTipoUsuario",
+			 "type": 'select',
+			  titleMap: $scope.listaTipos()
+		},
+	    {"key": "poseeVehiculo",
+			 "type": "checkbox",
+		    },
+	    {"key": "estatus",
+			 "type": "checkbox",
+		    },
+	    
 	    
 	  ];
 	  
     	$scope.save = function () {
-	    // Copy row values over
+    		$scope.data = {};
+			data = {
+			  	idUsuario : usuario.idUsuario,
+			  	identificacion : $scope.usuarioForm.identificacion,
+                nombre : $scope.usuarioForm.nombre,
+                apellidos : $scope.usuarioForm.apellidos,
+                correoElectronico : $scope.usuarioForm.correoElectronico,
+                estatus : $scope.usuarioForm.estatus,
+                fechaIngreso : $scope.usuarioForm.fechaIngreso,
+                fechaNac : $scope.usuarioForm.fechaNac,
+                fechaPago : $scope.usuarioForm.fechaPago,
+                poseeVehiculo : $scope.usuarioForm.poseeVehiculo,
+                tipoUsuarioPOJO : {
+                	idTipoUsuario : 1,
+                	descTipoUsuario : $scope.usuarioForm.descTipoUsuario
+                }
+            };
+			  console.log(data.idUsuario);
+				  $http.post('rest/protected/users/edit',  data).success(
+					function(data, status, config) {
+					$scope.message = data;
+					}).error(
+					function(data, status, config) {
+					  alert("failure message: "+ JSON.stringify({data : data}));
+					});
+				
 	    usuario.identificacion = $scope.usuarioForm.identificacion;
 	    usuario.nombre = $scope.usuarioForm.nombre;
 	    usuario.apellidos = $scope.usuarioForm.apellidos;
@@ -88,6 +113,6 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	    usuario.estatus = $scope.usuarioForm.estatus;
 	   
 	    $uibModalInstance.close();
-	  }
+	  };
     
 }]);

@@ -5,6 +5,9 @@ import java.util.List;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
+
 public class UsuarioPOJO{
 	
 	private int idUsuario;
@@ -18,6 +21,8 @@ public class UsuarioPOJO{
 	private String identificacion;
 	private String nombre;
 	private boolean poseeVehiculo;
+	private TipoUsuarioPOJO tipoUsuarioPOJO;
+	private UsuarioPOJO usuarioPOJOInstructor;
 	
 	public UsuarioPOJO() {
 		super();
@@ -88,7 +93,7 @@ public class UsuarioPOJO{
 		this.clave = clave;
 	}
 
-	public String sgetApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
 
@@ -110,6 +115,22 @@ public class UsuarioPOJO{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public TipoUsuarioPOJO getTipoUsuarioPOJO() {
+		return tipoUsuarioPOJO;
+	}
+
+	public void setTipoUsuarioPOJO(TipoUsuarioPOJO tipoUsuarioPOJO) {
+		this.tipoUsuarioPOJO = tipoUsuarioPOJO;
+	}
+
+	public UsuarioPOJO getUsuarioPOJOInstructor() {
+		return usuarioPOJOInstructor;
+	}
+
+	public void setUsuarioPOJOInstructor(UsuarioPOJO usuarioPOJOInstructor) {
+		this.usuarioPOJOInstructor = usuarioPOJOInstructor;
 	}
 
 }

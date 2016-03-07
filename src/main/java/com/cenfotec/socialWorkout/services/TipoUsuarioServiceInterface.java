@@ -5,11 +5,17 @@ import java.util.Optional;
 
 import com.cenfotec.socialWorkout.contracts.TipoUsuarioRequest;
 import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 public interface TipoUsuarioServiceInterface {
+	//List<TipoUsuarioPOJO> getAll();
+	Tipousuario getTipoUsuarioById(int idTipoUsuario);
 	List<TipoUsuarioPOJO> getAll();
-	Optional<TipoUsuarioPOJO> getTipoUsuarioById(int idTipoUsuario);
+	Boolean saveTipoUsuario(Tipousuario ob);
+	Boolean edit(Tipousuario obj);
+	TipoUsuarioPOJO getAllByIdTipoUsuario(Tipousuario obj);
+	public boolean delete(Integer idObj);
+	public boolean exists (Integer idObj);
+	TipoUsuarioPOJO getTipoUsuarioByDescTipoUsuario(String descTipoUsuario);
 	
-	boolean saveTipoUsuario(TipoUsuarioRequest r);
-	boolean deleteTipoUsuario(TipoUsuarioRequest r);
 }

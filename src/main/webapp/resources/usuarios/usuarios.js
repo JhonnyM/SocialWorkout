@@ -18,6 +18,8 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 			$scope.usuarios = response.usuarios;
 			console.log("$scope.usuarios",$scope.gridOptions)
 	});
+
+
 	$scope.gridOptions = { 
 	        data: 'usuarios',
 	        showGroupPanel: true,
@@ -29,13 +31,15 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	        showColumnFooter : true,
 	        fastWatch : true,
 	        columnDefs: [
-	           {field:'identificacion', displayName:'Identificación'},
-	           {field:'nombre', displayName:'Nombre'}, 
-	           {field:'apellidos', displayName:'Apellidos'},
-	           {field:'correoElectronico', displayName:'Email'},
-	           {field:'fechaPago', displayName:'Fecha Pago'},
-	           {field:'estatus', displayName:'Habilitado'},
-	           {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'} 
+	           {name:'identificacion', displayName:'Identificación'},
+	           {name:'nombre', displayName:'Nombre'}, 
+	           {name:'apellidos', displayName:'Apellidos'},
+	           {name:'correoElectronico', displayName:'Email'},
+	           {name:'fechaPago', displayName:'Fecha pago'},
+	           {field:'estatus', displayName:'Habilitado', cellTemplate: "<input type='checkbox' id='estatus' #= (estatus===1) ? checked='checked' : '' # disabled='disabled'/>" },
+	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},
+	           {name: 'usuarioPOJOInstructor.nombre' , displayName:'Instructor'},
+	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)">Editar</button>'} 
 	           ]
 	    };
 	
@@ -67,7 +71,8 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
     			fechaNacimiento : $scope.requestObject.fechaNacimiento,
     			fechaIngreso : $scope.requestObject.fechaIngreso,
     			fechaPago : $scope.requestObject.fechaPago,
-    			poseeVehiculo : $scope.requestObject.poseeVehiculo
+    			poseeVehiculo : $scope.requestObject.poseeVehiculo,
+    			tipoUsuarioPOJO: $scope.requestObject.tipoUsuarioPOJO.descTipoUsuario
     	};
     	
     	$http.post('rest/protected/users/create', data)
