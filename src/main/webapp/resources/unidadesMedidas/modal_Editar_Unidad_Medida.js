@@ -38,7 +38,7 @@ angular
 								console.log("$scope.data", $scope.data)
 								$http.post(
 										'rest/protected/UnidadesMedidas/edit',
-										data).success(
+										{unidadMedida:data}).success(
 										function(data, status, config) {
 											$scope.message = data;
 											$uibModalInstance.close();											

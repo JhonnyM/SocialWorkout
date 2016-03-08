@@ -6,8 +6,10 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
+import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.ejb.Usuario;
+import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 import com.cenfotec.socialWorkout.repositories.UnidadMedidaRepository;
 import org.springframework.beans.BeanUtils;
@@ -21,13 +23,7 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 	private UnidadMedidaRepository unidadMedidaRepository;
 
 	@Override
-	public List<UnidadmedidaPOJO> getAllByDescUnidadMedida(UnidadMedidaRequest umr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<UnidadmedidaPOJO> getAll(UnidadMedidaRequest umr) {
+	public List<UnidadmedidaPOJO> getAll() {
 
 		List<Unidadmedida> unidadesMedidas = unidadMedidaRepository.findAll();
 		return generateUnidadmedidaDtos(unidadesMedidas);
@@ -46,34 +42,27 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 
 	@Override
 	@Transactional
-	public Boolean saveUnidadMedida(Unidadmedida um) {
+	public Boolean saveUnidadMedida(UnidadMedidaRequest umr) {
 
-		Unidadmedida nunidad = unidadMedidaRepository.save(um);
-
-		return (nunidad == null) ? false : true;
+		UnidadmedidaPOJO unidadMedidaDTO = umr.getUnidadMedida();
+		Unidadmedida unidadMedida = new Unidadmedida();
+		BeanUtils.copyProperties(unidadMedidaDTO, unidadMedida);
+		Unidadmedida nunidadMedida = unidadMedidaRepository.save(unidadMedida);
+		return (nunidadMedida == null) ? false : true;
 
 	}
 
 	@Override
-	public Unidadmedida getAllByIdUnidadMedida(Unidadmedida um) {
+	public UnidadmedidaPOJO getById(UnidadMedidaRequest umr) {
 
-		Unidadmedida unidadMedida;
+		UnidadmedidaPOJO unidadMedidaDTO = new UnidadmedidaPOJO();
+		Unidadmedida unidadMedida = unidadMedidaRepository.findOne(umr.getUnidadMedida().getIdUnidadMedida());
 
-		unidadMedida = unidadMedidaRepository.findOne(um.getIdUnidadMedida());
+		if (unidadMedida != null) {
+			BeanUtils.copyProperties(unidadMedida, unidadMedidaDTO);
+		}
 
-		return unidadMedida;
-	}
-
-	@Transactional
-	public Boolean editUnidadMedida(Unidadmedida um) {
-
-		Unidadmedida unidadMedida = this.getAllByIdUnidadMedida(um);
-
-		BeanUtils.copyProperties(um, unidadMedida);
-
-		Unidadmedida nunidad = unidadMedidaRepository.save(unidadMedida);
-
-		return (nunidad == null) ? false : true;
+		return unidadMedidaDTO;
 
 	}
 

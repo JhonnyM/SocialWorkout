@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
@@ -28,37 +29,44 @@ public class UnidadMedidaController {
 	private HttpServletRequest request;
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
-	public UnidadMedidaResponse getAll(@RequestBody UnidadMedidaRequest umr) {
+	public UnidadMedidaResponse getAll() {
 		UnidadMedidaResponse um = new UnidadMedidaResponse();
 		um.setCode(200);
-		um.setUnidadesMedidas(unidadMedidaService.getAll(umr));
+		um.setUnidadesMedidas(unidadMedidaService.getAll());
 		return um;
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public UnidadMedidaResponse create(@RequestBody Unidadmedida um) {
+	public UnidadMedidaResponse create(@RequestBody UnidadMedidaRequest umr) {
 
-		UnidadMedidaResponse umr = new UnidadMedidaResponse();
-		Boolean state = unidadMedidaService.saveUnidadMedida(um);
+		UnidadMedidaResponse umre = new UnidadMedidaResponse();
+		Boolean state = unidadMedidaService.saveUnidadMedida(umr);
 
 		if (state) {
-			umr.setCode(200);
-			umr.setCodeMessage("Unidad medida");
+			umre.setCode(200);
+			umre.setCodeMessage("Unidad medida");
 		}
-		return umr;
+		return umre;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public UnidadMedidaResponse edit(@RequestBody Unidadmedida um) {
+	public UnidadMedidaResponse edit(@RequestBody UnidadMedidaRequest umr) {
 
-		UnidadMedidaResponse umr = new UnidadMedidaResponse();
-		Boolean state = unidadMedidaService.editUnidadMedida(um);
+		UnidadMedidaResponse umre = new UnidadMedidaResponse();
+		MaquinaResponse mre = new MaquinaResponse();
 
-		if (state) {
-			umr.setCode(200);
-			umr.setCodeMessage("Unidad medida");
+		if (unidadMedidaService.exists(umr.getUnidadMedida().getIdUnidadMedida())) {
+			if (unidadMedidaService.saveUnidadMedida(umr)) {
+				umre.setCode(200);
+				umre.setCodeMessage("La información del ejercicio fue modificada correctamente.");
+			} else {
+				umre.setCode(500);
+				umre.setCodeMessage("La información del ejercicio no fue modificada.");
+
+			}
 		}
-		return umr;
+		return umre;
+
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)

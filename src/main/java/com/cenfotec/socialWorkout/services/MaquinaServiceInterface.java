@@ -9,13 +9,11 @@ import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 
 public interface MaquinaServiceInterface {
 
-	List<MaquinaPOJO> getAll(MaquinaRequest mr);
+	List<MaquinaPOJO> getAll();
 
-	Maquina getAllByIdMaquina(Maquina m);
+	MaquinaPOJO getById(MaquinaRequest mr);
 	
-	Boolean saveMaquina(Maquina m);
-
-	Boolean editMaquina(Maquina m);
+	Boolean saveMaquina(MaquinaRequest mr);
 
 	public boolean delete(int idMaquina);
 

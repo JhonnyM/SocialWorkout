@@ -10,11 +10,11 @@ public class EjercicioRequest {
 		super();
 	}
 	
-	public EjercicioPOJO getUser() {
+	public EjercicioPOJO getEjercicio() {
 		return ejercicio;
 	}
 	
-	public void setUser(EjercicioPOJO ejercicio) {
+	public void setEjercicio(EjercicioPOJO ejercicio) {
 		this.ejercicio = ejercicio;
 	}
 

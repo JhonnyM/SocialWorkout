@@ -9,7 +9,7 @@ public class EjercicioPOJO {
 
 	private String descEjercicio;
 
-	private List<Maquinahasejercicio> maquinahasejercicios;
+	private List<MaquinahasejercicioPOJO> maquinahasejercicios;
 
 	public int getIdEjercicio() {
 		return this.idEjercicio;
@@ -27,27 +27,12 @@ public class EjercicioPOJO {
 		this.descEjercicio = descEjercicio;
 	}
 
-	public List<Maquinahasejercicio> getMaquinahasejercicios() {
+	public List<MaquinahasejercicioPOJO> getMaquinahasejercicios() {
 		return this.maquinahasejercicios;
 	}
 
-	public void setMaquinahasejercicios(List<Maquinahasejercicio> maquinahasejercicios) {
+	public void setMaquinahasejercicios(List<MaquinahasejercicioPOJO> maquinahasejercicios) {
 		this.maquinahasejercicios = maquinahasejercicios;
 	}
 
-//	public Maquinahasejercicio addMaquinahasejercicio(Maquinahasejercicio maquinahasejercicio) {
-//		getMaquinahasejercicios().add(maquinahasejercicio);
-//		maquinahasejercicio.setEjercicio(this);
-//
-//		return maquinahasejercicio;
-//	}
-//
-//	public Maquinahasejercicio removeMaquinahasejercicio(Maquinahasejercicio maquinahasejercicio) {
-//		getMaquinahasejercicios().remove(maquinahasejercicio);
-//		maquinahasejercicio.setEjercicio(null);
-//
-//		return maquinahasejercicio;
-//	}
-
-	
 }

@@ -8,11 +8,10 @@ import com.cenfotec.socialWorkout.pojo.EjercicioPOJO;
 
 public interface EjercicioServiceInterface {
 	
-	List<EjercicioPOJO> getAll(EjercicioRequest er);
-	Boolean saveEjercicio(Ejercicio e);
+	List<EjercicioPOJO> getAll();
+	EjercicioPOJO getById(EjercicioRequest er);
+	Boolean saveEjercicio(EjercicioRequest er);
 	boolean exists(Integer idEjercicio);
 	boolean delete(int idEjercicio);
-	Ejercicio getAllByIdEjercicio(Ejercicio e);
-	Boolean editEjercicio(Ejercicio e);
 
 }

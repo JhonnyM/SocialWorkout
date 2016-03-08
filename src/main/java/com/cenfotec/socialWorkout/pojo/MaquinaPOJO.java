@@ -15,7 +15,7 @@ public class MaquinaPOJO {
 
 	private int personasXMaquina;
 
-	private List<Maquinahasejercicio> maquinahasejercicios;
+	private List<MaquinahasejercicioPOJO> maquinahasejercicios;
 
 	public MaquinaPOJO() {
 	}
@@ -60,27 +60,13 @@ public class MaquinaPOJO {
 		this.personasXMaquina = personasXMaquina;
 	}
 
-	public List<Maquinahasejercicio> getMaquinahasejercicios() {
+	public List<MaquinahasejercicioPOJO> getMaquinahasejercicios() {
 		return this.maquinahasejercicios;
 	}
 
-	public void setMaquinahasejercicios(List<Maquinahasejercicio> maquinahasejercicios) {
+	public void setMaquinahasejercicios(List<MaquinahasejercicioPOJO> maquinahasejercicios) {
 		this.maquinahasejercicios = maquinahasejercicios;
 	}
-
-//	public Maquinahasejercicio addMaquinahasejercicio(Maquinahasejercicio maquinahasejercicio) {
-//		getMaquinahasejercicios().add(maquinahasejercicio);
-//		maquinahasejercicio.setMaquina(this);
-//
-//		return maquinahasejercicio;
-//	}
-//
-//	public Maquinahasejercicio removeMaquinahasejercicio(Maquinahasejercicio maquinahasejercicio) {
-//		getMaquinahasejercicios().remove(maquinahasejercicio);
-//		maquinahasejercicio.setMaquina(null);
-//
-//		return maquinahasejercicio;
-//	}
 
 
 }

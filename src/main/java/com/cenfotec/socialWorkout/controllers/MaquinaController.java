@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.cenfotec.socialWorkout.contracts.EjercicioResponse;
 import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
@@ -23,38 +25,44 @@ public class MaquinaController {
 	@Autowired
 	private HttpServletRequest request;
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
-	public MaquinaResponse getAll(@RequestBody MaquinaRequest mr) {
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	public MaquinaResponse getAll() {
 		MaquinaResponse mre = new MaquinaResponse();
 		mre.setCode(200);
-		mre.setMaquinas(maquinaService.getAll(mr));
+		mre.setMaquinas(maquinaService.getAll());
 		return mre;
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public MaquinaResponse create(@RequestBody Maquina m){	
+	public MaquinaResponse create(@RequestBody MaquinaRequest mr){	
 		
-		MaquinaResponse mr = new MaquinaResponse();
-		Boolean state = maquinaService.saveMaquina(m);
+		MaquinaResponse mre = new MaquinaResponse();
+		Boolean state = maquinaService.saveMaquina(mr);
 	
 		if(state){
-			mr.setCode(200);
-			mr.setCodeMessage("Máquina creada correctamente.");
+			mre.setCode(200);
+			mre.setCodeMessage("Máquina creada correctamente.");
 		}
-		return mr;
+		return mre;
 		
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public MaquinaResponse edit(@RequestBody Maquina m) {
+	public MaquinaResponse edit(@RequestBody MaquinaRequest mr) {
 
-		MaquinaResponse mr = new MaquinaResponse();
-		Boolean state = maquinaService.editMaquina(m);
-
-		if (state) {
-			mr.setCode(200);
+		MaquinaResponse mre = new MaquinaResponse();
+		
+		if(maquinaService.exists(mr.getMaquina().getIdMaquina())){
+			if (maquinaService.saveMaquina(mr)){
+				mre.setCode(200);
+				mre.setCodeMessage("La información del ejercicio fue modificada correctamente.");
+			}else{
+				mre.setCode(500);
+				mre.setCodeMessage("La información del ejercicio no fue modificada.");
+				
+			}
 		}
-		return mr;
+		return mre;
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
