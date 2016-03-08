@@ -1,6 +1,6 @@
 //'use strict';
 
-angular.module('myApp.EventosModal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
+angular.module('myApp.eventosModal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
 .controller('EventosModalCtrl', ['$scope','$http','$uibModalInstance','evento',  function($scope,$http,$uibModalInstance,evento)
 {
@@ -8,14 +8,24 @@ angular.module('myApp.EventosModal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bo
 	$scope.EventoSchema = {
 	  "type": "object",
 	  properties: {
-		  descObjetivo: { type: 'string', title: 'Descripción'}
+		  descEvento: { type: 'string', title: 'Descripción'},
+		  fechaHoraInicio: { title: 'Fecha de Inicio'},
+		  fechaHoraFinal: {  title: 'Fecha Final'},
+		  observaciones: { type: 'string', title: 'Observaciones'}
 	  	}
 	};
     
 	$scope.eventoForm = angular.copy(evento);
 	
     $scope.form = [
-		'descObjetivo'
+		'descEvento',
+		{"key": "fechaHoraInicio",
+		 "type": "date",
+		},
+		{"key": "fechaHoraFinal",
+	     "type": "date",
+		},
+		'observaciones'
 	];
 	  
 	$scope.save = function() {
