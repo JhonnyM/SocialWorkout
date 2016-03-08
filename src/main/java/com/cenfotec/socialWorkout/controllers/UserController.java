@@ -55,55 +55,26 @@ public class UserController {
 		us.setUsuarios(usersService.getAllByName(ur));
 		return us;		
 	}
-	/*
-	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public UserResponse create(@RequestParam("identificacion") String identificacion,
-			                   @RequestParam("nombre") String nombre,
-			                   @RequestParam("apellidos") String apellidos,
-			                   @RequestParam("correoElectronico") String correoElectronico,
-			                   @RequestParam("estatus") byte estatus,
-			                   @RequestParam("fechaIngreso") Date fechaIngreso,
-			                   @RequestParam("fechaNac") Date fechaNac,
-			                   @RequestParam("fechaPago") Date fechaPago,
-			                   @RequestParam("poseeVehiculo") byte poseeVehiculo,
-			                   @RequestParam("descTipoUsuario") String descTipoUsuario){	
-		
-		UserResponse us = new UserResponse();
-		Usuario usuario = new Usuario();
-		usuario.setIdentificacion(identificacion);
-		usuario.setNombre(nombre);
-		usuario.setApellidos(apellidos);
-		usuario.setCorreoElectronico(correoElectronico);
-		usuario.setEstatus(estatus);
-		usuario.setFechaIngreso(fechaIngreso);
-		usuario.setFechaNac(fechaNac);
-		usuario.setFechaPago(fechaPago);
-		usuario.setPoseeVehiculo(poseeVehiculo);
-		usuario.setTipousuario(tipoUserService.getTipoUsuarioByDescTipoUsuario(descTipoUsuario));
-		
-		boolean state = usersService.saveUser(usuario);
 	
-		if(state) {
+	@RequestMapping(value ="/create", method = RequestMethod.POST)
+	public UserResponse create(@RequestBody UserRequest usuarioRequest){	
+
+			UserResponse us = new UserResponse();
+			boolean state = usersService.saveUser(usuarioRequest);
+			
+			if(state) {
 			us.setCode(200);
 			us.setCodeMessage("user created succesfully");
-		}
-		return us;
-		
-	}
-	*/
+		 	}
+			return us;
+			
+			};
+			
 	@RequestMapping(value ="/edit", method = RequestMethod.POST)
 	public UserResponse edit(@RequestBody UserRequest usuarioRequest){	
 
 			UserResponse us = new UserResponse();
-			UsuarioPOJO usuarioPOJO = new UsuarioPOJO();
-			usuarioPOJO = usuarioRequest.getUser();
-			//usuarioPOJO.setTipoUsuarioPOJO(tipoUserService.getTipoUsuarioByDescTipoUsuario
-			//		(usuarioRequest.getUser().getTipoUsuarioPOJO().getDescTipoUsuario()));
-			Usuario usuarioDTO = new Usuario();
-			
-			Utils.copyProperties(usuarioPOJO, usuarioDTO );
-			
-			boolean state = usersService.edit(usuarioDTO);
+			boolean state = usersService.edit(usuarioRequest);
 			
 			if(state) {
 			us.setCode(200);
@@ -111,7 +82,7 @@ public class UserController {
 			}
 			return us;
 			
-			}
+			};
 	
 	@RequestMapping(value ="/getTiposUsuario", method = RequestMethod.POST)
 	public TipoUsuarioResponse getTiposUsuario(@RequestBody UserRequest ur){	
@@ -122,13 +93,13 @@ public class UserController {
 		tr.setCodeMessage("users fetch success");
 		tr.setTipoUsuariosList(tipoUserService.getAll());
 		return tr;		
-	}
+	};
 	
 	@RequestMapping(value ="/createTipo", method = RequestMethod.POST)
-	public TipoUsuarioResponse createTipo(@RequestBody Tipousuario ur){	
+	public TipoUsuarioResponse createTipo(@RequestBody TipoUsuarioRequest tipoUsuarioRequest){	
 			
 		TipoUsuarioResponse ut = new TipoUsuarioResponse();
-		if(tipoUserService.saveTipoUsuario(ur)) {
+		if(tipoUserService.saveTipoUsuario(tipoUsuarioRequest)) {
 			ut.setCode(200);
 			ut.setCodeMessage("user type created succesfully");
 			ut.setTipoUsuariosList(tipoUserService.getAll());

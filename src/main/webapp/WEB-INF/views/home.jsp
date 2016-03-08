@@ -699,6 +699,7 @@
   <script src="resources/non_bower_components/angular-file-upload.min.js"></script>
   <script src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src='resources/bower_components/angular-ui-select/dist/select.js'></script>
   <script src="resources/bower_components/tv4/tv4.js"></script>
   <script src="resources/bower_components/objectpath/lib/ObjectPath.js"></script>
   <script src="resources/bower_components/pickadate/lib/picker.js"></script>
@@ -712,6 +713,8 @@
   <script src="resources/tiposUsuario/tiposUsuario.js"></script>
   <script src="resources/usuarios/modalController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
+  <script src="resources/eventos/eventos.js"></script>
+  <script src="resources/eventos/eventosModal.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

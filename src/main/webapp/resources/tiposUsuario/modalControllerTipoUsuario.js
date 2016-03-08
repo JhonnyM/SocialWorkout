@@ -3,7 +3,7 @@
 angular.module('myApp.modalTipoUsuario', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
 
 
-.controller('ModalControllerTiposUsuario', ['$scope','$uibModalInstance','$http','tiposUsuario',  function($scope, $uibModalInstance, $http, tiposUsuario)
+.controller('ModalControllerTiposUsuario', ['$scope','$uibModalInstance','$http','tiposUsuario', 'route', function($scope, $uibModalInstance, $http, tiposUsuario, route)
 {
 	$scope.Schema = {
 			  "type": "object",
@@ -23,17 +23,18 @@ angular.module('myApp.modalTipoUsuario', ['ngRoute', 'ui.grid', 'schemaForm', 'u
 	  ];
 	  
     	$scope.save = function () {
-    		$scope.data = {};
-    			data = {
+    		$scope.tipoUsuarioRequest = {}
+    		tipoUsuarioRequest = {
     			  	idTipoUsuario : $scope.tipoUsuarioForm.idTipoUsuario,
     				descTipoUsuario : $scope.tipoUsuarioForm.descTipoUsuario
     			  };
-    				$http.post('rest/protected/tipousers/edit',data).success(
-    					function(data, status, config) {
-    					$scope.message = data;
+    		
+    				$http.post('rest/protected/tipousers/edit',{tipo: tipoUsuarioRequest}).success(
+    					function(tipoUsuarioRequest, status, config) {
+    					$scope.message = tipoUsuarioRequest;
     					}).error(
-    					function(data, status, config) {
-    					  alert("failure message: "+ JSON.stringify({data : data}));
+    					function(tipoUsuarioRequest, status, config) {
+    					  alert("failure message: "+ JSON.stringify({tipoUsuarioRequest : tipoUsuarioRequest}));
     					});
     	tiposUsuario.descTipoUsuario = $scope.tipoUsuarioForm.descTipoUsuario;
 	    $uibModalInstance.close();
@@ -49,12 +50,14 @@ angular.module('myApp.modalTipoUsuario', ['ngRoute', 'ui.grid', 'schemaForm', 'u
 		  			descTipoUsuario :  $scope.tipoUsuarioForm.descTipoUsuario
 		  	};
 		  	
-		  	$http.post('rest/protected/tipousers/create', data)
+		  	$http.post('rest/protected/tipousers/create', {tipo: data})
 		  	.success(function(data, status, config) {
 		      $scope.message = data;
 		      }).error(function(data, status, config) {
-		        alert( "failure message: " + JSON.stringify({data: data}));
+		        alert( "failure message: " + JSON.stringify({data : data}));
+		        route.reload();
 		    }); 
+		  	
 		  	$uibModalInstance.close();
 		    
 		  };

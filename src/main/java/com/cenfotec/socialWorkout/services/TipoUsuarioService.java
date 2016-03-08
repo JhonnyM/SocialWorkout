@@ -1,6 +1,7 @@
 package com.cenfotec.socialWorkout.services;
 
 import java.beans.Beans;
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -14,6 +15,7 @@ import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.TipoUsuarioRepository;
 import com.cenfotec.socialWorkout.utils.Utils;
 import com.cenfotec.socialWorkout.ejb.Tipousuario;
+import com.cenfotec.socialWorkout.ejb.Usuario;
 
 @Service
 public class TipoUsuarioService implements TipoUsuarioServiceInterface {
@@ -39,31 +41,21 @@ public class TipoUsuarioService implements TipoUsuarioServiceInterface {
 
 	@Override
 	@Transactional
-	public Boolean saveTipoUsuario(Tipousuario tipoUsuario) {
-	BeanUtils.copyProperties(tipoUsuario.getDescTipoUsuario(), tipoUsuario);		
-		Tipousuario nTipoUsuario = tipoUsuarioRepository.save(tipoUsuario);		
-		return (nTipoUsuario == null) ? false : true;
-	}
-	
-	@Override
-	public TipoUsuarioPOJO getAllByIdTipoUsuario(Tipousuario tip) {
-		Tipousuario tipoUsuario;
-		TipoUsuarioPOJO uiTipoUsuario = new TipoUsuarioPOJO();
-		tipoUsuario =  tipoUsuarioRepository.findOne(tip.getIdTipoUsuario());
-		BeanUtils.copyProperties(tip,tipoUsuario);
-		BeanUtils.copyProperties(tipoUsuario,uiTipoUsuario);
-		return uiTipoUsuario;
+	public Boolean saveTipoUsuario(TipoUsuarioRequest tipoUsuarioRequest) {
+		Tipousuario tipoUsuario = new Tipousuario();
+		Utils.copyProperties(tipoUsuarioRequest.getTipo(), tipoUsuario);
+		Tipousuario ntuser = tipoUsuarioRepository.save(tipoUsuario);
+		return ntuser != null;
 	}
 	
 	@Override
 	@Transactional
-	public Boolean edit(Tipousuario tip){
-		TipoUsuarioPOJO tipoUsuarioPOJO = this.getAllByIdTipoUsuario(tip);
-		Tipousuario eTipoUsuario = new Tipousuario();
-		BeanUtils.copyProperties(tipoUsuarioPOJO,eTipoUsuario);
-		Tipousuario nTipoUsuario = tipoUsuarioRepository.save(eTipoUsuario);
-		return (nTipoUsuario == null) ? false : true;
-
+	public Boolean edit(TipoUsuarioRequest tipoUsuarioRequest){
+		Tipousuario tipoUsuario = new Tipousuario();
+		System.out.println(tipoUsuarioRequest.getTipo().getDescTipoUsuario());
+		Utils.copyProperties(tipoUsuarioRequest.getTipo(), tipoUsuario);
+		Tipousuario ntuser = tipoUsuarioRepository.save(tipoUsuario);
+		return ntuser != null;
 	}
 
 

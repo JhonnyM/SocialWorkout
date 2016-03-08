@@ -24,8 +24,7 @@ public class TipoUsuarioController {
 	@Autowired private HttpServletRequest request;
 	
 	@RequestMapping(value ="/getAll", method = RequestMethod.POST)
-	public TipoUsuarioResponse getAll(@RequestBody TipoUsuarioRequest or){	
-			
+	public TipoUsuarioResponse getAll(){	
 		TipoUsuarioResponse response = new TipoUsuarioResponse();
 		response.setCode(200);
 		response.setCodeMessage("Tipo fetch success");
@@ -34,9 +33,9 @@ public class TipoUsuarioController {
 	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public TipoUsuarioResponse create(@RequestBody Tipousuario tipoUsuario){	
+	public TipoUsuarioResponse create(@RequestBody TipoUsuarioRequest tipoUsuarioRequest){	
 		TipoUsuarioResponse tResp = new TipoUsuarioResponse();
-		Boolean state = tipoUsuarioService.saveTipoUsuario(tipoUsuario);
+		Boolean state = tipoUsuarioService.saveTipoUsuario(tipoUsuarioRequest);
 		if(state){
 			tResp.setCode(200);
 			tResp.setCodeMessage("Tipo de usuario creado satisfactoriamente");
@@ -45,10 +44,10 @@ public class TipoUsuarioController {
 	}
 	
 	@RequestMapping(value ="/edit", method = RequestMethod.POST)
-	public TipoUsuarioResponse edit(@RequestBody Tipousuario obj){	
+	public TipoUsuarioResponse edit(@RequestBody TipoUsuarioRequest tipoUsuarioRequest){	
  		
 		TipoUsuarioResponse tipoUsuario = new TipoUsuarioResponse();
-		Boolean state = tipoUsuarioService.edit(obj);
+		Boolean state = tipoUsuarioService.edit(tipoUsuarioRequest);
 	
 		if(state){
 			tipoUsuario.setCode(200);
@@ -58,13 +57,13 @@ public class TipoUsuarioController {
  	}
 
  	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public TipoUsuarioResponse delete(@RequestBody Tipousuario tu) {
+	public TipoUsuarioResponse delete(@RequestBody TipoUsuarioRequest tu) {
 
 		TipoUsuarioResponse tipoUsuarioResponse = new TipoUsuarioResponse();
 		
-		if (tipoUsuarioService.exists(tu.getIdTipoUsuario()))
+		if (tipoUsuarioService.exists(tu.getTipo().getIdTipoUsuario()))
 		{
-			if(tipoUsuarioService.delete(tu.getIdTipoUsuario()))
+			if(tipoUsuarioService.delete(tu.getTipo().getIdTipoUsuario()))
 			{
 				tipoUsuarioResponse.setCode(200);
 				tipoUsuarioResponse.setCodeMessage("El tipo de usuario fue eliminado exitosamente");

@@ -9,8 +9,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-
 import com.cenfotec.socialWorkout.contracts.UserRequest;
 import com.cenfotec.socialWorkout.ejb.Tipousuario;
 import com.cenfotec.socialWorkout.ejb.Usuario;
@@ -64,22 +62,29 @@ public class UserService implements UserServiceInterface{
 
 	@Override
 	@Transactional
-	public boolean saveUser(Usuario ur) {
-	    Usuario user = new Usuario();
-		Utils.copyProperties(ur, user);
-		user.setClave(Utils.devolverMD5(user.getClave())); 
-		Usuario nuser = usersRepository.save(user);
+	public boolean saveUser(UserRequest usuarioRequest) {
+	    Usuario usuario = new Usuario();
+		Utils.copyProperties(usuarioRequest.getUser(), usuario);
+		usuario.setClave(Utils.devolverMD5(usuario.getClave())); 
+		Usuario nuser = usersRepository.save(usuario);
 		return nuser != null;
 	}
 	
 	@Override
 	@Transactional
-	public Boolean edit(Usuario ur){
+	public Boolean edit(UserRequest usuarioRequest){
+		TipoUsuarioServiceInterface tipoUsuarioService = new TipoUsuarioService();
 		Usuario usuario = new Usuario();
-		BeanUtils.copyProperties(ur,usuario);
+		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		BeanUtils.copyProperties(tipoUsuarioService.getTipoUsuarioById
+				(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
+		UsuarioPOJO usuarioPOJO = new UsuarioPOJO();
+		usuarioPOJO = usuarioRequest.getUser();
+		usuarioPOJO.setTipoUsuarioPOJO(tipoUsuarioPOJO);
+		BeanUtils.copyProperties(usuarioRequest.getUser(),usuario);
+		
 		Usuario nUsuario = usersRepository.save(usuario);
 		return (nUsuario == null) ? false : true;
-
 	}
 	
 	

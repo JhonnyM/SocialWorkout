@@ -9,9 +9,12 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
   });  
 }])
 
-.controller('TiposUsuarioCtrl', ['$scope','$http','$uibModal',function($scope,$http,$uibModal) {
-	$scope.refresh = false;
-	    
+.controller('TiposUsuarioCtrl', ['$scope','$http','$uibModal','$route' , function($scope,$http,$uibModal, $route) {
+	 $scope.reload = function(){
+		 $route.reload();
+		};
+
+	
 	$scope.tiposUsuario = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","tiposusuario": {}};
 	$http.post('rest/protected/tipousers/getAll',$scope.requestObject)
@@ -62,8 +65,8 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 					size:"sm",
 					windowClass:"modal",
 					resolve:{
-						tiposUsuario:{}
-			            
+						tiposUsuario:{},
+			            route : $route,
 					}
 			};
 			
@@ -76,14 +79,13 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 		        idTipoUsuario : row.entity.idTipoUsuario,
 		        descTipoUsuario : row.entity.descTipoUsuario
 		    };
-		    console.log(row.entity.idTipoUsuario)
-		    console.log(row.entity.descTipoUsuario)
-		    $http.post('rest/protected/tipousers/delete', {Tipousuario:data} )
+		    $http.post('rest/protected/tipousers/delete', {tipo:data} )
 		    .then(function (response){
 		    switch(response.data.code)
 		      {
 		        case 200:
 		          alert("Tipo de usuario eliminado")
+		          $scope.reload();
 		        break;
 
 		        default:
@@ -94,7 +96,8 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 
 		      console.log(response);
 		    }); 
+		    
 		  };
-
-    
+		  
+		 
 }]);
