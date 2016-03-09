@@ -11,10 +11,7 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	$scope.init = function() {
 		 $http.post('rest/protected/tipousers/getAll')
 		.success(function(response) {
-			    console.log("response",response)
-				$scope.tiposUsuariosList = response.tipoUsuariosList;
-			    console.log("PASADO TIPO",$scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario)
-			    console.log("primero de la lista",$scope.tiposUsuariosList[0].idTipoUsuario)
+			    $scope.tiposUsuariosList = response.tipoUsuariosList;
 			    $scope.requestObject.idTipoUsuario = $scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario;
 				
 			});
@@ -77,7 +74,8 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
                 fechaPago : $scope.usuarioForm.fechaPago,
                 poseeVehiculo : $scope.usuarioForm.poseeVehiculo,
                 tipoUsuarioPOJO : {
-                	idTipoUsuario : $scope.usuarioForm.idTipoUsuario
+                	idTipoUsuario : $scope.usuarioForm.idTipoUsuario,
+                	descTipoUsuario : ''
                 }
             };
 			  console.log(data.idUsuario);

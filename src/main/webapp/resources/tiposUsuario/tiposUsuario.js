@@ -49,7 +49,8 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 					size:"sm",
 					windowClass:"modal",
 					resolve:{
-						tiposUsuario:function(){return row.entity}
+						tiposUsuario:function(){return row.entity},
+			            route : $route,
 			        }
 			};
 			
