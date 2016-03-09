@@ -6,6 +6,8 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.objetivos',
+  'myApp.eventos',
+  'myApp.eventosModal',
   'myApp.version',
   'myApp.modal',
   'ui.grid',
