@@ -73,8 +73,10 @@ public class TipoUsuarioService implements TipoUsuarioServiceInterface {
 
 	@Override
 	@Transactional
-	public Tipousuario getTipoUsuarioById(int idTipoUsuario) {
-		return tipoUsuarioRepository.findOne(idTipoUsuario);
+	public TipoUsuarioPOJO getTipoUsuarioById(int idTipoUsuario) {
+		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		Utils.copyProperties(tipoUsuarioRepository.findByidTipoUsuario(idTipoUsuario),tipoUsuarioPOJO);
+		return tipoUsuarioPOJO;
 	}
 
 	@Transactional

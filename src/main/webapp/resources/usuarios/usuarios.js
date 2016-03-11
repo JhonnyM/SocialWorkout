@@ -9,7 +9,10 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
   });  
 }])
 
-.controller('UsuariosCtrl', ['$scope','$http','$uibModal',function($scope,$http,$uibModal) {
+.controller('UsuariosCtrl', ['$scope','$http','$uibModal','$route', function($scope,$http,$uibModal,$route) {
+	$scope.reload = function(){
+		 $route.reload();
+		};
 	$scope.usuarios = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","usuario": {}};
 	$http.post('rest/protected/users/getAll',$scope.requestObject)
@@ -36,7 +39,8 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	           {name:'apellidos', displayName:'Apellidos'},
 	           {name:'correoElectronico', displayName:'Email'},
 	           {name:'fechaPago', displayName:'Fecha pago'},
-	           {field:'estatus', displayName:'Habilitado', cellTemplate: "<input type='checkbox' id='estatus' #= (estatus===1) ? checked='checked' : '' # disabled='disabled'/>" },
+	           {name:'estatus', displayName:'Habilitado', cellTemplate: '<input type="checkbox" ng-model="row.entity.estatus" disabled="disabled">'},
+	           {name:'poseeVehiculo', displayName:'Vehículo', cellTemplate: '<input type="checkbox" ng-model="row.entity.poseeVehiculo" disabled="disabled">'},
 	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},
 	           {name: 'usuarioPOJOInstructor.nombre' , displayName:'Instructor'},
 	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)">Editar</button>'} 
@@ -58,29 +62,22 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 			};
 			$uibModal.open(dialogOpts)
 		}
-       $scope.saveUsuario = function(event){
-    	var data = {};
-    	console.log($scope.requestObject.usuario);
-    	data = {
-    			identificacion : $scope.requestObject.identificacion,
-    			nombre : $scope.requestObject.nombre,
-    			apellidos : $scope.requestObject.apellidos,
-    			clave : $scope.requestObject.clave,
-    			correoElectronico : $scope.requestObject.correoElectronico,
-    			estatus : $scope.requestObject.estatus,
-    			fechaNacimiento : $scope.requestObject.fechaNacimiento,
-    			fechaIngreso : $scope.requestObject.fechaIngreso,
-    			fechaPago : $scope.requestObject.fechaPago,
-    			poseeVehiculo : $scope.requestObject.poseeVehiculo,
-    			tipoUsuarioPOJO: $scope.requestObject.tipoUsuarioPOJO.descTipoUsuario
-    	};
-    	
-    	$http.post('rest/protected/users/create', data)
-    	.success(function(data, status, config) {
-            $scope.message = data;
-          }).error(function(data, status, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
-        }); 
-    };
+		
+		$scope.addRow = function(){
+			var dialogOpts = {
+					backdrop:'static',
+					keyboard:false,
+					templateUrl:'resources/usuarios/edit-modalusuarionuevo.html',
+					controller:'ModalController',
+					size:"sx",
+					windowClass:"modal",
+					resolve:{
+						usuario: {},
+			            route : $route,
+					}
+			};
+			
+			$uibModal.open(dialogOpts)
+		};
     
 }]);

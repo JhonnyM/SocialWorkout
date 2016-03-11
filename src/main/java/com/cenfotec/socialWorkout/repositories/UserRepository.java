@@ -8,5 +8,7 @@ public interface UserRepository  extends CrudRepository<Usuario,Integer>{
 	Usuario findBycorreoElectronico(String correoElectronico,String clave);
 	List<Usuario> findAll();
 	List<Usuario> findBynombreContaining(String nombre);
+	Usuario findByidUsuario(int idUsuario);
+
 
 }

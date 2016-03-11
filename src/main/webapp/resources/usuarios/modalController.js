@@ -3,17 +3,27 @@
 angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
 
 
-.controller('ModalController', ['$scope','$uibModalInstance','usuario', '$http',  function($scope, $uibModalInstance,usuario, $http)
+.controller('ModalController', ['$scope','$uibModalInstance','usuario', '$http','$route', function($scope, $uibModalInstance,usuario, $http, $route)
 {
 	$scope.tiposUsuariosList = [];
 	$scope.requestObject = {};
 	$scope.usuarioForm = angular.copy(usuario);
+	$scope.reload = function(){
+		 $route.reload();
+		};
+   $scope.usuarioForm.fechaNac = new Date(usuario.fechaNac);
+   $scope.usuarioForm.fechaIngreso  = new Date(usuario.fechaIngreso);
+   $scope.usuarioForm.fechaPago  = new Date(usuario.fechaPago);
+   console.log($scope.usuarioForm.poseeVehiculo,"POSEE");
+   
+	
+	
 	$scope.init = function() {
 		 $http.post('rest/protected/tipousers/getAll')
 		.success(function(response) {
 			    $scope.tiposUsuariosList = response.tipoUsuariosList;
 			    $scope.requestObject.idTipoUsuario = $scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario;
-				
+			    console.log($scope.requestObject.idTipoUsuario,"REQUEST");
 			});
 	    	
 	    };
@@ -41,13 +51,16 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 		'nombre',
 		'apellidos',
 		'correoElectronico',
-		{"key": "fechaNac",
+		{"title":"Fecha de nacimiento",
+		 "key": "fechaNac",
 		 "type": "date",
 		},
-		{"key": "fechaIngreso",
+		{"title":"Fecha de Ingreso",
+		 "key": "fechaIngreso",
 	     "type": "date",
 		},
-		{"key": "fechaPago",
+		{"title":"Fecha de pago",
+		 "key": "fechaPago",
 		 "type": "date",
 	    },
 	   {"key": "poseeVehiculo",
@@ -74,7 +87,7 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
                 fechaPago : $scope.usuarioForm.fechaPago,
                 poseeVehiculo : $scope.usuarioForm.poseeVehiculo,
                 tipoUsuarioPOJO : {
-                	idTipoUsuario : $scope.usuarioForm.idTipoUsuario,
+                	idTipoUsuario : $scope.requestObject.idTipoUsuario,
                 	descTipoUsuario : ''
                 }
             };
@@ -82,6 +95,7 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 				  $http.post('rest/protected/users/edit', {user : data}).success(
 					function(data, status, config) {
 					$scope.message = data;
+					 $scope.dismissModal = $scope.reload();
 					}).error(
 					function(data, status, config) {
 					  alert("failure message: "+ JSON.stringify({data : data}));
@@ -96,8 +110,36 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	    usuario.fechaPago = $scope.usuarioForm.fechaPago;
 	    usuario.poseeVehiculo = $scope.usuarioForm.poseeVehiculo;
 	    usuario.estatus = $scope.usuarioForm.estatus;
-	   
 	    $uibModalInstance.close();
+	   
+	    
 	  };
-    
+      $scope.create = function(event){
+    	  $scope.data = {};
+			data = {
+			  identificacion : $scope.usuarioForm.identificacion,
+              nombre : $scope.usuarioForm.nombre,
+              apellidos : $scope.usuarioForm.apellidos,
+              correoElectronico : $scope.usuarioForm.correoElectronico,
+              estatus : $scope.usuarioForm.estatus,
+              fechaIngreso : $scope.usuarioForm.fechaIngreso,
+              fechaNac : $scope.usuarioForm.fechaNac,
+              fechaPago : $scope.usuarioForm.fechaPago,
+              poseeVehiculo : $scope.usuarioForm.poseeVehiculo,
+              tipoUsuarioPOJO : {
+              	idTipoUsuario : $scope.requestObject.idTipoUsuario,
+              	descTipoUsuario : ''
+              }
+          };
+			  console.log(data.idUsuario);
+				  $http.post('rest/protected/users/create', {user : data}).success(
+					function(data, status, config) {
+					$scope.message = data;
+					 $scope.dismissModal = $scope.reload();
+					}).error(
+					function(data, status, config) {
+					  alert("failure message: "+ JSON.stringify({data : data}));
+					});
+	    $uibModalInstance.close();
+      };
 }]);

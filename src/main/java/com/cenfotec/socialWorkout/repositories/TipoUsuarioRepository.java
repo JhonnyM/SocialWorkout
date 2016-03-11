@@ -6,4 +6,5 @@ import com.cenfotec.socialWorkout.ejb.Tipousuario;
 public interface TipoUsuarioRepository extends CrudRepository<Tipousuario, Integer>  {	
 	List<Tipousuario> findAll();
 	Tipousuario findBydescTipoUsuario(String descTipoUsuario);
+	Tipousuario findByidTipoUsuario(int idTipoUsuario);
 }

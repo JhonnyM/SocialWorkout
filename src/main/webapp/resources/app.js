@@ -10,8 +10,6 @@ angular.module('myApp', [
   'myApp.version',
   'myApp.modal',
   'myApp.modalTipoUsuario',
-  'myApp.eventos',
-  'myApp.eventosModal',
   'ui.grid',
   'angularFileUpload'
 ])

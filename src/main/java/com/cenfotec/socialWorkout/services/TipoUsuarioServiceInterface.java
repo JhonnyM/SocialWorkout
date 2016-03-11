@@ -8,7 +8,7 @@ import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 public interface TipoUsuarioServiceInterface {
-	Tipousuario getTipoUsuarioById(int idTipoUsuario);
+	TipoUsuarioPOJO getTipoUsuarioById(int idTipoUsuario);
 	List<TipoUsuarioPOJO> getAll();
 	Boolean saveTipoUsuario(TipoUsuarioRequest tipoUsuarioRequest);
 	Boolean edit(TipoUsuarioRequest tipoUsuarioRequest);

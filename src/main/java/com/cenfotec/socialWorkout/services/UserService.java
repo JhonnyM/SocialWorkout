@@ -14,6 +14,7 @@ import com.cenfotec.socialWorkout.ejb.Tipousuario;
 import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
+import com.cenfotec.socialWorkout.repositories.TipoUsuarioRepository;
 import com.cenfotec.socialWorkout.repositories.UserRepository;
 import com.cenfotec.socialWorkout.utils.Utils;
 
@@ -21,6 +22,7 @@ import com.cenfotec.socialWorkout.utils.Utils;
 public class UserService implements UserServiceInterface{
 
 	@Autowired private UserRepository usersRepository;
+	@Autowired private TipoUsuarioServiceInterface  tipoUsuarioService;
 	
 	@Override
 	@Transactional
@@ -64,8 +66,13 @@ public class UserService implements UserServiceInterface{
 	@Transactional
 	public boolean saveUser(UserRequest usuarioRequest) {
 	    Usuario usuario = new Usuario();
+	    TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+	    BeanUtils.copyProperties( tipoUsuarioService.getTipoUsuarioById(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
+	    Tipousuario tipoUsuario = new Tipousuario();
+		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
 		Utils.copyProperties(usuarioRequest.getUser(), usuario);
-		usuario.setClave(Utils.devolverMD5(usuario.getClave())); 
+		usuario.setClave(Utils.devolverMD5(usuario.getIdentificacion())); 
+		usuario.setTipousuario( tipoUsuario);
 		Usuario nuser = usersRepository.save(usuario);
 		return nuser != null;
 	}
@@ -73,16 +80,16 @@ public class UserService implements UserServiceInterface{
 	@Override
 	@Transactional
 	public Boolean edit(UserRequest usuarioRequest){
-		TipoUsuarioServiceInterface tipoUsuarioService = new TipoUsuarioService();
 		Usuario usuario = new Usuario();
 		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
-		BeanUtils.copyProperties(tipoUsuarioService.getTipoUsuarioById
-				(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
+		BeanUtils.copyProperties( tipoUsuarioService.getTipoUsuarioById(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
 		UsuarioPOJO usuarioPOJO = new UsuarioPOJO();
 		usuarioPOJO = usuarioRequest.getUser();
-		usuarioPOJO.setTipoUsuarioPOJO(tipoUsuarioPOJO);
-		BeanUtils.copyProperties(usuarioRequest.getUser(),usuario);
-		
+        usuarioPOJO.setClave(usersRepository.findByidUsuario(usuarioRequest.getUser().getIdUsuario()).getClave());
+		BeanUtils.copyProperties(usuarioPOJO,usuario);
+		Tipousuario tipoUsuario = new Tipousuario();
+		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
+		usuario.setTipousuario(tipoUsuario);
 		Usuario nUsuario = usersRepository.save(usuario);
 		return (nUsuario == null) ? false : true;
 	}

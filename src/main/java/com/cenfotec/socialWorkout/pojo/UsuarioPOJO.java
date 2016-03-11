@@ -14,7 +14,7 @@ public class UsuarioPOJO{
 	private String apellidos;
 	private String clave;
 	private String correoElectronico;
-	private byte estatus;
+	private boolean estatus;
 	private Date fechaIngreso;
 	private Date fechaNac;
 	private Date fechaPago;
@@ -69,11 +69,11 @@ public class UsuarioPOJO{
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public byte getEstatus() {
+	public boolean getEstatus() {
 		return estatus;
 	}
 
-	public void setEstatus(byte estatus) {
+	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
 
