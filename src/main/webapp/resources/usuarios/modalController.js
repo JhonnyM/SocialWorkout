@@ -6,6 +6,7 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 .controller('ModalController', ['$scope','$uibModalInstance','usuario', '$http','$route', function($scope, $uibModalInstance,usuario, $http, $route)
 {
 	$scope.tiposUsuariosList = [];
+	$scope.instructorList = [];
 	$scope.requestObject = {};
 	$scope.usuarioForm = angular.copy(usuario);
 	$scope.reload = function(){
@@ -20,12 +21,18 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	
 	$scope.init = function() {
 		 $http.post('rest/protected/tipousers/getAll')
-		.success(function(response) {
+		 	.success(function(response) {
 			    $scope.tiposUsuariosList = response.tipoUsuariosList;
 			    $scope.requestObject.idTipoUsuario = $scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario;
 			    console.log($scope.requestObject.idTipoUsuario,"REQUEST");
 			});
-	    	
+		 $http.post('rest/protected/users/getAllByTipoUsuario')
+			.success(function(response) {
+				    $scope.instructorList = response.usuarios;
+				    $scope.requestObject.idUsuarioInstructor = $scope.usuarioForm.usuarioPOJOInstructor.idUsuario;
+				    console.log($scope.requestObject.idUsuarioInstructor,"REQUEST-INSTRUCTOR");
+				});
+		    	
 	    };
 	$scope.init();
 	
@@ -89,7 +96,10 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
                 tipoUsuarioPOJO : {
                 	idTipoUsuario : $scope.requestObject.idTipoUsuario,
                 	descTipoUsuario : ''
-                }
+                },
+			    usuarioPOJOInstructor : {
+			    	idUsuario : $scope.requestObject.idUsuarioInstructor
+			    }
             };
 			  console.log(data.idUsuario);
 				  $http.post('rest/protected/users/edit', {user : data}).success(
@@ -129,7 +139,10 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
               tipoUsuarioPOJO : {
               	idTipoUsuario : $scope.requestObject.idTipoUsuario,
               	descTipoUsuario : ''
-              }
+              },
+		      usuarioPOJOInstructor : {
+				idUsuario : $scope.requestObject.idUsuarioInstructor
+			  }
           };
 			  console.log(data.idUsuario);
 				  $http.post('rest/protected/users/create', {user : data}).success(

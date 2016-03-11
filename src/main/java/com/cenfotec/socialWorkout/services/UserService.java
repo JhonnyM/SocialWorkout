@@ -34,10 +34,27 @@ public class UserService implements UserServiceInterface{
 	@Override
 	@Transactional
 	public List<UsuarioPOJO> getAllByName(UserRequest ur) {
-		List<Usuario> users =  usersRepository.findBynombreContaining(ur.getSearchTerm());
+		List<Usuario> usersInstructores =  usersRepository.findBynombreContaining(ur.getSearchTerm());
+		return generateUserDtos( usersInstructores );
+	}
+	@Override
+	@Transactional
+	public List<UsuarioPOJO> getAllByTipoUsuario() {
+		TipoUsuarioPOJO  tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		tipoUsuarioPOJO = tipoUsuarioService.getTipoUsuarioById(2);
+		Tipousuario tipoUsuario = new Tipousuario();
+		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
+		List<Usuario> users =  usersRepository.findByTipousuario(tipoUsuario);
 		return generateUserDtos(users);
 	}
 	
+	@Override
+	@Transactional
+	public UsuarioPOJO getUsuarioInstructorById(int idUsuario) {
+		UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
+		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJOInstructor);
+		return usuarioPOJOInstructor;
+	}
 	
 	private List<UsuarioPOJO> generateUserDtos(List<Usuario> users){
 		    List<UsuarioPOJO> usuariosPOJO = new ArrayList<UsuarioPOJO>();
@@ -67,12 +84,21 @@ public class UserService implements UserServiceInterface{
 	public boolean saveUser(UserRequest usuarioRequest) {
 	    Usuario usuario = new Usuario();
 	    TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+	    UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
 	    BeanUtils.copyProperties( tipoUsuarioService.getTipoUsuarioById(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
+	    if (usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario() > 0  ){
+			BeanUtils.copyProperties(getUsuarioInstructorById(usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()), usuarioPOJOInstructor);
+	    }
 	    Tipousuario tipoUsuario = new Tipousuario();
 		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
 		Utils.copyProperties(usuarioRequest.getUser(), usuario);
+		Usuario usuarioInstructor = new Usuario();
+	    BeanUtils.copyProperties(usuarioPOJOInstructor, usuarioInstructor);
 		usuario.setClave(Utils.devolverMD5(usuario.getIdentificacion())); 
 		usuario.setTipousuario( tipoUsuario);
+		 if ((usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()) > 0) {
+		    	usuario.setUsuario(usuarioInstructor);
+		    }
 		Usuario nuser = usersRepository.save(usuario);
 		return nuser != null;
 	}
@@ -82,15 +108,24 @@ public class UserService implements UserServiceInterface{
 	public Boolean edit(UserRequest usuarioRequest){
 		Usuario usuario = new Usuario();
 		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
 		BeanUtils.copyProperties( tipoUsuarioService.getTipoUsuarioById(usuarioRequest.getUser().getTipoUsuarioPOJO().getIdTipoUsuario()),tipoUsuarioPOJO);
+		if ((usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()) > 0) {
+			BeanUtils.copyProperties(getUsuarioInstructorById(usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()), usuarioPOJOInstructor);
+	    }
 		UsuarioPOJO usuarioPOJO = new UsuarioPOJO();
 		usuarioPOJO = usuarioRequest.getUser();
         usuarioPOJO.setClave(usersRepository.findByidUsuario(usuarioRequest.getUser().getIdUsuario()).getClave());
 		BeanUtils.copyProperties(usuarioPOJO,usuario);
 		Tipousuario tipoUsuario = new Tipousuario();
 		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
-		usuario.setTipousuario(tipoUsuario);
-		Usuario nUsuario = usersRepository.save(usuario);
+	    Usuario usuarioInstructor = new Usuario();
+	    BeanUtils.copyProperties(usuarioPOJOInstructor, usuarioInstructor);
+	    usuario.setTipousuario(tipoUsuario);
+	    if ((usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()) > 0) {
+	    	usuario.setUsuario(usuarioInstructor);
+	    }
+	    Usuario nUsuario = usersRepository.save(usuario);
 		return (nUsuario == null) ? false : true;
 	}
 	

@@ -10,6 +10,8 @@ public interface UserServiceInterface {
 	List<UsuarioPOJO> getAllByName(UserRequest ur);
 	boolean saveUser(UserRequest usuarioRequest);
 	Boolean edit(UserRequest usuarioRequest);
+	List<UsuarioPOJO> getAllByTipoUsuario();
+	UsuarioPOJO getUsuarioInstructorById(int idUsuario);
 	
 
 }

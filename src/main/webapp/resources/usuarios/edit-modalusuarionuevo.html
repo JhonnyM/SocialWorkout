@@ -12,7 +12,14 @@
 		 </select> 
 	</form>
     <form sf-schema="PersonSchema"  sf-form="form" sf-model="usuarioForm"></form>
-    
+    <div>
+		  <label class='col-sx-6 control-label'>Instructor asignado</label>
+		  <select name="instructores" id="instructores" class="form-control"
+			ng-model="requestObject.idUsuarioInstructor"
+			ng-options="o.idUsuario as o.nombre for o in instructorList"
+			required>
+		  </select> 
+	</div>
   </div>
   <div class="modal-footer">
       <button class="btn btn-success" ng-click="create()">Save</button>
