@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
 
 	private String correoElectronico;
 
-	private byte estatus;
+	private boolean estatus;
 
 	@Temporal(TemporalType.DATE)
 	private Date fechaIngreso;
@@ -155,11 +155,11 @@ public class Usuario implements Serializable {
 		this.correoElectronico = correoElectronico;
 	}
 
-	public byte getEstatus() {
+	public boolean getEstatus() {
 		return this.estatus;
 	}
 
-	public void setEstatus(byte estatus) {
+	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
 

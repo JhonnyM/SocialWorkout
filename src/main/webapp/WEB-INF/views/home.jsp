@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css"> 
+    <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css">
   <link rel="stylesheet" href="resources/bower_components/pickadate/lib/themes/classic.css">
   <link rel="stylesheet" href="resources/bower_components/pickadate/lib/themes/classic.date.css">
   <link rel="stylesheet" href="resources/css/app.css">
@@ -24,6 +25,7 @@
   <link rel="stylesheet" href="resources/assets/animate.css/animate.css" type="text/css" />
   <link rel="stylesheet" href="resources/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
   <link rel="stylesheet" href="resources/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="resources/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
@@ -701,6 +703,7 @@
   <script src="resources/bower_components/angular-schema-form-dynamic-select/angular-schema-form-dynamic-select.js"></script>
   <script src="resources/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
   <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src='resources/bower_components/angular-ui-select/dist/select.js'></script>
   <script src="resources/bower_components/tv4/tv4.js"></script>
   <script src="resources/bower_components/objectpath/lib/ObjectPath.js"></script>
   <script src="resources/bower_components/pickadate/lib/picker.js"></script>
@@ -715,6 +718,11 @@
   <script src="resources/eventos/eventosModal.js"></script>
   <script src="resources/objetivos/objetivos.js"></script>
   <script src="resources/objetivos/objetivosModal.js"></script>
+  <script src="resources/usuarios/usuarios.js"></script>
+  <script src="resources/tiposUsuario/tiposUsuario.js"></script>
+  <script src="resources/usuarios/modalController.js"></script>
+  <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
+
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

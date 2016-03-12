@@ -3,7 +3,7 @@ package com.cenfotec.socialWorkout.pojo;
 public class TipoUsuarioPOJO {
 
 	private int idTipoUsuario;
-	private String tipo;
+	private String descTipoUsuario;
 	
 	public TipoUsuarioPOJO() {
 		super();
@@ -17,12 +17,14 @@ public class TipoUsuarioPOJO {
 		this.idTipoUsuario = idTipoUsuario;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getDescTipoUsuario() {
+		return descTipoUsuario;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setDescTipoUsuario(String descTipoUsuario) {
+		this.descTipoUsuario = descTipoUsuario;
 	}
+
+
 	
 }
