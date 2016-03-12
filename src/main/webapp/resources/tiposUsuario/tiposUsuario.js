@@ -14,7 +14,6 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 		 $route.reload();
 		};
 
-	
 	$scope.tiposUsuario = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","tiposusuario": {}};
 	$http.post('rest/protected/tipousers/getAll',$scope.requestObject)
