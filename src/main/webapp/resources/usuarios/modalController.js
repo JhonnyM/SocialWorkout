@@ -1,6 +1,6 @@
 //'use strict';
 
-angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
+angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap', ])
 
 
 .controller('ModalController', ['$scope','$uibModalInstance','usuario', '$http','$route', function($scope, $uibModalInstance,usuario, $http, $route)

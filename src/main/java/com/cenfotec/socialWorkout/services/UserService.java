@@ -98,7 +98,7 @@ public class UserService implements UserServiceInterface{
 		usuario.setTipousuario( tipoUsuario);
 		 if ((usuarioRequest.getUser().getUsuarioPOJOInstructor().getIdUsuario()) > 0) {
 		    	usuario.setUsuario(usuarioInstructor);
-		    }
+		 }
 		Usuario nuser = usersRepository.save(usuario);
 		return nuser != null;
 	}

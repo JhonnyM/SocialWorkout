@@ -8,8 +8,8 @@ angular.module('myApp', [
   'myApp.usuarios',
   'myApp.tiposUsuario',
   'myApp.version',
-  'myApp.modal',
   'myApp.modalTipoUsuario',
+  'myApp.modalu',
   'ui.grid',
   'angularFileUpload'
 ])
