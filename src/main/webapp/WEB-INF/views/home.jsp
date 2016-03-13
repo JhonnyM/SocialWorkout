@@ -722,7 +722,8 @@
   <script src="resources/tiposUsuario/tiposUsuario.js"></script>
   <script src="resources/usuarios/modalController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
-
+  <script src="resources/clases/clases.js"></script>
+  <script src="resources/clases/clasesModal.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

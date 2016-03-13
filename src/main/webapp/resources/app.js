@@ -14,6 +14,8 @@ angular.module('myApp', [
   'myApp.modal',
   'myApp.modalTipoUsuario',
   'myApp.modalu',
+  'myApp.clases',
+  'myApp.clasesModal',
   'ui.grid',
   'angularFileUpload',
 ])
