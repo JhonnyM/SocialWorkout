@@ -128,6 +128,16 @@ public class UserController {
 		}
 		return ut;		
 	}
+
+	@RequestMapping(value ="/getUsuariosMorosos", method = RequestMethod.GET)
+	public UserResponse getUsuariosMorosos(@RequestBody UserRequest ur){	
+			
+		UserResponse us = new UserResponse();
+		us.setCode(200);
+		us.setCodeMessage("users fetch success");
+		us.setUsuarios(usersService.getAll(ur));
+		return us;		
+	}
 	
 	
 }
