@@ -6,6 +6,8 @@ angular.module('myApp', [
   'myApp.view1',
   'myApp.view2',
   'myApp.version',
+  'myApp.clases',
+  'myApp.clasesModal',
   'ui.grid',
   'angularFileUpload',
 ])

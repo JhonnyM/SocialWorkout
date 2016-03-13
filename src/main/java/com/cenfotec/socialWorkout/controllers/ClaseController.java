@@ -47,95 +47,95 @@ public class ClaseController {
 	@RequestMapping(value ="/find", method = RequestMethod.POST)
 	public ClaseResponse findOne(@RequestBody ClaseRequest claseRequest){	
 		
-		ClaseResponse eventoResponse = new ClaseResponse();			
+		ClaseResponse claseResponse = new ClaseResponse();			
 		ClasePOJO eve = claseService.getById(claseRequest);
 		
 		if(eve.getIdClase() > 0)
 		{
-			eventoResponse.setCode(200);
-			eventoResponse.setCodeMessage("Información de la clase encontrada");
-			eventoResponse.setClase(eve);
+			claseResponse.setCode(200);
+			claseResponse.setCodeMessage("Información de la clase encontrada");
+			claseResponse.setClase(eve);
 		}
 		else
 		{
-			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("No se encontro la informacion relativa a la clase");
-			eventoResponse.setClase(eve);
+			claseResponse.setCode(404);
+			claseResponse.setCodeMessage("No se encontro la informacion relativa a la clase");
+			claseResponse.setClase(eve);
 		}			
-		return eventoResponse;
+		return claseResponse;
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ClaseResponse save(@RequestBody ClaseRequest claseRequest) {
 	
-		ClaseResponse eventoResponse = new ClaseResponse();
+		ClaseResponse claseResponse = new ClaseResponse();
 		boolean saved = claseService.save(claseRequest);
 		
 		if(saved){
-			eventoResponse.setCode(200);
-			eventoResponse.setCodeMessage("La clase ha sido guardado exitosamente");
+			claseResponse.setCode(200);
+			claseResponse.setCodeMessage("La clase ha sido guardado exitosamente");
 		}
 		else
 		{
-			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("Hubo un error al momento de guardar la clase");
+			claseResponse.setCode(404);
+			claseResponse.setCodeMessage("Hubo un error al momento de guardar la clase");
 		}
-		return eventoResponse;
+		return claseResponse;
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public ClaseResponse update(@RequestBody ClaseRequest claseRequest) {
 		
-		ClaseResponse eventoResponse = new ClaseResponse();
+		ClaseResponse claseResponse = new ClaseResponse();
 		
 		if (claseService.exists(claseRequest.getClase().getIdClase()))
 		{
 			if(claseService.save(claseRequest))
 			{
-				eventoResponse.setCode(200);
-				eventoResponse.setCodeMessage("La información de la clase fue modificada exitosamente.");
+				claseResponse.setCode(200);
+				claseResponse.setCodeMessage("La información de la clase fue modificada exitosamente.");
 			}
 			else
 			{
-				eventoResponse.setCode(500);
-				eventoResponse.setCodeMessage("Hubo un error al momento de modificar la información de la clase");
+				claseResponse.setCode(500);
+				claseResponse.setCodeMessage("Hubo un error al momento de modificar la información de la clase");
 			}
 		}
 		else
 		{
-			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("La clase a modificar no existe en la base de datos");
+			claseResponse.setCode(404);
+			claseResponse.setCodeMessage("La clase a modificar no existe en la base de datos");
 		}
 		
 		
-		return eventoResponse;
+		return claseResponse;
 		
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public ClaseResponse delete(@RequestBody ClaseRequest claseRequest) {
 
-		ClaseResponse eventoResponse = new ClaseResponse();
+		ClaseResponse claseResponse = new ClaseResponse();
 		
 		if (claseService.exists(claseRequest.getClase().getIdClase()))
 		{
 			if(claseService.delete(claseRequest.getClase().getIdClase()))
 			{
-				eventoResponse.setCode(200);
-				eventoResponse.setCodeMessage("La clase fue eliminada exitosamente");
+				claseResponse.setCode(200);
+				claseResponse.setCodeMessage("La clase fue eliminada exitosamente");
 			}
 			else
 			{
-				eventoResponse.setCode(500);
-				eventoResponse.setCodeMessage("Hubo un error al momento de eliminar la clase");
+				claseResponse.setCode(500);
+				claseResponse.setCodeMessage("Hubo un error al momento de eliminar la clase");
 			}	
 		}
 		else
 		{
-			eventoResponse.setCode(404);
-			eventoResponse.setCodeMessage("La clase no existe");
+			claseResponse.setCode(404);
+			claseResponse.setCodeMessage("La clase no existe");
 		}
-		return eventoResponse;
+		return claseResponse;
 
 	}
 }
