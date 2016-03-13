@@ -2,9 +2,11 @@ package com.cenfotec.socialWorkout.pojo;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 public class UsuarioPOJO{
 	
@@ -12,13 +14,15 @@ public class UsuarioPOJO{
 	private String apellidos;
 	private String clave;
 	private String correoElectronico;
-	private byte estatus;
+	private boolean estatus;
 	private Date fechaIngreso;
 	private Date fechaNac;
 	private Date fechaPago;
 	private String identificacion;
 	private String nombre;
 	private boolean poseeVehiculo;
+	private TipoUsuarioPOJO tipoUsuarioPOJO;
+	private UsuarioPOJO usuarioPOJOInstructor;
 	
 	public UsuarioPOJO() {
 		super();
@@ -65,11 +69,11 @@ public class UsuarioPOJO{
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public byte getEstatus() {
+	public boolean getEstatus() {
 		return estatus;
 	}
 
-	public void setEstatus(byte estatus) {
+	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
 
@@ -89,7 +93,7 @@ public class UsuarioPOJO{
 		this.clave = clave;
 	}
 
-	public String sgetApellidos() {
+	public String getApellidos() {
 		return apellidos;
 	}
 
@@ -111,6 +115,22 @@ public class UsuarioPOJO{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public TipoUsuarioPOJO getTipoUsuarioPOJO() {
+		return tipoUsuarioPOJO;
+	}
+
+	public void setTipoUsuarioPOJO(TipoUsuarioPOJO tipoUsuarioPOJO) {
+		this.tipoUsuarioPOJO = tipoUsuarioPOJO;
+	}
+
+	public UsuarioPOJO getUsuarioPOJOInstructor() {
+		return usuarioPOJOInstructor;
+	}
+
+	public void setUsuarioPOJOInstructor(UsuarioPOJO usuarioPOJOInstructor) {
+		this.usuarioPOJOInstructor = usuarioPOJOInstructor;
 	}
 
 }
