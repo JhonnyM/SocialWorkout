@@ -39,7 +39,7 @@ public class Usuario implements Serializable {
 
 	private String nombre;
 
-	private boolean poseeVehiculo;
+	private byte poseeVehiculo;
 
 	//bi-directional many-to-one association to Actividadsistemahasusuario
 	@OneToMany(mappedBy="usuario")
@@ -203,11 +203,11 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public boolean getPoseeVehiculo() {
+	public byte getPoseeVehiculo() {
 		return this.poseeVehiculo;
 	}
 
-	public void setPoseeVehiculo(boolean poseeVehiculo) {
+	public void setPoseeVehiculo(byte poseeVehiculo) {
 		this.poseeVehiculo = poseeVehiculo;
 	}
 

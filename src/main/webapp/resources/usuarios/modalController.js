@@ -55,7 +55,10 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
     
     	$scope.form = [
 		'identificacion',
-		'nombre',
+		{"title":"Nombre",
+		 "key" : "nombre",
+		 fieldHtmlClass: "text", 
+		},	
 		'apellidos',
 		'correoElectronico',
 		{"title":"Fecha de nacimiento",

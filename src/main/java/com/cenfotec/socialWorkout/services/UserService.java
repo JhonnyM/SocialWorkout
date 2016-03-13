@@ -55,7 +55,15 @@ public class UserService implements UserServiceInterface{
 		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJOInstructor);
 		return usuarioPOJOInstructor;
 	}
-	
+	/*
+	@Override
+	@Transactional
+	public UsuarioPOJO getUsuarioSession() {
+		UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
+		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJOInstructor);
+		return usuarioPOJOInstructor;
+	}
+	*/
 	private List<UsuarioPOJO> generateUserDtos(List<Usuario> users){
 		    List<UsuarioPOJO> usuariosPOJO = new ArrayList<UsuarioPOJO>();
 			users.stream().forEach(u -> {

@@ -12,6 +12,7 @@
     "html5-boilerplate": "~5.2.0",
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.6",
+    "angular-bootstrap":"*",
     "underscore": "~1.8.3",
     "angular-ui-grid": "~3.0.7"
   },

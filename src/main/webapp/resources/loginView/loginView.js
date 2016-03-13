@@ -19,6 +19,7 @@ angular.module('myApp.loginView', ['ngRoute'])
     		if(loginResponse.code == 200){
     			var usuario = {"idUsuario":loginResponse.idUsuario,"nombre":loginResponse.nombre,"apellido":loginResponse.apellidos};
     			var path = "/socialWorkout/app#/view1";
+    			sessionStorage.setItem(loginResponse.idUsuario)
     			window.location.href = path;
     		}else{
     			alert("invalido");

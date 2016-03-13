@@ -2822,10 +2822,11 @@ select[multiple].input-lg {
 .has-success.checkbox label,
 .has-success.radio-inline label,
 .has-success.checkbox-inline label {
-  color: #3c763d;
+  color: #A9BCF5;
 }
 .has-success .form-control {
-  border-color: #3c763d;
+  border-color: #A9BCF5;
+  border-radius : border-radius: 15px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }

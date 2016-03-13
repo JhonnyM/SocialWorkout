@@ -11,7 +11,7 @@ angular.module('myApp', [
   'myApp.modalTipoUsuario',
   'myApp.modalu',
   'ui.grid',
-  'angularFileUpload'
+  'angularFileUpload',
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});
