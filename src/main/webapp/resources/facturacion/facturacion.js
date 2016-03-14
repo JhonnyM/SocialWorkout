@@ -43,13 +43,8 @@ angular.module('myApp.facturacion', ['ngRoute','ui.grid', 'ui.bootstrap'])
         {field:'idUsuario',displayName:'ID'},
         {field:'nombre',displayName:'Nombre'},
         {field:'correoElectronico',displayName:'Email'},
-        {field:'fechaPago',displayName:'Fecha de Pago'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.pagar(row)">Pagar</button>'}
+        {field:'fechaPago',displayName:'Fecha de Pago'}
     ]
-  };
-
-  $scope.pagar = function(row){
-    alert("El mae ya pago");
   };
 
   $scope.datePlusMonth = function(date){
