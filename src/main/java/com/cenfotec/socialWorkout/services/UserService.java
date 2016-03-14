@@ -169,21 +169,4 @@ public class UserService implements UserServiceInterface{
 		return Arrays.asList(dtoU);
 	}*/
 
-	/*@Override
-	@Transactional
-	public List<UsuarioPOJO> getUsuariosMorosos() {
-		Date todayDate = new Date();
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 1);
-		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(cal.getTime());
-		// Output "Wed Sep 26 14:23:28 EST 2012"
-
-		Date formatted = format1.format(cal.getTime());
-		System.out.println(formatted);
-		// Output "2012-09-26"
-		
-	   	List<Usuario> users =  usersRepository.findByfechaPago(formatted);
-		return generateUserDtos(users);
-	}*/
 }
