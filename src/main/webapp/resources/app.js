@@ -16,6 +16,7 @@ angular.module('myApp', [
   'myApp.modalu',
   'myApp.clases',
   'myApp.clasesModal',
+  'myApp.facturacion',
   'ui.grid',
   'angularFileUpload',
 ])

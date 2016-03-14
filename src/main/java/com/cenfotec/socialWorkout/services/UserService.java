@@ -1,8 +1,13 @@
 package com.cenfotec.socialWorkout.services;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -127,6 +132,20 @@ public class UserService implements UserServiceInterface{
 	    }
 	    Usuario nUsuario = usersRepository.save(usuario);
 		return (nUsuario == null) ? false : true;
+	}
+
+
+	@Override
+	public List<UsuarioPOJO> getAll() {
+		List<Usuario> usuarios = usersRepository.findAll();
+		List<UsuarioPOJO> dtos = new ArrayList<UsuarioPOJO>();
+		usuarios.stream().forEach(ta ->{
+			UsuarioPOJO dto = new UsuarioPOJO();
+			BeanUtils.copyProperties(ta, dto);
+			dtos.add(dto);
+			
+		});
+		return dtos;	
 	}
 	
 	

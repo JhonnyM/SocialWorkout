@@ -129,5 +129,17 @@ public class UserController {
 		return ut;		
 	}
 	
+	@RequestMapping(value ="/all", method = RequestMethod.GET)
+	public UserResponse getAll(){	
+		
+		UserResponse response = new UserResponse();
+		response.setCode(200);
+		response.setCodeMessage("clase fetch success");
+		response.setUsuarios(usersService.getAll());
+		return response;
+		
+	}
+	
 	
 }
+
