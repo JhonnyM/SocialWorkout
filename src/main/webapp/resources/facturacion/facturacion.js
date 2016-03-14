@@ -10,17 +10,26 @@ angular.module('myApp.facturacion', ['ngRoute','ui.grid', 'ui.bootstrap'])
 }])
 
 .controller('FacturacionCtrl', ['$scope','$http','$uibModal', function($scope,$http,$uibModal) {
+  $scope.usuarios = [];
   $scope.usuariosMorosos = [];
   $scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","objetivo": {}};
 
   $scope.read = function(){
-      $http.get('rest/protected/usuarios/all').then(function(response) {
+    $http.get('rest/protected/users/all').then(function(response) {
       console.log("response",response)
-      $scope.usuariosMorosos = response.data.usuariosMorosos;
-      console.log("$scope.clases", $scope.gridOptions)
-      }, function(){
-        alert("Error obteniendo la informacion de los usuarios morosos")
-      });
+      $scope.usuarios = response.data.usuarios;
+      for (var i = 0; i < $scope.usuarios.length; i++){
+        var testDate = new Date($scope.usuarios[i].fechaPago);
+        console.log(testDate);
+        if ($scope.dateFormatted(testDate)) {
+          $scope.usuariosMorosos.push($scope.usuarios[i]);
+        }else{
+          alert("No se encontraron usuarios morosos");
+        }
+      };
+    }, function(){
+      alert("Error obteniendo la informacion de los usuarios morosos")
+    });
   };
 
   $scope.read();
@@ -34,23 +43,28 @@ angular.module('myApp.facturacion', ['ngRoute','ui.grid', 'ui.bootstrap'])
         {field:'idUsuario',displayName:'ID'},
         {field:'nombre',displayName:'Nombre'},
         {field:'correoElectronico',displayName:'Email'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)">Pagar</button>'}
+        {field:'fechaPago',displayName:'Fecha de Pago'},
+        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.pagar(row)">Pagar</button>'}
     ]
   };
 
-  $scope.editRow = function(row){
-     var dialogOpts = {
-         backdrop:'static',
-         keyboard:false,
-         templateUrl:'resources/clases/edit-modal.html',
-         controller:'ClasesModalCtrl',
-         size:"lg",
-         windowClass:"modal",
-         resolve:{
-             clase:function(){return row.entity}
-         }
-     };
-     $uibModal.open(dialogOpts)
+  $scope.pagar = function(row){
+    alert("El mae ya pago");
   };
+
+  $scope.datePlusMonth = function(date){
+    return new Date(new Date(date).setMonth(date.getMonth()+1));
+  };
+
+  $scope.dateFormatted = function(date){
+    var todayDate = new Date()
+    var dateFromDb = new Date(date.getTime() + date.getTimezoneOffset()*60000);
+    var dateToCompare = new Date(todayDate.getTime() + todayDate.getTimezoneOffset()*60000);
+    if (dateFromDb.setHours(0,0,0,0) == dateToCompare.setHours(0,0,0,0)){
+      return true;
+    } else{
+      return false;
+    }
+  }
 
 }]);

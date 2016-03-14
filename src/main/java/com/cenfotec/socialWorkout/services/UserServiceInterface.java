@@ -12,6 +12,8 @@ public interface UserServiceInterface {
 	Boolean edit(UserRequest usuarioRequest);
 	List<UsuarioPOJO> getAllByTipoUsuario();
 	UsuarioPOJO getUsuarioInstructorById(int idUsuario);
+	List<UsuarioPOJO> getUsuariosMorosos();
+	public List<UsuarioPOJO> getAll();
 	
 
 }

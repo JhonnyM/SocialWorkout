@@ -129,14 +129,25 @@ public class UserController {
 		return ut;		
 	}
 
-	@RequestMapping(value ="/getUsuariosMorosos", method = RequestMethod.GET)
-	public UserResponse getUsuariosMorosos(@RequestBody UserRequest ur){	
+	@RequestMapping(value ="/usuariosMorosos", method = RequestMethod.GET)
+	public UserResponse usuariosMorosos(){	
 			
 		UserResponse us = new UserResponse();
 		us.setCode(200);
 		us.setCodeMessage("users fetch success");
-		us.setUsuarios(usersService.getAll(ur));
+		us.setUsuarios(usersService.getUsuariosMorosos());
 		return us;		
+	}
+	
+	@RequestMapping(value ="/all", method = RequestMethod.GET)
+	public UserResponse getAll(){	
+		
+		UserResponse response = new UserResponse();
+		response.setCode(200);
+		response.setCodeMessage("clase fetch success");
+		response.setUsuarios(usersService.getAll());
+		return response;
+		
 	}
 	
 	

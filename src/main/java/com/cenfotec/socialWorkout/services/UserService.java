@@ -1,8 +1,13 @@
 package com.cenfotec.socialWorkout.services;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -128,6 +133,25 @@ public class UserService implements UserServiceInterface{
 	    Usuario nUsuario = usersRepository.save(usuario);
 		return (nUsuario == null) ? false : true;
 	}
+
+	@Override
+	public List<UsuarioPOJO> getUsuariosMorosos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UsuarioPOJO> getAll() {
+		List<Usuario> usuarios = usersRepository.findAll();
+		List<UsuarioPOJO> dtos = new ArrayList<UsuarioPOJO>();
+		usuarios.stream().forEach(ta ->{
+			UsuarioPOJO dto = new UsuarioPOJO();
+			BeanUtils.copyProperties(ta, dto);
+			dtos.add(dto);
+			
+		});
+		return dtos;	
+	}
 	
 	
 /* este codigo se va a utilizar mas adelante para devolver la lista de rutinas de un usuario
@@ -143,5 +167,23 @@ public class UserService implements UserServiceInterface{
 				               .collect(Collectors.collectingAndThen(Collectors.toList(), 
 				                        p -> Utils.copyProperties(user, new UsuarioPOJO(p))));
 		return Arrays.asList(dtoU);
+	}*/
+
+	/*@Override
+	@Transactional
+	public List<UsuarioPOJO> getUsuariosMorosos() {
+		Date todayDate = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, 1);
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(cal.getTime());
+		// Output "Wed Sep 26 14:23:28 EST 2012"
+
+		Date formatted = format1.format(cal.getTime());
+		System.out.println(formatted);
+		// Output "2012-09-26"
+		
+	   	List<Usuario> users =  usersRepository.findByfechaPago(formatted);
+		return generateUserDtos(users);
 	}*/
 }
