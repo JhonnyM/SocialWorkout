@@ -55,15 +55,23 @@ public class UserService implements UserServiceInterface{
 		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJOInstructor);
 		return usuarioPOJOInstructor;
 	}
-	/*
+	
 	@Override
 	@Transactional
 	public UsuarioPOJO getUsuarioSession() {
+		UsuarioPOJO usuarioPOJOlogueado = new UsuarioPOJO();
+		Utils.copyProperties(usersRepository.findByidUsuario(Utils.getId()),usuarioPOJOlogueado);
+		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		Utils.copyProperties(usersRepository.findByidUsuario(Utils.getId()).getTipousuario(),tipoUsuarioPOJO);
 		UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
-		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJOInstructor);
-		return usuarioPOJOInstructor;
+		Utils.copyProperties(usersRepository.findByidUsuario(Utils.getId()).getUsuario(),usuarioPOJOInstructor);
+		usuarioPOJOlogueado.setTipoUsuarioPOJO(tipoUsuarioPOJO);
+		usuarioPOJOInstructor.setClave("");
+		usuarioPOJOlogueado.setUsuarioPOJOInstructor(usuarioPOJOInstructor);
+		usuarioPOJOlogueado.setClave("");
+		return usuarioPOJOlogueado;
 	}
-	*/
+	
 	private List<UsuarioPOJO> generateUserDtos(List<Usuario> users){
 		    List<UsuarioPOJO> usuariosPOJO = new ArrayList<UsuarioPOJO>();
 			users.stream().forEach(u -> {
@@ -76,7 +84,9 @@ public class UserService implements UserServiceInterface{
 				BeanUtils.copyProperties(u.getUsuario(), usuarioPOJOInstructor);		
 			}
 			usuarioPOJO.setTipoUsuarioPOJO(tipoUsuarioPOJO);
+			usuarioPOJOInstructor.setClave("");
 			usuarioPOJO.setUsuarioPOJOInstructor(usuarioPOJOInstructor);
+			usuarioPOJO.setClave("");
 			usuariosPOJO.add(usuarioPOJO);
 		});
 		

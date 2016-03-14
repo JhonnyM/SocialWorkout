@@ -126,15 +126,13 @@ public class UserController {
 		}
 		return ut;		
 	}
-	/*
-	@RequestMapping(value ="/usuario", method = RequestMethod.POST)
-	public UserResponse deleteTipo(){	
-			
-		UserResponse ut = new UserResponse();
-		if(usersService.(ur.getUser().getIdUsuario())) {
-			ut.setCode(200);
-			ut.setCodeMessage("user type created succesfully");
-		}
-		return ut;		
-	}*/
+	
+	@RequestMapping(value ="/usuarioSet", method = RequestMethod.POST)
+	public UserResponse getUsuarioLogueado(){	
+		UserResponse us = new UserResponse();
+		us.setCode(200);
+		us.setCodeMessage("users fetch success");
+		us.setUsuario(usersService.getUsuarioSession());
+		return us;		
+	}
 }

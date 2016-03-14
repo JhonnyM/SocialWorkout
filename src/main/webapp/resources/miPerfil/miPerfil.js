@@ -10,94 +10,83 @@ angular.module('myApp.miPerfil', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.
 }])
 
 .controller('miPerfilCtrl', ['$scope','$http','$uibModal','$route' , function($scope,$http,$uibModal, $route) {
-	 $scope.reload = function(){
-		 $route.reload();
-		};
-
-	$scope.tiposUsuario = [];
-	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","tiposusuario": {}};
-	$http.post('rest/protected/usuario/getAll',$scope.requestObject)
+	$scope.tiposUsuariosList = [];
+	$scope.instructorList = [];
+	$scope.requestObject = {};
+	$scope.usuarioForm = {};
+	$scope.requestObject.idTipoUsuario = "";
+	$scope.requestObject.idUsuarioInstructor = "";
+	$http.post('rest/protected/users/usuarioSet')
 		.success(function(response) {
-			console.log("response",response)
-			$scope.tiposUsuario = response.tipoUsuariosList;
-			console.log("$scope.tiposUsuario",$scope.gridOptions)
-			
-	});
-	$scope.gridOptions = { 
-	        data: 'tiposUsuario',
-	        enableSorting: true,
-	        enableFiltering: true,
-	        enableColumnResizing : true,
-	        enableGridMenu : true,
-	        showGridFooter : true,
-	        showColumnFooter : true,
-	        fastWatch : true,
-	        columnDefs: [
-	           {field:'descTipoUsuario', displayName:'Descripción',}, 
-	           {field:'Accion', displayName:'Acciones', cellEditableCondition: false, cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Editar</p>', width: '120'},
-	           {field:'Accion', displayName:'Acciones', cellTemplate: '<p ng-click="grid.appScope.borrar(row)">Borrar</p>',width: '120'}]
-	    };
-	
-		$scope.editRow = function(row){
-			console.log("me dieron click",row.entity);
-			var dialogOpts = {
-					backdrop:'static',
-					keyboard:false,
-					templateUrl:'resources/tiposUsuario/edit-modaltipousuario.html',
-					controller:'ModalControllerTiposUsuario',
-					size:"sm",
-					windowClass:"modal",
-					resolve:{
-						tiposUsuario:function(){return row.entity},
-			            route : $route,
-			        }
-			};
-			
-			$uibModal.open(dialogOpts)
-		};
-       
-		$scope.addRow = function(){
-			var dialogOpts = {
-					backdrop:'static',
-					keyboard:false,
-					templateUrl:'resources/tiposUsuario/edit-modaltipousuarionuevo.html',
-					controller:'ModalControllerTiposUsuario',
-					size:"sm",
-					windowClass:"modal",
-					resolve:{
-						tiposUsuario:{},
-			            route : $route,
-					}
-			};
-			
-			$uibModal.open(dialogOpts)
-		};
+			$scope.usuarioForm = response.usuario;
+			    console.log($scope.usuarioForm.fechaNac,"LOGUEADO");
+			    $scope.usuarioForm.fechaNac = new Date($scope.usuarioForm.fechaNac);
+			    $scope.usuarioForm.fechaIngreso  = new Date($scope.usuarioForm.fechaIngreso);
+			    $scope.usuarioForm.fechaPago  = new Date($scope.usuarioForm.fechaPago);
+			    console.log($scope.usuarioForm);
+			});	
+
+    $scope.init = function() {
+		 $http.post('rest/protected/tipousers/getAll')
+		 	.success(function(response) {
+			    $scope.tiposUsuariosList = response.tipoUsuariosList;
+			    $scope.requestObject.idTipoUsuario = $scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario;
+			    console.log($scope.requestObject.idTipoUsuario,"REQUEST");
+			});
+		 $http.post('rest/protected/users/getAllByTipoUsuario')
+			.success(function(response) {
+				    $scope.instructorList = response.usuarios;
+				    $scope.requestObject.idUsuarioInstructor = $scope.usuarioForm.usuarioPOJOInstructor.idUsuario;
+				    console.log($scope.requestObject.idUsuarioInstructor,"REQUEST-INSTRUCTOR");
+				});
 		
-			$scope.borrar = function (row){
-		    var data = {};
-		    data = {
-		        idTipoUsuario : row.entity.idTipoUsuario,
-		        descTipoUsuario : row.entity.descTipoUsuario
-		    };
-		    $http.post('rest/protected/tipousers/delete', {tipo:data} )
-		    .then(function (response){
-		    switch(response.data.code)
-		      {
-		        case 200:
-		          alert("Tipo de usuario eliminado")
-		          $scope.reload();
-		        break;
+	    };
+   
+	$scope.init();
 
-		        default:
-		          alert(response.data.codeMessage);
-		      }
-		      
-		     }, function (response){
+    $scope.PersonSchema = {
+			  "type": "object",
+			  properties: {
+				identificacion: { type: 'string', title: 'Identificación' },
+			    nombre: { type: 'string', title: 'Nombre' },
+			    apellidos: { type: 'string', title: 'Apellidos' },
+			    correoElectronico: { type: 'string', pattern: "^\\S+@\\S+$", title: 'Email', validationMessage: "La dirección de correo no es válida" },
+			    fechaNac: {title: 'Fecha de nacimiento' },
+			    fechaIngreso: {title: 'Fecha de ingreso'},
+			    fechaPago: {title: 'Fecha de pago'},
+			    poseeVehiculo: { type: 'boolean', title: 'Posee vehiculo' },
+			    estatus: { type: 'boolean', title: 'Habilitado' },
+			   },
+               "readonly":true
+			};
+    
+    	$scope.form = [
+		'identificacion',
+		{"title":"Nombre",
+		 "key" : "nombre",
+		 fieldHtmlClass: "text", 
+		},	
+		'apellidos',
+		'correoElectronico',
+		{"title":"Fecha de nacimiento",
+		 "key": "fechaNac",
+		 "type": "date",
+		},
+		{"title":"Fecha de Ingreso",
+		 "key": "fechaIngreso",
+	     "type": "date",
+		},
+		{"title":"Fecha de pago",
+		 "key": "fechaPago",
+		 "type": "date",
+	    },
+	   {"key": "poseeVehiculo",
+			 "type": "checkbox",
+		    },
+	    {"key": "estatus",
+			 "type": "checkbox",
+		    },
+	   ];
+	  
 
-		      console.log(response);
-		    }); 
-		    
-		  };
-		  
-		 
 }]);

@@ -25,6 +25,7 @@ public class LoginService implements LoginServiceInterface{
 			response.setCode(401);
 			response.setErrorMessage("Unauthorized User");
 		}else{
+			Utils.setId(loggedUser.getIdUsuario());
 			response.setCode(200);
 			response.setCodeMessage("User authorized");
 			

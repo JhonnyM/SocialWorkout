@@ -15,14 +15,10 @@
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="resources/bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css">
   <link rel="stylesheet" href="resources/bower_components/pickadate/lib/themes/classic.css">
   <link rel="stylesheet" href="resources/bower_components/pickadate/lib/themes/classic.date.css">
-=======
-  <link rel="stylesheet" href="resources/bower_components/angular-ui-grid/ui-grid.min.css"> 
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
   <link rel="stylesheet" href="resources/css/app.css">
   <link rel="stylesheet" href="resources/css/font.css" type="text/css" />
   <link rel="stylesheet" href="resources/css/app.css" type="text/css"  />
@@ -36,10 +32,7 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-<<<<<<< HEAD
 
-=======
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
 <div class="app app-header-fixed ">
   
 
@@ -48,11 +41,7 @@
       <!-- navbar header -->
       <div class="navbar-header bg-dark">
         <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
-<<<<<<< HEAD
           <i class="glyphicon glyphicon-cog"></i>
-=======
-          <i class="glyphicon glyphicon-cog"></i>
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
         </button>
         <button class="pull-right visible-xs" ui-toggle-class="off-screen" target=".app-aside" ui-scroll="app">
           <i class="glyphicon glyphicon-align-justify"></i>
@@ -60,11 +49,7 @@
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
           <i class="fa fa-btc"></i>
-<<<<<<< HEAD
           <img src="img/logo.png" alt="." class="hide">
-=======
-          <img src="resources/img/logo.png" alt="." class="hide">
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
           <span class="hidden-folded m-l-xs">Angulr</span>
         </a>
         <!-- / brand -->
@@ -246,11 +231,7 @@
                 <div class="list-group">
                   <a href class="list-group-item">
                     <span class="pull-left m-r thumb-sm">
-<<<<<<< HEAD
                       <img src="img/a0.jpg" alt="..." class="img-circle">
-=======
-                      <img src="resources/img/a0.jpg" alt="..." class="img-circle">
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
                     </span>
                     <span class="clear block m-b-none">
                       Use awesome animate.css<br>
@@ -275,11 +256,7 @@
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
               <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-<<<<<<< HEAD
                 <img src="img/a0.jpg" alt="...">
-=======
-                <img src="resources/img/a0.jpg" alt="...">
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
                 <i class="on md b-white bottom"></i>
               </span>
               <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
@@ -323,10 +300,6 @@
   </header>
   <!-- / header -->
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
     <!-- aside -->
   <aside id="aside" class="app-aside hidden-xs bg-dark">
       <div class="aside-wrap">
@@ -336,11 +309,7 @@
             <div class="dropdown wrapper">
               <a href="app.page.profile">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-<<<<<<< HEAD
                   <img src="img/a0.jpg" class="img-full" alt="...">
-=======
-                  <img src="resources/img/a0.jpg" class="img-full" alt="...">
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
                 </span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -382,11 +351,7 @@
               </ul>
               <!-- / dropdown -->
             </div>
-<<<<<<< HEAD
             <div class="line dk hidden-folded"></div>
-=======
-            <div class="line dk hidden-folded"></div>
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
           </div>
           <!-- / user -->
 
@@ -687,7 +652,6 @@
             </div>
             <div class="progress progress-xxs m-t-sm dk">
               <div class="progress-bar progress-bar-info" style="width: 60%;">
-<<<<<<< HEAD
               </div>
             </div>
             <div class="text-center-folded">
@@ -698,18 +662,6 @@
               <div class="progress-bar progress-bar-primary" style="width: 35%;">
               </div>
             </div>
-=======
-              </div>
-            </div>
-            <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">35%</span>
-              <span class="hidden-folded">Release</span>
-            </div>
-            <div class="progress progress-xxs m-t-sm dk">
-              <div class="progress-bar progress-bar-primary" style="width: 35%;">
-              </div>
-            </div>
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
           </div>
           <!-- / aside footer -->
         </div>
@@ -739,13 +691,12 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
+  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="resources/bower_components/angular/angular.js"></script>
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/bower_components/angular-ui-grid/ui-grid.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload-shim.min.js"></script>
   <script src="resources/non_bower_components/angular-file-upload.min.js"></script>
-<<<<<<< HEAD
   <script src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
   <script src='resources/bower_components/angular-ui-select/dist/select.js'></script>
@@ -755,20 +706,6 @@
   <script src="resources/bower_components/pickadate/lib/picker.date.js"></script>
   <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
   <script src="resources/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
-=======
-  <script src="resources/bower_components/pickadate/lib/themes/classic.css"></script>
-  <script src="resources/bower_components/pickadate/lib/themes/classic.date.css"></script>  
-  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
-  <script src="resources/bower_components/angular-schema-form-dynamic-select/angular-schema-form-dynamic-select.js"></script>
-  <script src="resources/bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="resources/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-  <script src="resources/bower_components/tv4/tv4.js"></script>
-  <script src="resources/bower_components/objectpath/lib/ObjectPath.js"></script>
-  <script src="resources/bower_components/angular-schema-form/dist/schema-form.min.js"></script>
-  <script src="resources/bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
-  <script src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-
->>>>>>> bb85c0b00db04ac7179a8a801ddeda2b4c5f9e0e
   <script src="resources/app.js"></script>
   <script src="resources/view1/view1.js"></script>
   <script src="resources/view2/view2.js"></script>
@@ -776,6 +713,7 @@
   <script src="resources/tiposUsuario/tiposUsuario.js"></script>
   <script src="resources/usuarios/modalController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
+  <script src="resources/miPerfil/miPerfil.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>

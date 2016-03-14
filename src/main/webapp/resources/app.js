@@ -9,6 +9,7 @@ angular.module('myApp', [
   'myApp.tiposUsuario',
   'myApp.version',
   'myApp.modalTipoUsuario',
+  'myApp.miPerfil',
   'myApp.modalu',
   'ui.grid',
   'angularFileUpload',
