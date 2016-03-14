@@ -28,22 +28,27 @@ angular.module('myApp.eventosModal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bo
 		'observaciones'
 	];
 	  
-	$scope.save = function() {
-		  
-	  $scope.data = {};
-
-	  data = {
-	  	idObjetivo : $scope.eventoForm.idObjetivo,
-		descObjetivo : $scope.eventoForm.descObjetivo
-	  };
-
-		console.log("$scope.data", $scope.data)
-		$http.post('rest/protected/objetivos/edit',data).success(
-			function(data, status, config) {
-			$scope.message = data;
-			}).error(
-			function(data, status, config) {
-			  alert("failure message: "+ JSON.stringify({data : data}));
-			});
+	$scope.save = function() {	  
+	  	$scope.data = {};
+	  	data = {
+	  		idEvento : $scope.eventoForm.idEvento,
+			descEvento : $scope.eventoForm.descEvento,
+			fechaHoraInicio: $scope.eventoForm.fechaHoraInicio,
+			fechaHoraFinal: $scope.eventoForm.fechaHoraFinal,
+			observaciones: $scope.eventoForm.fechaHoraFinal
 	  	};
+		$http.post('rest/protected/eventos/update',{evento: data})
+		.then(function (response){
+	      switch(response.data.code)
+	      {
+	        case 200:
+	          alert(response.data.codeMessage);
+	        break;
+	        default:
+	          alert(response.data.codeMessage);
+	      }
+	    }, function (response){
+	      alert("Error al guardar la información de el nuevo evento");
+	    });
+	};
 }]);
