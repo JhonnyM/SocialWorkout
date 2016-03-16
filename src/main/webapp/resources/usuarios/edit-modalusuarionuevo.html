@@ -1,0 +1,36 @@
+<div>
+<div class="modal-header">
+      <h3 class="modal-title">Editar usuario</h3>
+  </div>
+  <div class="modal-body">
+  	<form name="myForm">
+  	<label class='col-sm-3 control-label'>Tipo de usuario</label>
+  		 <select name="tipoUsuario" id="tipoUsuario" class="form-control"
+			ng-model="requestObject.idTipoUsuario"
+			ng-options="o.idTipoUsuario as o.descTipoUsuario for o in tiposUsuariosList"
+			required>
+		 </select> 
+	</form>
+    <form sf-schema="PersonSchema"  sf-form="form" sf-model="usuarioForm"></form>
+    <div>
+		  <label class='col-sx-6 control-label'>Instructor asignado</label>
+		  <select name="instructores" id="instructores" class="form-control"
+			ng-model="requestObject.idUsuarioInstructor"
+			ng-options="o.idUsuario as o.nombre for o in instructorList"
+			required>
+		  </select> 
+	</div>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-success" ng-click="create()">Save</button>
+      <button class="btn btn-warning" ng-click="$close()">Cancel</button>
+
+  </div>
+</div>
+
+                
+
+
+
+
+             

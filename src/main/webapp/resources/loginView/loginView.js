@@ -10,14 +10,14 @@ angular.module('myApp.loginView', ['ngRoute'])
 }])
 
 .controller('LoginViewCtrl', ['$scope','$http',function($scope,$http) {
-	$scope.user = {email:"gerardo@parajeles.com",password:"1234"};
+	$scope.user = {correoElectronico:"culloat@ucenfotec.ac.cr",clave:"12345"};
 	
 	$scope.checkLogin = function(){
 		
     	$http.post('rest/login/checkuser/',$scope.user).success(function (loginResponse) {
 
     		if(loginResponse.code == 200){
-    			var usuario = {"idUser":loginResponse.idUsuario,"firstName":loginResponse.firstName,"lastName":loginResponse.lastName};
+    			var usuario = {"idUsuario":loginResponse.idUsuario,"nombre":loginResponse.nombre,"apellido":loginResponse.apellidos};
     			var path = "/socialWorkout/app#/view1";
     			window.location.href = path;
     		}else{

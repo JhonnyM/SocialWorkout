@@ -2,32 +2,32 @@ package com.cenfotec.socialWorkout.contracts;
 
 public class LoginRequest {
 
-	private String email;
-	private String password;
+	private String correoElectronico;
+	private String clave;
 	
 	public LoginRequest() {
 		super();
 	}
 
-	public LoginRequest(String email, String password) {
+	public LoginRequest(String correoElectronico, String clave) {
 		super();
-		this.email = email;
-		this.password = password;
+		this.correoElectronico = correoElectronico;
+		this.clave = clave;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCorreoElectronico() {
+		return correoElectronico;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getClave() {
+		return clave;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 }
