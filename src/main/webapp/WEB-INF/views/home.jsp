@@ -714,6 +714,9 @@
   <script src="resources/usuarios/modalController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
   <script src="resources/miPerfil/miPerfil.js"></script>
+  <script src="resources/ocupacion/ocupacion.js"></script>
+  <script src="resources/lugarMedicion/lugarMedicion.js"></script>
+  <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
@@ -723,5 +726,13 @@
   <script src="resources/js/ui-nav.js"></script>
   <script src="resources/js/ui-toggle.js"></script>
   <script src="resources/js/ui-client.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.pie.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.resize.js"></script>
+  <script src="resources/libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
+  <script src="resources/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+  <script src="resources/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+  <script src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
+  <script src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
 </body>
 </html>

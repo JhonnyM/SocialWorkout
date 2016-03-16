@@ -13,7 +13,7 @@ import java.math.BigInteger;
 @NamedQuery(name="Ocupacionactualrutina.findAll", query="SELECT o FROM Ocupacionactualrutina o")
 public class Ocupacionactualrutina implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@Id
+    @Id
 	private int id;
 
 	@Column(name="OCUPACION_RUTINA")

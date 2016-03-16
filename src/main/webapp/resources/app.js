@@ -11,6 +11,9 @@ angular.module('myApp', [
   'myApp.modalTipoUsuario',
   'myApp.miPerfil',
   'myApp.modalu',
+  'myApp.lugarMedicion',
+  'myApp.modalm',
+  'myApp.ocupacion',
   'ui.grid',
   'angularFileUpload',
 ])

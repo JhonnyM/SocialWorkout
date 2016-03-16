@@ -18,7 +18,7 @@ public class Promediorutina implements Serializable {
 	private String dia;
 
 	private int hora;
-	@Id
+    @Id
 	private int id;
 
 	private int idRutina;

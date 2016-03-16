@@ -59,7 +59,6 @@ public class UserController {
 
 	@RequestMapping(value ="/ getAllByTipoUsuario", method = RequestMethod.POST)
 	public UserResponse getAllByTipoUsuario(){	
-			
 		UserResponse us = new UserResponse();
 		us.setCode(200);
 		us.setCodeMessage("users fetch success");

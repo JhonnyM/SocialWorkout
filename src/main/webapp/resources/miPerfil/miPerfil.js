@@ -27,19 +27,14 @@ angular.module('myApp.miPerfil', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.
 			});	
 
     $scope.init = function() {
-		 $http.post('rest/protected/tipousers/getAll')
-		 	.success(function(response) {
-			    $scope.tiposUsuariosList = response.tipoUsuariosList;
-			    $scope.requestObject.idTipoUsuario = $scope.usuarioForm.tipoUsuarioPOJO.idTipoUsuario;
-			    console.log($scope.requestObject.idTipoUsuario,"REQUEST");
-			});
+		 
 		 $http.post('rest/protected/users/getAllByTipoUsuario')
 			.success(function(response) {
 				    $scope.instructorList = response.usuarios;
 				    $scope.requestObject.idUsuarioInstructor = $scope.usuarioForm.usuarioPOJOInstructor.idUsuario;
 				    console.log($scope.requestObject.idUsuarioInstructor,"REQUEST-INSTRUCTOR");
 				});
-		
+
 	    };
    
 	$scope.init();

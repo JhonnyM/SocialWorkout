@@ -17,7 +17,7 @@ public class Promedioocupacion implements Serializable {
 	private String dia;
 
 	private int hora;
-	@Id
+    @Id
 	private int id;
 
 	private BigDecimal promedio;
