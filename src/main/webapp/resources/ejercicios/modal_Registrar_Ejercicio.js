@@ -3,8 +3,8 @@ angular.module('myApp.modal_Registrar_Ejercicio',
 
 .controller(
 		'modal_Registrar_EjercicioCtrl',
-		[ '$scope', '$http', '$uibModalInstance',
-				function($scope, $http, $uibModalInstance) {
+		[ '$scope', '$http', '$uibModalInstance','$route',
+				function($scope, $http, $uibModalInstance,$route) {
 					$scope.ejercicioSchema = {
 						"type" : "object",
 						properties : {

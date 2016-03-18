@@ -11,13 +11,10 @@ public class MaquinaPOJO {
 
 	private String descMaquina;
 
-	private int minutosXPersona;
-
-	private int personasXMaquina;
-
 	private List<MaquinahasejercicioPOJO> maquinahasejercicios;
 
 	public MaquinaPOJO() {
+		super();
 	}
 
 	public int getIdMaquina() {
@@ -42,22 +39,6 @@ public class MaquinaPOJO {
 
 	public void setDescMaquina(String descMaquina) {
 		this.descMaquina = descMaquina;
-	}
-
-	public int getMinutosXPersona() {
-		return this.minutosXPersona;
-	}
-
-	public void setMinutosXPersona(int minutosXPersona) {
-		this.minutosXPersona = minutosXPersona;
-	}
-
-	public int getPersonasXMaquina() {
-		return this.personasXMaquina;
-	}
-
-	public void setPersonasXMaquina(int personasXMaquina) {
-		this.personasXMaquina = personasXMaquina;
 	}
 
 	public List<MaquinahasejercicioPOJO> getMaquinahasejercicios() {

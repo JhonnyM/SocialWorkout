@@ -2,37 +2,39 @@ package com.cenfotec.socialWorkout.pojo;
 
 public class MaquinahasejercicioPOJO {
 
-	private int idEjercicioXMaquina;
+		private Integer idEjercicioXMaquina;
 
-	private EjercicioPOJO ejercicio;
+		private EjercicioPOJO ejercicioPOJO;
 
-	private MaquinaPOJO maquina;
+		private MaquinaPOJO maquinaPOJO;
 
-	public MaquinahasejercicioPOJO() {
+		public MaquinahasejercicioPOJO() {
+			super();
+		}
+
+		public int getIdEjercicioXMaquina() {
+			return this.idEjercicioXMaquina;
+		}
+
+		public void setIdEjercicioXMaquina(int idEjercicioXMaquina) {
+			this.idEjercicioXMaquina = idEjercicioXMaquina;
+		}
+
+		public EjercicioPOJO getEjercicioPOJO() {
+			return this.ejercicioPOJO;
+		}
+
+		public void setEjercicioPOJO(EjercicioPOJO ejercicioPOJO) {
+			this.ejercicioPOJO = ejercicioPOJO;
+		}
+
+		public MaquinaPOJO getMaquinaPOJO() {
+			return this.maquinaPOJO;
+		}
+
+		public void setMaquinaPOJO(MaquinaPOJO maquinaPOJO) {
+			this.maquinaPOJO = maquinaPOJO;
+		}
+
 	}
 
-	public int getIdEjercicioXMaquina() {
-		return this.idEjercicioXMaquina;
-	}
-
-	public void setIdEjercicioXMaquina(int idEjercicioXMaquina) {
-		this.idEjercicioXMaquina = idEjercicioXMaquina;
-	}
-
-	public EjercicioPOJO getEjercicio() {
-		return this.ejercicio;
-	}
-
-	public void setEjercicio(EjercicioPOJO ejercicio) {
-		this.ejercicio = ejercicio;
-	}
-
-	public MaquinaPOJO getMaquina() {
-		return this.maquina;
-	}
-
-	public void setMaquina(MaquinaPOJO maquina) {
-		this.maquina = maquina;
-	}
-
-}

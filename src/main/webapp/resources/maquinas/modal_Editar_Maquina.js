@@ -11,7 +11,8 @@ angular
 						'$http',
 						'$uibModalInstance',
 						'maquina',
-						function($scope, $http, $uibModalInstance, maquina) {
+						'$route',
+						function($scope, $http, $uibModalInstance, maquina,$route) {
 							$scope.maquinaSchema = {
 									"type" : "object",
 									properties : {
@@ -23,23 +24,18 @@ angular
 										cantidad : {
 											type : 'number',
 											title : 'Cantidad de máquinas'
-										},
-										personasXMaquina : {
-											type : 'number',
-											title : 'Cantidad de personas por máquina'
-										},
-										minutosXPersona : {
-											type : 'number',
-											title : 'Minutos por máquina'
 										}
 									}
 								};
+							
+							$scope.reload = function(){
+								 $route.reload();
+							};
 
 							$scope.maquinaForm = angular
 									.copy(maquina);
 
-							$scope.form = [ 'descMaquina', 'cantidad',
-											'personasXMaquina', 'minutosXPersona' ];
+							$scope.form = [ 'descMaquina', 'cantidad' ];
 
 							$scope.save = function() {
 
@@ -47,19 +43,17 @@ angular
 								data = {
 									idMaquina : $scope.maquinaForm.idMaquina,
 									descMaquina : $scope.maquinaForm.descMaquina,
-									cantidad : $scope.maquinaForm.cantidad,
-									personasXMaquina : $scope.maquinaForm.personasXMaquina,								
-									minutosXPersona : $scope.maquinaForm.minutosXPersona
+									cantidad : $scope.maquinaForm.cantidad
 								};
 								
 
 								console.log("$scope.data", $scope.data)
 								$http.post(
 										'rest/protected/Maquinas/edit',
-										data).success(
+										{maquina:data}).success(
 										function(data, status, config) {
 											$scope.message = data;
-											$uibModalInstance.close();		
+     										$scope.dismissModal = $scope.reload();	
 										}).error(
 										function(data, status, config) {
 											console.log("$scope.data",
@@ -69,5 +63,6 @@ angular
 														data : data
 													}));
 										});
+							    $uibModalInstance.close();
 							};
 						} ]);

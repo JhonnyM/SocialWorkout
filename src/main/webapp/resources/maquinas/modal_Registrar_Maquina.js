@@ -7,7 +7,8 @@ angular.module('myApp.modal_Registrar_Maquina',
 				'$scope',
 				'$http',
 				'$uibModalInstance',
-				function($scope, $http, $uibModalInstance) {
+				'$route',
+				function($scope, $http, $uibModalInstance,$route) {
 					$scope.maquinaSchema = {
 						"type" : "object",
 						properties : {
@@ -19,20 +20,16 @@ angular.module('myApp.modal_Registrar_Maquina',
 							cantidad : {
 								type : 'number',
 								title : 'Cantidad de máquinas'
-							},
-							personasXMaquina : {
-								type : 'number',
-								title : 'Cantidad de personas por máquina'
-							},
-							minutosXPersona : {
-								type : 'number',
-								title : 'Minutos por máquina'
 							}
 						}
 					};
 
-					$scope.form = [ 'descMaquina', 'cantidad',
-							'personasXMaquina', 'minutosXPersona' ];
+					$scope.reload = function(){
+						 $route.reload();
+					};
+
+					
+					$scope.form = [ 'descMaquina', 'cantidad' ];
 
 					$scope.save = function(event) {
 
@@ -40,16 +37,16 @@ angular.module('myApp.modal_Registrar_Maquina',
 
 						data = {
 							descMaquina : $scope.form.descMaquina,
-							cantidad : $scope.form.cantidad,
-							personasXMaquina : $scope.form.personasXMaquina,
-							minutosXPersona : $scope.form.minutosXPersona
+							cantidad : $scope.form.cantidad
 						};
 
 						console.log("$scope.data", $scope.data)
-						$http.post('rest/protected/Maquinas/create', data)
+						$http.post('rest/protected/Maquinas/create',
+								{maquina:data})
 								.success(function(data, status, config) {
 									$scope.message = data;
-									$uibModalInstance.close();		
+									$scope.dismissModal = $scope.reload();	
+	
 								}).error(
 										function(data, status, config) {
 											alert("failure message: "
@@ -57,5 +54,6 @@ angular.module('myApp.modal_Registrar_Maquina',
 														data : data
 													}));
 										});
+					    $uibModalInstance.close();
 					};
 				} ]);

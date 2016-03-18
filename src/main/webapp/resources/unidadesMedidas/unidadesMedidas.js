@@ -18,31 +18,45 @@ angular
 						'$scope',
 						'$http',
 						'$uibModal',
-						function($scope, $http, $uibModal) {
-							$scope.unidadesMedida = [];
+						'$route',
+						
+						function($scope, $http, $uibModal,$route) {
+							$scope.reload = function(){
+								 $route.reload();
+							};
+							$scope.unidadesMedidas = [];
 							$scope.requestObject = {
-								"idUnidadMedida" : 1,
-								"descUnidadMedida" : "",
-								"lugarmedicions" : []
+									"pageNumber" : 0,
+									"pageSize" : 0,
+									"sortBy" : [ "" ],
+									"searchColumn" : "string",
+									"searchTerm" : "",
+									"unidadMedida" : {}
+								};
+	
+							$scope.read = function() {
+								$http
+										.get('rest/protected/UnidadesMedidas/getAll')
+										.then(
+												function(response) {
+
+													console.log("response",
+															response)
+													$scope.unidadesMedidas = response.data.unidadesMedidas;
+													console
+															.log(
+																	"$scope.unidadesMedidas",
+																	$scope.gridOptions)
+												},
+												function() {
+													alert("Error obteniendo la informacion de las unidades de medida")
+												});
 							};
 
-							$http
-									.post(
-											'rest/protected/UnidadesMedidas/getAll',
-											$scope.requestObject)
-									.success(
-											function(response) {
-												console.log("response",
-														response)
-												$scope.unidadesMedida = response.unidadesMedidas;
-												console
-														.log(
-																"$scope.unidadesMedida",
-																$scope.gridOptions)
-											});
+
 
 							$scope.gridOptions = {
-								data : 'unidadesMedida',
+								data : 'unidadesMedidas',
 								showGroupPanel : true,
 								enableSorting : true,
 								enableFiltering : true,
@@ -68,6 +82,8 @@ angular
 										} ]
 							};
 
+							$scope.read();
+							
 							$scope.edit = function(row) {
 								console.log("me dieron click", row.entity);
 								var dialogOpts = {
@@ -78,9 +94,10 @@ angular
 									size : "sm",
 									windowClass : "modal",
 									resolve : {
-										unidadMedida : function() {
+									unidadMedida : function() {
 											return row.entity
-										}
+									},
+									route : $route
 									}
 								};
 								$uibModal.open(dialogOpts)
@@ -93,7 +110,10 @@ angular
 									templateUrl : 'resources/unidadesMedidas/modal_Registrar_Unidad_Medida.html',
 									controller : 'modal_Registrar_Unidad_MedidaCtrl',
 									size : "sm",
-									windowClass : "modal"
+									windowClass : "modal",
+									resolve:{
+										route : $route
+									}
 								};
 
 								$uibModal.open(dialogOpts)
@@ -122,11 +142,9 @@ angular
 
 													switch (response.data.code) {
 													case 200:
-														alert("Unidad de medida eliminada.")
+														$scope.reload();
 														break;
-
 													default:
-														alert(response.data.codeMessage);
 													}
 
 												}, function(response) {

@@ -2,6 +2,10 @@ package com.cenfotec.socialWorkout.ejb;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import java.util.List;
 
 
@@ -11,19 +15,21 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Maquinahasejercicio.findAll", query="SELECT m FROM Maquinahasejercicio m")
+
 public class Maquinahasejercicio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idEjercicioXMaquina;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer idEjercicioXMaquina;
 
 	//bi-directional many-to-one association to Ejercicio
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idEjercicio")
 	private Ejercicio ejercicio;
 
 	//bi-directional many-to-one association to Maquina
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idMaquina")
 	private Maquina maquina;
 
@@ -34,11 +40,11 @@ public class Maquinahasejercicio implements Serializable {
 	public Maquinahasejercicio() {
 	}
 
-	public int getIdEjercicioXMaquina() {
+	public Integer getIdEjercicioXMaquina() {
 		return this.idEjercicioXMaquina;
 	}
 
-	public void setIdEjercicioXMaquina(int idEjercicioXMaquina) {
+	public void setIdEjercicioXMaquina(Integer idEjercicioXMaquina) {
 		this.idEjercicioXMaquina = idEjercicioXMaquina;
 	}
 

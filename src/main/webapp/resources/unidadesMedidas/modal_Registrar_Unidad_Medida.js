@@ -8,7 +8,8 @@ angular
 						'$scope',
 						'$http',
 						'$uibModalInstance',
-						function($scope, $http, $uibModalInstance) {
+						'$route',
+						function($scope, $http, $uibModalInstance,$route) {
 							$scope.unidadMedidaSchema = {
 								"type" : "object",
 								properties : {
@@ -19,6 +20,11 @@ angular
 								}
 							};
 
+							$scope.reload = function(){
+								 $route.reload();
+							};
+
+							
 							$scope.form = [ 'descUnidadMedida' ];
 
 							$scope.save = function() {
@@ -34,7 +40,7 @@ angular
 										{unidadMedida:data}).success(
 										function(data, status, config) {
 											$scope.message = data;
-											$uibModalInstance.close();
+     										$scope.dismissModal = $scope.reload();	
 										}).error(
 										function(data, status, config) {
 											alert("failure message: "
@@ -42,5 +48,6 @@ angular
 														data : data
 													}));
 										});
+							    $uibModalInstance.close();
 							};
 						} ]);

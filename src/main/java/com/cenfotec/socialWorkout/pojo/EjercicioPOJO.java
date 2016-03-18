@@ -2,6 +2,7 @@ package com.cenfotec.socialWorkout.pojo;
 
 import java.util.List;
 import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EjercicioPOJO {
 
@@ -11,6 +12,10 @@ public class EjercicioPOJO {
 
 	private List<MaquinahasejercicioPOJO> maquinahasejercicios;
 
+	public EjercicioPOJO(){
+		super();
+	}
+	
 	public int getIdEjercicio() {
 		return this.idEjercicio;
 	}

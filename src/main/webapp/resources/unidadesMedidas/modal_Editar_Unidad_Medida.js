@@ -11,7 +11,8 @@ angular
 						'$http',
 						'$uibModalInstance',
 						'unidadMedida',
-						function($scope, $http, $uibModalInstance, unidadMedida) {
+						'$route',
+						function($scope, $http, $uibModalInstance, unidadMedida,$route) {
 							$scope.unidadMedidaSchema = {
 								"type" : "object",
 								properties : {
@@ -20,6 +21,10 @@ angular
 										title : 'Descripción'
 									}
 								}
+							};
+							
+							$scope.reload = function(){
+								 $route.reload();
 							};
 
 							$scope.unidadMedidaForm = angular
@@ -41,7 +46,7 @@ angular
 										{unidadMedida:data}).success(
 										function(data, status, config) {
 											$scope.message = data;
-											$uibModalInstance.close();											
+     										$scope.dismissModal = $scope.reload();									
 										}).error(
 										function(data, status, config) {
 											console.log("$scope.data",
@@ -51,5 +56,7 @@ angular
 														data : data
 													}));
 										});
+
+							    $uibModalInstance.close();
 							};
 						} ]);

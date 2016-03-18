@@ -17,7 +17,14 @@ angular
 						'$scope',
 						'$http',
 						'$uibModal',
-						function($scope, $http, $uibModal) {
+						'$route',
+						function($scope, $http, $uibModal,$route) {
+						
+							$scope.reload = function() {
+								$route.reload();
+							};
+
+							
 							$scope.ejercicios = [];
 							$scope.requestObject = {
 								"pageNumber" : 0,
@@ -85,7 +92,10 @@ angular
 									templateUrl : 'resources/ejercicios/modal_Registrar_Ejercicio.html',
 									controller : 'modal_Registrar_EjercicioCtrl',
 									size : "sm",
-									windowClass : "modal"
+									windowClass : "modal",
+									resolve : {
+										route : $route
+									}									
 								};
 
 								$uibModal.open(dialogOpts)
@@ -103,8 +113,8 @@ angular
 									windowClass : "modal",
 									resolve : {
 										ejercicio : function() {
-											return row.entity
-										}
+											return row.entity},
+											route : $route	
 									}
 								};
 
@@ -127,11 +137,11 @@ angular
 
 									switch (response.data.code) {
 									case 200:
-										alert("Ejercicio eliminada.")
+										$scope.reload();
 										break;
 
 									default:
-										alert(response.data.codeMessage);
+										$scope.reload();
 									}
 
 								}, function(response) {

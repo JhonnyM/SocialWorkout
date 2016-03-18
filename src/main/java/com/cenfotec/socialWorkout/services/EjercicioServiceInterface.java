@@ -13,5 +13,6 @@ public interface EjercicioServiceInterface {
 	Boolean saveEjercicio(EjercicioRequest er);
 	boolean exists(Integer idEjercicio);
 	boolean delete(int idEjercicio);
-
+	boolean setMaquinaEjercicio(EjercicioRequest er);
+	
 }

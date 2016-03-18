@@ -11,9 +11,11 @@ import com.cenfotec.socialWorkout.contracts.EjercicioRequest;
 import com.cenfotec.socialWorkout.contracts.EjercicioResponse;
 import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
+import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
 import com.cenfotec.socialWorkout.ejb.Ejercicio;
 import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.services.EjercicioServiceInterface;
+import com.cenfotec.socialWorkout.services.MaquinahasejercicioServiceInterface;
 
 @RestController
 @RequestMapping(value = "rest/protected/Ejercicios")
@@ -21,6 +23,7 @@ public class EjercicioController {
 
 	@Autowired
 	private EjercicioServiceInterface ejercicioService;
+	
 	@Autowired
 	private HttpServletRequest request;
 
@@ -87,5 +90,19 @@ public class EjercicioController {
 		return ere;
 
 	}
+	
+	@RequestMapping(value = "/assignMachine", method = RequestMethod.POST)
+	public EjercicioResponse assignMachine(@RequestBody EjercicioRequest er) {
 
+		EjercicioResponse ere = new EjercicioResponse();
+		Boolean state = ejercicioService.setMaquinaEjercicio(er);
+
+		if (state) {
+			ere.setCode(200);
+			ere.setCodeMessage("Ejercicio creado correctamente.");
+		}
+		return ere;
+
+	}
+	
 }

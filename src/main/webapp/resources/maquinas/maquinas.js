@@ -17,25 +17,40 @@ angular
 						'$scope',
 						'$http',
 						'$uibModal',
-						function($scope, $http, $uibModal) {
-							$scope.maquinas = [];
-							$scope.requestObject = {
-								"idMaquina" : 0,
-								"cantidad" : 0,
-								"descMaquina" : "",
-								"minutosXPersona" : 0,
-								"personasXMaquina" : 0,
-								"maquinahasejercicios" : []
+						'$route',
+						function($scope, $http, $uibModal, $route) {
+
+							$scope.reload = function() {
+								$route.reload();
 							};
 
-							$http.post('rest/protected/Maquinas/getAll',
-									$scope.requestObject).success(
-									function(response) {
-										console.log("response", response)
-										$scope.maquinas = response.maquinas;
-										console.log("$scope.maquinas",
-												$scope.gridOptions)
-									});
+							$scope.maquinas = [];
+							$scope.requestObject = {
+								"pageNumber" : 0,
+								"pageSize" : 0,
+								"sortBy" : [ "" ],
+								"searchColumn" : "string",
+								"searchTerm" : "",
+								"maquina" : {}
+							};
+
+							$scope.read = function() {
+								$http
+										.get('rest/protected/Maquinas/getAll')
+										.then(
+												function(response) {
+
+													console.log("response",
+															response)
+													$scope.maquinas = response.data.maquinas;
+													console.log(
+															"$scope.maquinas",
+															$scope.gridOptions)
+												},
+												function() {
+													alert("Error obteniendo la informacion de las unidades de medida")
+												});
+							};
 
 							$scope.gridOptions = {
 								data : 'maquinas',
@@ -53,14 +68,6 @@ angular
 											displayName : 'Cantidad de máquinas'
 										},
 										{
-											field : 'minutosXPersona',
-											displayName : 'Minutos de uso'
-										},
-										{
-											field : 'personasXMaquina',
-											displayName : 'Personas por máquina'
-										},
-										{
 											field : 'Acciones',
 											displayName : 'Acciones',
 											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Edit</p>'
@@ -72,6 +79,8 @@ angular
 										} ]
 							};
 
+							$scope.read();
+
 							$scope.register = function() {
 								var dialogOpts = {
 									backdrop : 'static',
@@ -79,7 +88,10 @@ angular
 									templateUrl : 'resources/maquinas/modal_Registrar_Maquina.html',
 									controller : 'modal_Registrar_MaquinaCtrl',
 									size : "sm",
-									windowClass : "modal"
+									windowClass : "modal",
+									resolve : {
+										route : $route
+									}
 								};
 
 								$uibModal.open(dialogOpts)
@@ -98,7 +110,8 @@ angular
 									resolve : {
 										maquina : function() {
 											return row.entity
-										}
+										},
+										route : $route
 									}
 								};
 
@@ -112,9 +125,7 @@ angular
 								data = {
 									idMaquina : row.entity.idMaquina,
 									descMaquina : row.entity.descMaquina,
-									cantidad : row.entity.cantidad,
-									personasXMaquina : row.entity.personasXMaquina,
-									minutosXPersona : row.entity.minutosXPersona
+									cantidad : row.entity.cantidad
 								};
 
 								$http.post("rest/protected/Maquinas/delete", {
@@ -123,11 +134,11 @@ angular
 
 									switch (response.data.code) {
 									case 200:
-										alert("Máquina eliminada.")
+										$scope.reload();
 										break;
 
 									default:
-										alert(response.data.codeMessage);
+
 									}
 
 								}, function(response) {
