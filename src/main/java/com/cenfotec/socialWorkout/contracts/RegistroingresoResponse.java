@@ -12,19 +12,19 @@ public class RegistroingresoResponse extends BaseResponse {
 		super();
 	}
 	
-	public List<RegistroingresoPOJO> getClases() {
+	public List<RegistroingresoPOJO> getRegistros() {
 		return registros;
 	}
 
-	public void setClases(List<RegistroingresoPOJO> registros) {
+	public void setRegistro(List<RegistroingresoPOJO> registros) {
 		this.registros = registros;
 	}
 
-	public RegistroingresoPOJO getClase() {
+	public RegistroingresoPOJO getRegistro() {
 		return registro;
 	}
 
-	public void setClase(RegistroingresoPOJO registro) {
+	public void setRegistro(RegistroingresoPOJO registro) {
 		this.registro = registro;
 	}
 

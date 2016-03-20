@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.RegistroingresoRequest;
 import com.cenfotec.socialWorkout.ejb.Registroingreso;
+import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
+import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.RegistroingresoRepository;
+import com.cenfotec.socialWorkout.repositories.UserRepository;
 
 
 
@@ -19,26 +22,22 @@ import com.cenfotec.socialWorkout.repositories.RegistroingresoRepository;
 public class RegistroingresoService implements RegistroingresoServiceInterface{
 
 	@Autowired private RegistroingresoRepository registrarIngreso;
-	
-	@Override
-	public RegistroingresoPOJO getById(RegistroingresoRequest request) {
-		RegistroingresoPOJO ri = new RegistroingresoPOJO();
-		Registroingreso registro = registrarIngreso.findOne(request.getRegistro().getIdRegistroIngreso());
-		
-		if(registro != null)
-		{
-			BeanUtils.copyProperties(registro, ri);
-		}
-		return ri;
-	}
+	@Autowired private UserRepository usuarioRepository;
 
 	@Override
 	public boolean save(RegistroingresoRequest request){
-		RegistroingresoPOJO eventoDTO = request.getRegistro();
+
+		RegistroingresoPOJO registroDTO = request.getRegistro();
 		Registroingreso registro = new Registroingreso();
-		BeanUtils.copyProperties(eventoDTO, registro);
-		Registroingreso ri = registrarIngreso.save(registro);
-		return !(ri == null);
+		Usuario usuario = usuarioRepository.findOne(request.getRegistro().getUsuario1().getIdUsuario());
+		Usuario instructor = usuarioRepository.findOne(request.getRegistro().getUsuario2().getIdUsuario());
+		if (usuario != null){
+			BeanUtils.copyProperties(registroDTO, registro);
+			Registroingreso ri = registrarIngreso.save(registro);
+			return !(ri == null);
+		}else{
+			return false;
+		}
 		
 	}
 	

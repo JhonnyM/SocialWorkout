@@ -8,8 +8,8 @@ public class RegistroingresoPOJO {
 	private int idRegistroIngreso;
 	private Date fechaHoraIngreso;
 	private Date horaSalida;
-	private UsuarioPOJO usuario1;
-	private UsuarioPOJO usuario2;
+	private UsuarioPOJO usuario1; //usuario que se logea
+	private UsuarioPOJO usuario2; // instructor que se le asigna
 	private PlantillarutinamaestroPOJO plantillarutinamaestro;
 
 	public RegistroingresoPOJO() {

@@ -134,10 +134,20 @@ public class UserController {
 		
 		UserResponse response = new UserResponse();
 		response.setCode(200);
-		response.setCodeMessage("clase fetch success");
+		response.setCodeMessage("User fetch success");
 		response.setUsuarios(usersService.getAll());
 		return response;
 		
+	}
+
+	@RequestMapping(value ="/ getInstructores", method = RequestMethod.GET)
+	public UserResponse getInstructores(){	
+			
+		UserResponse us = new UserResponse();
+		us.setCode(200);
+		us.setCodeMessage("users fetch success");
+		us.setUsuarios(usersService.getInstructores());
+		return us;		
 	}
 	
 	
