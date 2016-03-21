@@ -3,6 +3,7 @@ package com.cenfotec.socialWorkout.ejb;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 
 /**
@@ -14,16 +15,25 @@ import java.math.BigDecimal;
 public class Promedioocupacion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	private BigInteger capacidad;
+
 	private String dia;
 
 	private int hora;
-	
-    @Id
+   @Id
 	private int id;
 
 	private BigDecimal promedio;
 
 	public Promedioocupacion() {
+	}
+
+	public BigInteger getCapacidad() {
+		return this.capacidad;
+	}
+
+	public void setCapacidad(BigInteger capacidad) {
+		this.capacidad = capacidad;
 	}
 
 	public String getDia() {

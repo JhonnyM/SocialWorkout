@@ -14,6 +14,7 @@ angular.module('myApp', [
   'myApp.lugarMedicion',
   'myApp.modalm',
   'myApp.ocupacion',
+  'myApp.home',
   'ui.grid',
   'angularFileUpload',
 ])

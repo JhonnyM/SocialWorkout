@@ -11,6 +11,13 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 
 .controller('miOcupacionCtrl', ['$scope','$http','$uibModal','$route' , function($scope,$http,$uibModal, $route) {
 
+	
+	$scope.usuario = {};
+	 $http.post('rest/protected/users/usuarioSet')
+		.success(function(response) {
+			$scope.usuario = response.usuario;
+			 console.log(response.usuario,"USUARIO");
+		});
 	$scope.ocupacion = {};
 	$scope.capacidad = {};
 		 $http.post('rest/protected/ocupacionActual/getAll')
@@ -27,16 +34,38 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 					$scope.capacidadParqueo = response.ocupacion[0].capacidad;
 					   console.log(response,"OCUPACION ACTUAL PARQUEO");
 	             });
-	 $scope.PromedioOcupacion = {};
-	 		 $http.post('rest/protected/promedioOcupacion/getDia')
+	 $scope.promedioOcupacion = {};
+	 $scope.horaVisita = {};
+	 $scope.ocupaciones = {};
+	
+	 		 $http.post('rest/protected/promedioOcupacion/getDiaHoraUsuario')
 				.success(function(response) {
-					$scope.PromedioOcupacion = response.ocupacion[0].ocupacionParqueo;
-					console.log(response,"PRUBAMORTAL");
-	             });		 
+					console.log(response.nulo,"AQUI VERIFICA NULO");
+					if(response.nulo==0){
+						$scope.promedioOcupacion = response.ocupacion[0].promedio;
+						 $scope.horaVisita = response.ocupacion[0].hora;
+						 $scope.ocupaciones = response.ocupacion;
+						console.log(response,"PRUeBAMORTAL");
+					}else{
+						$scope.promedioOcupacion = "";
+					}
+				});		 
 	 $scope.PromedioOcupacionParqueo = {};
 	 		 $http.post('rest/protected/promedioOcupacionParqueo/getAll')
 				.success(function(response) {
 					$scope.PromedioOcupacionParqueo = response.ocupacion[0].ocupacionParqueo;
 					console.log(response,"PromedioOcupacionParqueo");
-	             });     
+	             });
+	 		 
+	 $scope.promedioTotal = {};		 
+	 		$http.post('rest/protected/promedioOcupacion/getDiaTotal')
+			.success(function(response) {
+				console.log(response.nulo,"AQUI VERIFICA PROMEDIO TOTAL");
+				if(response.nulo==0){
+					$scope.promedioTotal = response.ocupacion;
+					console.log(response,"promedioTotal");
+				}else{
+					$scope.promedioTotal = "";
+				}
+			});		
 }]);

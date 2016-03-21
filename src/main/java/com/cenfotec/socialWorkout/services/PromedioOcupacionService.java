@@ -44,5 +44,11 @@ public class PromedioOcupacionService implements PromedioOcupacionServiceInterfa
 		return generatePromedioOcupacionDtos(ocupacion);
 	}
 
+	@Override
+	public List<PromedioOcupacionPOJO> getDiaTotal(String dia) {
+		List<Promedioocupacion> ocupacion =  promedioOcupacionRepository.findByDia(dia);
+		return generatePromedioOcupacionDtos(ocupacion);
+	}
+
 	
 }

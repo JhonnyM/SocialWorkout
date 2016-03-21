@@ -3,9 +3,15 @@ package com.cenfotec.socialWorkout.pojo;
 import java.sql.Time;
 import java.util.Date;
 
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
+import com.cenfotec.socialWorkout.ejb.Usuario;
 
 public class RutinaHasUsuarioPOJO {
 
@@ -15,8 +21,8 @@ public class RutinaHasUsuarioPOJO {
 	private Date fechaInicio;
 	private Date fechaVencimiento;
 	private Time hora;
-	private int idRutina;
-	private int idUsuario;
+	private Plantillarutinamaestro plantillarutinamaestro;
+	private Usuario usuario;
 
 	
 	public RutinaHasUsuarioPOJO() {
@@ -74,23 +80,13 @@ public class RutinaHasUsuarioPOJO {
 	}
 
 
-	public int getIdRutina() {
-		return idRutina;
+	public Plantillarutinamaestro getPlantillarutinamaestro() {
+		return plantillarutinamaestro;
 	}
 
 
-	public void setIdRutina(int idRutina) {
-		this.idRutina = idRutina;
-	}
-
-
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setPlantillarutinamaestro(Plantillarutinamaestro plantillarutinamaestro) {
+		this.plantillarutinamaestro = plantillarutinamaestro;
 	}
 
 }
