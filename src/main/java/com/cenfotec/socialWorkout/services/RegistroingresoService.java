@@ -28,17 +28,22 @@ public class RegistroingresoService implements RegistroingresoServiceInterface{
 	public boolean save(RegistroingresoRequest request){
 
 		RegistroingresoPOJO registroDTO = request.getRegistro();
+		UsuarioPOJO usuarioDTO = request.getRegistro().getUsuario1(); 
+		UsuarioPOJO InstructorDTO = request.getRegistro().getUsuario2(); 
 		Registroingreso registro = new Registroingreso();
-		Usuario usuario = usuarioRepository.findOne(request.getRegistro().getUsuario1().getIdUsuario());
-		Usuario instructor = usuarioRepository.findOne(request.getRegistro().getUsuario2().getIdUsuario());
-		if (usuario != null){
-			BeanUtils.copyProperties(registroDTO, registro);
-			Registroingreso ri = registrarIngreso.save(registro);
-			return !(ri == null);
-		}else{
-			return false;
-		}
+		Usuario usuario = new Usuario();
+		Usuario instructor = new Usuario();
+		registroDTO.setUsuario1(usuarioDTO);
+		registroDTO.setUsuario2(InstructorDTO);
+		BeanUtils.copyProperties(registroDTO, registro);
+		BeanUtils.copyProperties(usuarioDTO, usuario);
+		BeanUtils.copyProperties(InstructorDTO, instructor);
+		registro.setUsuario1(usuario);
+		registro.setUsuario2(instructor);
+		System.out.println(registro);
+		Registroingreso ri = registrarIngreso.save(registro);
 		
+		return !(ri == null);
 	}
 	
 	@Override

@@ -140,7 +140,7 @@ public class UserController {
 		
 	}
 
-	@RequestMapping(value ="/ getInstructores", method = RequestMethod.GET)
+	@RequestMapping(value ="/getInstructores", method = RequestMethod.GET)
 	public UserResponse getInstructores(){	
 			
 		UserResponse us = new UserResponse();
