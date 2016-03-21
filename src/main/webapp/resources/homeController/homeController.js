@@ -14,14 +14,24 @@ angular.module('myApp.home', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.boot
 	
 	$scope.usuario = {};
 	$scope.descTipoUsuario = {};
-	$scope.visorCliente = {};
+	$scope.mostrarCliente = false;
+	$scope.mostrarInstructor = false;
+	$scope.mostrarAdministrador = false;
 	 $http.post('rest/protected/users/usuarioSet')
 		.success(function(response) {
 			$scope.usuario = response.usuario;
 			$scope.descTipoUsuario = response.usuario.tipoUsuarioPOJO.descTipoUsuario;
 			if ($scope.descTipoUsuario == "Cliente"){
-				$scope.visorCliente = "false"
+				$scope.mostrarCliente = true
 			}
-			 console.log(response.usuario+$scope.visorCliente,"USUARIO");
+			if ($scope.descTipoUsuario == "Instructor"){
+				$scope.mostrarInstructor = true
+			}
+			if ($scope.descTipoUsuario == "Administrador"){
+				$scope.mostrarAdministrador = true
+			}
+			console.log($scope.mostrarCliente,"CLIENTE"); 
+			console.log($scope.mostrarInstructor,"INSTRUCTOR"); 
+			console.log($scope.mostrarAdministrador,"ADMINISTRADOR"); 
 		});
 }]);

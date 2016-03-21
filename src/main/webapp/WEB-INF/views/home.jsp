@@ -29,7 +29,7 @@
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body>
+<body ng-controller="homeCtrl">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -56,7 +56,7 @@
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only" ng-controller="homeCtrl">
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only" >
         <!-- buttons -->
         <!-- / search form -->
 
@@ -108,9 +108,9 @@
 
 
     <!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
+  <aside id="aside" class="app-aside hidden-xs bg-dark" >
       <div class="aside-wrap">
-        <div class="navi-wrap">
+        <div class="navi-wrap" >
           <!-- user -->
           <img src="resources/img/fit.jpg" class="img-full" alt="...">
           <div class="clearfix hidden-xs text-center hide" id="aside-user">
@@ -164,17 +164,45 @@
           <!-- / user -->
 
           <!-- nav -->
+          
           <nav ui-nav class="navi clearfix" >
-            <ul class="nav" ng-if = "visorCliente">
+            <ul class="nav" >
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Navigation</span>
+                
               </li>
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Opciones</span>
               </li>
-              <li>
+              
+              <li ng-if="mostrarCliente">
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">2</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span>Estad&#237sticas</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                  </li>
+                  <li>
+                    <a href="app#/ocupacion">
+                      <span>Ocupaci&#243n</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Mis rutinas</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li ng-if='mostrarCliente'>
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -182,7 +210,40 @@
                   </span>
                   <b class="badge bg-info pull-right">3</b>
                   <i class="glyphicon glyphicon-th"></i>
-                <span>Gestiones</span>
+                <span>Mi Perfil</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                   
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Datos generales</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Historial de medidas</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_fullwidth.html">
+                      <span>Historial de asistencia</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              
+              <li ng-if='false'>
+                <a href class="auto" >      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span >Gestiones{{mostrarInstructor}}</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -207,7 +268,7 @@
                   </li>      
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -266,7 +327,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -298,7 +359,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -326,6 +387,7 @@
               <li class="line dk hidden-folded"></li> 
             </ul>
           </nav>
+          
           <!-- nav -->
           <!-- / aside footer -->
         </div>

@@ -34,26 +34,21 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 					$scope.capacidadParqueo = response.ocupacion[0].capacidad;
 					   console.log(response,"OCUPACION ACTUAL PARQUEO");
 	             });
-	 $scope.promedioOcupacion = {};
-	 $scope.horaVisita = {};
 	 $scope.ocupaciones = {};
-	
 	 		 $http.post('rest/protected/promedioOcupacion/getDiaHoraUsuario')
 				.success(function(response) {
 					console.log(response.nulo,"AQUI VERIFICA NULO");
 					if(response.nulo==0){
-						$scope.promedioOcupacion = response.ocupacion[0].promedio;
-						 $scope.horaVisita = response.ocupacion[0].hora;
-						 $scope.ocupaciones = response.ocupacion;
+						$scope.ocupaciones = response.ocupacion;
 						console.log(response,"PRUeBAMORTAL");
 					}else{
 						$scope.promedioOcupacion = "";
 					}
 				});		 
-	 $scope.PromedioOcupacionParqueo = {};
-	 		 $http.post('rest/protected/promedioOcupacionParqueo/getAll')
+	 $scope.ocupacionesParqueo = {};
+	 		 $http.post('rest/protected/promedioOcupacionParqueo/getDiaHoraUsuario')
 				.success(function(response) {
-					$scope.PromedioOcupacionParqueo = response.ocupacion[0].ocupacionParqueo;
+					$scope.ocupacionesParqueo = response.ocupacion;
 					console.log(response,"PromedioOcupacionParqueo");
 	             });
 	 		 
@@ -68,4 +63,16 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 					$scope.promedioTotal = "";
 				}
 			});		
+	$scope.promedioTotalParqueo = {};		 
+	$http.post('rest/protected/promedioOcupacionParqueo/getDiaTotal')
+	.success(function(response) {
+		console.log(response.nulo,"AQUI VERIFICA PROMEDIO TOTAL PARQUEO");
+		if(response.nulo==0){
+			$scope.promedioTotalParqueo = response.ocupacion;
+			console.log(response,"promedioTotalParqueo");
+		}else{
+			$scope.promedioTotalParqueo = "";
+		}
+	});				
+	 		
 }]);

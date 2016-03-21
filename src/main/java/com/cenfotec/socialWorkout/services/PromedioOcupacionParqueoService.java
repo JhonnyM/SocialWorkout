@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.cenfotec.socialWorkout.pojo.PromedioOcupacionPOJO;
 import com.cenfotec.socialWorkout.pojo.PromedioOcupacionParqueoPOJO;
 import com.cenfotec.socialWorkout.repositories.PromedioOcupacionParqueoRepository;
+import com.cenfotec.socialWorkout.ejb.Promedioocupacion;
 import com.cenfotec.socialWorkout.ejb.Promedioocupacionparqueo;
 
 @Service
@@ -36,6 +39,18 @@ public class PromedioOcupacionParqueoService implements PromedioOcupacionParqueo
 			uiOcupacion.add(dto);
 		});	
 		return uiOcupacion;
+	}
+
+	@Override
+	public List<PromedioOcupacionParqueoPOJO> getDia(String dia, int hora) {
+		List<Promedioocupacionparqueo> ocupacion =  promedioOcupacionParqueoRepository.findByDiaAndHora(dia, hora);
+		return generatePromedioOcupacionParqueoDtos(ocupacion);
+	}
+
+	@Override
+	public List<PromedioOcupacionParqueoPOJO> getDiaTotal(String dia) {
+		List<Promedioocupacionparqueo> ocupacion =  promedioOcupacionParqueoRepository.findByDia(dia);
+		return generatePromedioOcupacionParqueoDtos(ocupacion);
 	}
 
 	

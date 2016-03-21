@@ -5,5 +5,6 @@ import com.cenfotec.socialWorkout.ejb.Promedioocupacionparqueo;
 
 public interface PromedioOcupacionParqueoRepository extends CrudRepository<Promedioocupacionparqueo, Integer>  {	
 	List<Promedioocupacionparqueo> findAll();
-
+	List<Promedioocupacionparqueo>  findByDiaAndHora(String dia, int hora);
+	List<Promedioocupacionparqueo>  findByDia(String dia);
 }
