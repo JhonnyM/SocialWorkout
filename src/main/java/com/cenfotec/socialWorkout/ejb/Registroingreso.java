@@ -15,6 +15,7 @@ public class Registroingreso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRegistroIngreso;
 
 	@Temporal(TemporalType.TIMESTAMP)
