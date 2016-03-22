@@ -6,24 +6,23 @@ import java.math.BigDecimal;
 
 
 /**
- * The persistent class for the promedioocupacion database table.
+ * The persistent class for the promedioocupacionparqueo database table.
  * 
  */
 @Entity
-@NamedQuery(name="Promedioocupacion.findAll", query="SELECT p FROM Promedioocupacion p")
-public class Promedioocupacion implements Serializable {
+@NamedQuery(name="Promedioocupacionparqueo.findAll", query="SELECT p FROM Promedioocupacionparqueo p")
+public class Promedioocupacionparqueo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String dia;
 
 	private int hora;
-	
     @Id
 	private int id;
 
 	private BigDecimal promedio;
 
-	public Promedioocupacion() {
+	public Promedioocupacionparqueo() {
 	}
 
 	public String getDia() {

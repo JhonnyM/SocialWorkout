@@ -1,5 +1,4 @@
 package com.cenfotec.socialWorkout.ejb;
-
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
@@ -19,6 +18,9 @@ public class Registroingreso implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaHoraIngreso;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaHoraSalida;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date horaSalida;
@@ -55,6 +57,14 @@ public class Registroingreso implements Serializable {
 
 	public void setFechaHoraIngreso(Date fechaHoraIngreso) {
 		this.fechaHoraIngreso = fechaHoraIngreso;
+	}
+
+	public Date getFechaHoraSalida() {
+		return this.fechaHoraSalida;
+	}
+
+	public void setFechaHoraSalida(Date fechaHoraSalida) {
+		this.fechaHoraSalida = fechaHoraSalida;
 	}
 
 	public Date getHoraSalida() {

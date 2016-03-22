@@ -27,5 +27,16 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 					$scope.capacidadParqueo = response.ocupacion[0].capacidad;
 					   console.log(response,"OCUPACION ACTUAL PARQUEO");
 	             });
-
+	 $scope.PromedioOcupacion = {};
+	 		 $http.post('rest/protected/promedioOcupacion/getDia')
+				.success(function(response) {
+					$scope.PromedioOcupacion = response.ocupacion[0].ocupacionParqueo;
+					console.log(response,"PRUBAMORTAL");
+	             });		 
+	 $scope.PromedioOcupacionParqueo = {};
+	 		 $http.post('rest/protected/promedioOcupacionParqueo/getAll')
+				.success(function(response) {
+					$scope.PromedioOcupacionParqueo = response.ocupacion[0].ocupacionParqueo;
+					console.log(response,"PromedioOcupacionParqueo");
+	             });     
 }]);

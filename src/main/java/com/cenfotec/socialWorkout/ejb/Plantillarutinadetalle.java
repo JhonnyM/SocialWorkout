@@ -22,6 +22,8 @@ public class Plantillarutinadetalle implements Serializable {
 
 	private int cantidadSeries;
 
+	private int idLineaEjercicioMaquina;
+
 	//bi-directional many-to-one association to Maquinahasejercicio
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idEjercicioXMaquina")
@@ -65,6 +67,14 @@ public class Plantillarutinadetalle implements Serializable {
 
 	public void setCantidadSeries(int cantidadSeries) {
 		this.cantidadSeries = cantidadSeries;
+	}
+
+	public int getIdLineaEjercicioMaquina() {
+		return this.idLineaEjercicioMaquina;
+	}
+
+	public void setIdLineaEjercicioMaquina(int idLineaEjercicioMaquina) {
+		this.idLineaEjercicioMaquina = idLineaEjercicioMaquina;
 	}
 
 	public Maquinahasejercicio getMaquinahasejercicio() {

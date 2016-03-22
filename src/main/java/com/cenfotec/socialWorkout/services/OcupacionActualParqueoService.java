@@ -31,7 +31,9 @@ public class OcupacionActualParqueoService implements OcupacionActualParqueoServ
 		List<OcupacionActualParqueoPOJO> uiOcupacion = new ArrayList<OcupacionActualParqueoPOJO>();
 		ocupacion.stream().forEach(u -> {
 			OcupacionActualParqueoPOJO dto = new OcupacionActualParqueoPOJO();
+			if (!(u==null)){
 			BeanUtils.copyProperties(u,dto);
+			}
 			uiOcupacion.add(dto);
 		});	
 		return uiOcupacion;

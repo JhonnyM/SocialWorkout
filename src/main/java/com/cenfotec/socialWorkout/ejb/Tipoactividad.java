@@ -23,6 +23,10 @@ public class Tipoactividad implements Serializable {
 	@OneToMany(mappedBy="tipoactividad")
 	private List<Actividadsistema> actividadsistemas;
 
+	//bi-directional many-to-one association to Actividadsistemahastipoactividad
+	@OneToMany(mappedBy="tipoactividad")
+	private List<Actividadsistemahastipoactividad> actividadsistemahastipoactividads;
+
 	public Tipoactividad() {
 	}
 
@@ -62,6 +66,28 @@ public class Tipoactividad implements Serializable {
 		actividadsistema.setTipoactividad(null);
 
 		return actividadsistema;
+	}
+
+	public List<Actividadsistemahastipoactividad> getActividadsistemahastipoactividads() {
+		return this.actividadsistemahastipoactividads;
+	}
+
+	public void setActividadsistemahastipoactividads(List<Actividadsistemahastipoactividad> actividadsistemahastipoactividads) {
+		this.actividadsistemahastipoactividads = actividadsistemahastipoactividads;
+	}
+
+	public Actividadsistemahastipoactividad addActividadsistemahastipoactividad(Actividadsistemahastipoactividad actividadsistemahastipoactividad) {
+		getActividadsistemahastipoactividads().add(actividadsistemahastipoactividad);
+		actividadsistemahastipoactividad.setTipoactividad(this);
+
+		return actividadsistemahastipoactividad;
+	}
+
+	public Actividadsistemahastipoactividad removeActividadsistemahastipoactividad(Actividadsistemahastipoactividad actividadsistemahastipoactividad) {
+		getActividadsistemahastipoactividads().remove(actividadsistemahastipoactividad);
+		actividadsistemahastipoactividad.setTipoactividad(null);
+
+		return actividadsistemahastipoactividad;
 	}
 
 }

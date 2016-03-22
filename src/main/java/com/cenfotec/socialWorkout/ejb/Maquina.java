@@ -21,6 +21,10 @@ public class Maquina implements Serializable {
 
 	private String descMaquina;
 
+	private int minutosXPersona;
+
+	private int personasXMaquina;
+
 	//bi-directional many-to-one association to Maquinahasejercicio
 	@OneToMany(mappedBy="maquina")
 	private List<Maquinahasejercicio> maquinahasejercicios;
@@ -50,6 +54,22 @@ public class Maquina implements Serializable {
 
 	public void setDescMaquina(String descMaquina) {
 		this.descMaquina = descMaquina;
+	}
+
+	public int getMinutosXPersona() {
+		return this.minutosXPersona;
+	}
+
+	public void setMinutosXPersona(int minutosXPersona) {
+		this.minutosXPersona = minutosXPersona;
+	}
+
+	public int getPersonasXMaquina() {
+		return this.personasXMaquina;
+	}
+
+	public void setPersonasXMaquina(int personasXMaquina) {
+		this.personasXMaquina = personasXMaquina;
 	}
 
 	public List<Maquinahasejercicio> getMaquinahasejercicios() {

@@ -31,7 +31,9 @@ public class OcupacionActualGimnasioService implements OcupacionActualGimnasioSe
 		List<OcupacionActualGimnasioPOJO> uiOcupacion = new ArrayList<OcupacionActualGimnasioPOJO>();
 		ocupacion.stream().forEach(u -> {
 			OcupacionActualGimnasioPOJO dto = new OcupacionActualGimnasioPOJO();
+			if (!(u==null)){
 			BeanUtils.copyProperties(u,dto);
+			}
 			uiOcupacion.add(dto);
 		});	
 		return uiOcupacion;

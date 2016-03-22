@@ -726,6 +726,7 @@
   <script src="resources/js/ui-nav.js"></script>
   <script src="resources/js/ui-toggle.js"></script>
   <script src="resources/js/ui-client.js"></script>
+  <script src="resources/js/ui-jq.js"></script>
   <script src="resources/libs/jquery/flot/jquery.flot.js"></script>
   <script src="resources/libs/jquery/flot/jquery.flot.pie.js"></script>
   <script src="resources/libs/jquery/flot/jquery.flot.resize.js"></script>
