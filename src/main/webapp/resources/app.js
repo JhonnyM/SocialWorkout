@@ -17,6 +17,7 @@ angular.module('myApp', [
   'myApp.clases',
   'myApp.clasesModal',
   'myApp.facturacion',
+  'myApp.registrar',
   'ui.grid',
   'angularFileUpload',
 ])

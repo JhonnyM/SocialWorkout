@@ -163,4 +163,14 @@ public class UserService implements UserServiceInterface{
 				                        p -> Utils.copyProperties(user, new UsuarioPOJO(p))));
 		return Arrays.asList(dtoU);
 	}*/
+
+	@Override
+	public List<UsuarioPOJO> getInstructores() {
+		TipoUsuarioPOJO  tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		tipoUsuarioPOJO = tipoUsuarioService.getTipoUsuarioById(3);
+		Tipousuario tipoUsuario = new Tipousuario();
+		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);
+		List<Usuario> users =  usersRepository.findByTipousuario(tipoUsuario);
+		return generateUserDtos(users);	
+	}
 }
