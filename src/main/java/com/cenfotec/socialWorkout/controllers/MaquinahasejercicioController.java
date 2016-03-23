@@ -24,19 +24,19 @@ public class MaquinahasejercicioController {
 	@Autowired
 	private HttpServletRequest request;
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public MaquinahasejercicioResponse create(@RequestBody Maquinahasejercicio mh) {
-
-		MaquinahasejercicioResponse mhre = new MaquinahasejercicioResponse();
-		Boolean state = maquinaHasEjercicioService.saveMaquinahasejercicio(mh);
-
-		if (state) {
-			mhre.setCode(200);
-			mhre.setCodeMessage("Máquina creada correctamente.");
-		}
-		
-		return mhre;
-
-	}
+//	@RequestMapping(value = "/create", method = RequestMethod.POST)
+//	public MaquinahasejercicioResponse create(@RequestBody Maquinahasejercicio mh) {
+//
+//		MaquinahasejercicioResponse mhre = new MaquinahasejercicioResponse();
+//		Boolean state = maquinaHasEjercicioService.saveMaquinahasejercicio(mh);
+//
+//		if (state) {
+//			mhre.setCode(200);
+//			mhre.setCodeMessage("Máquina creada correctamente.");
+//		}
+//		
+//		return mhre;
+//
+//	}
 
 }

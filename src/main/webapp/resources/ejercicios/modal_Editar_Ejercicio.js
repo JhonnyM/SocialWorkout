@@ -5,8 +5,8 @@ angular.module('myApp.modal_Editar_Ejercicio',
 
 .controller(
 		'modal_Editar_EjercicioCtrl',
-		[ '$scope', '$http', '$uibModalInstance', 'ejercicio',
-				function($scope, $http, $uibModalInstance, ejercicio) {
+		[ '$scope', '$http', '$uibModalInstance', 'ejercicio', '$route',
+				function($scope, $http, $uibModalInstance, ejercicio, $route) {
 					$scope.ejercicioSchema = {
 						"type" : "object",
 						properties : {
@@ -16,6 +16,10 @@ angular.module('myApp.modal_Editar_Ejercicio',
 								title : 'Descripción'
 							}
 						}
+					};
+
+					$scope.reload = function() {
+						$route.reload();
 					};
 
 					$scope.ejercicioForm = angular.copy(ejercicio);
@@ -35,12 +39,13 @@ angular.module('myApp.modal_Editar_Ejercicio',
 							ejercicio : data
 						}).success(function(data, status, config) {
 							$scope.message = data;
-							$uibModalInstance.close();
+							$scope.dismissModal = $scope.reload();	
 						}).error(function(data, status, config) {
 							console.log("$scope.data", $scope.data)
 							alert("failure message: " + JSON.stringify({
 								data : data
 							}));
 						});
+					    $uibModalInstance.close();						
 					};
 				} ]);

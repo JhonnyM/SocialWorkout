@@ -68,18 +68,18 @@ angular
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Edit</p>'
+											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
 										},
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.deleteE(row)">Delete</p>'
+											cellTemplate : '<p ng-click="grid.appScope.deleteE(row)">Eliminar</p>'
 										},
 
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.assignMachine(row)">Delete</p>'
+											cellTemplate : '<p ng-click="grid.appScope.assignMachine(row)">Asignar máquina</p>'
 										} ]
 							};
 

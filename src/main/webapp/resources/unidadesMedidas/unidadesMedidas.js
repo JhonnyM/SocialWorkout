@@ -60,11 +60,6 @@ angular
 								showGroupPanel : true,
 								enableSorting : true,
 								enableFiltering : true,
-								enableColumnResizing : true,
-								enableGridMenu : true,
-								showGridFooter : true,
-								showColumnFooter : true,
-								fastWatch : true,
 								columnDefs : [
 										{
 											field : 'descUnidadMedida',
@@ -73,12 +68,12 @@ angular
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Edit</p>'
+											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
 										},
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.deleteU(row)">Delete</p>'
+											cellTemplate : '<p ng-click="grid.appScope.deleteU(row)">Eliminar</p>'
 										} ]
 							};
 

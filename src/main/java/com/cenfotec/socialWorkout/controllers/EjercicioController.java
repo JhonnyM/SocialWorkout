@@ -73,6 +73,7 @@ public class EjercicioController {
 		EjercicioResponse ere = new EjercicioResponse();
 
 		if (ejercicioService.exists(er.getEjercicio().getIdEjercicio())) {
+				ejercicioService.deleteMaquinasAsignadas(er);
 			if (ejercicioService.delete(er.getEjercicio().getIdEjercicio())) {
 				ere.setCode(200);
 				ere.setCodeMessage("El unidad medida fue eliminado exitosamente");
@@ -104,5 +105,13 @@ public class EjercicioController {
 		return ere;
 
 	}
+
+	@RequestMapping(value = "/deleteAssignedMachines", method = RequestMethod.POST)
+	public void deleteAssignedMachine(@RequestBody EjercicioRequest er) {
+
+		ejercicioService.deleteMaquinasAsignadas(er);
+
+	}
+
 	
 }

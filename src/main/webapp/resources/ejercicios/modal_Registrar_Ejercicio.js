@@ -16,6 +16,11 @@ angular.module('myApp.modal_Registrar_Ejercicio',
 						}
 					};
 
+
+					$scope.reload = function(){
+						 $route.reload();
+					};
+					
 					$scope.form = [ 'descEjercicio' ];
 
 					$scope.save = function(event) {
@@ -31,6 +36,8 @@ angular.module('myApp.modal_Registrar_Ejercicio',
 						}).success(function(data, status, config) {
 							$scope.message = data;
 							$uibModalInstance.close();
+							$scope.dismissModal = $scope.reload();								
+							
 						}).error(function(data, status, config) {
 							alert("failure message: " + JSON.stringify({
 								data : data

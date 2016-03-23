@@ -107,19 +107,20 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 		List<Maquinahasejercicio> maquinahasEjercicio = new ArrayList<Maquinahasejercicio>();
 
+//		deleteMaquinasAsignadas(er);
+		
 		maquinahasEjercicioPOJO.stream().forEach(mh -> {
-
-			int idMaquinahasejercicio;
 			
 			Maquinahasejercicio ejb = new Maquinahasejercicio();
 			
 			ejb.setEjercicio(ejercicioRepository.findOne(mh.getEjercicioPOJO().getIdEjercicio()));
 
 			ejb.setMaquina(maquinaRepository.findOne(mh.getMaquinaPOJO().getIdMaquina()));
-
+						
 			maquinahasejercicioRepository.save(ejb);
 
 			maquinahasEjercicio.add(ejb);
+		
 		});
 
 		Ejercicio ejercicio = new Ejercicio();
@@ -127,12 +128,28 @@ public class EjercicioService implements EjercicioServiceInterface {
 		BeanUtils.copyProperties(ejercicioDTO, ejercicio);
 
 		ejercicio.setMaquinahasejercicios(null);
-		// ejercicio.setMaquinahasejercicios(maquinahasEjercicio);
 
-		Ejercicio nejercicio = ejercicioRepository.save(ejercicio);
-
+//		Ejercicio nejercicio = ejercicioRepository.save(ejercicio);
+//		
+		Ejercicio nejercicio = new Ejercicio();
+		
 		return (nejercicio == null) ? false : true;
 
 	}
 
+	public void deleteMaquinasAsignadas(EjercicioRequest er) {
+
+		List <Maquinahasejercicio> maquinasAsignadas = new ArrayList<Maquinahasejercicio>();
+		
+		maquinasAsignadas = 
+		maquinahasejercicioRepository.findByEjercicioIdEjercicio(er.getEjercicio().getIdEjercicio());
+		
+		maquinasAsignadas.stream().forEach(ma -> {
+						
+			maquinahasejercicioRepository.delete(ma);
+
+		});
+				
+	}
+		
 }

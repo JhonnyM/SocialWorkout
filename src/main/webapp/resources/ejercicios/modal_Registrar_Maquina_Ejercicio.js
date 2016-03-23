@@ -12,7 +12,7 @@ angular
 						function($scope, $http, $uibModalInstance, ejercicio) {
 
 							$scope.maquinas = [];
-						    $scope.maquinasSeleccionadas = [];
+							$scope.maquinasSeleccionadas = [];
 
 							$scope.requestObject = {
 								"pageNumber" : 0,
@@ -24,33 +24,42 @@ angular
 							};
 
 							$scope.ejercicioForm = angular.copy(ejercicio);
-						
-							$scope.setMachine = function(maquinas){
-								console.log("maquinas_2",$scope.maquinas.length);
-								
-								for(i = 0; i< $scope.maquinas.length; i++){
-									for (j=0; j<$scope.maquinas[i].maquinahasejercicios.length;j++){
-										if($scope.maquinas[i].maquinahasejercicios[j].maquinaPOJO.idMaquina == maquinas[i].idMaquina
-											&& $scope.maquinas[i].maquinahasejercicios[j].ejercicioPOJO.idEjercicio == ejercicio.idEjercicio){
+
+							$scope.setMachine = function(maquinas) {
+								console.log("maquinas_2",
+										$scope.maquinas.length);
+
+								for (i = 0; i < $scope.maquinas.length; i++) {
+									for (j = 0; j < $scope.maquinas[i].maquinahasejercicios.length; j++) {
+										if ($scope.maquinas[i].maquinahasejercicios[j].maquinaPOJO.idMaquina == maquinas[i].idMaquina
+												&& $scope.maquinas[i].maquinahasejercicios[j].ejercicioPOJO.idEjercicio == ejercicio.idEjercicio) {
 											console.log("fail");
-											$scope.toggle(maquinas[i],$scope.maquinasSeleccionadas);										
-											
+											$scope
+													.toggle(
+															maquinas[i],
+															$scope.maquinasSeleccionadas);
+
 										}
 									}
-								}	
+								}
 							};
 
 							$scope.read = function() {
-							    $scope.maquinasSeleccionadas.length = 0;
+								$scope.maquinasSeleccionadas.length = 0;
 								$http
 										.get('rest/protected/Maquinas/getAll')
 										.then(
 												function(response) {
 
-													console.log("response",response)
+													console.log("response",
+															response)
 													$scope.maquinas = response.data.maquinas;
-													console.log("maquinas_1",$scope.maquinas.length);
-													$scope.setMachine($scope.maquinas);
+													console
+															.log(
+																	"maquinas_1",
+																	$scope.maquinas.length);
+													$scope
+															.setMachine($scope.maquinas);
 												},
 												function() {
 													alert("Error obteniendo la informacion de los eventos")
@@ -59,8 +68,8 @@ angular
 
 							$scope.read();
 
-							
-							$scope.toggle = function(maquina,maquinasSeleccionadas) {
+							$scope.toggle = function(maquina,
+									maquinasSeleccionadas) {
 
 								var idx = maquinasSeleccionadas
 										.indexOf(maquina);
@@ -70,59 +79,38 @@ angular
 									maquinasSeleccionadas.push(maquina);
 							};
 
-							$scope.exists = function(maquina,maquinasSeleccionadas) {
+							$scope.exists = function(maquina,
+									maquinasSeleccionadas) {
 
 								return maquinasSeleccionadas.indexOf(maquina) > -1;
 
 							};
 
-							
 							$scope.save = function() {
 
 								$scope.data = {};
 								$scope.ejercicio = {};
 								$scope.maquinahasejercicios = [];
 
-								for (i = 0; i < $scope.maquinasSeleccionadas.length; i++) {
-
-									data = [ {
-
-										maquina : {
-											idMaquina : $scope.maquinasSeleccionadas[i].idMaquina
-										},
-
-										ejercicio : {
-											idEjercicio : $scope.ejercicioForm.idEjercicio
-										}
-
-									} ];
-
-									$scope.maquinahasejercicios.push(data);
-
-								}
-								;
-
-								for (i = 0; i < $scope.maquinasSeleccionadas.length; i++) {
+								if ($scope.maquinasSeleccionadas.length == 0) {
 
 									$scope.ejercicio = {
 										idEjercicio : $scope.ejercicioForm.idEjercicio,
-										descEjercicio : $scope.ejercicioForm.descEjercicio,
+										descEjercicio : "",
 										maquinahasejercicios : [ {
 											maquinaPOJO : {
-												idMaquina : $scope.maquinasSeleccionadas[i].idMaquina
+												idMaquina : 0
 											},
 
 											ejercicioPOJO : {
-												idEjercicio : $scope.ejercicioForm.idEjercicio
+												idEjercicio : 0
 											}
 										} ]
 									};
 
-									console.log($scope.ejercicio)
-									
 									$http
 											.post(
-													'rest/protected/Ejercicios/assignMachine',
+													'rest/protected/Ejercicios/deleteAssignedMachines',
 													{
 														ejercicio : $scope.ejercicio
 													})
@@ -143,8 +131,78 @@ angular
 																		}));
 													});
 
+								} else {
+									for (i = 0; i < $scope.maquinasSeleccionadas.length; i++) {
+
+										data = [ {
+
+											maquina : {
+												idMaquina : $scope.maquinasSeleccionadas[i].idMaquina
+											},
+
+											ejercicio : {
+												idEjercicio : $scope.ejercicioForm.idEjercicio
+											}
+
+										} ];
+
+										$scope.maquinahasejercicios.push(data);
+
+									}
+									;
+
+									for (i = 0; i < $scope.maquinasSeleccionadas.length; i++) {
+
+										$scope.ejercicio = {
+											idEjercicio : $scope.ejercicioForm.idEjercicio,
+											descEjercicio : $scope.ejercicioForm.descEjercicio,
+											maquinahasejercicios : [ {
+												maquinaPOJO : {
+													idMaquina : $scope.maquinasSeleccionadas[i].idMaquina
+												},
+
+												ejercicioPOJO : {
+													idEjercicio : $scope.ejercicioForm.idEjercicio
+												}
+											} ]
+										};
+
+										console.log($scope.ejercicio)
+
+										$http
+											.post(
+													'rest/protected/Ejercicios/deleteAssignedMachines',
+													{
+														ejercicio : $scope.ejercicio
+													})
+										
+										$http
+												.post(
+														'rest/protected/Ejercicios/assignMachine',
+														{
+															ejercicio : $scope.ejercicio
+														})
+												.success(
+														function(data, status,
+																config) {
+															$scope.message = data;
+															$uibModalInstance
+																	.close();
+														})
+												.error(
+														function(data, status,
+																config) {
+															alert("failure message: "
+																	+ JSON
+																			.stringify({
+																				data : data
+																			}));
+														});
+
+									}
+									;
+
 								}
-								;
 
 							}
 						} ]);

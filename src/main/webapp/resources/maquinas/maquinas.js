@@ -70,12 +70,12 @@ angular
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Edit</p>'
+											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
 										},
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.deleteM(row)">Delete</p>'
+											cellTemplate : '<p ng-click="grid.appScope.deleteM(row)">Eliminar</p>'
 										} ]
 							};
 
