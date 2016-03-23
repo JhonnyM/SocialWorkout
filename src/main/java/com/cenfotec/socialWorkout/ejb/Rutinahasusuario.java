@@ -16,6 +16,7 @@ public class Rutinahasusuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRegistroRutinaXUsuario;
 
 	private String diaSemanalAgendado;
