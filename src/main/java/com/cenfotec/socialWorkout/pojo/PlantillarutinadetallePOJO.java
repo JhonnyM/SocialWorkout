@@ -7,9 +7,7 @@ public class PlantillarutinadetallePOJO {
 	private double cantidadPeso;
 	private int cantidadRepeticiones;
 	private int cantidadSeries;
-
 	private MaquinahasejercicioPOJO maquinahasejercicio;
-
 	private PlantillarutinamaestroPOJO plantillarutinamaestro;
 
 	public PlantillarutinadetallePOJO() {
