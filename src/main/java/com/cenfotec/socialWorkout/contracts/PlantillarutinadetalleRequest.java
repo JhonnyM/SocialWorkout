@@ -6,14 +6,14 @@ public class PlantillarutinadetalleRequest {
 
 	private PlantillarutinadetallePOJO plantillaDetalle;
 
-	public PlantillarutinamaestroRequest() {
+	public PlantillarutinadetalleRequest() {
 		super();
 	}
-	public PlantillarutinadetallePOJO getPlantillaRutinaMaestro() {
+	public PlantillarutinadetallePOJO getPlantillaRutinaDetalle() {
 		return plantillaDetalle;
 	}
 
-	public void setPlantillaRutinaMaestro(PlantillarutinadetallePOJO plantillaDetalle) {
+	public void setPlantillaRutinaDetalle(PlantillarutinadetallePOJO plantillaDetalle) {
 		this.plantillaDetalle = plantillaDetalle;
 	}
 

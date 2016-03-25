@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.PlantillarutinamaestroRequest;
 import com.cenfotec.socialWorkout.contracts.PlantillarutinamaestroResponse;
-import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
 import com.cenfotec.socialWorkout.services.PlantillarutinamaestroServiceInterface;
 
 	
