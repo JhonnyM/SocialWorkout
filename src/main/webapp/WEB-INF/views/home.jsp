@@ -384,6 +384,7 @@
                <script src="resources/ocupacion/ocupacion.js"></script>
                <script src="resources/lugarMedicion/lugarMedicion.js"></script>
                <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
+	 	<script src="resources/rutinas/rutinas.js"></script>
                <script src="resources/components/version/version.js"></script>
                <script src="resources/components/version/version-directive.js"></script>
                <script src="resources/components/version/interpolate-filter.js"></script>

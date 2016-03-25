@@ -23,6 +23,7 @@ angular.module('myApp', [
   'myApp.clasesModal',
   'myApp.facturacion',
   'myApp.registrar',
+  'myApp.rutinas',
   'myApp.historialAsistencia',
   'myApp.historialMedidas',
   'ui.grid',
