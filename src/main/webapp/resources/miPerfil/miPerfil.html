@@ -1,0 +1,29 @@
+<div class="bg-white-only">
+  <div class="container">
+    <h1>Mi perfil</h1>
+    <div class="row">
+      
+      <div class="panel panel-default col-md-6">
+        <div class="panel-body">
+				<div >
+				<form name="myForm">
+				</form>
+				<form  sf-schema="PersonSchema"  sf-form="form" sf-model="usuarioForm"></form>
+				<div>
+					  <label class='col-sx-6 control-label'>Instructor asignado</label>
+					  <select name="instructores" id="instructores" class="form-control"
+						ng-model="requestObject.idUsuarioInstructor"
+						ng-options="o.idUsuario as o.nombre for o in instructorList"
+						required disabled>
+					  </select> 
+				</div>
+			  </div>
+			  
+	  </div>
+	</div>
+  </div>
+  
+</div>
+</div>
+</div>
+

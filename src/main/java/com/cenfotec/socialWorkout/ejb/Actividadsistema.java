@@ -15,7 +15,6 @@ public class Actividadsistema implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idActividadSistema;
 
 	private String descActividadSistema;
@@ -24,6 +23,10 @@ public class Actividadsistema implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idTipoActividad")
 	private Tipoactividad tipoactividad;
+
+	//bi-directional many-to-one association to Actividadsistemahastipoactividad
+	@OneToMany(mappedBy="actividadsistema")
+	private List<Actividadsistemahastipoactividad> actividadsistemahastipoactividads;
 
 	//bi-directional many-to-one association to Actividadsistemahasusuario
 	@OneToMany(mappedBy="actividadsistema")
@@ -54,6 +57,28 @@ public class Actividadsistema implements Serializable {
 
 	public void setTipoactividad(Tipoactividad tipoactividad) {
 		this.tipoactividad = tipoactividad;
+	}
+
+	public List<Actividadsistemahastipoactividad> getActividadsistemahastipoactividads() {
+		return this.actividadsistemahastipoactividads;
+	}
+
+	public void setActividadsistemahastipoactividads(List<Actividadsistemahastipoactividad> actividadsistemahastipoactividads) {
+		this.actividadsistemahastipoactividads = actividadsistemahastipoactividads;
+	}
+
+	public Actividadsistemahastipoactividad addActividadsistemahastipoactividad(Actividadsistemahastipoactividad actividadsistemahastipoactividad) {
+		getActividadsistemahastipoactividads().add(actividadsistemahastipoactividad);
+		actividadsistemahastipoactividad.setActividadsistema(this);
+
+		return actividadsistemahastipoactividad;
+	}
+
+	public Actividadsistemahastipoactividad removeActividadsistemahastipoactividad(Actividadsistemahastipoactividad actividadsistemahastipoactividad) {
+		getActividadsistemahastipoactividads().remove(actividadsistemahastipoactividad);
+		actividadsistemahastipoactividad.setActividadsistema(null);
+
+		return actividadsistemahastipoactividad;
 	}
 
 	public List<Actividadsistemahasusuario> getActividadsistemahasusuarios() {

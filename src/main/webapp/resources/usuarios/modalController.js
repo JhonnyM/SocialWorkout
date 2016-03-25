@@ -32,8 +32,15 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 				    $scope.requestObject.idUsuarioInstructor = $scope.usuarioForm.usuarioPOJOInstructor.idUsuario;
 				    console.log($scope.requestObject.idUsuarioInstructor,"REQUEST-INSTRUCTOR");
 				});
-		    	
+		 $http.post('rest/protected/users/usuarioSet')
+			.success(function(response) {
+				    $scope.usuarioSet = response.usuario;
+				    console.log($scope.usuarioSet,"LOGUEADO");
+				});	
 	    };
+	    
+    
+    
 	$scope.init();
 	
 	
@@ -55,7 +62,10 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
     
     	$scope.form = [
 		'identificacion',
-		'nombre',
+		{"title":"Nombre",
+		 "key" : "nombre",
+		 fieldHtmlClass: "text", 
+		},	
 		'apellidos',
 		'correoElectronico',
 		{"title":"Fecha de nacimiento",

@@ -29,7 +29,7 @@
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body>
+<body ng-controller="homeCtrl">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -39,7 +39,7 @@
     <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
       <!-- navbar header -->
-      <div class="navbar-header bg-dark">
+      <div class="navbar-header bg-dark" >
         <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
         </button>
@@ -48,16 +48,15 @@
         </button>
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-btc"></i>
-          <img src="resources/img/logo.png" alt="." class="hide">
-          <span class="hidden-folded m-l-xs">Angulr</span>
+          <span class="hidden-folded m-l-xs" >SW</span>
+          
         </a>
         <!-- / brand -->
       </div>
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only" >
         <!-- buttons -->
         <!-- / search form -->
 
@@ -65,7 +64,8 @@
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-              <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
+            
+              <span class="hidden-sm hidden-md" >{{usuario.nombre}} {{usuario.apellidos}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -108,15 +108,16 @@
 
 
     <!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
+  <aside id="aside" class="app-aside hidden-xs bg-dark" >
       <div class="aside-wrap">
-        <div class="navi-wrap">
+        <div class="navi-wrap" >
           <!-- user -->
+          <img src="resources/img/fit.jpg" class="img-full" alt="...">
           <div class="clearfix hidden-xs text-center hide" id="aside-user">
             <div class="dropdown wrapper">
               <a href="app.page.profile">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="resources/img/a0.jpg" class="img-full" alt="...">
+                  
                 </span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -163,17 +164,45 @@
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
-            <ul class="nav">
+          
+          <nav ui-nav class="navi clearfix" >
+            <ul class="nav" >
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Navigation</span>
+                
               </li>
               <li class="line dk"></li>
 
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                 <span>Opciones</span>
               </li>
-              <li>
+              
+              <li ng-if="mostrarCliente">
+                <a href class="auto">      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">2</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span>Estad&#237sticas</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                  </li>
+                  <li>
+                    <a href="app#/ocupacion">
+                      <span>Ocupaci&#243n</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Mis rutinas</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              <li ng-if='mostrarCliente'>
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -181,7 +210,40 @@
                   </span>
                   <b class="badge bg-info pull-right">3</b>
                   <i class="glyphicon glyphicon-th"></i>
-                <span>Gestiones</span>
+                <span>Mi Perfil</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                   
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Datos generales</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Historial de medidas</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_fullwidth.html">
+                      <span>Historial de asistencia</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              
+              <li ng-if='false'>
+                <a href class="auto" >      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span >Gestiones{{mostrarInstructor}}</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -206,7 +268,7 @@
                   </li>      
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -265,7 +327,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -297,7 +359,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -325,6 +387,7 @@
               <li class="line dk hidden-folded"></li> 
             </ul>
           </nav>
+          
           <!-- nav -->
           <!-- / aside footer -->
         </div>
@@ -354,7 +417,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
+  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="resources/bower_components/angular/angular.js"></script>
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/bower_components/angular-ui-grid/ui-grid.min.js"></script>
@@ -383,11 +446,16 @@
   <script src="resources/usuarios/usuarios.js"></script>
   <script src="resources/tiposUsuario/tiposUsuario.js"></script>
   <script src="resources/usuarios/modalController.js"></script>
+  <script src="resources/homeController/homeController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
   <script src="resources/clases/clases.js"></script>
   <script src="resources/clases/clasesModal.js"></script>
   <script src="resources/facturacion/facturacion.js"></script>
   <script src="resources/registrar/registrar.js"></script>
+  <script src="resources/miPerfil/miPerfil.js"></script>
+  <script src="resources/ocupacion/ocupacion.js"></script>
+  <script src="resources/lugarMedicion/lugarMedicion.js"></script>
+  <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
@@ -397,5 +465,13 @@
   <script src="resources/js/ui-nav.js"></script>
   <script src="resources/js/ui-toggle.js"></script>
   <script src="resources/js/ui-client.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.pie.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.resize.js"></script>
+  <script src="resources/libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
+  <script src="resources/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+  <script src="resources/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+  <script src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
+  <script src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
 </body>
 </html>
