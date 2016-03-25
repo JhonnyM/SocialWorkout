@@ -13,13 +13,23 @@ import java.math.BigInteger;
 @NamedQuery(name="Ocupacionactualgimnasio.findAll", query="SELECT o FROM Ocupacionactualgimnasio o")
 public class Ocupacionactualgimnasio implements Serializable {
 	private static final long serialVersionUID = 1L;
- @Id
+
+	private BigInteger capacidad;
+    @Id
 	private BigInteger id;
 
 	@Column(name="OCUPACION_GIMNASIO")
 	private BigInteger ocupacionGimnasio;
 
 	public Ocupacionactualgimnasio() {
+	}
+
+	public BigInteger getCapacidad() {
+		return this.capacidad;
+	}
+
+	public void setCapacidad(BigInteger capacidad) {
+		this.capacidad = capacidad;
 	}
 
 	public BigInteger getId() {

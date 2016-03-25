@@ -2,6 +2,7 @@ package com.cenfotec.socialWorkout.ejb;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 
 
@@ -24,6 +25,8 @@ public class Rutinahasusuario implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date fechaVencimiento;
+
+	private Time hora;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -68,6 +71,14 @@ public class Rutinahasusuario implements Serializable {
 
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
+	}
+
+	public Time getHora() {
+		return this.hora;
+	}
+
+	public void setHora(Time hora) {
+		this.hora = hora;
 	}
 
 	public Plantillarutinamaestro getPlantillarutinamaestro() {

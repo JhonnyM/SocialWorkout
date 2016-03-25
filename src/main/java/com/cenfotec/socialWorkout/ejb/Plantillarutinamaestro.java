@@ -164,7 +164,7 @@ public class Plantillarutinamaestro implements Serializable {
 		this.rutinahasusuarios = rutinahasusuarios;
 	}
 
-	public Rutinahasusuario addRutinahasusuario(Rutinahasusuario rutinahasusuario) {
+	/*public Rutinahasusuario addRutinahasusuario(Rutinahasusuario rutinahasusuario) {
 		getRutinahasusuarios().add(rutinahasusuario);
 		rutinahasusuario.setPlantillarutinamaestro(this);
 
@@ -177,5 +177,5 @@ public class Plantillarutinamaestro implements Serializable {
 
 		return rutinahasusuario;
 	}
-
+*/
 }

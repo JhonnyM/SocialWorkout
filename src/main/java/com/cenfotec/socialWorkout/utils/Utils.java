@@ -21,6 +21,7 @@ public class Utils {
 	
 	private static String RESOURCES_PATH = "resources/rent-images/";
 	private static String HOST_PATH = "http://localhost:8080";
+	private static int id;
 	private Utils() { }
 	
 	// save uploaded file to new location
@@ -79,5 +80,13 @@ public class Utils {
 		 throw new RuntimeException(e);
 		 }
 		 }
+
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		Utils.id = id;
+	}
 
 }

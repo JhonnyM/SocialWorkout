@@ -29,7 +29,7 @@
   <script src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<body>
+<body ng-controller="homeCtrl">
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -39,7 +39,7 @@
     <!-- header -->
   <header id="header" class="app-header navbar" role="menu">
       <!-- navbar header -->
-      <div class="navbar-header bg-dark">
+      <div class="navbar-header bg-dark" >
         <button class="pull-right visible-xs dk" ui-toggle-class="show" target=".navbar-collapse">
           <i class="glyphicon glyphicon-cog"></i>
         </button>
@@ -48,218 +48,24 @@
         </button>
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-btc"></i>
-          <img src="resources/img/logo.png" alt="." class="hide">
-          <span class="hidden-folded m-l-xs">Angulr</span>
+          <span class="hidden-folded m-l-xs" >SW</span>
+          
         </a>
         <!-- / brand -->
       </div>
       <!-- / navbar header -->
 
       <!-- navbar collapse -->
-      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only">
+      <div class="collapse pos-rlt navbar-collapse box-shadow bg-white-only" >
         <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="app-aside-folded" target=".app">
-            <i class="fa fa-dedent fa-fw text"></i>
-            <i class="fa fa-indent fa-fw text-active"></i>
-          </a>
-          <a href="#" class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
-            <i class="icon-user fa-fw"></i>
-          </a>
-        </div>
-        <!-- / buttons -->
-
-        <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
-          <li class="dropdown pos-stc">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <span>Mega</span> 
-              <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu wrapper w-full bg-white">
-              <div class="row">
-                <div class="col-sm-4">
-                  <div class="m-l-xs m-t-xs m-b-xs font-bold">Pages <span class="badge badge-sm bg-success">10</span></div>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Profile</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Post</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Search</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Invoice</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Price</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Lock screen</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Sign in</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Sign up</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 b-l b-light">
-                  <div class="m-l-xs m-t-xs m-b-xs font-bold">UI Kits <span class="label label-sm bg-primary">12</span></div>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Buttons</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Icons <span class="badge badge-sm bg-warning">1000+</span></a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Grid</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Widgets</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-xs-6">
-                      <ul class="list-unstyled l-h-2x">
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Bootstap</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Sortable</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Portlet</a>
-                        </li>
-                        <li>
-                          <a href><i class="fa fa-fw fa-angle-right text-muted m-r-xs"></i>Timeline</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-4 b-l b-light">
-                  <div class="m-l-xs m-t-xs m-b-sm font-bold">Analysis</div>
-                  <div class="text-center">
-                    <div class="inline">
-                      <div ui-jq="easyPieChart" ui-options="{
-                          percent: 65,
-                          lineWidth: 50,
-                          trackColor: '#e8eff0',
-                          barColor: '#23b7e5',
-                          scaleColor: false,
-                          size: 100,
-                          rotate: 90,
-                          lineCap: 'butt',
-                          animate: 2000
-                        }">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span translate="header.navbar.new.NEW">New</span> <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#" translate="header.navbar.new.PROJECT">Projects</a></li>
-              <li>
-                <a href>
-                  <span class="badge bg-info pull-right">5</span>
-                  <span translate="header.navbar.new.TASK">Task</span>
-                </a>
-              </li>
-              <li><a href translate="header.navbar.new.USER">User</a></li>
-              <li class="divider"></li>
-              <li>
-                <a href>
-                  <span class="badge bg-danger pull-right">4</span>
-                  <span translate="header.navbar.new.EMAIL">Email</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <!-- / link and dropdown -->
-
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" data-target=".navbar-collapse" role="search">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </div>
-        </form>
         <!-- / search form -->
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bell fa-fw"></i>
-              <span class="visible-xs-inline">Notifications</span>
-              <span class="badge badge-sm up bg-danger pull-right-xs">2</span>
-            </a>
-            <!-- dropdown -->
-            <div class="dropdown-menu w-xl animated fadeInUp">
-              <div class="panel bg-white">
-                <div class="panel-heading b-light bg-light">
-                  <strong>You have <span>2</span> notifications</strong>
-                </div>
-                <div class="list-group">
-                  <a href class="list-group-item">
-                    <span class="pull-left m-r thumb-sm">
-                      <img src="resources/img/a0.jpg" alt="..." class="img-circle">
-                    </span>
-                    <span class="clear block m-b-none">
-                      Use awesome animate.css<br>
-                      <small class="text-muted">10 minutes ago</small>
-                    </span>
-                  </a>
-                  <a href class="list-group-item">
-                    <span class="clear block m-b-none">
-                      1.0 initial released<br>
-                      <small class="text-muted">1 hour ago</small>
-                    </span>
-                  </a>
-                </div>
-                <div class="panel-footer text-sm">
-                  <a href class="pull-right"><i class="fa fa-cog"></i></a>
-                  <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
-                </div>
-              </div>
-            </div>
-            <!-- / dropdown -->
-          </li>
-          <li class="dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
-              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="resources/img/a0.jpg" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span>
-              <span class="hidden-sm hidden-md">John.Smith</span> <b class="caret"></b>
+            
+              <span class="hidden-sm hidden-md" >{{usuario.nombre}} {{usuario.apellidos}}</span> <b class="caret"></b>
             </a>
             <!-- dropdown -->
             <ul class="dropdown-menu animated fadeInRight w">
@@ -302,15 +108,16 @@
 
 
     <!-- aside -->
-  <aside id="aside" class="app-aside hidden-xs bg-dark">
+  <aside id="aside" class="app-aside hidden-xs bg-dark" >
       <div class="aside-wrap">
-        <div class="navi-wrap">
+        <div class="navi-wrap" >
           <!-- user -->
+          <img src="resources/img/fit.jpg" class="img-full" alt="...">
           <div class="clearfix hidden-xs text-center hide" id="aside-user">
             <div class="dropdown wrapper">
               <a href="app.page.profile">
                 <span class="thumb-lg w-auto-folded avatar m-t-sm">
-                  <img src="resources/img/a0.jpg" class="img-full" alt="...">
+                  
                 </span>
               </a>
               <a href="#" data-toggle="dropdown" class="dropdown-toggle hidden-folded">
@@ -357,52 +164,45 @@
           <!-- / user -->
 
           <!-- nav -->
-          <nav ui-nav class="navi clearfix">
-            <ul class="nav">
+          
+          <nav ui-nav class="navi clearfix" >
+            <ul class="nav" >
               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Navigation</span>
+                
               </li>
-              <li>
+              <li class="line dk"></li>
+
+              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span>Opciones</span>
+              </li>
+              
+              <li ng-if="mostrarCliente">
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                  <span class="font-bold">Dashboard</span>
+                  <b class="badge bg-info pull-right">2</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span>Estad&#237sticas</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
-                    <a href>
-                      <span>Dashboard</span>
+                  </li>
+                  <li>
+                    <a href="app#/ocupacion">
+                      <span>Ocupaci&#243n</span>
                     </a>
                   </li>
                   <li>
-                    <a href="index.html">
-                      <span>Dashboard v1</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="dashboard.html">
-                      <b class="label bg-info pull-right">N</b>
-                      <span>Dashboard v2</span>
+                    <a href="layout_app.html">
+                      <span>Mis rutinas</span>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li>
-                <a href="mail.html">
-                  <b class="badge bg-info pull-right">9</b>
-                  <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                  <span class="font-bold">Email</span>
-                </a>
-              </li>
-              <li class="line dk"></li>
-
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                <span>Components</span>
-              </li>
-              <li>
+              
+              <li ng-if='mostrarCliente'>
                 <a href class="auto">      
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
@@ -410,7 +210,40 @@
                   </span>
                   <b class="badge bg-info pull-right">3</b>
                   <i class="glyphicon glyphicon-th"></i>
-                  <span>Layout</span>
+                <span>Mi Perfil</span>
+                </a>
+                <ul class="nav nav-sub dk">
+                  <li class="nav-sub-header">
+                   
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Datos generales</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_app.html">
+                      <span>Historial de medidas</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="layout_fullwidth.html">
+                      <span>Historial de asistencia</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+              
+              <li ng-if='false'>
+                <a href class="auto" >      
+                  <span class="pull-right text-muted">
+                    <i class="fa fa-fw fa-angle-right text"></i>
+                    <i class="fa fa-fw fa-angle-down text-active"></i>
+                  </span>
+                  <b class="badge bg-info pull-right">3</b>
+                  <i class="glyphicon glyphicon-th"></i>
+                <span >Gestiones{{mostrarInstructor}}</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -435,14 +268,14 @@
                   </li>      
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <i class="glyphicon glyphicon-briefcase icon"></i>
-                  <span>UI Kits</span>
+                <span>Estadisticas</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -494,15 +327,14 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
-                  <b class="label bg-primary pull-right">2</b>
                   <i class="glyphicon glyphicon-list"></i>
-                  <span>Table</span>
+                <span>Asignar rutinas</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -527,14 +359,14 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li ng-if="mostrarInstructor">
                 <a href class="auto">
                   <span class="pull-right text-muted">
                     <i class="fa fa-fw fa-angle-right text"></i>
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <i class="glyphicon glyphicon-edit"></i>
-                  <span>Form</span>
+                  <span>Gestionar Rutinas</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -550,120 +382,13 @@
                 </ul>
               </li>
               <li>
-                <a href="ui_chart.html">
-                  <i class="glyphicon glyphicon-signal"></i>
-                  <span>Chart</span>
-                </a>
-              </li>
-              <li>
-                <a href class="auto">
-                  <span class="pull-right text-muted">
-                    <i class="fa fa-fw fa-angle-right text"></i>
-                    <i class="fa fa-fw fa-angle-down text-active"></i>
-                  </span>
-                  <i class="glyphicon glyphicon-file icon"></i>
-                  <span>Pages</span>
-                </a>
-                <ul class="nav nav-sub dk">
-                  <li class="nav-sub-header">
-                    <a href>
-                      <span>Pages</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_profile.html">
-                      <span>Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_post.html">
-                      <span>Post</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_search.html">
-                      <span>Search</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_invoice.html">
-                      <span>Invoice</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_price.html">
-                      <span>Price</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_lockme.html">
-                      <span>Lock screen</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_signin.html">
-                      <span>Signin</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_signup.html">
-                      <span>Signup</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_forgotpwd.html">
-                      <span>Forgot password</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="page_404.html">
-                      <span>404</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+            
 
-              <li class="line dk hidden-folded"></li>
-
-              <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">          
-                <span>Your Stuff</span>
-              </li>  
-              <li>
-                <a href="page_profile.html">
-                  <i class="icon-user icon text-success-lter"></i>
-                  <b class="badge bg-success pull-right">30%</b>
-                  <span>Profile</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <i class="icon-question icon"></i>
-                  <span>Documents</span>
-                </a>
-              </li>
+              <li class="line dk hidden-folded"></li> 
             </ul>
           </nav>
+          
           <!-- nav -->
-
-          <!-- aside footer -->
-          <div class="wrapper m-t">
-            <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">60%</span>
-              <span class="hidden-folded">Milestone</span>
-            </div>
-            <div class="progress progress-xxs m-t-sm dk">
-              <div class="progress-bar progress-bar-info" style="width: 60%;">
-              </div>
-            </div>
-            <div class="text-center-folded">
-              <span class="pull-right pull-none-folded">35%</span>
-              <span class="hidden-folded">Release</span>
-            </div>
-            <div class="progress progress-xxs m-t-sm dk">
-              <div class="progress-bar progress-bar-primary" style="width: 35%;">
-              </div>
-            </div>
-          </div>
           <!-- / aside footer -->
         </div>
       </div>
@@ -692,7 +417,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
   <script src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>  
+  <script src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="resources/bower_components/angular/angular.js"></script>
   <script src="resources/bower_components/angular-route/angular-route.js"></script>
   <script src="resources/bower_components/angular-ui-grid/ui-grid.min.js"></script>
@@ -721,11 +446,16 @@
   <script src="resources/usuarios/usuarios.js"></script>
   <script src="resources/tiposUsuario/tiposUsuario.js"></script>
   <script src="resources/usuarios/modalController.js"></script>
+  <script src="resources/homeController/homeController.js"></script>
   <script src="resources/tiposUsuario/modalControllerTipoUsuario.js"></script>
   <script src="resources/clases/clases.js"></script>
   <script src="resources/clases/clasesModal.js"></script>
   <script src="resources/facturacion/facturacion.js"></script>
   <script src="resources/registrar/registrar.js"></script>
+  <script src="resources/miPerfil/miPerfil.js"></script>
+  <script src="resources/ocupacion/ocupacion.js"></script>
+  <script src="resources/lugarMedicion/lugarMedicion.js"></script>
+  <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
   <script src="resources/components/version/version.js"></script>
   <script src="resources/components/version/version-directive.js"></script>
   <script src="resources/components/version/interpolate-filter.js"></script>
@@ -735,5 +465,13 @@
   <script src="resources/js/ui-nav.js"></script>
   <script src="resources/js/ui-toggle.js"></script>
   <script src="resources/js/ui-client.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.pie.js"></script>
+  <script src="resources/libs/jquery/flot/jquery.flot.resize.js"></script>
+  <script src="resources/libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
+  <script src="resources/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+  <script src="resources/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+  <script src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
+  <script src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
 </body>
 </html>

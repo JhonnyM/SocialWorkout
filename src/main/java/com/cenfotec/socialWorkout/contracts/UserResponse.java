@@ -6,6 +6,7 @@ import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 public class UserResponse extends BaseResponse {
 	
 	private List<UsuarioPOJO> usuarios;
+	private UsuarioPOJO usuario;
 
 	public UserResponse() {
 		super();
@@ -17,6 +18,14 @@ public class UserResponse extends BaseResponse {
 
 	public void setUsuarios(List<UsuarioPOJO> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public UsuarioPOJO getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(UsuarioPOJO usuario) {
+		this.usuario = usuario;
 	}
 
 }

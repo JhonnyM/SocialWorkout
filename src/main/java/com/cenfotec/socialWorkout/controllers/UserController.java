@@ -149,6 +149,16 @@ public class UserController {
 		us.setUsuarios(usersService.getInstructores());
 		return us;		
 	}
+
+	@RequestMapping(value ="/usuarioSet", method = RequestMethod.POST)
+	public UserResponse getUsuarioLogueado(){	
+		UserResponse us = new UserResponse();
+		us.setCode(200);
+		us.setCodeMessage("users fetch success");
+		us.setUsuario(usersService.getUsuarioSession());
+		return us;		
+	}
+
 	
 	
 }
