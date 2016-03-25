@@ -1,16 +1,28 @@
 package com.cenfotec.socialWorkout.pojo;
 
+import java.util.Date;
 import java.util.List;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 
 public class UsuarioPOJO{
 	
 	private int idUsuario;
-	private String firstname;
-	private String lastname;
-	private String email;
-	private String password;
-	
-	private List<AlquilerPOJO> alquileres;
+	private String apellidos;
+	private String clave;
+	private String correoElectronico;
+	private boolean estatus;
+	private Date fechaIngreso;
+	private Date fechaNac;
+	private Date fechaPago;
+	private String identificacion;
+	private String nombre;
+	private boolean poseeVehiculo;
+	private TipoUsuarioPOJO tipoUsuarioPOJO;
+	private UsuarioPOJO usuarioPOJOInstructor;
 	
 	public UsuarioPOJO() {
 		super();
@@ -25,43 +37,100 @@ public class UsuarioPOJO{
 		this.idUsuario = idUsuario;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getIdentificacion() {
+		return identificacion;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public Date getFechaPago() {
+		return fechaPago;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setFechaPago(Date fechaPago) {
+		this.fechaPago = fechaPago;
 	}
 
-	public String getEmail() {
-		return email;
+	public Date getFechaNac() {
+		return fechaNac;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
 	}
 
-	public String getPassword() {
-		return password;
+	public Date getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
 	}
 
-	public List<AlquilerPOJO> getAlquileres() {
-		return alquileres;
+	public boolean getEstatus() {
+		return estatus;
 	}
 
-	public void setAlquileres(List<AlquilerPOJO> alquileres) {
-		this.alquileres = alquileres;
+	public void setEstatus(boolean estatus) {
+		this.estatus = estatus;
 	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public boolean isPoseeVehiculo() {
+		return poseeVehiculo;
+	}
+
+	public void setPoseeVehiculo(boolean poseeVehiculo) {
+		this.poseeVehiculo = poseeVehiculo;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public TipoUsuarioPOJO getTipoUsuarioPOJO() {
+		return tipoUsuarioPOJO;
+	}
+
+	public void setTipoUsuarioPOJO(TipoUsuarioPOJO tipoUsuarioPOJO) {
+		this.tipoUsuarioPOJO = tipoUsuarioPOJO;
+	}
+
+	public UsuarioPOJO getUsuarioPOJOInstructor() {
+		return usuarioPOJOInstructor;
+	}
+
+	public void setUsuarioPOJOInstructor(UsuarioPOJO usuarioPOJOInstructor) {
+		this.usuarioPOJOInstructor = usuarioPOJOInstructor;
+	}
+
 }

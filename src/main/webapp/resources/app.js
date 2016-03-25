@@ -5,9 +5,18 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.view1',
   'myApp.view2',
+  'myApp.usuarios',
+  'myApp.tiposUsuario',
   'myApp.version',
+  'myApp.modalTipoUsuario',
+  'myApp.miPerfil',
+  'myApp.modalu',
+  'myApp.lugarMedicion',
+  'myApp.modalm',
+  'myApp.ocupacion',
+  'myApp.home',
   'ui.grid',
-  'angularFileUpload'
+  'angularFileUpload',
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});
