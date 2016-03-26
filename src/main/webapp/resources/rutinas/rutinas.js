@@ -55,7 +55,18 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   };
 
   $scope.addRutinaDetalle = function(row){
-    alert("To be implemented");
+    var dialogOpts = {
+     backdrop:'static',
+     keyboard:false,
+     templateUrl:'resources/rutinas/agregar-rutina-detalle.html',
+     controller:'RutinaDetalleCtrl',
+     size:"lg",
+     windowClass:"modal",
+     resolve:{
+         rutina:function(){return row.entity}
+     }
+ };
+ $uibModal.open(dialogOpts)
   };
 
 	$scope.save = function(event){
@@ -105,17 +116,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
       }
 
     }
-  };
-
-  $scope.fechaHoraIngresoUsuario = function(){
-    var fechaHora = new Date();
-    return fechaHora.getTime();
-  };
-
-  $scope.fechaHoraSalidaUsuario = function(){
-    var fechaHora = new Date();
-    fechaHora.setHours(fechaHora.getHours()+2);
-    return fechaHora.getTime();
   };
 
   $scope.generateRandomInstructor = function(){
