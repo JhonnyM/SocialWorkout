@@ -10,7 +10,7 @@ public class UnidadmedidaPOJO {
 
 	private String descUnidadMedida;
 
-	//private List<LugarMedicionPOJO> lugarmedicions;
+	private List<Lugarmedicion> lugarmedicions;
 
 	public int getIdUnidadMedida() {
 		return this.idUnidadMedida;
@@ -28,12 +28,12 @@ public class UnidadmedidaPOJO {
 		this.descUnidadMedida = descUnidadMedida;
 	}
 
-	/*public List<LugarMedicionPOJO> getLugarmedicions() {
+	public List<Lugarmedicion> getLugarmedicions() {
 		return this.lugarmedicions;
 	}
 
-	public void setLugarmedicions(List<LugarMedicionPOJO> lugarmedicions) {
+	public void setLugarmedicions(List<Lugarmedicion> lugarmedicions) {
 		this.lugarmedicions = lugarmedicions;
-	}*/
+	}
 	
 }
