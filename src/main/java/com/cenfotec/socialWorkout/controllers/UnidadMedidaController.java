@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.contracts.UnidadMedidaResponse;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
@@ -27,7 +28,7 @@ public class UnidadMedidaController {
 	@Autowired
 	private HttpServletRequest request;
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public UnidadMedidaResponse getAll() {
 		UnidadMedidaResponse um = new UnidadMedidaResponse();
 		um.setCode(200);
@@ -52,7 +53,7 @@ public class UnidadMedidaController {
 	public UnidadMedidaResponse edit(@RequestBody UnidadMedidaRequest umr) {
 
 		UnidadMedidaResponse umre = new UnidadMedidaResponse();
-		
+		MaquinaResponse mre = new MaquinaResponse();
 
 		if (unidadMedidaService.exists(umr.getUnidadMedida().getIdUnidadMedida())) {
 			if (unidadMedidaService.saveUnidadMedida(umr)) {
