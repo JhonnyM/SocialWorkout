@@ -14,5 +14,5 @@ public interface EjercicioServiceInterface {
 	boolean exists(Integer idEjercicio);
 	boolean delete(int idEjercicio);
 	boolean setMaquinaEjercicio(EjercicioRequest er);
-
+	void deleteMaquinasAsignadas(EjercicioRequest er);
 }

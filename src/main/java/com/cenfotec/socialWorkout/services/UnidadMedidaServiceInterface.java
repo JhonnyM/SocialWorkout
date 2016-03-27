@@ -13,8 +13,12 @@ public interface UnidadMedidaServiceInterface {
 
 	Boolean saveUnidadMedida(UnidadMedidaRequest umr);
 
+	UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida);
+	
 	public boolean delete(int idObj);
 
 	public boolean exists(Integer idObj);
 
+	
+	
 }

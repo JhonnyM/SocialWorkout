@@ -11,6 +11,7 @@ import com.cenfotec.socialWorkout.contracts.EjercicioRequest;
 import com.cenfotec.socialWorkout.contracts.EjercicioResponse;
 import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
+import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
 import com.cenfotec.socialWorkout.ejb.Ejercicio;
 import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.services.EjercicioServiceInterface;
@@ -21,6 +22,7 @@ public class EjercicioController {
 
 	@Autowired
 	private EjercicioServiceInterface ejercicioService;
+	
 	@Autowired
 	private HttpServletRequest request;
 
@@ -70,6 +72,7 @@ public class EjercicioController {
 		EjercicioResponse ere = new EjercicioResponse();
 
 		if (ejercicioService.exists(er.getEjercicio().getIdEjercicio())) {
+				ejercicioService.deleteMaquinasAsignadas(er);
 			if (ejercicioService.delete(er.getEjercicio().getIdEjercicio())) {
 				ere.setCode(200);
 				ere.setCodeMessage("El unidad medida fue eliminado exitosamente");
@@ -87,7 +90,7 @@ public class EjercicioController {
 		return ere;
 
 	}
-
+	
 	@RequestMapping(value = "/assignMachine", method = RequestMethod.POST)
 	public EjercicioResponse assignMachine(@RequestBody EjercicioRequest er) {
 
@@ -101,5 +104,13 @@ public class EjercicioController {
 		return ere;
 
 	}
+
+	@RequestMapping(value = "/deleteAssignedMachines", method = RequestMethod.POST)
+	public void deleteAssignedMachine(@RequestBody EjercicioRequest er) {
+
+		ejercicioService.deleteMaquinasAsignadas(er);
+
+	}
+
 	
 }

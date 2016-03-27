@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface UnidadMedidaRepository extends CrudRepository<Unidadmedida,Integer>{
 	List<Unidadmedida> findAll();
+	Unidadmedida findByIdUnidadMedida(int idUnidadMedida);
 }

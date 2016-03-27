@@ -79,4 +79,14 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 
 	}
 
+	@Override
+	public UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida) {
+		UnidadmedidaPOJO unidadMedidaPOJO = new UnidadmedidaPOJO();
+		Unidadmedida unidadMedida = unidadMedidaRepository.findByIdUnidadMedida(idUnidadMedida);
+		if (unidadMedida != null) {
+			BeanUtils.copyProperties(unidadMedida, unidadMedidaPOJO);
+		}
+		return unidadMedidaPOJO;
+	}
+	
 }
