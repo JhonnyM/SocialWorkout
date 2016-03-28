@@ -10,11 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.RegistroingresoRequest;
 import com.cenfotec.socialWorkout.ejb.Registroingreso;
+import com.cenfotec.socialWorkout.ejb.Tipousuario;
 import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
+import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
+import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
 import com.cenfotec.socialWorkout.repositories.RegistroingresoRepository;
 import com.cenfotec.socialWorkout.repositories.UserRepository;
+import com.cenfotec.socialWorkout.utils.Utils;
 
 
 
@@ -49,6 +53,39 @@ public class RegistroingresoService implements RegistroingresoServiceInterface{
 	@Override
 	public boolean exists (Integer idClase){		
 		return registrarIngreso.exists(idClase);		
+	}
+
+	@Override
+	public List<RegistroingresoPOJO> getRegistroIngresoByUsuario() {
+		    Usuario usuario = new Usuario();
+		    Utils.copyProperties(usuarioRepository.findByidUsuario(Utils.getId()),usuario);
+		    usuario.setClave("");
+		    List<Registroingreso> registrosIngreso = new ArrayList<Registroingreso>();
+		    registrosIngreso = registrarIngreso.findByUsuario1(usuario);
+	return generateRegistrosIngresoDtos(registrosIngreso);
+	}
+
+	private List<RegistroingresoPOJO> generateRegistrosIngresoDtos(List<Registroingreso> registrosIngreso){
+		List<RegistroingresoPOJO> uiRegistrosIngreso = new ArrayList<RegistroingresoPOJO>();
+		registrosIngreso.stream().forEach(u -> {
+			UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
+			PlantillarutinamaestroPOJO plantillaRutinaMaestroPOJO = new PlantillarutinamaestroPOJO();
+			if (!(u.getUsuario2()==null)){
+			BeanUtils.copyProperties(u.getUsuario2(), usuarioPOJOInstructor);
+			}
+			if (!(u.getPlantillarutinamaestro()==null)){
+			BeanUtils.copyProperties(u.getPlantillarutinamaestro(), plantillaRutinaMaestroPOJO);
+			plantillaRutinaMaestroPOJO.setPlantillarutinamaestro(null);
+			plantillaRutinaMaestroPOJO.setObjetivo(null);
+			}
+			RegistroingresoPOJO dto = new RegistroingresoPOJO();
+			BeanUtils.copyProperties(u,dto);
+			usuarioPOJOInstructor.setClave("");
+			dto.setUsuario2(usuarioPOJOInstructor);
+			dto.setPlantillarutinamaestro(plantillaRutinaMaestroPOJO);
+			uiRegistrosIngreso.add(dto);
+		});	
+		return uiRegistrosIngreso;
 	}
 
 }

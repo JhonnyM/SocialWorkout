@@ -183,8 +183,8 @@
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <b class="badge bg-info pull-right">2</b>
-                  <i class="glyphicon glyphicon-th"></i>
-                <span>Estad&#237sticas</span>
+                  <i class="glyphicon glyphicon-calendar"></i>
+                <span>Gimnasio</span>
                 </a>
                 <ul class="nav nav-sub dk">
                   <li class="nav-sub-header">
@@ -209,7 +209,7 @@
                     <i class="fa fa-fw fa-angle-down text-active"></i>
                   </span>
                   <b class="badge bg-info pull-right">3</b>
-                  <i class="glyphicon glyphicon-th"></i>
+                  <i class="fa fa-users"></i>
                 <span>Mi Perfil</span>
                 </a>
                 <ul class="nav nav-sub dk">
@@ -217,7 +217,7 @@
                    
                   </li>
                   <li>
-                    <a href="layout_app.html">
+                    <a href="app#/miPerfil">
                       <span>Datos generales</span>
                     </a>
                   </li>
@@ -227,7 +227,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="layout_fullwidth.html">
+                    <a href="app#/historialAsistencia">
                       <span>Historial de asistencia</span>
                     </a>
                   </li>
@@ -454,6 +454,7 @@
   <script src="resources/registrar/registrar.js"></script>
   <script src="resources/miPerfil/miPerfil.js"></script>
   <script src="resources/ocupacion/ocupacion.js"></script>
+  <script src="resources/historialAsistencia/historialAsistencia.js"></script>
   <script src="resources/lugarMedicion/lugarMedicion.js"></script>
   <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
   <script src="resources/components/version/version.js"></script>

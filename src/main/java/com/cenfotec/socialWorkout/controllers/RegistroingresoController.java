@@ -1,6 +1,8 @@
 package com.cenfotec.socialWorkout.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.RegistroingresoRequest;
 import com.cenfotec.socialWorkout.contracts.RegistroingresoResponse;
+import com.cenfotec.socialWorkout.contracts.TipoUsuarioResponse;
 import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
 import com.cenfotec.socialWorkout.services.RegistroingresoServiceInterface;
 
@@ -20,6 +23,15 @@ public class RegistroingresoController {
 
 	@Autowired private RegistroingresoServiceInterface registroService;
 
+	@RequestMapping(value ="/getRegistroIngresoByUsuario", method = RequestMethod.POST)
+	public RegistroingresoResponse getRegistroIngresoByUsuario() {
+		RegistroingresoResponse response = new RegistroingresoResponse();
+		response.setCode(200);
+		response.setCodeMessage("Tipo fetch success");
+		response.setRegistro(registroService.getRegistroIngresoByUsuario());
+		return response;		
+	}
+	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
 	public RegistroingresoResponse create(@RequestBody RegistroingresoRequest registroRequest){	
 		RegistroingresoResponse tResp = new RegistroingresoResponse();

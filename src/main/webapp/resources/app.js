@@ -23,6 +23,7 @@ angular.module('myApp', [
   'myApp.clasesModal',
   'myApp.facturacion',
   'myApp.registrar',
+  'myApp.historialAsistencia',
   'ui.grid',
   'angularFileUpload',
 ])

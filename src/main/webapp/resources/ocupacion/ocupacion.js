@@ -11,7 +11,6 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 
 .controller('miOcupacionCtrl', ['$scope','$http','$uibModal','$route' , function($scope,$http,$uibModal, $route) {
 
-	
 	$scope.usuario = {};
 	 $http.post('rest/protected/users/usuarioSet')
 		.success(function(response) {
