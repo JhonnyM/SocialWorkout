@@ -7,7 +7,7 @@ public class RegistroMedidaResponse extends BaseResponse {
 
 	private List<RegistroMedidaPOJO> registroMedidaPOJO;
 
-	private RegistroMedidaResponse(){
+	public RegistroMedidaResponse(){
 		super();
 	}
 

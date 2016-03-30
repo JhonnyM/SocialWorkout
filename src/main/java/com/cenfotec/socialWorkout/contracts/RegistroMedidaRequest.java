@@ -1,5 +1,4 @@
 package com.cenfotec.socialWorkout.contracts;
-
 import com.cenfotec.socialWorkout.pojo.RegistroMedidaPOJO;
 
 public class RegistroMedidaRequest extends BaseRequest {
@@ -23,5 +22,4 @@ public class RegistroMedidaRequest extends BaseRequest {
 		return "RegistroMedidaRequest [registroMedida=" + registroMedida + "]";
 	}
 
-	
 }

@@ -1,15 +1,22 @@
 'use strict'
 
 angular
-		.module('myApp.registrosMedidas', [ 'ngRoute', 'ui.grid', 'ui.bootstrap' ])
+		.module('myApp.registrosMedidas',
+				[ 'ngRoute', 'ui.grid', 'ui.bootstrap' ])
 
-		.config([ '$routeProvider', function($routeProvider) {
-			$routeProvider.when('/registrosMedidas', {
-				templateUrl : 'resources/registrosMedidas/registrosMedidas.html',
-				controller : 'RegistrosMedidasCtrl'
-			});
+		.config(
+				[
+						'$routeProvider',
+						function($routeProvider) {
+							$routeProvider
+									.when(
+											'/registrosMedidas',
+											{
+												templateUrl : 'resources/registrosMedidas/registrosMedidas.html',
+												controller : 'RegistrosMedidasCtrl'
+											});
 
-		} ])
+						} ])
 
 		.controller(
 				'RegistrosMedidasCtrl',
@@ -24,7 +31,7 @@ angular
 								$route.reload();
 							};
 
-							$scope.maquinas = [];
+							$scope.registrosMedidas = [];
 							$scope.requestObject = {
 								"pageNumber" : 0,
 								"pageSize" : 0,
@@ -36,16 +43,18 @@ angular
 
 							$scope.read = function() {
 								$http
-										.get('rest/protected/RegistrosMedidas/getAll')
+										.get(
+												'rest/protected/RegistrosMedidas/getAll')
 										.then(
 												function(response) {
 
 													console.log("response",
 															response)
 													$scope.registrosMedidas = response.data.registroMedidaPOJO;
-													console.log(
-															"$scope.registrosMedidas",
-															$scope.gridOptions)
+													console
+															.log(
+																	"$scope.registrosMedidas",
+																	$scope.gridOptions)
 												},
 												function() {
 													alert("Error obteniendo los registros de medidas.")
@@ -119,31 +128,31 @@ angular
 
 							};
 
-//							$scope.deleteRM = function(row) {
-//								var data = {};
-//
-//								data = {
-//									idMaquina : row.entity.idMaquina,
-//									descMaquina : row.entity.descMaquina,
-//									cantidad : row.entity.cantidad
-//								};
-//
-//								$http.post("rest/protected/Maquinas/delete", {
-//									maquina : data
-//								}).then(function(response) {
-//
-//									switch (response.data.code) {
-//									case 200:
-//										$scope.reload();
-//										break;
-//
-//									default:
-//
-//									}
-//
-//								}, function(response) {
-//
-//									console.log(response);
-//								});
-//							};
+							// $scope.deleteRM = function(row) {
+							// var data = {};
+							//
+							// data = {
+							// idMaquina : row.entity.idMaquina,
+							// descMaquina : row.entity.descMaquina,
+							// cantidad : row.entity.cantidad
+							// };
+							//
+							// $http.post("rest/protected/Maquinas/delete", {
+							// maquina : data
+							// }).then(function(response) {
+							//
+							// switch (response.data.code) {
+							// case 200:
+							// $scope.reload();
+							// break;
+							//
+							// default:
+							//
+							// }
+							//
+							// }, function(response) {
+							//
+							// console.log(response);
+							// });
+							// };
 						} ]);

@@ -35,6 +35,8 @@ angular.module('myApp', [
   'myApp.modal_Registrar_Ejercicio',
   'myApp.modal_Editar_Ejercicio', 
   'myApp.modal_Registrar_Maquina_Ejercicio',
+  'myApp.registrosMedidas',
+  'myApp.modal_Historial_Medida',
   'ngMaterial',
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {

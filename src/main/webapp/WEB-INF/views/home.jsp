@@ -359,6 +359,7 @@
 		<script src="resources/objetivos/objetivos.js"></script>
 		<script src="resources/objetivos/objetivosModal.js"></script>
 		<script src="resources/usuarios/usuarios.js"></script>
+		<script src="resources/usuarios/modal_Historial_Medidas.js"></script>
 		<script src="resources/tiposUsuario/tiposUsuario.js"></script>
 		<script src="resources/usuarios/modalController.js"></script>
 		<script src="resources/homeController/homeController.js"></script>
@@ -405,6 +406,8 @@
 		<script src="resources/ejercicios/modal_Editar_Ejercicio.js"></script>
 		<script
 			src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
+		<script src="resources/registrosMedidas/registrosMedidas.js"></script>
+
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script

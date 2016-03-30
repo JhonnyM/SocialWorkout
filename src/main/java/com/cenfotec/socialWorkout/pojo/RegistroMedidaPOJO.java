@@ -13,9 +13,7 @@ import java.util.Date;
  * 
  */
 public class RegistroMedidaPOJO {
-	private static final long serialVersionUID = 1L;
 
-	@Id
 	private int idRegistroMedida;
 
 	private int cantidad;
@@ -25,9 +23,6 @@ public class RegistroMedidaPOJO {
 	private LugarMedicionPOJO lugarmedicionPOJO;
 
 	private UsuarioPOJO usuarioPOJO;
-
-	public RegistroMedidaPOJO() {
-	}
 
 	public int getIdRegistroMedida() {
 		return this.idRegistroMedida;
@@ -53,19 +48,19 @@ public class RegistroMedidaPOJO {
 		this.fecha = fecha;
 	}
 
-	public LugarMedicionPOJO getLugarmedicion() {
+	public LugarMedicionPOJO getLugarmedicionPOJO() {
 		return this.lugarmedicionPOJO;
 	}
 
-	public void setLugarmedicion(LugarMedicionPOJO lugarmedicionPOJO) {
+	public void setLugarmedicionPOJO(LugarMedicionPOJO lugarmedicionPOJO) {
 		this.lugarmedicionPOJO = lugarmedicionPOJO;
 	}
 
-	public UsuarioPOJO getUsuario() {
+	public UsuarioPOJO getUsuarioPOJO() {
 		return this.usuarioPOJO;
 	}
 
-	public void setUsuario(UsuarioPOJO usuarioPOJO) {
+	public void setUsuarioPOJO(UsuarioPOJO usuarioPOJO) {
 		this.usuarioPOJO = usuarioPOJO;
 	}
 
