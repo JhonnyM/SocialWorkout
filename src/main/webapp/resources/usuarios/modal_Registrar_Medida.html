@@ -7,8 +7,8 @@
     <form sf-schema="registroMedidaSchema" sf-form="form" sf-model="form"></form>
     <div>
 		  <label class='col-sx-6 control-label'>Lugar medición</label>    
-    	  <select name="lugaresMedicion" id="lugaresMedicion" class="form-control"
-			ng-model="lugarMedicionEscogido"
+    	  <select name="lugaresMedicion" id="lugaresMedicion" class="form-control" placeholder = "Seleccione lugar de medición"
+			ng-model="$scope.lugarMedicionEscogido"
 			ng-options="l.idLugarMedicion as l.descLugarMedicion
 			for l in lugaresMedicion"
 			required>

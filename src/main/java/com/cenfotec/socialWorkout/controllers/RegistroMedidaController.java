@@ -54,6 +54,25 @@ public class RegistroMedidaController {
 		
 	}
 	
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public RegistroMedidaResponse edit(@RequestBody RegistroMedidaRequest rmR) {
+
+		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
+		
+		if(registroMedidaService.exists(rmR.getRegistroMedida().getIdRegistroMedida())){
+			if (registroMedidaService.saveRegistroMedida(rmR)){
+				rmRe.setCode(200);
+				rmRe.setCodeMessage("La información del registro de medida fue actualizada correctamente.");
+			}else{
+				rmRe.setCode(500);
+				rmRe.setCodeMessage("La información del registro de medida no fue modificada.");
+				
+			}
+		}
+		return rmRe;
+	}
+	
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public RegistroMedidaResponse delete(@RequestBody RegistroMedidaRequest rmR) {
 

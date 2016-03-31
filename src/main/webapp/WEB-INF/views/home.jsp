@@ -361,6 +361,7 @@
 		<script src="resources/usuarios/usuarios.js"></script>
 		<script src="resources/usuarios/modal_Historial_Medidas.js"></script>
 		<script src="resources/usuarios/modal_Registrar_Medida.js"></script>
+		<script src="resources/usuarios/modal_Editar_Medida.js"></script>
 		<script src="resources/tiposUsuario/tiposUsuario.js"></script>
 		<script src="resources/usuarios/modalController.js"></script>
 		<script src="resources/homeController/homeController.js"></script>
