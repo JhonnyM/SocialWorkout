@@ -13,5 +13,6 @@ public interface LugarMedicionServiceInterface {
 	boolean edit(LugarMedicionRequest lugarMedicionRequest);
 	public boolean delete(Integer idObj);
 	public boolean exists (Integer idObj);
+	List<LugarMedicionPOJO> getAll2();
 
 }

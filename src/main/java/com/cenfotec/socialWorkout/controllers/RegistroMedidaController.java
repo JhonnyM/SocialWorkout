@@ -40,4 +40,42 @@ public class RegistroMedidaController {
 		
 	}
 	
+	@RequestMapping(value ="/create", method = RequestMethod.POST)
+	public RegistroMedidaResponse create(@RequestBody RegistroMedidaRequest rmR){	
+		
+		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
+		Boolean state = registroMedidaService.saveRegistroMedida(rmR);
+	
+		if(state){
+			rmRe.setCode(200);
+			rmRe.setCodeMessage("Registro medida creado correctamente.");
+		}
+		return rmRe;
+		
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public RegistroMedidaResponse delete(@RequestBody RegistroMedidaRequest rmR) {
+
+		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
+
+		if (registroMedidaService.exists(rmR.getRegistroMedida().getIdRegistroMedida())) {
+			if (registroMedidaService.delete(rmR.getRegistroMedida().getIdRegistroMedida())) {
+				rmRe.setCode(200);
+				rmRe.setCodeMessage("El registro de medida fue eliminado exitosamente");
+			} else {
+				rmRe.setCode(500);
+				rmRe.setCodeMessage("Hubo un error al momento de eliminar el registro de medida.");
+			}
+
+		} else {
+			rmRe.setCode(404);
+			rmRe.setCodeMessage("El registro de medida no existe.");
+		}
+
+		return rmRe;
+
+	}
+	
+	
 }

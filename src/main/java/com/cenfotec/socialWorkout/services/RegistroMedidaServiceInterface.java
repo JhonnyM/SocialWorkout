@@ -9,4 +9,10 @@ public interface RegistroMedidaServiceInterface {
 
 	List<RegistroMedidaPOJO> getAllById(RegistroMedidaRequest rmR);
 	
+	Boolean saveRegistroMedida(RegistroMedidaRequest rmR);
+
+	public boolean delete(int idRegistroMedida);
+
+	public boolean exists(Integer idRegistroMedida);
+	
 }

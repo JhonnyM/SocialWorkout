@@ -5,14 +5,15 @@ angular.module('myApp.modal_Historial_Medida',
 
 .controller(
 		'modal_Historial_Medida_Ctrl',
-		[ '$scope', '$http', '$uibModalInstance', 'usuario', '$route',
-				function($scope, $http, $uibModalInstance, usuario, $route) {
+		[ '$scope', '$http', '$uibModalInstance','$uibModal', 'usuario', '$route',
+				function($scope, $http, $uibModalInstance, $uibModal, usuario, $route) {
 
 					$scope.reload = function() {
 						$route.reload();
 					};
 
 					$scope.usuarioForm = angular.copy(usuario);
+					
 					$scope.registroMedidas = [];
 					
 
@@ -84,23 +85,100 @@ angular.module('myApp.modal_Historial_Medida',
 					 displayName : 'Registro'
 					 },
 
+
+					 {
+					 field : 'lugarmedicionPOJO.descLugarMedicion',
+					 displayName : 'Lug.Medición'
+					 },
+					 
 					 {
 					 field : 'lugarmedicionPOJO.unidadMedidaPOJO.descUnidadMedida',
-					 displayName : 'Registro'
+					 displayName : 'Un.Medida'
 					 },
 					 
 					 {
 					 field : 'Acciones',
 					 displayName : 'Acciones',
-					 cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
+					 cellTemplate : '<p ng-click="grid.appScope.edit(row)"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span></p>'
 					 },
 					 {
 					 field : 'Acciones',
 					 displayName : 'Acciones',
-					 cellTemplate : '<p	 ng-click="grid.appScope.deleteM(row)">Eliminar</p>'
+					 cellTemplate : '<p	 ng-click="grid.appScope.deleteMe(row)"><span class="glyphicon glyphicon-trash" aria-hidden="true" ></span></p>'
 					 } ]
 					 };
 					 
 					 $scope.read();
+					 
+						$scope.save = function(row) {
+							var dialogOpts = {
+								backdrop : 'static',
+								keyboard : false,
+								templateUrl : 'resources/usuarios/modal_Registrar_Medida.html',
+								controller : 'modal_Registrar_MedidaCtrl',
+								size : "sm",
+								windowClass : "modal",
+								resolve : {
+									usuario : function() {
+										return usuario
+									},
+									route : $route
+								}
+							};
+
+							$uibModal.open(dialogOpts)
+
+						};
+						
+						$scope.deleteMe = function(row) {
+						 	$scope.registroMedida = {};
+							 
+						 	registroMedida = {
+
+									idRegistroMedida : row.entity.idRegistroMedida,
+									
+									cantidad : 0,
+									
+									fecha: '1900-01-01',
+									
+									lugarmedicionPOJO : {
+										
+										unidadMedidaPOJO : {
+											idUnidadMedida : 0
+										}
+									
+									},
+
+									usuarioPOJO : {
+										idUsuario : 0,
+						                tipoUsuarioPOJO : {
+						                	idTipoUsuario : 0
+						                },
+									    usuarioPOJOInstructor : {
+									    	idUsuario : 0
+									    }
+									}
+									
+								};
+						 	
+							$http.post("rest/protected/RegistrosMedidas/delete", {
+								registroMedida : registroMedida
+							}).then(function(response) {
+
+								switch (response.data.code) {
+								case 200:
+									$scope.reload();
+									break;
+
+								default:
+
+								}
+
+							}, function(response) {
+
+								console.log(response);
+							});
+						};
+						
 
 				} ]);
