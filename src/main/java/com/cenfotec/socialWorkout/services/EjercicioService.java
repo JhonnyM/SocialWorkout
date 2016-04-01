@@ -106,8 +106,6 @@ public class EjercicioService implements EjercicioServiceInterface {
 		List<MaquinahasejercicioPOJO> maquinahasEjercicioPOJO = er.getEjercicio().getMaquinahasejercicios();
 
 		List<Maquinahasejercicio> maquinahasEjercicio = new ArrayList<Maquinahasejercicio>();
-
-//		deleteMaquinasAsignadas(er);
 		
 		maquinahasEjercicioPOJO.stream().forEach(mh -> {
 			
@@ -129,8 +127,6 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 		ejercicio.setMaquinahasejercicios(null);
 
-//		Ejercicio nejercicio = ejercicioRepository.save(ejercicio);
-//		
 		Ejercicio nejercicio = new Ejercicio();
 		
 		return (nejercicio == null) ? false : true;
