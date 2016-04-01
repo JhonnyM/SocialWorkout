@@ -43,7 +43,9 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	           {name:'poseeVehiculo', displayName:'Vehículo', cellTemplate: '<input type="checkbox" ng-model="row.entity.poseeVehiculo" disabled="disabled">'},
 	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},
 	           {name: 'usuarioPOJOInstructor.nombre' , displayName:'Instructor'},
-	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>'} 
+	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>'},
+	           {name:'Historial Medidas', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.getHistorialMedidas(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Ver historial de medidas</button>'} 
+
 	           ]
 	    };
 	
@@ -55,6 +57,22 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 					templateUrl:'resources/usuarios/edit-modal.html',
 					controller:'ModalController',
 					size:"sx",
+					windowClass:"modal",
+					resolve:{
+						usuario:function(){return row.entity}
+					}
+			};
+			$uibModal.open(dialogOpts)
+		}
+		
+		$scope.getHistorialMedidas = function(row){
+
+			var dialogOpts = {
+					backdrop:'static',
+					keyboard:false,
+					templateUrl:'resources/usuarios/modal_Historial_Medidas.html',
+					controller:'modal_Historial_Medida_Ctrl',
+					size:"lg",
 					windowClass:"modal",
 					resolve:{
 						usuario:function(){return row.entity}
