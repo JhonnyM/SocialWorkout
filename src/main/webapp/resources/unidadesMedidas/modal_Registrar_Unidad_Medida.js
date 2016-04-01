@@ -15,9 +15,13 @@ angular
 								properties : {
 									descUnidadMedida : {
 										type : 'string',
+										pattern : '/^[0-9a-zA-Z ]+$/',
 										title : 'Descripción'
 									}
-								}
+								},
+								required:[
+								          'descUnidadMedida'
+								          ]
 							};
 
 							$scope.reload = function(){

@@ -48,16 +48,6 @@
                <link rel="stylesheet"
                   href="resources/jquery/bootstrap/dist/css/bootstrap.css"
                   type="text/css" />
-               <link rel="stylesheet" href="resources/css/angular-material.css"
-                  type="text/css" />
-               <link rel="stylesheet" href="resources/css/angular-material.layouts.css"
-                  type="text/css" />
-               <link rel="stylesheet"
-                  href="resources/css/angular-material.layouts.min.css" type="text/css" />
-               <link rel="stylesheet" href="resources/css/angular-material.min.css"
-                  type="text/css" />
-               <link rel="stylesheet"
-                  href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
                <script
                   src="resources/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
             </head>
@@ -455,15 +445,10 @@
                   src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
                <script src="resources/registrosMedidas/registrosMedidas.js"></script>
                <script
-                  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-               <script
                   src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
                <script
                   src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
                <script
                   src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
-               <!-- Angular Material Library -->
-               <script
-                  src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
             </body>
          </html>
