@@ -22,7 +22,6 @@ import com.cenfotec.socialWorkout.repositories.PlantillarutinamaestroRepository;
 public class PlantillarutinadetalleService implements PlantillarutinadetalleServiceInterface{
 
 	@Autowired private PlantillarutinadetalleRepository plantillaRutinaDetalle;
-	@Autowired private PlantillarutinamaestroRepository plantillaRutinaMaestro;
 	
 
 	@Override

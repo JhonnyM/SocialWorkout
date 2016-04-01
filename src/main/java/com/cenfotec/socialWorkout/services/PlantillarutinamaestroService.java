@@ -10,9 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.PlantillarutinamaestroRequest;
 import com.cenfotec.socialWorkout.ejb.Objetivo;
+import com.cenfotec.socialWorkout.ejb.Plantillarutinadetalle;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
 import com.cenfotec.socialWorkout.pojo.ObjetivoPOJO;
+import com.cenfotec.socialWorkout.pojo.PlantillarutinadetallePOJO;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
+import com.cenfotec.socialWorkout.repositories.PlantillarutinadetalleRepository;
 import com.cenfotec.socialWorkout.repositories.PlantillarutinamaestroRepository;
 
 
@@ -21,6 +24,7 @@ import com.cenfotec.socialWorkout.repositories.PlantillarutinamaestroRepository;
 public class PlantillarutinamaestroService implements PlantillarutinamaestroServiceInterface{
 
 	@Autowired private PlantillarutinamaestroRepository plantillaMaestroRepository;
+	@Autowired private PlantillarutinadetalleRepository plantillaDetalleRepository;
 	
 
 	@Override
@@ -28,12 +32,21 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 	public List<PlantillarutinamaestroPOJO> getAll() {		
 		List<Plantillarutinamaestro> plantillaRutina = plantillaMaestroRepository.findAll();
 		List<PlantillarutinamaestroPOJO> dtos = new ArrayList<PlantillarutinamaestroPOJO>();
+		
 		plantillaRutina.stream().forEach(ta ->{
 			PlantillarutinamaestroPOJO dto = new PlantillarutinamaestroPOJO();
+			List<PlantillarutinadetallePOJO> detalledtos = new ArrayList<PlantillarutinadetallePOJO>();
+			List<Plantillarutinadetalle> plantillasRutinaDetalle = plantillaDetalleRepository.findByplantillarutinamaestro(ta);
+			plantillasRutinaDetalle.stream().forEach(rd -> {
+				PlantillarutinadetallePOJO detallePOJO = new PlantillarutinadetallePOJO();
+				BeanUtils.copyProperties(rd,detallePOJO);
+				detalledtos.add(detallePOJO);
+			});
 			Objetivo objetivo = ta.getObjetivo();
 			ObjetivoPOJO objDto = new ObjetivoPOJO();
 			BeanUtils.copyProperties(objetivo,objDto);
 			BeanUtils.copyProperties(ta, dto);
+			dto.setPlantillarutinadetalles(detalledtos);
 			dto.setObjetivo(objDto);
 			dtos.add(dto);
 			
