@@ -19,6 +19,7 @@ angular.module('myApp.home', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.boot
 	$scope.mostrarAdministrador = false;
 	 $http.post('rest/protected/users/usuarioSet')
 		.success(function(response) {
+			console.log("$scope.Usuario",$scope.usuario)
 			$scope.usuario = response.usuario;
 			$scope.descTipoUsuario = response.usuario.tipoUsuarioPOJO.descTipoUsuario;
 			if ($scope.descTipoUsuario == "Cliente"){
