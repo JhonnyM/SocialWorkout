@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.PlantillarutinadetalleRequest;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinadetalle;
+import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinadetallePOJO;
+import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
 import com.cenfotec.socialWorkout.repositories.PlantillarutinadetalleRepository;
+import com.cenfotec.socialWorkout.repositories.PlantillarutinamaestroRepository;
 
 
 
@@ -19,6 +22,7 @@ import com.cenfotec.socialWorkout.repositories.PlantillarutinadetalleRepository;
 public class PlantillarutinadetalleService implements PlantillarutinadetalleServiceInterface{
 
 	@Autowired private PlantillarutinadetalleRepository plantillaRutinaDetalle;
+	@Autowired private PlantillarutinamaestroRepository plantillaRutinaMaestro;
 	
 
 	@Override
@@ -39,7 +43,11 @@ public class PlantillarutinadetalleService implements PlantillarutinadetalleServ
 	public boolean save (PlantillarutinadetalleRequest request){
 		PlantillarutinadetallePOJO plantillaDTO = request.getPlantillaRutinaDetalle();
 		Plantillarutinadetalle plantilla = new Plantillarutinadetalle();
+		PlantillarutinamaestroPOJO plantillaMaestroDTO = request.getPlantillaRutinaDetalle().getPlantillarutinamaestro();
+		Plantillarutinamaestro plantillaMaestro = new Plantillarutinamaestro();
 		BeanUtils.copyProperties(plantillaDTO, plantilla);
+		BeanUtils.copyProperties(plantillaMaestroDTO, plantillaMaestro);
+		plantilla.setPlantillarutinamaestro(plantillaMaestro);
 		Plantillarutinadetalle s = plantillaRutinaDetalle.save(plantilla);
 		return !(s == null);
 		

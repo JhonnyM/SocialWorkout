@@ -9,16 +9,19 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   });
 }])
 
-.controller('rutinasCtrl', ['$scope','$http','$uibModal', function($scope,$http,$uibModal) {
+.controller('rutinasCtrl', ['$scope','$http','$uibModal', '$filter','$route', function($scope,$http,$uibModal,$filter,$route) {
 	$scope.rutinas = [];
+  $scope.rutina = $filter('orderBy')($scope.rutinas, 'first')[0];
+  $scope.rutinaAEditar = {};
   $scope.users = [];
   $scope.objetivos = [];
+  $scope.detalles = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","rutinas": {}};
 
-  $http.get('rest/protected/users/all').success(function(response) {
-    $scope.users = response.usuarios;
-    console.log($scope.users);
-  });
+  // $http.get('rest/protected/users/all').success(function(response) {
+  //   $scope.users = response.usuarios;
+  //   console.log($scope.users);
+  // });
 
 
   $scope.read = function(){
@@ -27,6 +30,11 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
       console.log($scope.rutinas);
     }, function(){
       alert("Error obteniendo la informacion de las rutinas");
+    });
+
+    $http.get('rest/protected/plantillaDetalles/all').success(function(response) {
+      $scope.detalles = response.plantillasDetalle;
+      console.log($scope.detalles);
     });
   };
 
@@ -50,31 +58,17 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     ]
   };
 
-  $scope.edit = function(row){
-    alert("To be implemented");
-  };
-
-  $scope.addRutinaDetalle = function(row){
-    var dialogOpts = {
-     backdrop:'static',
-     keyboard:false,
-     templateUrl:'resources/rutinas/agregar-rutina-detalle.html',
-     controller:'RutinaDetalleCtrl',
-     size:"lg",
-     windowClass:"modal",
-     resolve:{
-         rutina:function(){return row.entity}
-     }
- };
- $uibModal.open(dialogOpts)
-  };
-
 	$scope.save = function(event){
     	
     var data = {};
     var userToSave = {};
     var objetivoToSave = {};
+    var detallesToSave = [];
+    // for(var i=0, i < $scope.detalles.length, i++){
+
+    // }
     objetivoToSave = $scope.objetivos.find($scope.findObjetivo);
+
     data = {
       objetivo : objetivoToSave,
       descRutina : $scope.requestObject.desc,
@@ -125,6 +119,119 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
  $scope.findObjetivo = function (objetivo) { 
     return objetivo.idObjetivo === $scope.requestObject.idObjetivo;
-  }
+  };
+
+  $scope.findDetalleRutina = function (detalle) { 
+    return detalle.idPLantillaRutinaDetalle === $scope.requestObject.idPLantillaRutinaDetalle;
+  };
+
+  $scope.createRutina = function(){
+    var dialogOpts = {
+        backdrop:'static',
+        keyboard:false,
+        templateUrl:'resources/rutinas/nueva-rutina-maestro.html',
+        controller:'RutinaMaestroCtrl',
+        size:"sx",
+        windowClass:"modal",
+        resolve:{
+          rutina: {},
+          route : $route,
+        }
+    };
+      
+    $uibModal.open(dialogOpts)
+  };
+
+  $scope.checkItem = function(obj, arr, key){
+    var i=0;
+    angular.forEach(arr, function(item) {
+      if(item[key].indexOf( obj[key] ) == 0){
+        var j = item[key].replace(obj[key], '').trim();
+        if(j){
+          i = Math.max(i, parseInt(j)+1);
+        }else{
+          i = 1;
+        }
+      }
+    });
+    return obj[key] + (i ? ' '+i : '');
+  };
+
+  $scope.deleteGroup = function(item){
+    $scope.rutinas.splice($scope.rutinas.indexOf(item), 1);
+  };
+
+  $scope.selectGroup = function(item){    
+    angular.forEach($scope.rutinas, function(item) {
+      item.selected = false;
+    });
+    $scope.rutinaAEditar = item;
+    console.log($scope.rutinaAEditar);
+    $scope.rutinaAEditar.selected = true;
+    $scope.filter = item.name;
+  };
+
+  $scope.selectItem = function(item){    
+    angular.forEach($scope.rutinas, function(item) {
+      item.selected = false;
+      item.editing = false;
+    });
+    $scope.item = item;
+    $scope.item.selected = true;
+  };
+
+  $scope.doneEditing = function(item){
+    item.editing = false;
+  };
+
+  $scope.addRutinaDetalle = function(row){
+    if($scope.rutinaAEditar.selected == true){
+      var dialogOpts = {
+       backdrop:'static',
+       keyboard:false,
+       templateUrl:'resources/rutinas/agregar-rutina-detalle.html',
+       controller:'RutinaDetalleCtrl',
+       size:"lg",
+       windowClass:"modal",
+       resolve:{
+            rutina: $scope.rutinaAEditar,
+            detalle: {},
+            route : $route,
+          }
+      };
+      $uibModal.open(dialogOpts)
+    } else {
+      alert("Seleccione una rutina");
+    };
+  };
+
+  $scope.updatePlantilla = function() {
+      
+    $scope.data = {};
+
+    data = {
+      idClase : $scope.claseForm.idClase,
+    descClase : $scope.claseForm.descClase
+    };
+
+    $http.post('rest/protected/plantillas/update',{plantillaRutinaMaestro: data})
+    .then(function (response){
+
+        switch(response.data.code)
+        {
+          case 200:
+            alert(response.data.codeMessage);
+          break;
+
+          default:
+            alert(response.data.codeMessage);
+        }
+        $scope.read();
+      }, function (response){
+        alert("Error al guardar la información de la nueva clase");
+      });
+  };
+
+
 
 }]);

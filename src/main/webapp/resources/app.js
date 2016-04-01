@@ -24,6 +24,8 @@ angular.module('myApp', [
   'myApp.facturacion',
   'myApp.registrar',
   'myApp.rutinas',
+  'myApp.modalRutinaMaestro',
+  'myApp.rutinaDetalleModal',
   'myApp.historialAsistencia',
   'myApp.historialMedidas',
   'ui.grid',
