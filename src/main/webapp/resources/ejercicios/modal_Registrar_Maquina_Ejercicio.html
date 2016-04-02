@@ -5,9 +5,9 @@
   </div>
   <div class="modal-body">
             <div flex="50" ng-repeat="maquina in maquinas">
-              <md-checkbox ng-checked="exists(maquina, maquinasSeleccionadas)" ng-click="toggle(maquina, maquinasSeleccionadas)">
+              <input type="checkbox" ng-checked="exists(maquina, maquinasSeleccionadas)" ng-click="toggle(maquina, maquinasSeleccionadas)"/>
                 {{maquina.descMaquina}} 
-              </md-checkbox>
+              
             </div>
   </div> 
   <div class="modal-footer">
