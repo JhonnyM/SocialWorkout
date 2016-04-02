@@ -39,37 +39,37 @@ public class Registromedida implements Serializable {
 	public int getIdRegistroMedida() {
 		return this.idRegistroMedida;
 	}
-
-	public void setIdRegistroMedida(int idRegistroMedida) {
-		this.idRegistroMedida = idRegistroMedida;
-	}
-
+	
 	public int getCantidad() {
 		return this.cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-
 	public Date getFecha() {
 		return this.fecha;
+	}
+	
+	public Lugarmedicion getLugarmedicion() {
+		return this.lugarmedicion;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setIdRegistroMedida(int idRegistroMedida) {
+		this.idRegistroMedida = idRegistroMedida;
+	}
+	
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
-	public Lugarmedicion getLugarmedicion() {
-		return this.lugarmedicion;
-	}
-
 	public void setLugarmedicion(Lugarmedicion lugarmedicion) {
 		this.lugarmedicion = lugarmedicion;
-	}
-
-	public Usuario getUsuario() {
-		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {

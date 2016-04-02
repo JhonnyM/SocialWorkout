@@ -15,11 +15,11 @@ angular.module('myApp.lugarMedicion', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 		};*/
 	$scope.lugaresMedicion = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","lugarMedicion": {}};
-	$http.post('rest/protected/lugarMedicion/getAll',$scope.requestObject)
+	$http.post('rest/protected/lugarMedicion/getAll')
 		.success(function(response) {
 			console.log("response",response)
-			$scope.lugaresMedicion = response.lugaresMedicion;
-			console.log("$scope.lugaresMedicion",$scope.lugaresMedicion)
+			$scope.lugaresMedicion = response.lugaresMedicionPOJO;
+			console.log("$scope.lugaresMedicion",$scope.lugaresMedicionPOJO)
 	});
 
 

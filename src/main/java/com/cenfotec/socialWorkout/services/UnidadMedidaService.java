@@ -9,6 +9,7 @@ import com.cenfotec.socialWorkout.contracts.UnidadMedidaRequest;
 import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Unidadmedida;
 import com.cenfotec.socialWorkout.ejb.Usuario;
+import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 import com.cenfotec.socialWorkout.repositories.UnidadMedidaRepository;
 import org.springframework.beans.BeanUtils;
@@ -34,6 +35,7 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 		unidadesMedidas.stream().forEach(um -> {
 			UnidadmedidaPOJO dto = new UnidadmedidaPOJO();
 			BeanUtils.copyProperties(um, dto);
+			dto.setLugarmedicions(null);
 			uiUnidadesMedidas.add(dto);
 		});
 		return uiUnidadesMedidas;
@@ -86,5 +88,5 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 		}
 		return unidadMedidaPOJO;
 	}
-
+	
 }
