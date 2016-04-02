@@ -25,6 +25,20 @@ angular.module('myApp', [
   'myApp.registrar',
   'ui.grid',
   'angularFileUpload',
+  'myApp.unidadesMedidas',
+  'myApp.modal_Editar_Unidad_Medida',
+  'myApp.modal_Registrar_Unidad_Medida',
+  'myApp.maquinas',
+  'myApp.modal_Editar_Maquina',
+  'myApp.modal_Registrar_Maquina',
+  'myApp.ejercicios',
+  'myApp.modal_Registrar_Ejercicio',
+  'myApp.modal_Editar_Ejercicio', 
+  'myApp.modal_Registrar_Maquina_Ejercicio',
+  'myApp.registrosMedidas',
+  'myApp.modal_Historial_Medida',
+  'myApp.modal_Registrar_Medida', 
+  'myApp.modal_Editar_Medida'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});

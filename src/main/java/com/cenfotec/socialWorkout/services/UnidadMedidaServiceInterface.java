@@ -10,13 +10,15 @@ public interface UnidadMedidaServiceInterface {
 	List<UnidadmedidaPOJO> getAll();
 
 	UnidadmedidaPOJO getById(UnidadMedidaRequest umr);
-	
-	UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida);
 
 	Boolean saveUnidadMedida(UnidadMedidaRequest umr);
 
+	UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida);
+	
 	public boolean delete(int idObj);
 
 	public boolean exists(Integer idObj);
 
+	
+	
 }

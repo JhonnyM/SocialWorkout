@@ -14,7 +14,7 @@ import java.util.List;
 public class Unidadmedida implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@Id	
 	private int idUnidadMedida;
 
 	private String descUnidadMedida;
