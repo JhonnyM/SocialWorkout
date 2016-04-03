@@ -10,7 +10,7 @@ angular
         'usuario',
         '$route',
         function($scope, $http, $uibModalInstance, usuario, $route) {
-
+        	$scope.lugarMedicionEscogido = {};
             $scope.lugaresMedicion = [];
 
             $scope.reload = function() {
@@ -55,7 +55,7 @@ angular
             ];
 
             $scope.save = function() {
-
+            	console.log("LUGARMEDICIONESCOGIDO", $scope.lugarMedicionEscogido)
                 $scope.data = {};
 
                 data = {

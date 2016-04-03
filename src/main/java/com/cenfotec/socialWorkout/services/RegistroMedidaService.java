@@ -65,21 +65,21 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 			
 			Hibernate.initialize(rm.getLugarmedicion());
 			
-			HibernateProxy proxy = (HibernateProxy)rm.getLugarmedicion();                                                          
-			
-			Lugarmedicion lugarMedicion = (Lugarmedicion)proxy.getHibernateLazyInitializer().getImplementation();			
-			
+			HibernateProxy proxy = (HibernateProxy)rm.getLugarmedicion();                
+			Lugarmedicion lugarMedicion = new Lugarmedicion();
+			if (!(proxy ==null)){
+			lugarMedicion = (Lugarmedicion)proxy.getHibernateLazyInitializer().getImplementation();			
 			lugarMedicion.setRegistromedidas(null);
-			
+			}
 			RegistroMedidaPOJO dto = new RegistroMedidaPOJO();
-			
+			if (!(rm==null)){
 			BeanUtils.copyProperties(rm, dto);
-			
+			}
+			if (!(lugarMedicion==null)){
 			dto.setLugarmedicionPOJO(generateLugarMedicionDto(lugarMedicion));
-			
 			dto.getLugarmedicionPOJO().setUnidadMedidaPOJO(generateUnidadMedidaDto(
 					unidadMedidaRepository.findOne(lugarMedicion.getUnidadmedida().getIdUnidadMedida())));
-			
+			}
 			dto.setUsuarioPOJO(null);
 			
 			dto.getLugarmedicionPOJO().getUnidadMedidaPOJO().setLugarmedicions(null);
@@ -93,17 +93,17 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 
 	private LugarMedicionPOJO generateLugarMedicionDto(Lugarmedicion lugarMedicion) {
 		LugarMedicionPOJO lugarMedicionPOJO = new LugarMedicionPOJO();
-
+		if (!(lugarMedicion==null)){
 		BeanUtils.copyProperties(lugarMedicion, lugarMedicionPOJO);
-
+		}
 		return lugarMedicionPOJO;
 	}
 
 	private UnidadmedidaPOJO generateUnidadMedidaDto(Unidadmedida unidadMedida) {
 		UnidadmedidaPOJO unidadMedidaPOJO = new UnidadmedidaPOJO();
-
+		if (!(unidadMedida==null)){
 		BeanUtils.copyProperties(unidadMedida, unidadMedidaPOJO);
-
+		}
 		return unidadMedidaPOJO;
 	}
 
@@ -119,9 +119,9 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 
 		UsuarioPOJO usuarioPOJO = rmR.getRegistroMedida().getUsuarioPOJO();
 		Usuario usuario = usuarioRepository.findOne(usuarioPOJO.getIdUsuario());
-		
+		if (!(registroDTO==null)){
 		BeanUtils.copyProperties(registroDTO, registroMedida);
-				
+		}
 		registroMedida.setLugarmedicion(lugarMedicion);
 		registroMedida.setUsuario(usuario);
 		

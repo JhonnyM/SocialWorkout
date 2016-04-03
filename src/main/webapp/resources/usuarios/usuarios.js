@@ -43,9 +43,7 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	           {name:'poseeVehiculo', displayName:'Vehículo', cellTemplate: '<input type="checkbox" ng-model="row.entity.poseeVehiculo" disabled="disabled">'},
 	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},
 	           {name: 'usuarioPOJOInstructor.nombre' , displayName:'Instructor'},
-	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>'},
-	           {name:'Historial Medidas', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.getHistorialMedidas(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Ver historial de medidas</button>'} 
-
+	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.getHistorialMedidas(row)" class="btn m-b-xs btn-sm btn-info btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Medidas</button>', enableFiltering: false, enableSorting: false, width: 180}
 	           ]
 	    };
 	
