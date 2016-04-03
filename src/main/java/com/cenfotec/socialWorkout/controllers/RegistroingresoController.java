@@ -20,6 +20,15 @@ public class RegistroingresoController {
 
 	@Autowired private RegistroingresoServiceInterface registroService;
 
+	@RequestMapping(value ="/getRegistroIngresoByUsuario", method = RequestMethod.POST)
+	public RegistroingresoResponse getRegistroIngresoByUsuario() {
+		RegistroingresoResponse response = new RegistroingresoResponse();
+		response.setCode(200);
+		response.setCodeMessage("Tipo fetch success");
+		response.setRegistro(registroService.getRegistroIngresoByUsuario());
+		return response;		
+	}
+	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
 	public RegistroingresoResponse create(@RequestBody RegistroingresoRequest registroRequest){	
 		RegistroingresoResponse tResp = new RegistroingresoResponse();

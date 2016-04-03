@@ -9,6 +9,7 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 	$scope.instructorList = [];
 	$scope.requestObject = {};
 	$scope.usuarioForm = angular.copy(usuario);
+	$scope.valid = true;
 	$scope.reload = function(){
 		 $route.reload();
 		};
@@ -48,20 +49,28 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
     $scope.PersonSchema = {
 			  "type": "object",
 			  properties: {
-				identificacion: { type: 'string', title: 'Identificación' },
-			    nombre: { type: 'string', title: 'Nombre' },
-			    apellidos: { type: 'string', title: 'Apellidos' },
-			    correoElectronico: { type: 'string', pattern: "^\\S+@\\S+$", title: 'Email', validationMessage: "La dirección de correo no es válida" },
+				identificacion: { type: 'string', title: 'Identificación',validationMessage: "La identificación no es válida"},
+			    nombre: { type: 'string', title: 'Nombre' ,validationMessage: "El nombre no es válido"},
+			    apellidos: { type: 'string', title: 'Apellidos' ,validationMessage: "Los apellidos no son válidos"},
+			    correoElectronico: { type: 'string', pattern: "^\\S+@\\S+$", title: 'Email', validationMessage: "La dirección de correo no es válida"},
 			    fechaNac: {title: 'Fecha de nacimiento' },
 			    fechaIngreso: {title: 'Fecha de ingreso'},
 			    fechaPago: {title: 'Fecha de pago'},
 			    poseeVehiculo: { type: 'boolean', title: 'Posee vehiculo' },
 			    estatus: { type: 'boolean', title: 'Habilitado' },
-			   }
+			   },
+			   "required": [
+                             "identificacion",
+			                 "nombre",
+			                 "apellidos",
+			                 "correoElectronico"
+			               ]
+    			 
 			};
     
     	$scope.form = [
 		'identificacion',
+		
 		{"title":"Nombre",
 		 "key" : "nombre",
 		 fieldHtmlClass: "text", 
@@ -84,14 +93,16 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 			 "type": "checkbox",
 		    },
 	    {"key": "estatus",
-			 "type": "checkbox",
+		"type": "checkbox",
 		    },
-	    
-	    
-	  ];
-	  
+		];
+
+    	
+    	
     	$scope.save = function () {
     		$scope.data = {};
+    		$scope.dataReq = {};
+    		
 			data = {
 			  	idUsuario : usuario.idUsuario,
 			  	identificacion : $scope.usuarioForm.identificacion,
@@ -105,13 +116,13 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
                 poseeVehiculo : $scope.usuarioForm.poseeVehiculo,
                 tipoUsuarioPOJO : {
                 	idTipoUsuario : $scope.requestObject.idTipoUsuario,
-                	descTipoUsuario : ''
                 },
 			    usuarioPOJOInstructor : {
 			    	idUsuario : $scope.requestObject.idUsuarioInstructor
 			    }
             };
-			  console.log(data.idUsuario);
+			$scope.valid = tv4.validate($scope.usuarioForm, $scope.PersonSchema);
+			  if($scope.valid && $scope.requestObject.idTipoUsuario > 0){
 				  $http.post('rest/protected/users/edit', {user : data}).success(
 					function(data, status, config) {
 					$scope.message = data;
@@ -131,8 +142,8 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 	    usuario.poseeVehiculo = $scope.usuarioForm.poseeVehiculo;
 	    usuario.estatus = $scope.usuarioForm.estatus;
 	    $uibModalInstance.close();
-	   
-	    
+			  }
+	    $scope.valid = false;
 	  };
       $scope.create = function(event){
     	  $scope.data = {};
@@ -154,6 +165,8 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 				idUsuario : $scope.requestObject.idUsuarioInstructor
 			  }
           };
+			$scope.valid = tv4.validate($scope.usuarioForm, $scope.PersonSchema);
+			  if($scope.valid && $scope.requestObject.idTipoUsuario > 0){
 			  console.log(data.idUsuario);
 				  $http.post('rest/protected/users/create', {user : data}).success(
 					function(data, status, config) {
@@ -164,5 +177,7 @@ angular.module('myApp.modalu', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 					  alert("failure message: "+ JSON.stringify({data : data}));
 					});
 	    $uibModalInstance.close();
+			  }
+			  $scope.valid = false;
       };
 }]);
