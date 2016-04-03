@@ -58,7 +58,7 @@ angular
             $scope.cargarLugaresMedicion();
 
             $scope.save = function() {
-
+            	console.log("LUGARMEDICION",$scope.lugarMedicionRegistro)
                 $scope.data = {};
 
                 data = {
@@ -66,7 +66,7 @@ angular
                     cantidad: $scope.registroMedidaForm.cantidad,
                     fecha: $scope.registroMedidaForm.fecha,
                     lugarmedicionPOJO: {
-                        idLugarMedicion: $scope.registroMedidaForm.lugarmedicionPOJO.idLugarMedicion,
+                        idLugarMedicion: $scope.lugarMedicionRegistro,
                         unidadMedidaPOJO: {
                             idUnidadMedida: 0
                         }

@@ -10,7 +10,9 @@
 			ng-options="o.idTipoUsuario as o.descTipoUsuario for o in tiposUsuariosList"
 			required>
 		 </select> 
+		 <span class="label label-success" ng-hide="requestObject.idTipoUsuario>0">El tipo de usuario es requerido</span>
 	</form>
+	</br>
     <form  sf-schema="PersonSchema"  sf-form="form" sf-model="usuarioForm"></form>
     <div>
 		  <label class='col-sx-6 control-label'>Instructor asignado</label>

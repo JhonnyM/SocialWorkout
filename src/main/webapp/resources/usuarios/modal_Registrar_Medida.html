@@ -8,7 +8,7 @@
     <div>
 		  <label class='col-sx-6 control-label'>Lugar medición</label>    
     	  <select name="lugaresMedicion" id="lugaresMedicion" class="form-control" placeholder = "Seleccione lugar de medición"
-			ng-model="$scope.lugarMedicionEscogido"
+			ng-model="lugarMedicionEscogido"
 			ng-options="l.idLugarMedicion as l.descLugarMedicion
 			for l in lugaresMedicion"
 			required>
@@ -16,7 +16,8 @@
     </div>
   </div>
   <div class="modal-footer">
-      <button class="btn btn-success" ng-click="save()">Save</button>
-      <button class="btn btn-warning" ng-click="$close()">Cancel</button>
+      <button class="btn btn-primary" ng-click="save()">Save</button>
+      <button class="btn btn-default" ng-click="$close()">Cancel</button>
   </div>
+  </br>
 </div>

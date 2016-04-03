@@ -9,7 +9,8 @@
 			ng-model="requestObject.idTipoUsuario"
 			ng-options="o.idTipoUsuario as o.descTipoUsuario for o in tiposUsuariosList"
 			required>
-		 </select> 
+		 </select>
+		 <label>Debe seleccionar un tipo de usuario</label>
 	</form>
     <form sf-schema="PersonSchema"  sf-form="form" sf-model="usuarioForm"></form>
     <div>

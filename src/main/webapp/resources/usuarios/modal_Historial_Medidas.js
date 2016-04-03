@@ -52,7 +52,7 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                 }).success(function(data, status, config) {
                     $scope.message = data;
                     $scope.registroMedidas = data.registroMedidaPOJO;
-                    console.log("$scope.registroMedidas", $scope.registroMedidas);
+                    console.log("DATA", data.registroMedidaPOJO);
                     console.log("$scope.registroMedidas", $scope.gridOptions);
 
                 }).error(
@@ -79,7 +79,7 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                         displayName: 'Fecha de ingreso'
                     }, {
                         field: 'cantidad',
-                        displayName: 'Registro'
+                        displayName: 'Medición',
                     },
 
 
@@ -96,11 +96,8 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                     {
                         field: 'Acciones',
                         displayName: 'Acciones',
-                        cellTemplate: '<p ng-click="grid.appScope.edit(row)"><span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span></p>'
-                    }, {
-                        field: 'Acciones',
-                        displayName: 'Acciones',
-                        cellTemplate: '<p	 ng-click="grid.appScope.deleteMe(row)"><span class="glyphicon glyphicon-trash" aria-hidden="true" ></span></p>'
+                        
+                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
                     }
                 ]
             };

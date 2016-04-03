@@ -16,7 +16,7 @@ public class RegistroMedidaPOJO {
 
 	private int idRegistroMedida;
 
-	private int cantidad;
+	private double cantidad;
 
 	private Date fecha;
 
@@ -32,11 +32,11 @@ public class RegistroMedidaPOJO {
 		this.idRegistroMedida = idRegistroMedida;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return this.cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 

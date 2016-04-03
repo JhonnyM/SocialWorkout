@@ -421,19 +421,13 @@
                <script src="resources/libs/jquery/flot/jquery.flot.js"></script>
                <script src="resources/libs/jquery/flot/jquery.flot.pie.js"></script>
                <script src="resources/libs/jquery/flot/jquery.flot.resize.js"></script>
-               <script
-                  src="resources/libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
-               <script
-                  src="resources/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-               <script
-                  src="resources/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-               <script
-                  src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
-               <script
-                  src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
+               <script src="resources/libs/jquery/jquery.easy-pie-chart/dist/jquery.easypiechart.fill.js"></script>
+               <script src="resources/libs/jquery/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+               <script src="resources/libs/jquery/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+               <script src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
+               <script src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
                <script src="resources/unidadesMedidas/unidadesMedidas.js"></script>
-               <script
-                  src="resources/unidadesMedidas/modal_Registrar_Unidad_Medida.js"></script>
+               <script src="resources/unidadesMedidas/modal_Registrar_Unidad_Medida.js"></script>
                <script src="resources/unidadesMedidas/modal_Editar_Unidad_Medida.js"></script>
                <script src="resources/maquinas/maquinas.js"></script>
                <script src="resources/maquinas/modal_Editar_Maquina.js"></script>
@@ -441,8 +435,8 @@
                <script src="resources/ejercicios/ejercicios.js"></script>
                <script src="resources/ejercicios/modal_Registrar_Ejercicio.js"></script>
                <script src="resources/ejercicios/modal_Editar_Ejercicio.js"></script>
-               <script
-                  src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
+               <script src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
                <script src="resources/registrosMedidas/registrosMedidas.js"></script>
+               <script src="resources/historialAsistencia/historialAsistencia.js"></script>
             </body>
          </html>
