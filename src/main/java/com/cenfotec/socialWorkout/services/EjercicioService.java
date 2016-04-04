@@ -111,9 +111,9 @@ public class EjercicioService implements EjercicioServiceInterface {
 			
 			Maquinahasejercicio ejb = new Maquinahasejercicio();
 			
-			ejb.setEjercicio(ejercicioRepository.findOne(mh.getEjercicioPOJO().getIdEjercicio()));
+			ejb.setEjercicio(ejercicioRepository.findOne(mh.getEjercicio().getIdEjercicio()));
 
-			ejb.setMaquina(maquinaRepository.findOne(mh.getMaquinaPOJO().getIdMaquina()));
+			ejb.setMaquina(maquinaRepository.findOne(mh.getMaquina().getIdMaquina()));
 						
 			maquinahasejercicioRepository.save(ejb);
 

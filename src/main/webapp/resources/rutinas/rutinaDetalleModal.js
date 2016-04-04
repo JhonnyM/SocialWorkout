@@ -6,24 +6,37 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 .controller('RutinaDetalleCtrl', ['$scope','$uibModalInstance','rutina', 'detalle', '$http','$route', function($scope, $uibModalInstance,rutina, detalle, $http, $route)
 {
 	$scope.detalles = [];
+	$scope.ejercicios = [];
+	$scope.maquinas = [];
 	$scope.requestObject = {};
+	$scope.selectedEjercicioRelation = {};
+	$scope.selectedMaquinaHas = {};
+	$scope.relationHas = [];
 	$scope.rutinaDetalleForm = angular.copy(detalle);
 	$scope.reload = function(){
 		$route.reload();
 	};
    
 	$scope.init = function() {
-	    // $http.get('rest/protected/plantillas/all').success(function(response) {
-	    // 	$scope.rutinas = response.plantillas;
-	    // 	console.log($scope.rutinas);
-	    // }, function(){
-	    //   	alert("Error obteniendo la informacion de las rutinas");
-	    // });
+		$http.get('rest/protected/Ejercicios/getAll').then(function(response) {
+			$scope.ejercicios = response.data.ejercicios;
+		});
+
+		$http.get('rest/protected/Maquinas/getAll').then(function(response) {
+			$scope.maquinas = response.data.maquinas;
+			for(i=0; i < $scope.maquinas.length; i++){
+				if($scope.maquinas[i].maquinahasejercicios.length > 0){
+					$scope.relationHas.push($scope.maquinas[i]);
+				}
+
+			}
+		});
 
 		$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
 	    	$scope.objetivos = response.objetivoList;
-	    	console.log("$scope.objetivos", $scope.objetivos)
 		});
+
+
 	};
 
 	$scope.init();
@@ -57,16 +70,17 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 	  
     $scope.save = function () {
 	    var dataDetalle = {};
+	    selectedEjercicioRelation = $scope.ejercicios.find($scope.findSelectedEjercicio);
+	    selectedMaquinaHas = $scope.relationHas.find($scope.findMaquinaHasEjercicio);
 	    dataDetalle = {
 	      cantidadPeso : parseFloat($scope.rutinaDetalleForm.cantidadPeso),
 	      plantillarutinamaestro : rutina,
 	      cantidadRepeticiones : parseInt($scope.rutinaDetalleForm.cantidadRepeticiones),
 	      cantidadSeries: parseInt($scope.rutinaDetalleForm.cantidadSeries),
-	      maquinahasejercicio: {}
+	      maquinahasejercicio: selectedMaquinaHas.maquinahasejercicios[0]
 	      
 	    };
-	    console.log(dataDetalle);
-	    console.log($scope.rutinaDetalleForm);
+	    console.log("Data to be send", dataDetalle);
 	    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
 	    .then(function (response){
 
@@ -85,5 +99,14 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 	    });
 	    $uibModalInstance.close();   
 	};
+
+	$scope.findMaquinaHasEjercicio = function(maquinaHasEjercicio) {
+		return maquinaHasEjercicio.maquinahasejercicios.idEjercicioXMaquina === selectedEjercicioRelation.maquinahasejercicios.idEjercicioXMaquina;
+
+	}
+
+	$scope.findSelectedEjercicio = function(ejercicio) {
+		return ejercicio.idEjercicio === $scope.requestObject.idEjercicio;
+	}
 
 }]);

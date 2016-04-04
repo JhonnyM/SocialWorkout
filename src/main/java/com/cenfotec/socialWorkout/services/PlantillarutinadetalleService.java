@@ -23,6 +23,7 @@ public class PlantillarutinadetalleService implements PlantillarutinadetalleServ
 
 	@Autowired private PlantillarutinadetalleRepository plantillaRutinaDetalle;
 	
+	
 
 	@Override
 	@Transactional

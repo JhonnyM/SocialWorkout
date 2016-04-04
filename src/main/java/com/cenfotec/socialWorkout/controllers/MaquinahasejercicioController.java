@@ -7,6 +7,7 @@ import com.cenfotec.socialWorkout.contracts.EjercicioRequest;
 import com.cenfotec.socialWorkout.contracts.EjercicioResponse;
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioResponse;
+import com.cenfotec.socialWorkout.services.MaquinahasejercicioServiceInterface;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
