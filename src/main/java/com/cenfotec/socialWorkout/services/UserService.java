@@ -169,6 +169,7 @@ public class UserService implements UserServiceInterface{
 		
 		usuarioPOJO.setUsuarioPOJOInstructor(usuarioPOJOInstructor);
 		
+		usuarioPOJO.setDebePago();
 		
 		usuariosPOJO.add(usuarioPOJO);
 	

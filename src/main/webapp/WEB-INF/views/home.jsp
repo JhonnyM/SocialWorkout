@@ -237,9 +237,22 @@
                                     <li><a href="app#/tiposUsuario"> <span>Tipos de usuario</span>
                                        </a>
                                     </li>                                                                           
-                                    </li>
-                                    
+                                    </li>                                    
                                  </ul>
+                              <li ng-if='mostrarAdministrador'>
+                                 <a href class="auto">  
+                                 <i
+                                    class="glyphicon glyphicon-th-list"></i> <span>Gestión Gimnasio</span>
+                                 </a>
+                                  <ul class="nav nav-sub dk">
+                                    <li class="nav-sub-header"><a href> <span>Layout</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/usuariosAdministrador"> <span>Usuarios del Gimnasio</span>
+                                       </a>
+                                    </li>  
+                             
+                              </li>   
                               </li>
                               <li ng-if="mostrarInstructor">
                                  <a href class="auto"> <span

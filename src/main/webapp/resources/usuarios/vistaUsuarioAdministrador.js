@@ -39,7 +39,6 @@ angular.module('myApp.usuariosAdministrador', ['ngRoute', 'ui.grid', 'ui.bootstr
 	        columnDefs: [
 	           {name:'identificacion', displayName:'Identificación'},
 	           {name:'nombre', displayName:'Nombre'}, 
-	           {name:'apellidos', displayName:'Apellidos'},
 	           {name:'fechaPago', displayName:'Fecha pago', type: 'date', cellFilter: 'date:\'dd-MM-yyyy\''},
 	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},
 	           {name: 'usuarioPOJOInstructor.nombre' , displayName:'Instructor'},
