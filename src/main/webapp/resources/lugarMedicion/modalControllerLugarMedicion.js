@@ -14,7 +14,7 @@ angular.module('myApp.modalm', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstra
 		};
 
 	$scope.init = function() {
-		 $http.post('rest/protected/UnidadesMedidas/getAll')
+		 $http.get('rest/protected/UnidadesMedidas/getAll')
 			.success(function(response) {
 				    $scope.unidadesList = response.unidadesMedidas;
 				    $scope.requestObject.idUnidadMedida = $scope.lugarMedicionForm.unidadMedidaPOJO.idUnidadMedida;

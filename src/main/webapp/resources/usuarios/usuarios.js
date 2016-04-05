@@ -38,7 +38,7 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	           {name:'nombre', displayName:'Nombre'}, 
 	           {name:'apellidos', displayName:'Apellidos'},
 	           {name:'correoElectronico', displayName:'Email'},
-	           {name:'fechaPago', displayName:'Fecha pago'},
+	           {name:'fechaPago', displayName:'Fecha pago', type: 'date', cellFilter: 'date:\'dd-MM-yyyy\''},
 	           {name:'estatus', displayName:'Habilitado', cellTemplate: '<input type="checkbox" ng-model="row.entity.estatus" disabled="disabled">'},
 	           {name:'poseeVehiculo', displayName:'Vehículo', cellTemplate: '<input type="checkbox" ng-model="row.entity.poseeVehiculo" disabled="disabled">'},
 	           {name: 'tipoUsuarioPOJO.descTipoUsuario' , displayName:'Tipo de usuario'},

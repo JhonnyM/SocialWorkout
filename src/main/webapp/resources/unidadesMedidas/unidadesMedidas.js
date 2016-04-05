@@ -63,18 +63,14 @@ angular
 								columnDefs : [
 										{
 											field : 'descUnidadMedida',
-											displayName : 'Descripción'
+											displayName : 'Descripción',
+											cellTemplate : '',width: 900
 										},
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
-										},
-										{
-											field : 'Acciones',
-											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.deleteU(row)">Eliminar</p>'
-										} ]
+											cellTemplate : '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteU(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180}
+											]
 							};
 
 							$scope.read();

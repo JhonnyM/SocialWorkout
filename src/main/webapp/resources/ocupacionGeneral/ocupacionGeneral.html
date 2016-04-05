@@ -17,73 +17,7 @@
 					de hoy el gimnasio muestra la siguiente ocupaci&#243n</h5>
 				<div>
 				<br>
-					<div class="row">
-						<div class="col-md-5">
-							<span class="label bg-info pull-right m-t-xs">Pron&#243stico
-								de ocupaci&#243n del gimnasio - {{ocupaciones.length}} turno(s)</span>
-
-							<table class="table table-striped m-b-none">
-								<thead>
-									<tr>
-										<th class="text-center"><small class="text-muted block">Hora</small></th>
-										<th class="text-center"><small class="text-muted block">Personas</small></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="ocupacion in ocupaciones">
-										<td class="text-center"><button
-												class="btn m-b-xs btn-sm btn-default btn-addon">
-												<i class="glyphicon glyphicon-time pull-right"></i>{{ocupacion.hora}}:00
-											</button></td>
-										<td class="text-center">{{ocupacion.promedio}}</td>
-										<td><div class="text-center-folded">
-												<span class="pull-right pull-none-folded"><b
-													class="badge bg-success pull-left">{{ocupacion.promedio
-														* 100/ocupacion.capacidad}}%</b></span> <span class="hidden-folded">Ocupaci&#243n</span>
-											</div>
-											<div class="progress progress-xs m-t-sx dk">
-												<div class="progress-bar progress-bar-info"
-													style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
-											</div></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="col-md-5">
-							<span class="label bg-primary pull-right m-t-xs">Pron&#243stico
-								de ocupaci&#243n del parqueo - {{ocupaciones.length}} turno(s)</span>
-
-							<table class="table table-striped m-b-none">
-								<thead>
-									<tr>
-										<th class="text-center"><small class="text-muted block">Hora</small></th>
-										<th class="text-center"><small class="text-muted block">Personas</small></th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr ng-repeat="ocupacion in ocupacionesParqueo">
-										<td class="text-center"><button
-												class="btn m-b-xs btn-sm btn-default btn-addon">
-												<i class="glyphicon glyphicon-time pull-right"></i>{{ocupacion.hora}}:00
-											</button></td>
-										<td class="text-center">{{ocupacion.promedio}}</td>
-										<td><div class="text-center-folded">
-												<span class="pull-right pull-none-folded"><b
-													class="badge bg-success pull-left">{{ocupacion.promedio
-														* 100/ocupacion.capacidad}}%</b></span> <span class="hidden-folded">Ocupaci&#243n</span>
-											</div>
-											<div class="progress progress-xs m-t-sx dk">
-												<div class="progress-bar progress-bar-info"
-													style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
-											</div></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
+					
 					<div class="row">
 						<div class="col-md-12">
 
@@ -113,7 +47,7 @@
 														</div>
 														<div class="progress progress-xs m-t-sx dk">
 															<div class="progress-bar progress-bar-info"
-																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
+																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad"></div>
 														</div>
 													</div>
 												</div>
@@ -149,7 +83,7 @@
 														</div>
 														<div class="progress progress-xs m-t-sx dk">
 															<div class="progress-bar progress-bar-info"
-																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
+																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad"></div>
 														</div>
 													</div>
 												</div>

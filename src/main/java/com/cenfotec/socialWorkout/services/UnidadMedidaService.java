@@ -35,7 +35,7 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 		unidadesMedidas.stream().forEach(um -> {
 			UnidadmedidaPOJO dto = new UnidadmedidaPOJO();
 			BeanUtils.copyProperties(um, dto);
-			dto.setLugarmedicions(null);
+		
 			uiUnidadesMedidas.add(dto);
 		});
 		return uiUnidadesMedidas;

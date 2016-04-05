@@ -77,17 +77,15 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                     {
                         field: 'fecha',
                         displayName: 'Fecha de ingreso'
-                    }, {
-                        field: 'cantidad',
-                        displayName: 'Medición',
-                    },
-
-
+                    }, 
                     {
                         field: 'lugarmedicionPOJO.descLugarMedicion',
                         displayName: 'Lug.Medición'
                     },
-
+                    {
+                        field: 'cantidad',
+                        displayName: 'Medición',
+                    },
                     {
                         field: 'lugarmedicionPOJO.unidadMedidaPOJO.descUnidadMedida',
                         displayName: 'Un.Medida'
@@ -96,7 +94,6 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                     {
                         field: 'Acciones',
                         displayName: 'Acciones',
-                        
                         cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
                     }
                 ]
