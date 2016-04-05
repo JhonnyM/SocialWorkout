@@ -61,22 +61,19 @@ angular
 
 										{
 											field : 'descMaquina',
-											displayName : 'Descripción'
+											displayName : 'Descripción',
+											cellTemplate : '',width: 720
 										},
 										{
 											field : 'cantidad',
-											displayName : 'Cantidad de máquinas'
+											displayName : 'Cantidad de máquinas',
+											cellTemplate : '',width: 180	
 										},
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.edit(row)">Editar</p>'
-										},
-										{
-											field : 'Acciones',
-											displayName : 'Acciones',
-											cellTemplate : '<p ng-click="grid.appScope.deleteM(row)">Eliminar</p>'
-										} ]
+											cellTemplate : '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteM(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180}
+											]
 							};
 
 							$scope.read();

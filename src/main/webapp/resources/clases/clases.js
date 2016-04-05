@@ -31,10 +31,8 @@ angular.module('myApp.clases', ['ngRoute','ui.grid', 'ui.bootstrap'])
     enableSorting:true,
     enableFiltering:true,
     columnDefs:[
-        {field:'idClase',displayName:'ID'},
         {field:'descClase',displayName:'Descripción'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)">Edit</button>'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.delete(row)">Delete</button>'}
+        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.borrar(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180},
     ]
   };
 
@@ -78,31 +76,32 @@ angular.module('myApp.clases', ['ngRoute','ui.grid', 'ui.bootstrap'])
     }, function (response){
       alert("Error al guardar la información de la nueva clase");
     });
-  };
+	}
+    
+	$scope.borrar = function (row){
+	    var data = {};
+	    data = {
+	      idClase : row.entity.idClase,
+	      descClase : row.entity.descClase,
+	    };
 
-  $scope.delete = function (row){
-    var data = {};
-    data = {
-      idClase : row.entity.idClase,
-      descClase : row.entity.descClase,
-    };
+	    $http.post('rest/protected/clases/delete', {clase: data})
+	    .then(function (response){
 
-    $http.post('rest/protected/clases/delete', {clase: data})
-    .then(function (response){
+	      switch(response.data.code)
+	      {
+	        case 200:
+	          alert("Clase Eliminada")
+	        break;
 
-      switch(response.data.code)
-      {
-        case 200:
-          alert("Clase Eliminada")
-        break;
-
-        default:
-          alert(response.data.codeMessage);
-      }
-      $scope.read();
-    }, function (response){
-      alert("Error al eliminar la información de la clase");
-    }); 
-  };
+	        default:
+	          alert(response.data.codeMessage);
+	      }
+	      $scope.read();
+	    }, function (response){
+	      alert("Error al eliminar la información de la clase");
+	    }); 
+	  };
+  
 
 }]);

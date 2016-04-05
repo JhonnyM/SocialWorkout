@@ -89,10 +89,10 @@
                            {{usuario.apellidos}}</span> <b class="caret"></b>
                            </a> <!-- dropdown -->
                            <ul class="dropdown-menu animated fadeInRight w">
-                              <li><a ui-sref="app.page.profile">Mi perfil</a></li>
+                              <li><a href="app#/miPerfil">Mi perfil</a></li>
                               </li>
                               <li class="divider"></li>
-                              <li><a ui-sref="access.signin">Cerrar sesión</a></li>
+                              <li><a href="/socialWorkout/#/login">Cerrar sesión</a></li>
                            </ul>
                            <!-- / dropdown -->
                         </li>
@@ -161,7 +161,7 @@
                                     class="fa fa-fw fa-angle-right text"></i> <i
                                     class="fa fa-fw fa-angle-down text-active"></i>
                                  </span> <b class="badge bg-info pull-right">2</b> <i
-                                    class="glyphicon glyphicon-th"></i> <span>Estad&#237sticas</span>
+                                    class="glyphicon glyphicon-th"></i> <span>Gimnasio</span>
                                  </a>
                                  <ul class="nav nav-sub dk">
                                     <li class="nav-sub-header"></li>
@@ -188,11 +188,11 @@
                                        generales</span>
                                        </a>
                                     </li>
-                                    <li><a href="#"> <span>Historial
+                                    <li><a href="app#/historialMedidas"> <span>Historial
                                        de medidas</span>
                                        </a>
                                     </li>
-                                    <li><a href="#"> <span>Historial
+                                    <li><a href="app#/historialAsistencia"> <span>Historial
                                        de asistencia</span>
                                        </a>
                                     </li>
@@ -249,37 +249,12 @@
                                  </span> <i class="glyphicon glyphicon-briefcase icon"></i> <span>Estadisticas</span>
                                  </a>
                                  <ul class="nav nav-sub dk">
-                                    <li class="nav-sub-header"><a href> <span>UI
-                                       Kits</span>
+                                    <li class="nav-sub-header">
+                                    </li>
+                                    <li><a href="app#/ocupacionGeneral"> <span>Ocupación del gimnasio</span>
                                        </a>
                                     </li>
-                                    <li><a href="ui_button.html"> <span>Buttons</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_icon.html"> <b
-                                       class="badge bg-info pull-right">3</b> <span>Icons</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_grid.html"> <span>Grid</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_widget.html"> <b
-                                       class="badge bg-success pull-right">13</b> <span>Widgets</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_sortable.html"> <span>Sortable</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_portlet.html"> <span>Portlet</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_timeline.html"> <span>Timeline</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="ui_jvectormap.html"> <span>Vector
-                                       Map</span>
-                                       </a>
-                                    </li>
+                                    
                                  </ul>
                               </li>
                               <li ng-if="mostrarInstructor">
@@ -438,5 +413,7 @@
                <script src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
                <script src="resources/registrosMedidas/registrosMedidas.js"></script>
                <script src="resources/historialAsistencia/historialAsistencia.js"></script>
+               <script src="resources/historialMedidas/historialMedidas.js"></script>
+               <script src="resources/ocupacionGeneral/ocupacionGeneral.js"></script>
             </body>
          </html>

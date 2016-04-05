@@ -36,13 +36,11 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     enableSorting:true,
     enableFiltering:true,
     columnDefs:[
-        {field:'idEvento',displayName:'ID'},
         {field:'descEvento',displayName:'Descripción'},
-        {field:'fechaHoraInicio',displayName:'Hora de Inicio'},
-        {field:'fechaHoraFinal',displayName:'Hora Final'},
+        {field:'fechaHoraInicio',displayName:'Hora de Inicio', type: 'date', cellFilter: 'date:\'dd-MM-yyyy -- hh:mm a\''},
+        {field:'fechaHoraFinal',displayName:'Hora Final', type: 'date', cellFilter: 'date:\'dd-MM-yyyy -- hh:mm a\''},
         {field:'observaciones',displayName:'Observaciones'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)">Edit</button>'},
-        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.delete(row)">Delete</button>'}
+        {field:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.borrar(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180},
     ]
   };
 
@@ -91,7 +89,7 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     });
   };
 
-  $scope.delete = function (row){
+  $scope.borrar = function (row){
     var data = {};
     data = {
       idEvento : row.entity.idEvento,

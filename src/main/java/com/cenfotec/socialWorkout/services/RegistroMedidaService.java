@@ -82,7 +82,7 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 			}
 			dto.setUsuarioPOJO(null);
 			
-			dto.getLugarmedicionPOJO().getUnidadMedidaPOJO().setLugarmedicions(null);
+			
 			
 			uiRegistroMedida.add(dto);
 		

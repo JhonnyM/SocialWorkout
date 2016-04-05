@@ -31,14 +31,6 @@ public class LugarMedicionService implements LugarMedicionServiceInterface{
 		return generateLugaresMedicionDtos(lugaresMedicion);
 	}
 	
-	@Override
-	@Transactional
-	public List<LugarMedicionPOJO> getAll2() {
-		List<Lugarmedicion> lugaresMedicion =  lugarMedicionRepository.findAll();
-		return generateLugaresMedicionDtos2(lugaresMedicion);
-	}
-	
-	
 	private List<LugarMedicionPOJO> generateLugaresMedicionDtos(List<Lugarmedicion> lugaresMedicion){
 		    List<LugarMedicionPOJO> lugaresMedidaPOJO = new ArrayList<LugarMedicionPOJO>();
 			lugaresMedicion.stream().forEach(u -> {
@@ -52,30 +44,6 @@ public class LugarMedicionService implements LugarMedicionServiceInterface{
      		return lugaresMedidaPOJO;
 	} 
 
-	private List<LugarMedicionPOJO> generateLugaresMedicionDtos2(List<Lugarmedicion> lugaresMedicion){
-	    List<LugarMedicionPOJO> lugaresMedidaPOJO = new ArrayList<LugarMedicionPOJO>();
-		
-	    lugaresMedicion.stream().forEach(u -> {
-
-		LugarMedicionPOJO lugarMedicionPOJO = new LugarMedicionPOJO();
-		
-		UnidadmedidaPOJO unidadMedidaPOJO = new UnidadmedidaPOJO();
-		
-		BeanUtils.copyProperties(u, lugarMedicionPOJO);
-		
-		BeanUtils.copyProperties(u.getUnidadmedida(), unidadMedidaPOJO);
-		
-		unidadMedidaPOJO.setLugarmedicions(null);
-		
-		lugarMedicionPOJO.setUnidadMedidaPOJO(unidadMedidaPOJO);
-		
-		lugaresMedidaPOJO.add(lugarMedicionPOJO);
-		
-		});
-	    
- 		return lugaresMedidaPOJO;
-} 
-	
 	@Override
 	@Transactional
 	public boolean save(LugarMedicionRequest lugarMedicionRequest) {

@@ -14,12 +14,12 @@ angular.module('myApp.lugarMedicion', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 		 $route.reload();
 		};*/
 	$scope.lugaresMedicion = [];
-	$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","lugarMedicion": {}};
+	//$scope.requestObject = {"pageNumber": 0,"pageSize": 0,"direction": "","sortBy": [""],"searchColumn": "string","searchTerm": "","lugarMedicion": {}};
 	$http.post('rest/protected/lugarMedicion/getAll')
 		.success(function(response) {
 			console.log("response",response)
-			$scope.lugaresMedicion = response.lugaresMedicionPOJO;
-			console.log("$scope.lugaresMedicion",$scope.lugaresMedicionPOJO)
+			$scope.lugaresMedicion = response.lugaresMedicion;
+			console.log("$scope.lugaresMedicion",$scope.lugaresMedicion)
 	});
 
 
@@ -34,10 +34,9 @@ angular.module('myApp.lugarMedicion', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 	        showColumnFooter : true,
 	        fastWatch : true,
 	        columnDefs: [
-	           {name:'idLugarMedicion', displayName:'Id'},
 	           {name:'descLugarMedicion', displayName:'Descripción'}, 
 	           {name:'unidadMedidaPOJO.descUnidadMedida', displayName:'Unidad de medida'},
-	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>'}, 
+	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>', enableFiltering: false, enableSorting: false, width: 180}, 
 	           ]
 	    };
 	
