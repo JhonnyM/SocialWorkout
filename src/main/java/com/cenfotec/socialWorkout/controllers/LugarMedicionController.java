@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.LugarMedicionRequest;
 import com.cenfotec.socialWorkout.contracts.LugarMedicionResponse;
-import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.services.LugarMedicionServiceInterface;
 
 /**
@@ -31,15 +30,6 @@ public class LugarMedicionController {
 		response.setLugaresMedicionPOJO(lugarMedicionService.getAll());
 		return response;		
 	}
-
-	@RequestMapping(value = "/getAll2", method = RequestMethod.GET)
-	public LugarMedicionResponse getAll2() {
-		LugarMedicionResponse lmr = new LugarMedicionResponse();
-		lmr.setCode(200);
-		lmr.setLugaresMedicionPOJO(lugarMedicionService.getAll2());
-		return lmr;
-	}
-	
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
 	public LugarMedicionResponse create(@RequestBody LugarMedicionRequest lugarMedicionRequest){	

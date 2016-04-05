@@ -74,7 +74,7 @@ public class Utils {
 		 while (hashtext.length() > 32) {
 		 hashtext = "0" + hashtext;
 		 }
-		 return "827ccb0eea8a706c4c34a16891f84e7b";
+		 return hashtext;
 		 }
 		 catch (NoSuchAlgorithmException e) {
 		 throw new RuntimeException(e);

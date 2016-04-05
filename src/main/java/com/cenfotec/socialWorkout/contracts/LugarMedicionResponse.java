@@ -6,7 +6,7 @@ import com.cenfotec.socialWorkout.pojo.LugarMedicionPOJO;
 public class LugarMedicionResponse extends BaseResponse {
 	
 	private List<LugarMedicionPOJO> lugaresMedicionPOJO;
-	//private LugarMedicionPOJO lugarMedicionPOJO;
+	private LugarMedicionPOJO lugarMedicionPOJO;
 
 	public LugarMedicionResponse() {
 		super();
@@ -20,12 +20,12 @@ public class LugarMedicionResponse extends BaseResponse {
 		this.lugaresMedicionPOJO = lugaresMedicionPOJO;
 	}
 
-/*	public LugarMedicionPOJO getLugarMedicionPOJO() {
+    public LugarMedicionPOJO getLugarMedicionPOJO() {
 		return lugarMedicionPOJO;
 	}
 
 	public void setUsuario(LugarMedicionPOJO lugarMedicionPOJO) {
 		this.lugarMedicionPOJO = lugarMedicionPOJO;
-	}*/
+	}
 
 }

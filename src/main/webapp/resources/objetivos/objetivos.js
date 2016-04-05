@@ -22,13 +22,16 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $scope.gridOptions = {
         data:'objetivos',
         showGroupPanel: true,
-        enableSorting:true,
+        enableSorting: true,
         enableFiltering:true,
+        enableColumnResizing : true,
+        enableGridMenu : true,
+        showGridFooter : true,
+        showColumnFooter : true,
+        fastWatch : true,
         columnDefs:[
-            {field:'idObjetivo',displayName:'ID'},
             {field:'descObjetivo',displayName:'Descripción'},
-            {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.editRow(row)">Edit</p>'},
-            {field:'Acciones', displayName:'Acciones',cellTemplate: '<p ng-click="grid.appScope.delete(row)">Delete</p>'}
+            {field:'Acciones', displayName:'Acciones',cellTemplate:'<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.del(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180}
         ]
     };
 
@@ -65,7 +68,7 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     }); 
   };
 
-  $scope.delete = function (row){
+  $scope.del = function (row){
     var data = {};
     data = {
         idObjetivo : row.entity.idObjetivo,
