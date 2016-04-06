@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.PlantillarutinamaestroRequest;
+import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
 import com.cenfotec.socialWorkout.ejb.Objetivo;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinadetalle;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
+import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 import com.cenfotec.socialWorkout.pojo.ObjetivoPOJO;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinadetallePOJO;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
@@ -39,7 +41,11 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 			List<Plantillarutinadetalle> plantillasRutinaDetalle = plantillaDetalleRepository.findByplantillarutinamaestro(ta);
 			plantillasRutinaDetalle.stream().forEach(rd -> {
 				PlantillarutinadetallePOJO detallePOJO = new PlantillarutinadetallePOJO();
+				MaquinahasejercicioPOJO relationDto = new MaquinahasejercicioPOJO();
+				Maquinahasejercicio relation = rd.getMaquinahasejercicio();
 				BeanUtils.copyProperties(rd,detallePOJO);
+				BeanUtils.copyProperties(relation,relationDto);
+				detallePOJO.setMaquinahasejercicio(relationDto);
 				detalledtos.add(detallePOJO);
 			});
 			Objetivo objetivo = ta.getObjetivo();

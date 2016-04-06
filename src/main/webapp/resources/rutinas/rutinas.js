@@ -16,25 +16,38 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   $scope.users = [];
   $scope.objetivos = [];
   $scope.detalles = [];
+  $scope.ejercicios = [];
+  $scope.maquinas = [];
+  $scope.relationHas = [];
+  $scope.rutinaMaestroMaquinaHasEjercicio = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","rutinas": {}};
-
-  // $http.get('rest/protected/users/all').success(function(response) {
-  //   $scope.users = response.usuarios;
-  //   console.log($scope.users);
-  // });
 
 
   $scope.read = function(){
     $http.get('rest/protected/plantillas/all').success(function(response) {
       $scope.rutinas = response.plantillas;
-      console.log($scope.rutinas);
     }, function(){
       alert("Error obteniendo la informacion de las rutinas");
     });
 
     $http.get('rest/protected/plantillaDetalles/all').success(function(response) {
       $scope.detalles = response.plantillasDetalle;
+      $scope.rutinaMaestroMaquinaHasEjercicio = $scope.detalles.maquinahasejercicios
       console.log($scope.detalles);
+    });
+
+    $http.get('rest/protected/Ejercicios/getAll').then(function(response) {
+      $scope.ejercicios = response.data.ejercicios;
+    });
+
+    $http.get('rest/protected/Maquinas/getAll').then(function(response) {
+      $scope.maquinas = response.data.maquinas;
+      for(var i=0; i < $scope.maquinas.length; i++){
+        if($scope.maquinas[i].maquinahasejercicios.length > 0){
+          $scope.relationHas.push($scope.maquinas[i]);
+        }
+
+      }
     });
   };
 
@@ -64,9 +77,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     var userToSave = {};
     var objetivoToSave = {};
     var detallesToSave = [];
-    // for(var i=0, i < $scope.detalles.length, i++){
-
-    // }
     objetivoToSave = $scope.objetivos.find($scope.findObjetivo);
 
     data = {
@@ -232,6 +242,12 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
       });
   };
 
+  $scope.findMaquinaHasEjercicio = function(maquina) {
+    return maquina.maquinahasejercicios.idEjercicioXMaquina === selectedEjercicioRelation.maquinahasejercicios.idEjercicioXMaquina;
+  }
 
+  $scope.findEjercicio = function(ejercicio) {
+    return ejercicio.maquinahasejercicios.idEjercicioXMaquina === selectedEjercicioRelation.maquinahasejercicios.idEjercicioXMaquina;
+  }
 
 }]);

@@ -57,7 +57,8 @@
       <div class="wrapper-sm b-b">
         <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
           <a class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>
-          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="addRutinaDetalle()">Agregar Detalle</a>
+          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="addRutinaDetalle()">Agregar Detalle</a>&nbsp;&nbsp;
+          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="addRutinaDetalle(detalle)">Editar</a>
           <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">Finalizar</a>
         </div>
       </div>

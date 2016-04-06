@@ -14,12 +14,6 @@ angular.module('myApp.modalRutinaMaestro', ['ngRoute', 'ui.grid', 'schemaForm', 
 	};
    
 	$scope.init = function() {
-	    // $http.get('rest/protected/plantillas/all').success(function(response) {
-	    // 	$scope.rutinas = response.plantillas;
-	    // 	console.log($scope.rutinas);
-	    // }, function(){
-	    //   	alert("Error obteniendo la informacion de las rutinas");
-	    // });
 
 		$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
 	    	$scope.objetivos = response.objetivoList;
