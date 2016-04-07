@@ -15,8 +15,7 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
   $scope.read = function(){
       $http.get('rest/protected/eventos/all').then(function(response) {
-      console.log(new Date(response.data.eventos[1].fechaHoraFinal));
-      console.log("response",response)
+    	  console.log("response",response)
       $scope.eventos = response.data.eventos;
       for (var i = 0; i < $scope.eventos.length; i++){
         $scope.eventos[i].fechaHoraInicio = new Date($scope.eventos[i].fechaHoraInicio);

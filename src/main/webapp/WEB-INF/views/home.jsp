@@ -378,6 +378,7 @@
                <script src="resources/view1/view1.js"></script>
                <script src="resources/view2/view2.js"></script>
                <script src="resources/eventos/eventos.js"></script>
+               <script src="resources/eventosUsuarios/eventosUsuarios.js"></script>               
                <script src="resources/eventos/eventosModal.js"></script>
                <script src="resources/objetivos/objetivos.js"></script>
                <script src="resources/objetivos/objetivosModal.js"></script>

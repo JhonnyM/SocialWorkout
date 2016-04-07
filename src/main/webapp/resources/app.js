@@ -42,7 +42,8 @@ angular.module('myApp', [
   'myApp.modal_Historial_Medida',
   'myApp.modal_Registrar_Medida', 
   'myApp.modal_Editar_Medida',
-  'myApp.usuariosAdministrador'
+  'myApp.usuariosAdministrador',
+  'myApp.eventosUsuarios'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});

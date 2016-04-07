@@ -1,6 +1,8 @@
 package com.cenfotec.socialWorkout.controllers;
 
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cenfotec.socialWorkout.contracts.EventoRequest;
 import com.cenfotec.socialWorkout.contracts.EventoResponse;
+import com.cenfotec.socialWorkout.contracts.EventoUsuarioRequest;
+import com.cenfotec.socialWorkout.contracts.EventoUsuarioResponse;
 import com.cenfotec.socialWorkout.pojo.EventoPOJO;
 import com.cenfotec.socialWorkout.services.EventoServiceInterface;
 
@@ -138,5 +142,40 @@ public class EventoController {
 		return eventoResponse;
 
 	}
+	
+	@RequestMapping(value ="/allPendingEvents", method = RequestMethod.GET)
+	public EventoUsuarioResponse getAllPendingEvents(){	
+		
+		EventoUsuarioResponse response = new EventoUsuarioResponse();
+		response.setCode(200);
+		response.setCodeMessage("users fetch success");
+		response.setEventos(eventoService.getAllPendingEvents());
+		
+		return response;
+		
+	}
+
+	@RequestMapping(value = "/assignEventoUsuario", method = RequestMethod.POST)
+	public EventoUsuarioResponse assignEventoUsuario(@RequestBody EventoUsuarioRequest eventoRequest) {
+
+		EventoUsuarioResponse eventoResponse = new EventoUsuarioResponse();
+		
+		boolean saved =	eventoService.assignEventoUsuario(eventoRequest);
+		
+		if(saved){
+			eventoResponse.setCode(200);
+			eventoResponse.setCodeMessage("El evento ha sido guardado exitosamente");
+		}
+		else
+		{
+			eventoResponse.setCode(404);
+			eventoResponse.setCodeMessage("Hubo un error al momento de guardar el evento");
+		}
+		
+		return eventoResponse;
+
+	}
+
+	
 }
 
