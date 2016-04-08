@@ -35,7 +35,7 @@ angular.module('myApp.eventosModal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bo
 			descEvento : $scope.eventoForm.descEvento,
 			fechaHoraInicio: $scope.eventoForm.fechaHoraInicio,
 			fechaHoraFinal: $scope.eventoForm.fechaHoraFinal,
-			observaciones: $scope.eventoForm.fechaHoraFinal
+			observaciones: $scope.eventoForm.observaciones
 	  	};
 		$http.post('rest/protected/eventos/update',{evento: data})
 		.then(function (response){

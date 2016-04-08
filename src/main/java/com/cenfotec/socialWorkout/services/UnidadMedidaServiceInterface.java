@@ -19,6 +19,4 @@ public interface UnidadMedidaServiceInterface {
 
 	public boolean exists(Integer idObj);
 
-	
-	
 }

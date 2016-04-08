@@ -4,9 +4,9 @@ public class MaquinahasejercicioPOJO {
 
 	private Integer idEjercicioXMaquina;
 
-	private EjercicioPOJO ejercicioPOJO;
+	private EjercicioPOJO ejercicio;
 
-	private MaquinaPOJO maquinaPOJO;
+	private MaquinaPOJO maquina;
 
 	public MaquinahasejercicioPOJO() {
 		super();
@@ -20,20 +20,20 @@ public class MaquinahasejercicioPOJO {
 		this.idEjercicioXMaquina = idEjercicioXMaquina;
 	}
 
-	public EjercicioPOJO getEjercicioPOJO() {
-		return this.ejercicioPOJO;
+	public EjercicioPOJO getEjercicio() {
+		return this.ejercicio;
 	}
 
-	public void setEjercicioPOJO(EjercicioPOJO ejercicioPOJO) {
-		this.ejercicioPOJO = ejercicioPOJO;
+	public void setEjercicio(EjercicioPOJO ejercicioPOJO) {
+		this.ejercicio = ejercicioPOJO;
 	}
 
-	public MaquinaPOJO getMaquinaPOJO() {
-		return this.maquinaPOJO;
+	public MaquinaPOJO getMaquina() {
+		return this.maquina;
 	}
 
-	public void setMaquinaPOJO(MaquinaPOJO maquinaPOJO) {
-		this.maquinaPOJO = maquinaPOJO;
+	public void setMaquina(MaquinaPOJO maquinaPOJO) {
+		this.maquina = maquinaPOJO;
 	}
 
 }
