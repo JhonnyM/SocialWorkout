@@ -2,56 +2,124 @@ package com.cenfotec.socialWorkout.pojo;
 
 import java.util.List;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.cenfotec.socialWorkout.ejb.Objetivo;
-import com.cenfotec.socialWorkout.ejb.Plantillarutinadetalle;
-import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
-
 public class PlantillarutinamaestroPOJO {
 
 	private int idRutina;
 	private String descRutina;
-	private byte rutinaBase;
-	private Objetivo objetivo;
-	private Plantillarutinamaestro plantillarutinamaestro;
-	
+	private boolean rutinaBase;
+	private List<PlantillarutinadetallePOJO> plantillarutinadetalles;
+	private ObjetivoPOJO objetivo;
+	private PlantillarutinamaestroPOJO plantillarutinamaestro;
+	private List<PlantillarutinamaestroPOJO> plantillarutinamaestros;
+	private List<RutinahasusuarioPOJO> rutinahasusuarios;
+
 	public PlantillarutinamaestroPOJO() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getIdRutina() {
-		return idRutina;
+		return this.idRutina;
 	}
+
 	public void setIdRutina(int idRutina) {
 		this.idRutina = idRutina;
 	}
+
 	public String getDescRutina() {
-		return descRutina;
+		return this.descRutina;
 	}
+
 	public void setDescRutina(String descRutina) {
 		this.descRutina = descRutina;
 	}
-	public byte getRutinaBase() {
-		return rutinaBase;
+
+	public boolean getRutinaBase() {
+		return this.rutinaBase;
 	}
-	public void setRutinaBase(byte rutinaBase) {
+
+	public void setRutinaBase(boolean rutinaBase) {
 		this.rutinaBase = rutinaBase;
 	}
-	public Objetivo getObjetivo() {
-		return objetivo;
+
+	public List<PlantillarutinadetallePOJO> getPlantillarutinadetalles() {
+		return this.plantillarutinadetalles;
 	}
-	public void setObjetivo(Objetivo objetivo) {
+
+	public void setPlantillarutinadetalles(List<PlantillarutinadetallePOJO> plantillarutinadetalles) {
+		this.plantillarutinadetalles = plantillarutinadetalles;
+	}
+
+	public PlantillarutinadetallePOJO addPlantillarutinadetalle(PlantillarutinadetallePOJO plantillarutinadetalle) {
+		getPlantillarutinadetalles().add(plantillarutinadetalle);
+		plantillarutinadetalle.setPlantillarutinamaestro(this);
+
+		return plantillarutinadetalle;
+	}
+
+	public PlantillarutinadetallePOJO removePlantillarutinadetalle(PlantillarutinadetallePOJO plantillarutinadetalle) {
+		getPlantillarutinadetalles().remove(plantillarutinadetalle);
+		plantillarutinadetalle.setPlantillarutinamaestro(null);
+
+		return plantillarutinadetalle;
+	}
+
+	public ObjetivoPOJO getObjetivo() {
+		return this.objetivo;
+	}
+
+	public void setObjetivo(ObjetivoPOJO objetivo) {
 		this.objetivo = objetivo;
 	}
-	public Plantillarutinamaestro getPlantillarutinamaestro() {
-		return plantillarutinamaestro;
+
+	public PlantillarutinamaestroPOJO getPlantillarutinamaestro() {
+		return this.plantillarutinamaestro;
 	}
-	public void setPlantillarutinamaestro(Plantillarutinamaestro plantillarutinamaestro) {
+
+	public void setPlantillarutinamaestro(PlantillarutinamaestroPOJO plantillarutinamaestro) {
 		this.plantillarutinamaestro = plantillarutinamaestro;
 	}
+
+	public List<PlantillarutinamaestroPOJO> getPlantillarutinamaestros() {
+		return this.plantillarutinamaestros;
+	}
+
+	public void setPlantillarutinamaestros(List<PlantillarutinamaestroPOJO> plantillarutinamaestros) {
+		this.plantillarutinamaestros = plantillarutinamaestros;
+	}
+
+	public PlantillarutinamaestroPOJO addPlantillarutinamaestro(PlantillarutinamaestroPOJO plantillarutinamaestro) {
+		getPlantillarutinamaestros().add(plantillarutinamaestro);
+		plantillarutinamaestro.setPlantillarutinamaestro(this);
+
+		return plantillarutinamaestro;
+	}
+
+	public PlantillarutinamaestroPOJO removePlantillarutinamaestro(PlantillarutinamaestroPOJO plantillarutinamaestro) {
+		getPlantillarutinamaestros().remove(plantillarutinamaestro);
+		plantillarutinamaestro.setPlantillarutinamaestro(null);
+
+		return plantillarutinamaestro;
+	}
+
+	public List<RutinahasusuarioPOJO> getRutinahasusuarios() {
+		return this.rutinahasusuarios;
+	}
+
+	public void setRutinahasusuarios(List<RutinahasusuarioPOJO> rutinahasusuarios) {
+		this.rutinahasusuarios = rutinahasusuarios;
+	}
+
+	public RutinahasusuarioPOJO addRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
+		getRutinahasusuarios().add(rutinahasusuario);
+		rutinahasusuario.setPlantillarutinamaestro(this);
+
+		return rutinahasusuario;
+	}
+
+	public RutinahasusuarioPOJO removeRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
+		getRutinahasusuarios().remove(rutinahasusuario);
+		rutinahasusuario.setPlantillarutinamaestro(null);
+
+		return rutinahasusuario;
+	}
+
 }
