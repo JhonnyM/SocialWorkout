@@ -15,11 +15,12 @@ public class Plantillarutinamaestro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idRutina;
 
 	private String descRutina;
 
-	private byte rutinaBase;
+	private boolean rutinaBase;
 
 	//bi-directional many-to-one association to Plantillarutinadetalle
 	@OneToMany(mappedBy="plantillarutinamaestro")
@@ -38,10 +39,6 @@ public class Plantillarutinamaestro implements Serializable {
 	//bi-directional many-to-one association to Plantillarutinamaestro
 	@OneToMany(mappedBy="plantillarutinamaestro")
 	private List<Plantillarutinamaestro> plantillarutinamaestros;
-
-	//bi-directional many-to-one association to Registroingreso
-	@OneToMany(mappedBy="plantillarutinamaestro")
-	private List<Registroingreso> registroingresos;
 
 	//bi-directional many-to-one association to Rutinahasusuario
 	@OneToMany(mappedBy="plantillarutinamaestro")
@@ -66,11 +63,11 @@ public class Plantillarutinamaestro implements Serializable {
 		this.descRutina = descRutina;
 	}
 
-	public byte getRutinaBase() {
+	public boolean getRutinaBase() {
 		return this.rutinaBase;
 	}
 
-	public void setRutinaBase(byte rutinaBase) {
+	public void setRutinaBase(boolean rutinaBase) {
 		this.rutinaBase = rutinaBase;
 	}
 
@@ -132,28 +129,6 @@ public class Plantillarutinamaestro implements Serializable {
 		plantillarutinamaestro.setPlantillarutinamaestro(null);
 
 		return plantillarutinamaestro;
-	}
-
-	public List<Registroingreso> getRegistroingresos() {
-		return this.registroingresos;
-	}
-
-	public void setRegistroingresos(List<Registroingreso> registroingresos) {
-		this.registroingresos = registroingresos;
-	}
-
-	public Registroingreso addRegistroingreso(Registroingreso registroingreso) {
-		getRegistroingresos().add(registroingreso);
-		registroingreso.setPlantillarutinamaestro(this);
-
-		return registroingreso;
-	}
-
-	public Registroingreso removeRegistroingreso(Registroingreso registroingreso) {
-		getRegistroingresos().remove(registroingreso);
-		registroingreso.setPlantillarutinamaestro(null);
-
-		return registroingreso;
 	}
 
 	public List<Rutinahasusuario> getRutinahasusuarios() {

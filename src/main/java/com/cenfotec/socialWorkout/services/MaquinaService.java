@@ -60,11 +60,11 @@ public class MaquinaService implements MaquinaServiceInterface {
 			BeanUtils.copyProperties(m.getMaquina(), mdto);
 			BeanUtils.copyProperties(m.getEjercicio(), edto);
 
-			dto.setMaquinaPOJO(mdto);
-			dto.setEjercicioPOJO(edto);
+			dto.setMaquina(mdto);
+			dto.setEjercicio(edto);
 			
-			dto.getMaquinaPOJO().setMaquinahasejercicios(null);
-			dto.getEjercicioPOJO().setMaquinahasejercicios(null);
+			dto.getMaquina().setMaquinahasejercicios(null);
+			dto.getEjercicio().setMaquinahasejercicios(null);
 			
 			uiMaquinaEjercicios.add(dto);
 
