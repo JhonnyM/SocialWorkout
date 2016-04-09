@@ -14,11 +14,18 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.cenfotec.socialWorkout.contracts.UserAdministradorRequest;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
+import com.cenfotec.socialWorkout.ejb.Registroingreso;
 import com.cenfotec.socialWorkout.ejb.Tipousuario;
 import com.cenfotec.socialWorkout.ejb.Usuario;
+import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
+import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
 import com.cenfotec.socialWorkout.pojo.TipoUsuarioPOJO;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
+import com.cenfotec.socialWorkout.pojo.UsuarioAdministradorPOJO;
+import com.cenfotec.socialWorkout.repositories.RegistroingresoRepository;
 import com.cenfotec.socialWorkout.repositories.TipoUsuarioRepository;
 import com.cenfotec.socialWorkout.repositories.UserRepository;
 import com.cenfotec.socialWorkout.utils.Utils;
@@ -28,12 +35,20 @@ public class UserService implements UserServiceInterface{
 
 	@Autowired private UserRepository usersRepository;
 	@Autowired private TipoUsuarioServiceInterface  tipoUsuarioService;
+	@Autowired private RegistroingresoRepository registroIngresoRepository;
 	
 	@Override
 	@Transactional
 	public List<UsuarioPOJO> getAll(UserRequest ur) {
 		List<Usuario> users =  usersRepository.findAll();
 		return generateUserDtos(users);
+	}
+	
+	@Override
+	@Transactional
+	public List<UsuarioAdministradorPOJO> getAllToAdministrador(UserAdministradorRequest ur){
+		List<Usuario> users = usersRepository.findAll();
+		return generateUserToAdministradorDtos(users);			
 	}
 	
 	@Override
@@ -112,6 +127,72 @@ public class UserService implements UserServiceInterface{
 		return usuariosPOJO;
 	} 
 
+	
+	
+	private List<UsuarioAdministradorPOJO> generateUserToAdministradorDtos(List<Usuario> users){
+	    
+		List<UsuarioAdministradorPOJO> usuariosPOJO = new ArrayList<UsuarioAdministradorPOJO>();
+		
+	    users.stream().forEach(u -> {
+    	
+	    UsuarioAdministradorPOJO usuarioPOJO = new UsuarioAdministradorPOJO();
+		
+	    TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
+		
+	    UsuarioPOJO usuarioPOJOInstructor = new UsuarioPOJO();
+
+	    RegistroingresoPOJO registrosPOJO = new RegistroingresoPOJO();
+
+	    Registroingreso rI = new Registroingreso();
+   
+	    BeanUtils.copyProperties(u, usuarioPOJO);
+		
+		if (!(u.getTipousuario() == null)){
+		BeanUtils.copyProperties(u.getTipousuario(), tipoUsuarioPOJO);
+		}
+		
+		if (!(u.getUsuario()==null)){
+			BeanUtils.copyProperties(u.getUsuario(), usuarioPOJOInstructor);		
+		}
+
+		rI = registroIngresoRepository.getLastRegistroIngreso(u.getIdUsuario());
+		
+		if (rI != null){
+			usuarioPOJO.setRegistroIngresoPOJO(generateRegistrosIngresoDtos(registroIngresoRepository.getLastRegistroIngreso(u.getIdUsuario())));			
+		}else{
+			usuarioPOJO.setRegistroIngresoPOJO(null);
+		}
+		
+		usuarioPOJO.setTipoUsuarioPOJO(tipoUsuarioPOJO);
+		
+		usuarioPOJOInstructor.setClave("");
+		
+		usuarioPOJO.setUsuarioPOJOInstructor(usuarioPOJOInstructor);
+		
+		usuarioPOJO.setDebePago();
+		
+		usuariosPOJO.add(usuarioPOJO);
+	
+		});
+	
+	return usuariosPOJO;
+}
+	
+	private RegistroingresoPOJO generateRegistrosIngresoDtos(Registroingreso registroIngreso){
+
+		RegistroingresoPOJO dto = new RegistroingresoPOJO();
+
+			BeanUtils.copyProperties(registroIngreso,dto);
+			
+			dto.setUsuario1(null);
+			
+			dto.setUsuario2(null);
+			
+			dto.setPlantillarutinamaestro(null);
+	
+			return dto;
+	}
+	
 	@Override
 	@Transactional
 	public boolean saveUser(UserRequest usuarioRequest) {

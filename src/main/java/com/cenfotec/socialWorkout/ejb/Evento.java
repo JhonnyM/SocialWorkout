@@ -2,9 +2,6 @@ package com.cenfotec.socialWorkout.ejb;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 import java.util.List;
 
@@ -26,18 +23,16 @@ public class Evento implements Serializable {
 	private String descEvento;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date fechaHoraFinal;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date fechaHoraInicio;
 
 	private String observaciones;
 
-	//bi-directional many-to-many association to Usuario
-	@ManyToMany(mappedBy="eventos")
-	private List<Usuario> usuarios;
+	//bi-directional many-to-one association to Eventoshasusuario
+	@OneToMany(mappedBy="evento")
+	private List<Eventoshasusuario> eventoshasusuarios;
 
 	public Evento() {
 	}
@@ -82,12 +77,26 @@ public class Evento implements Serializable {
 		this.observaciones = observaciones;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return this.usuarios;
+	public List<Eventoshasusuario> getEventoshasusuarios() {
+		return this.eventoshasusuarios;
 	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+	public void setEventoshasusuarios(List<Eventoshasusuario> eventoshasusuarios) {
+		this.eventoshasusuarios = eventoshasusuarios;
+	}
+
+	public Eventoshasusuario addEventoshasusuario(Eventoshasusuario eventoshasusuario) {
+		getEventoshasusuarios().add(eventoshasusuario);
+		eventoshasusuario.setEvento(this);
+
+		return eventoshasusuario;
+	}
+
+	public Eventoshasusuario removeEventoshasusuario(Eventoshasusuario eventoshasusuario) {
+		getEventoshasusuarios().remove(eventoshasusuario);
+		eventoshasusuario.setEvento(null);
+
+		return eventoshasusuario;
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.contracts.RegistroingresoRequest;
 import com.cenfotec.socialWorkout.contracts.RegistroingresoResponse;
 import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
@@ -88,5 +89,14 @@ public class RegistroingresoController {
 		return registroResponse;
 		
 	}
+	
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	public RegistroingresoResponse getAll() {
+		RegistroingresoResponse riR = new RegistroingresoResponse();
+		riR.setCode(200);
+		riR.setRegistro(((registroService.getAll())));
+		return riR;
+	}
+	
 }
 

@@ -78,8 +78,8 @@ angular
 								var dialogOpts = {
 									backdrop : 'static',
 									keyboard : false,
-									templateUrl : 'resources/ejercicios/modal_Registrar_Ejercicio.html',
-									controller : 'modal_Registrar_EjercicioCtrl',
+									templateUrl : 'resources/ejercicios/modalRegistrarEjercicio.html',
+									controller : 'ModalRegistrarEjercicioCtrl',
 									size : "sm",
 									windowClass : "modal",
 									resolve : {
@@ -96,8 +96,8 @@ angular
 								var dialogOpts = {
 									backdrop : 'static',
 									keyboard : false,
-									templateUrl : 'resources/ejercicios/modal_Editar_Ejercicio.html',
-									controller : 'modal_Editar_EjercicioCtrl',
+									templateUrl : 'resources/ejercicios/modalEditarEjercicio.html',
+									controller : 'ModalEditarEjercicioCtrl',
 									size : "sm",
 									windowClass : "modal",
 									resolve : {
@@ -144,8 +144,8 @@ angular
 								var dialogOpts = {
 									backdrop : 'static',
 									keyboard : false,
-									templateUrl : 'resources/ejercicios/modal_Registrar_Maquina_Ejercicio.html',
-									controller : 'modal_Registrar_Maquina_EjercicioCtrl',
+									templateUrl : 'resources/ejercicios/modalRegistrarMaquinaEjercicio.html',
+									controller : 'ModalRegistrarMaquinaEjercicioCtrl',
 									size : "md",
 									windowClass : "modal",
 									resolve : {

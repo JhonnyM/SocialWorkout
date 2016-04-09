@@ -1,8 +1,8 @@
-angular.module('myApp.modal_Registrar_Maquina',
+angular.module('myApp.modalRegistrarMaquina',
 		[ 'ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap' ])
 
 .controller(
-		'modal_Registrar_MaquinaCtrl',
+		'ModalRegistrarMaquinaCtrl',
 		[
 				'$scope',
 				'$http',
@@ -20,7 +20,16 @@ angular.module('myApp.modal_Registrar_Maquina',
 							cantidad : {
 								type : 'number',
 								title : 'Cantidad de máquinas'
+							},
+							minutosXPersona : {
+								type : 'number',
+								title : 'Minutos por persona'
+							},
+							personasXMaquina : {
+								type : 'number',
+								title : 'Personas por máquina'
 							}
+							
 						}
 					};
 
@@ -29,7 +38,7 @@ angular.module('myApp.modal_Registrar_Maquina',
 					};
 
 					
-					$scope.form = [ 'descMaquina', 'cantidad' ];
+					$scope.form = [ 'descMaquina', 'cantidad','minutosXPersona','personasXMaquina'];
 
 					$scope.save = function(event) {
 
@@ -37,7 +46,9 @@ angular.module('myApp.modal_Registrar_Maquina',
 
 						data = {
 							descMaquina : $scope.form.descMaquina,
-							cantidad : $scope.form.cantidad
+							cantidad : $scope.form.cantidad,
+							minutosXPersona : $scope.form.minutosXPersona,
+							personasXMaquina : $scope.form.personasXMaquina
 						};
 
 						console.log("$scope.data", $scope.data)

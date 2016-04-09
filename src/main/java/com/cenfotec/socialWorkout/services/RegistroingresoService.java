@@ -12,6 +12,7 @@ import com.cenfotec.socialWorkout.contracts.RegistroingresoRequest;
 import com.cenfotec.socialWorkout.ejb.Registroingreso;
 import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
+import com.cenfotec.socialWorkout.pojo.RegistroMedidaPOJO;
 import com.cenfotec.socialWorkout.pojo.RegistroingresoPOJO;
 import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.RegistroingresoRepository;
@@ -81,5 +82,11 @@ public class RegistroingresoService implements RegistroingresoServiceInterface{
 			uiRegistrosIngreso.add(dto);
 		});	
 		return uiRegistrosIngreso;
+	}
+
+	@Override
+	public List<RegistroingresoPOJO> getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

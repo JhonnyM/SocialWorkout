@@ -1,8 +1,8 @@
 //'use strict';
-angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
+angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
 .controller(
-    'modal_Historial_Medida_Ctrl', ['$scope', '$http', '$uibModalInstance', '$uibModal', 'usuario', '$route',
+    'ModalHistorialMedidaCtrl', ['$scope', '$http', '$uibModalInstance', '$uibModal', 'usuario', '$route',
         function($scope, $http, $uibModalInstance, $uibModal, usuario, $route) {
 
             $scope.reload = function() {
@@ -105,8 +105,8 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                 var dialogOpts = {
                     backdrop: 'static',
                     keyboard: false,
-                    templateUrl: 'resources/usuarios/modal_Registrar_Medida.html',
-                    controller: 'modal_Registrar_MedidaCtrl',
+                    templateUrl: 'resources/usuarios/modalRegistrarMedida.html',
+                    controller: 'ModalRegistrarMedidaCtrl',
                     size: "sm",
                     windowClass: "modal",
                     resolve: {
@@ -125,8 +125,8 @@ angular.module('myApp.modal_Historial_Medida', ['ngRoute', 'ui.grid', 'schemaFor
                 var dialogOpts = {
                     backdrop: 'static',
                     keyboard: false,
-                    templateUrl: 'resources/usuarios/modal_Editar_Medida.html',
-                    controller: 'modal_Editar_MedidaCtrl',
+                    templateUrl: 'resources/usuarios/modalEditarMedida.html',
+                    controller: 'ModalEditarMedidaCtrl',
                     size: "sm",
                     windowClass: "modal",
                     resolve: {

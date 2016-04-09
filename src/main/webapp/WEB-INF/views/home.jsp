@@ -237,9 +237,22 @@
                                     <li><a href="app#/tiposUsuario"> <span>Tipos de usuario</span>
                                        </a>
                                     </li>                                                                           
-                                    </li>
-                                    
+                                    </li>                                    
                                  </ul>
+                              <li ng-if='mostrarAdministrador'>
+                                 <a href class="auto">  
+                                 <i
+                                    class="glyphicon glyphicon-th-list"></i> <span>Gestión Gimnasio</span>
+                                 </a>
+                                  <ul class="nav nav-sub dk">
+                                    <li class="nav-sub-header"><a href> <span>Layout</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/usuariosAdministrador"> <span>Usuarios del Gimnasio</span>
+                                       </a>
+                                    </li>  
+                             
+                              </li>   
                               </li>
                               <li ng-if="mostrarInstructor">
                                  <a href class="auto"> <span
@@ -365,13 +378,15 @@
                <script src="resources/view1/view1.js"></script>
                <script src="resources/view2/view2.js"></script>
                <script src="resources/eventos/eventos.js"></script>
+               <script src="resources/eventosUsuarios/eventosUsuarios.js"></script>               
                <script src="resources/eventos/eventosModal.js"></script>
                <script src="resources/objetivos/objetivos.js"></script>
                <script src="resources/objetivos/objetivosModal.js"></script>
                <script src="resources/usuarios/usuarios.js"></script>
-               <script src="resources/usuarios/modal_Historial_Medidas.js"></script>
-               <script src="resources/usuarios/modal_Registrar_Medida.js"></script>
-               <script src="resources/usuarios/modal_Editar_Medida.js"></script>
+               <script src="resources/usuarios/modalHistorialMedidas.js"></script>
+               <script src="resources/usuarios/modalRegistrarMedida.js"></script>
+               <script src="resources/usuarios/modalEditarMedida.js"></script>
+               <script src="resources/usuarios/vistaUsuarioAdministrador.js"></script>
                <script src="resources/tiposUsuario/tiposUsuario.js"></script>
                <script src="resources/usuarios/modalController.js"></script>
                <script src="resources/homeController/homeController.js"></script>
@@ -405,15 +420,15 @@
                <script src="resources/libs/jquery/flot-spline/js/jquery.flot.spline.min.js"></script>
                <script src="resources/libs/jquery/jquery.sparkline/dist/jquery.sparkline.retina.js"></script>
                <script src="resources/unidadesMedidas/unidadesMedidas.js"></script>
-               <script src="resources/unidadesMedidas/modal_Registrar_Unidad_Medida.js"></script>
-               <script src="resources/unidadesMedidas/modal_Editar_Unidad_Medida.js"></script>
+               <script src="resources/unidadesMedidas/modalRegistrarUnidadMedida.js"></script>
+               <script src="resources/unidadesMedidas/modalEditarUnidadMedida.js"></script>
                <script src="resources/maquinas/maquinas.js"></script>
-               <script src="resources/maquinas/modal_Editar_Maquina.js"></script>
-               <script src="resources/maquinas/modal_Registrar_Maquina.js"></script>
+               <script src="resources/maquinas/modalEditarMaquina.js"></script>
+               <script src="resources/maquinas/modalRegistrarMaquina.js"></script>
                <script src="resources/ejercicios/ejercicios.js"></script>
-               <script src="resources/ejercicios/modal_Registrar_Ejercicio.js"></script>
-               <script src="resources/ejercicios/modal_Editar_Ejercicio.js"></script>
-               <script src="resources/ejercicios/modal_Registrar_Maquina_Ejercicio.js"></script>
+               <script src="resources/ejercicios/modalRegistrarEjercicio.js"></script>
+               <script src="resources/ejercicios/modalEditarEjercicio.js"></script>
+               <script src="resources/ejercicios/modalRegistrarMaquinaEjercicio.js"></script>
                <script src="resources/registrosMedidas/registrosMedidas.js"></script>
                <script src="resources/historialAsistencia/historialAsistencia.js"></script>
                <script src="resources/historialMedidas/historialMedidas.js"></script>
