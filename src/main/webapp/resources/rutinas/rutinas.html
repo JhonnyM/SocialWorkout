@@ -74,6 +74,12 @@
               <!-- fields -->
               <div class="form-horizontal" ng-repeat=" detalle in item.plantillarutinadetalles">
                 <div class="form-group m-b-sm" >
+                  <label class="col-sm-3 control-label">Ejercicio:</label>
+                  <div class="col-sm-9">
+                    <p class="form-control-static" >{{detalle.nombreEjercicio}}</p>
+                  </div>
+                </div>
+                <div class="form-group m-b-sm" >
                   <label class="col-sm-3 control-label">Peso:</label>
                   <div class="col-sm-9">
                     <p class="form-control-static" >{{detalle.cantidadPeso}}</p>
