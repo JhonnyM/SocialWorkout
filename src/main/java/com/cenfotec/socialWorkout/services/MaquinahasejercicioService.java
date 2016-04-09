@@ -10,7 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
+import com.cenfotec.socialWorkout.ejb.Ejercicio;
+import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
+import com.cenfotec.socialWorkout.pojo.EjercicioPOJO;
+import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 import com.cenfotec.socialWorkout.repositories.MaquinahasejercicioRepository;
 
@@ -26,8 +30,15 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 		List<Maquinahasejercicio> relationList = maquinaHasEjercicioRepository.findAll();
 		List<MaquinahasejercicioPOJO> dtos = new ArrayList<MaquinahasejercicioPOJO>();
 		relationList.stream().forEach(ta ->{
+			EjercicioPOJO ejercicioDto = new EjercicioPOJO();
+			Ejercicio ejercicio = ta.getEjercicio();
+			BeanUtils.copyProperties(ejercicio, ejercicioDto);
+			MaquinaPOJO maquinaDto = new MaquinaPOJO();
+			Maquina maquina = ta.getMaquina();
+			BeanUtils.copyProperties(maquina, maquinaDto);
 			MaquinahasejercicioPOJO dto = new MaquinahasejercicioPOJO();
 			BeanUtils.copyProperties(ta, dto);
+			dto.setEjercicio(ejercicioDto);
 			dtos.add(dto);
 			
 		});
