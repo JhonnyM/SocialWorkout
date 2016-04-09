@@ -18,15 +18,15 @@ public class MaquinaService implements MaquinaServiceInterface {
  private MaquinaRepository maquinaRepository;
 
  @Override
- public List < MaquinaPOJO > getAll() {
+ public List <MaquinaPOJO> getAll() {
 
-  List < Maquina > maquinas = maquinaRepository.findAll();
+  List <Maquina> maquinas = maquinaRepository.findAll();
   return generateMaquinaDTOS(maquinas);
  }
 
- private List < MaquinaPOJO > generateMaquinaDTOS(List < Maquina > maquinas) {
+ private List <MaquinaPOJO> generateMaquinaDTOS(List <Maquina> maquinas) {
 
-  List < MaquinaPOJO > maquinasPOJO = new ArrayList < MaquinaPOJO > ();
+  List <MaquinaPOJO> maquinasPOJO = new ArrayList <MaquinaPOJO> ();
   maquinas.stream().forEach(m -> {
    MaquinaPOJO dto = new MaquinaPOJO();
    BeanUtils.copyProperties(m, dto);
@@ -37,9 +37,9 @@ public class MaquinaService implements MaquinaServiceInterface {
 
  @Override
  @Transactional
- public Boolean saveMaquina(MaquinaRequest mr) {
+ public Boolean saveMaquina(MaquinaRequest maquinaRequest) {
 
-  MaquinaPOJO maquinaDTO = mr.getMaquina();
+  MaquinaPOJO maquinaDTO = maquinaRequest.getMaquina();
   Maquina maquina = new Maquina();
   BeanUtils.copyProperties(maquinaDTO, maquina);
   Maquina nmaquina = maquinaRepository.save(maquina);
@@ -48,9 +48,9 @@ public class MaquinaService implements MaquinaServiceInterface {
  }
 
  @Override
- public MaquinaPOJO getById(MaquinaRequest mr) {
+ public MaquinaPOJO getById(MaquinaRequest maquinaRequest) {
   MaquinaPOJO maquinaDTO = new MaquinaPOJO();
-  Maquina maquina = maquinaRepository.findOne(mr.getMaquina().getIdMaquina());
+  Maquina maquina = maquinaRepository.findOne(maquinaRequest.getMaquina().getIdMaquina());
 
   if (maquina != null) {
    BeanUtils.copyProperties(maquina, maquinaDTO);

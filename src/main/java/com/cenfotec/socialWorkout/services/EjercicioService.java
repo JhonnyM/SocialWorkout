@@ -32,14 +32,14 @@ public class EjercicioService implements EjercicioServiceInterface {
  private MaquinahasejercicioRepository maquinahasejercicioRepository;
 
  @Override
- public List < EjercicioPOJO > getAll() {
+ public List <EjercicioPOJO> getAll() {
   List < Ejercicio > ejercicios = ejercicioRepository.findAll();
   return generateEjercicioDtos(ejercicios);
  }
 
- private List < EjercicioPOJO > generateEjercicioDtos(List < Ejercicio > ejercicios) {
+ private List <EjercicioPOJO> generateEjercicioDtos(List <Ejercicio> ejercicios) {
 
-  List < EjercicioPOJO > uiEjercicios = new ArrayList < EjercicioPOJO > ();
+  List <EjercicioPOJO> uiEjercicios = new ArrayList < EjercicioPOJO > ();
   ejercicios.stream().forEach(e -> {
    EjercicioPOJO dto = new EjercicioPOJO();
    BeanUtils.copyProperties(e, dto);
@@ -48,10 +48,10 @@ public class EjercicioService implements EjercicioServiceInterface {
   return uiEjercicios;
  }
 
- private List < MaquinahasejercicioPOJO > generateMaquinasHasEjercicioDtos(
-  List < Maquinahasejercicio > maquinaEjercicios) {
+ private List <MaquinahasejercicioPOJO> generateMaquinasHasEjercicioDtos(
+  List <Maquinahasejercicio> maquinaEjercicios) {
 
-  List < MaquinahasejercicioPOJO > uiMaquinaEjercicios = new ArrayList < MaquinahasejercicioPOJO > ();
+  List <MaquinahasejercicioPOJO> uiMaquinaEjercicios = new ArrayList <MaquinahasejercicioPOJO> ();
   maquinaEjercicios.stream().forEach(m -> {
   
 	  MaquinaPOJO maquinaDTO = new MaquinaPOJO();
@@ -80,9 +80,9 @@ public class EjercicioService implements EjercicioServiceInterface {
 
  @Override
  @Transactional
- public Boolean saveEjercicio(EjercicioRequest er) {
+ public Boolean saveEjercicio(EjercicioRequest ejercicioRequest) {
 
-  EjercicioPOJO ejercicioDTO = er.getEjercicio();
+  EjercicioPOJO ejercicioDTO = ejercicioRequest.getEjercicio();
 
   Ejercicio ejercicio = new Ejercicio();
 
@@ -95,9 +95,9 @@ public class EjercicioService implements EjercicioServiceInterface {
  }
 
  @Override
- public EjercicioPOJO getById(EjercicioRequest er) {
+ public EjercicioPOJO getById(EjercicioRequest ejercicioRequest) {
   EjercicioPOJO ejercicioDTO = new EjercicioPOJO();
-  Ejercicio ejercicio = ejercicioRepository.findOne(er.getEjercicio().getIdEjercicio());
+  Ejercicio ejercicio = ejercicioRepository.findOne(ejercicioRequest.getEjercicio().getIdEjercicio());
 
   if (ejercicio != null) {
    BeanUtils.copyProperties(ejercicio, ejercicioDTO);
@@ -143,9 +143,9 @@ public class EjercicioService implements EjercicioServiceInterface {
    	 
  }
    
-  public List < MaquinahasejercicioPOJO > getMaquinasEjercicio(MaquinahasejercicioRequest maquinaEjercicioRequest) {
+  public List <MaquinahasejercicioPOJO> getMaquinasEjercicio(MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-	  List < Maquinahasejercicio > maquinasAsignadas = new ArrayList < Maquinahasejercicio > ();
+	  List <Maquinahasejercicio> maquinasAsignadas = new ArrayList <Maquinahasejercicio> ();
 
 	  maquinasAsignadas =
 	   maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio().getIdEjercicio());
@@ -157,7 +157,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 @Override
 public void deleteAllMaquinasAsignadas(MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-	List < Maquinahasejercicio > maquinasAsignadas = new ArrayList < Maquinahasejercicio > ();
+	List <Maquinahasejercicio> maquinasAsignadas = new ArrayList <Maquinahasejercicio> ();
 
   maquinasAsignadas =
    maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio().getIdEjercicio());
@@ -172,7 +172,7 @@ public void deleteAllMaquinasAsignadas(MaquinahasejercicioRequest maquinaEjercic
   @Override
   public void deleteAllMaquinasAsignadas(EjercicioRequest ejercicioRequest) {
 
-  	List < Maquinahasejercicio > maquinasAsignadas = new ArrayList < Maquinahasejercicio > ();
+  	List <Maquinahasejercicio> maquinasAsignadas = new ArrayList <Maquinahasejercicio> ();
 
     maquinasAsignadas =
      maquinahasejercicioRepository.findByEjercicioIdEjercicio(ejercicioRequest.getEjercicio().getIdEjercicio());

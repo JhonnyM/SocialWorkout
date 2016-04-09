@@ -12,8 +12,8 @@ import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 public interface EjercicioServiceInterface {
 	
 	List<EjercicioPOJO> getAll();
-	EjercicioPOJO getById(EjercicioRequest er);
-	Boolean saveEjercicio(EjercicioRequest er);
+	EjercicioPOJO getById(EjercicioRequest ejercicioRequest);
+	Boolean saveEjercicio(EjercicioRequest ejercicioRequest);
 	boolean exists(Integer idEjercicio);
 	boolean delete(int idEjercicio);
 	boolean setMaquinaEjercicio(MaquinahasejercicioRequest maquinaEjercicioRequest);

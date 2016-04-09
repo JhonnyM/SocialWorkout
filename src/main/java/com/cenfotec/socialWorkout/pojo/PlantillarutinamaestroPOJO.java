@@ -11,7 +11,7 @@ public class PlantillarutinamaestroPOJO {
 	private ObjetivoPOJO objetivo;
 	private PlantillarutinamaestroPOJO plantillarutinamaestro;
 	private List<PlantillarutinamaestroPOJO> plantillarutinamaestros;
-	private List<RutinahasusuarioPOJO> rutinahasusuarios;
+//	private List<RutinahasusuarioPOJO> rutinahasusuarios;
 
 	public PlantillarutinamaestroPOJO() {
 	}
@@ -99,27 +99,27 @@ public class PlantillarutinamaestroPOJO {
 
 		return plantillarutinamaestro;
 	}
-
-	public List<RutinahasusuarioPOJO> getRutinahasusuarios() {
-		return this.rutinahasusuarios;
-	}
-
-	public void setRutinahasusuarios(List<RutinahasusuarioPOJO> rutinahasusuarios) {
-		this.rutinahasusuarios = rutinahasusuarios;
-	}
-
-	public RutinahasusuarioPOJO addRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
-		getRutinahasusuarios().add(rutinahasusuario);
-		rutinahasusuario.setPlantillarutinamaestro(this);
-
-		return rutinahasusuario;
-	}
-
-	public RutinahasusuarioPOJO removeRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
-		getRutinahasusuarios().remove(rutinahasusuario);
-		rutinahasusuario.setPlantillarutinamaestro(null);
-
-		return rutinahasusuario;
-	}
+//
+//	public List<RutinahasusuarioPOJO> getRutinahasusuarios() {
+//		return this.rutinahasusuarios;
+//	}
+//
+//	public void setRutinahasusuarios(List<RutinahasusuarioPOJO> rutinahasusuarios) {
+//		this.rutinahasusuarios = rutinahasusuarios;
+//	}
+//
+//	public RutinahasusuarioPOJO addRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
+//		getRutinahasusuarios().add(rutinahasusuario);
+//		rutinahasusuario.setPlantillarutinamaestro(this);
+//
+//		return rutinahasusuario;
+//	}
+//
+//	public RutinahasusuarioPOJO removeRutinahasusuario(RutinahasusuarioPOJO rutinahasusuario) {
+//		getRutinahasusuarios().remove(rutinahasusuario);
+//		rutinahasusuario.setPlantillarutinamaestro(null);
+//
+//		return rutinahasusuario;
+//	}
 
 }

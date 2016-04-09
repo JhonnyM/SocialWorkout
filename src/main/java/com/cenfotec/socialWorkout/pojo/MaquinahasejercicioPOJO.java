@@ -24,16 +24,16 @@ public class MaquinahasejercicioPOJO {
 		return this.ejercicio;
 	}
 
-	public void setEjercicio(EjercicioPOJO ejercicioPOJO) {
-		this.ejercicio = ejercicioPOJO;
+	public void setEjercicio(EjercicioPOJO ejercicio) {
+		this.ejercicio = ejercicio;
 	}
 
 	public MaquinaPOJO getMaquina() {
 		return this.maquina;
 	}
 
-	public void setMaquina(MaquinaPOJO maquinaPOJO) {
-		this.maquina = maquinaPOJO;
+	public void setMaquina(MaquinaPOJO maquina) {
+		this.maquina = maquina;
 	}
 
 }
