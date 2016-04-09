@@ -62,12 +62,12 @@ public class EjercicioService implements EjercicioServiceInterface {
   
   if(m.getEjercicio() != null){
 	  BeanUtils.copyProperties(m.getEjercicio(), ejercicioDTO);	  
-	  dto.setEjercicioPOJO(ejercicioDTO);
+	  dto.setEjercicio(ejercicioDTO);
   }
 
   if(m.getMaquina() != null){
 	  BeanUtils.copyProperties(m.getMaquina(), maquinaDTO);
-	  dto.setMaquinaPOJO(maquinaDTO);
+	  dto.setMaquina(maquinaDTO);
   }
   
   uiMaquinaEjercicios.add(dto);
@@ -118,8 +118,8 @@ public class EjercicioService implements EjercicioServiceInterface {
 
  public boolean setMaquinaEjercicio(MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-  EjercicioPOJO ejercicioDTO = maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicioPOJO();
-  MaquinaPOJO maquinaDTO = maquinaEjercicioRequest.getMaquinaEjercicio().getMaquinaPOJO();
+  EjercicioPOJO ejercicioDTO = maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio();
+  MaquinaPOJO maquinaDTO = maquinaEjercicioRequest.getMaquinaEjercicio().getMaquina();
 
   Maquinahasejercicio maquinaEjercicioEJB = new Maquinahasejercicio();
 
@@ -137,7 +137,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 
  public void deleteMaquinasAsignadas(MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-   Maquinahasejercicio maquinaEjercicio = maquinahasejercicioRepository.findByEjercicioIdEjercicioAndMaquinaIdMaquina(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicioPOJO().getIdEjercicio(),maquinaEjercicioRequest.getMaquinaEjercicio().getMaquinaPOJO().getIdMaquina());	 
+   Maquinahasejercicio maquinaEjercicio = maquinahasejercicioRepository.findByEjercicioIdEjercicioAndMaquinaIdMaquina(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio().getIdEjercicio(),maquinaEjercicioRequest.getMaquinaEjercicio().getMaquina().getIdMaquina());	 
 	 
    maquinahasejercicioRepository.delete(maquinaEjercicio);
    	 
@@ -148,7 +148,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 	  List < Maquinahasejercicio > maquinasAsignadas = new ArrayList < Maquinahasejercicio > ();
 
 	  maquinasAsignadas =
-	   maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicioPOJO().getIdEjercicio());
+	   maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio().getIdEjercicio());
 
 	  return generateMaquinasHasEjercicioDtos(maquinasAsignadas);
 	  
@@ -160,7 +160,7 @@ public void deleteAllMaquinasAsignadas(MaquinahasejercicioRequest maquinaEjercic
 	List < Maquinahasejercicio > maquinasAsignadas = new ArrayList < Maquinahasejercicio > ();
 
   maquinasAsignadas =
-   maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicioPOJO().getIdEjercicio());
+   maquinahasejercicioRepository.findByEjercicioIdEjercicio(maquinaEjercicioRequest.getMaquinaEjercicio().getEjercicio().getIdEjercicio());
 
   maquinasAsignadas.stream().forEach(ma -> {
 
