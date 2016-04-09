@@ -52,9 +52,6 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                 }).success(function(data, status, config) {
                     $scope.message = data;
                     $scope.registroMedidas = data.registroMedidaPOJO;
-                    console.log("DATA", data.registroMedidaPOJO);
-                    console.log("$scope.registroMedidas", $scope.gridOptions);
-
                 }).error(
                     function(data, status, config) {
                         console.log("$scope.data",
@@ -94,8 +91,14 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     {
                         field: 'Acciones',
                         displayName: 'Acciones',
-                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
+                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>', enableFiltering: false, enableSorting: false, width: 180
                     }
+                    
+//                    {
+//                        field: 'Acciones',
+//                        displayName: 'Acciones',
+//                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
+//                    }
                 ]
             };
 
@@ -183,7 +186,6 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     switch (response.data.code) {
                         case 200:
                         	$scope.gridApi.core.refresh();
-                        	//                            $scope.read();
                             break;
 
                         default:

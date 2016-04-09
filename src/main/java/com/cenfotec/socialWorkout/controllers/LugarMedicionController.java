@@ -30,6 +30,14 @@ public class LugarMedicionController {
 		response.setLugaresMedicionPOJO(lugarMedicionService.getAll());
 		return response;		
 	}
+
+	@RequestMapping(value = "/getAll2", method = RequestMethod.GET)
+	public LugarMedicionResponse getAll2() {
+		LugarMedicionResponse lmr = new LugarMedicionResponse();
+		lmr.setCode(200);
+		lmr.setLugaresMedicionPOJO(lugarMedicionService.getAll2());
+		return lmr;
+	}
 	
 	@RequestMapping(value ="/create", method = RequestMethod.POST)
 	public LugarMedicionResponse create(@RequestBody LugarMedicionRequest lugarMedicionRequest){	

@@ -10,7 +10,7 @@ angular.module('myApp.loginView', ['ngRoute'])
 }])
 
 .controller('LoginViewCtrl', ['$scope','$http',function($scope,$http) {
-	$scope.user = {correoElectronico:"fabi@gmail.com",clave:""};
+	$scope.user = {correoElectronico:"culloat@ucenfotec.ac.cr",clave:"12345"};
 	
 	$scope.checkLogin = function(){
 		
