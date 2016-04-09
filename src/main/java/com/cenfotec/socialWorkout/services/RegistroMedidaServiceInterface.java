@@ -15,4 +15,6 @@ public interface RegistroMedidaServiceInterface {
 
 	public boolean exists(Integer idRegistroMedida);
 	
+
+	
 }

@@ -9,9 +9,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.EventoRequest;
+import com.cenfotec.socialWorkout.contracts.EventoUsuarioRequest;
 import com.cenfotec.socialWorkout.ejb.Evento;
+import com.cenfotec.socialWorkout.ejb.Eventoshasusuario;
+import com.cenfotec.socialWorkout.ejb.Usuario;
 import com.cenfotec.socialWorkout.pojo.EventoPOJO;
+import com.cenfotec.socialWorkout.pojo.EventoUsuarioPOJO;
+import com.cenfotec.socialWorkout.pojo.EventoshasusuarioPOJO;
+import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
+import com.cenfotec.socialWorkout.pojo.UsuarioPOJO;
 import com.cenfotec.socialWorkout.repositories.EventoRepository;
+import com.cenfotec.socialWorkout.repositories.EventoshasusuarioRepository;
 
 
 
@@ -19,7 +27,9 @@ import com.cenfotec.socialWorkout.repositories.EventoRepository;
 public class EventoService implements EventoServiceInterface{
 
 	@Autowired private EventoRepository eventoRepository;
-	
+	@Autowired private EventoshasusuarioRepository eventoUsuarioRepository;
+	@Autowired private UserServiceInterface usuarioService;
+
 
 	@Override
 	@Transactional
@@ -29,6 +39,7 @@ public class EventoService implements EventoServiceInterface{
 		eventos.stream().forEach(ta ->{
 			EventoPOJO dto = new EventoPOJO();
 			BeanUtils.copyProperties(ta, dto);
+			dto.setEventoshasusuarios(null);
 			dtos.add(dto);
 			
 		});
@@ -43,6 +54,7 @@ public class EventoService implements EventoServiceInterface{
 		if(evento != null)
 		{
 			BeanUtils.copyProperties(evento, eve);
+			eve.setEventoshasusuarios(null);
 		}
 		return eve;
 	}
@@ -67,4 +79,77 @@ public class EventoService implements EventoServiceInterface{
 		eventoRepository.delete(idEvento);
 		return !eventoRepository.exists(idEvento);
 	}
+	
+	@Override
+	@Transactional
+	public List<EventoUsuarioPOJO> getAllPendingEvents() {		
+		List<Evento> eventos = eventoRepository.getAllPendingEvents();
+		List<EventoUsuarioPOJO> dtos = new ArrayList<EventoUsuarioPOJO>();
+
+		
+		
+		eventos.stream().forEach(e ->{
+			
+			EventoUsuarioPOJO dto = new EventoUsuarioPOJO();
+			UsuarioPOJO ulog = new UsuarioPOJO();
+			ulog = usuarioService.getUsuarioSession();
+			
+			BeanUtils.copyProperties(e, dto);
+			
+			if (e.getEventoshasusuarios() != null){
+				dto.setEventoshasusuarios(getDTOSEventoshasusuario(e.getEventoshasusuarios()));
+			}
+
+			dto.setUsuario(ulog);
+			
+			dto.setInscrito();
+			
+			dtos.add(dto);
+			
+		});
+		
+		return dtos;	
+	}
+	
+	public List<EventoshasusuarioPOJO> getDTOSEventoshasusuario(List<Eventoshasusuario> eventos){
+
+		List<EventoshasusuarioPOJO> uiEventosUsuario = new ArrayList<EventoshasusuarioPOJO>();
+		UsuarioPOJO udto = new UsuarioPOJO();
+		EventoPOJO edto = new EventoPOJO();
+
+		eventos.stream().forEach(e -> {
+			EventoshasusuarioPOJO dto = new EventoshasusuarioPOJO();
+			BeanUtils.copyProperties(e, dto);
+			BeanUtils.copyProperties(e.getUsuario(), udto);
+			BeanUtils.copyProperties(e.getEvento(), edto);
+			edto.setEventoshasusuarios(null);
+			dto.setUsuarioPOJO(udto);
+			dto.setEventoPOJO(edto);
+			uiEventosUsuario.add(dto);
+		});
+		
+		return uiEventosUsuario;
+	
+	}
+
+	@Override
+	public boolean assignEventoUsuario (EventoUsuarioRequest request){
+
+		Usuario usuario = new Usuario();
+		Evento evento = new Evento();
+		
+		Eventoshasusuario eventoHasUsuario = new Eventoshasusuario();
+		
+		BeanUtils.copyProperties(request.getEvento().getUsuario(), usuario);
+		BeanUtils.copyProperties(request.getEvento(), evento);
+
+		eventoHasUsuario.setEvento(evento);
+		eventoHasUsuario.setUsuario(usuario);
+		
+		Eventoshasusuario e = eventoUsuarioRepository.save(eventoHasUsuario);
+		
+		return !(e == null);
+		
+	}
+	
 }

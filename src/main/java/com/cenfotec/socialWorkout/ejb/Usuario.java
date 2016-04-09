@@ -16,6 +16,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idUsuario;
 
 	private String apellidos;
@@ -53,18 +54,9 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy="usuario2")
 	private List<Entrenamientopersonalizado> entrenamientopersonalizados2;
 
-	//bi-directional many-to-many association to Evento
-	@ManyToMany
-	@JoinTable(
-		name="eventoshasusuarios"
-		, joinColumns={
-			@JoinColumn(name="idUsuario")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="idEvento")
-			}
-		)
-	private List<Evento> eventos;
+	//bi-directional many-to-one association to Eventoshasusuario
+	@OneToMany(mappedBy="usuario")
+	private List<Eventoshasusuario> eventoshasusuarios;
 
 	//bi-directional many-to-one association to Mensaje
 	@OneToMany(mappedBy="usuario1")
@@ -277,12 +269,26 @@ public class Usuario implements Serializable {
 		return entrenamientopersonalizados2;
 	}
 
-	public List<Evento> getEventos() {
-		return this.eventos;
+	public List<Eventoshasusuario> getEventoshasusuarios() {
+		return this.eventoshasusuarios;
 	}
 
-	public void setEventos(List<Evento> eventos) {
-		this.eventos = eventos;
+	public void setEventoshasusuarios(List<Eventoshasusuario> eventoshasusuarios) {
+		this.eventoshasusuarios = eventoshasusuarios;
+	}
+
+	public Eventoshasusuario addEventoshasusuario(Eventoshasusuario eventoshasusuario) {
+		getEventoshasusuarios().add(eventoshasusuario);
+		eventoshasusuario.setUsuario(this);
+
+		return eventoshasusuario;
+	}
+
+	public Eventoshasusuario removeEventoshasusuario(Eventoshasusuario eventoshasusuario) {
+		getEventoshasusuarios().remove(eventoshasusuario);
+		eventoshasusuario.setUsuario(null);
+
+		return eventoshasusuario;
 	}
 
 	public List<Mensaje> getMensajes1() {

@@ -1,21 +1,50 @@
 //'use strict';
 angular
-    .module('myApp.modal_Registrar_Medida', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
+    .module('myApp.modalEditarMedida', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
 .controller(
-    'modal_Registrar_MedidaCtrl', [
+    'ModalEditarMedidaCtrl', [
         '$scope',
         '$http',
         '$uibModalInstance',
         'usuario',
+        'registroMedida',
         '$route',
-        function($scope, $http, $uibModalInstance, usuario, $route) {
-        	$scope.lugarMedicionEscogido = {};
-            $scope.lugaresMedicion = [];
+        function($scope, $http, $uibModalInstance, usuario, registroMedida, $route) {
+
+            $scope.registroMedidaSchema = {
+                "type": "object",
+                properties: {
+
+                    fecha: {
+                        title: 'Fecha de medición'
+                    },
+
+                    cantidad: {
+                        type: 'number',
+                        title: 'Registro'
+                    }
+                }
+            };
 
             $scope.reload = function() {
                 $route.reload();
             };
+
+            $scope.lugaresMedicion = [];
+            $scope.usuarioForm = angular.copy(usuario);
+            $scope.registroMedidaForm = angular.copy(registroMedida);
+            $scope.registroMedidaForm.fecha = new Date(registroMedida.fecha);
+            $scope.lugarMedicionRegistro = $scope.registroMedidaForm.lugarmedicionPOJO.idLugarMedicion
+
+            $scope.form = [{
+                    "title": "Fecha de medición:",
+                    "key": "fecha",
+                    "type": "date"
+                },
+                'cantidad'
+            ];
+
 
             $scope.cargarLugaresMedicion = function() {
                 $http.get('rest/protected/lugarMedicion/getAll2')
@@ -28,41 +57,16 @@ angular
 
             $scope.cargarLugaresMedicion();
 
-            $scope.registroMedidaSchema = {
-                "type": "object",
-                properties: {
-
-                    fechaMedida: {
-                        title: 'Fecha de medición'
-                    },
-
-                    registroMedida: {
-                        type: 'number',
-                        title: 'Registro'
-                    }
-                },
-                "required": ["fechaMedida", "registroMedida"]
-            };
-
-            $scope.usuarioForm = angular.copy(usuario);
-
-            $scope.form = [{
-                    "title": "Fecha de medición:",
-                    "key": "fechaMedida",
-                    "type": "date"
-                },
-                'registroMedida'
-            ];
-
             $scope.save = function() {
-            	console.log("LUGARMEDICIONESCOGIDO", $scope.lugarMedicionEscogido)
+            	console.log("LUGARMEDICION",$scope.lugarMedicionRegistro)
                 $scope.data = {};
 
                 data = {
-                    cantidad: $scope.form.registroMedida,
-                    fecha: $scope.form.fechaMedida,
+                    idRegistroMedida: $scope.registroMedidaForm.idRegistroMedida,
+                    cantidad: $scope.registroMedidaForm.cantidad,
+                    fecha: $scope.registroMedidaForm.fecha,
                     lugarmedicionPOJO: {
-                        idLugarMedicion: $scope.lugarMedicionEscogido,
+                        idLugarMedicion: $scope.lugarMedicionRegistro,
                         unidadMedidaPOJO: {
                             idUnidadMedida: 0
                         }
@@ -83,7 +87,7 @@ angular
 
                 console.log("$scope.data", $scope.data)
                 $http.post(
-                    'rest/protected/RegistrosMedidas/create', {
+                    'rest/protected/RegistrosMedidas/edit', {
                         registroMedida: data
                     }).success(
                     function(data, status, config) {

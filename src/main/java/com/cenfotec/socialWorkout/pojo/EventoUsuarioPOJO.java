@@ -1,23 +1,24 @@
 package com.cenfotec.socialWorkout.pojo;
 
-
 import java.util.Date;
 import java.util.List;
 
-import com.cenfotec.socialWorkout.ejb.Eventoshasusuario;
+import org.springframework.beans.BeanUtils;
 
-
-public class EventoPOJO  {
+public class EventoUsuarioPOJO {
 
 	private int idEvento;
+//	private int idUsuario;
 	private String descEvento;
 	private Date fechaHoraFinal;
 	private Date fechaHoraInicio;
 	private String observaciones;
 	private List<EventoshasusuarioPOJO> eventoshasusuarios;
+	private String inscrito;
+	private UsuarioPOJO usuario;
+	
+	public EventoUsuarioPOJO() {
 
-
-	public EventoPOJO() {
 	}
 
 	public int getIdEvento() {
@@ -28,6 +29,14 @@ public class EventoPOJO  {
 		this.idEvento = idEvento;
 	}
 
+//	public int getIdUsuario() {
+//		return this.idUsuario;
+//	}
+//
+//	public void setIdUsuario(int idUsuario) {
+//		this.idUsuario = idUsuario;
+//	}
+	
 	public String getDescEvento() {
 		return this.descEvento;
 	}
@@ -36,6 +45,14 @@ public class EventoPOJO  {
 		this.descEvento = descEvento;
 	}
 
+	public UsuarioPOJO getUsuario(){
+		return this.usuario;
+	}
+	
+	public void setUsuario(UsuarioPOJO usuario){
+		this.usuario = usuario;
+	}
+	
 	public Date getFechaHoraFinal() {
 		return this.fechaHoraFinal;
 	}
@@ -66,6 +83,29 @@ public class EventoPOJO  {
 
 	public void setEventoshasusuarios(List<EventoshasusuarioPOJO> eventoshasusuarios) {
 		this.eventoshasusuarios = eventoshasusuarios;
+	}
+
+	public void setInscrito() {
+
+		if (this.eventoshasusuarios.size() > 0) {
+
+			this.eventoshasusuarios.stream().forEach(e -> {
+				if ((this.usuario.getIdUsuario() == e.getUsuarioPOJO().getIdUsuario())
+						&& this.idEvento == e.getEventoPOJO().getIdEvento()
+						) {
+					inscrito = "Evento ya inscrito";
+				} else {
+					inscrito = "Evento no inscrito";
+				}
+			});
+		} else {
+			this.inscrito = "Evento no inscrito";
+		}
+
+	};
+
+	public String getInscrito() {
+		return this.inscrito;
 	}
 
 }

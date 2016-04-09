@@ -15,14 +15,13 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
   $scope.read = function(){
       $http.get('rest/protected/eventos/all').then(function(response) {
-        console.log(new Date(response.data.eventos[1].fechaHoraFinal));
-        console.log("response",response)
-        $scope.eventos = response.data.eventos;
-        for (var i = 0; i < $scope.eventos.length; i++){
-          $scope.eventos[i].fechaHoraInicio = new Date($scope.eventos[i].fechaHoraInicio);
-          $scope.eventos[i].fechaHoraFinal  = new Date($scope.eventos[i].fechaHoraFinal);
-        };
-        console.log("$scope.eventos", $scope.gridOptions)
+    	  console.log("response",response)
+      $scope.eventos = response.data.eventos;
+      for (var i = 0; i < $scope.eventos.length; i++){
+        $scope.eventos[i].fechaHoraInicio = new Date($scope.eventos[i].fechaHoraInicio);
+        $scope.eventos[i].fechaHoraFinal  = new Date($scope.eventos[i].fechaHoraFinal);
+      };
+      console.log("$scope.eventos", $scope.gridOptions)
       }, function(){
         alert("Error obteniendo la informacion de los eventos")
       });

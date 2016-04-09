@@ -16,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cenfotec.socialWorkout.contracts.TipoUsuarioRequest;
 import com.cenfotec.socialWorkout.contracts.TipoUsuarioResponse;
+import com.cenfotec.socialWorkout.contracts.UserAdministradorRequest;
+import com.cenfotec.socialWorkout.contracts.UserAdministradorResponse;
 import com.cenfotec.socialWorkout.services.TipoUsuarioServiceInterface;
 import com.cenfotec.socialWorkout.services.UserServiceInterface;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
@@ -46,7 +48,17 @@ public class UserController {
 		us.setUsuarios(usersService.getAll(ur));
 		return us;		
 	}
-	
+
+	@RequestMapping(value ="/getAllToAdministrador", method = RequestMethod.POST)
+	public UserAdministradorResponse getAllToAdministrador(@RequestBody UserAdministradorRequest ur){	
+			
+		UserAdministradorResponse us = new UserAdministradorResponse();
+		us.setCode(200);
+		us.setCodeMessage("users fetch success");
+		us.setUsuarios(usersService.getAllToAdministrador(ur));
+		return us;		
+	}
+
 	@RequestMapping(value ="/getAllByName", method = RequestMethod.POST)
 	public UserResponse getAllByName(@RequestBody UserRequest ur){	
 			

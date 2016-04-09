@@ -1,8 +1,8 @@
-angular.module('myApp.modal_Registrar_Ejercicio',
+angular.module('myApp.modalRegistrarEjercicio',
 		[ 'ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap' ])
 
 .controller(
-		'modal_Registrar_EjercicioCtrl',
+		'ModalRegistrarEjercicioCtrl',
 		[ '$scope', '$http', '$uibModalInstance','$route',
 				function($scope, $http, $uibModalInstance,$route) {
 					$scope.ejercicioSchema = {

@@ -32,19 +32,21 @@ angular.module('myApp', [
   'angularFileUpload',
   'myApp.unidadesMedidas',
   'myApp.ocupacionGeneral',
-  'myApp.modal_Editar_Unidad_Medida',
-  'myApp.modal_Registrar_Unidad_Medida',
+  'myApp.modalEditarUnidadMedida',
+  'myApp.modalRegistrarUnidadMedida',
   'myApp.maquinas',
-  'myApp.modal_Editar_Maquina',
-  'myApp.modal_Registrar_Maquina',
+  'myApp.modalEditarMaquina',
+  'myApp.modalRegistrarMaquina',
   'myApp.ejercicios',
-  'myApp.modal_Registrar_Ejercicio',
-  'myApp.modal_Editar_Ejercicio', 
-  'myApp.modal_Registrar_Maquina_Ejercicio',
+  'myApp.modalRegistrarEjercicio',
+  'myApp.modalEditarEjercicio', 
+  'myApp.modalRegistrarMaquinaEjercicio',
   'myApp.registrosMedidas',
-  'myApp.modal_Historial_Medida',
-  'myApp.modal_Registrar_Medida', 
-  'myApp.modal_Editar_Medida'
+  'myApp.modalHistorialMedida',
+  'myApp.modalRegistrarMedida', 
+  'myApp.modalEditarMedida',
+  'myApp.usuariosAdministrador',
+  'myApp.eventosUsuarios'
 ])
 .config(['$routeProvider','$provide','$httpProvider', function($routeProvider,$provide,$httpProvider) {
 	$routeProvider.otherwise({redirectTo: '/view1'});
