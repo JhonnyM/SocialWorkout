@@ -1,27 +1,26 @@
 package com.cenfotec.socialWorkout.contracts;
 
-import com.cenfotec.socialWorkout.pojo.EjercicioPOJO;
 import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 
 public class MaquinahasejercicioRequest {
 
-	private MaquinahasejercicioPOJO maquinaHasEjercicio;
-	
-	public MaquinahasejercicioRequest() {
-		super();
-	}
-	
-	public MaquinahasejercicioPOJO getMaquinahasejercicio() {
-		return maquinaHasEjercicio;
-	}
-	
-	public void setMaquinahasejercicio(MaquinahasejercicioPOJO maquinaHasEjercicio) {
-		this.maquinaHasEjercicio = maquinaHasEjercicio;
-	}
+ private MaquinahasejercicioPOJO maquinaEjercicio;
 
-	@Override
-	public String toString() {
-		return "MaquinaHasEjercicio request: [maquinaHasEjercicio=" + maquinaHasEjercicio + "]";
-	}
-	
+ public MaquinahasejercicioRequest() {
+  super();
+ }
+
+ public MaquinahasejercicioPOJO getMaquinaEjercicio() {
+  return this.maquinaEjercicio;
+}
+
+ public void setMaquinaEjercicio(MaquinahasejercicioPOJO maquinaEjercicio) {
+  this.maquinaEjercicio = maquinaEjercicio;
+ }
+
+ @Override
+ public String toString() {
+  return "MaquinaHasEjercicio request: [maquinaHasEjercicio=" + maquinaEjercicio + "]";
+ }
+
 }

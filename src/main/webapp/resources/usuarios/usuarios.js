@@ -68,8 +68,8 @@ angular.module('myApp.usuarios', ['ngRoute', 'ui.grid', 'ui.bootstrap'])
 			var dialogOpts = {
 					backdrop:'static',
 					keyboard:false,
-					templateUrl:'resources/usuarios/modal_Historial_Medidas.html',
-					controller:'modal_Historial_Medida_Ctrl',
+					templateUrl:'resources/usuarios/modalHistorialMedidas.html',
+					controller:'ModalHistorialMedidaCtrl',
 					size:"lg",
 					windowClass:"modal",
 					resolve:{

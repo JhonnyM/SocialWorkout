@@ -1,11 +1,11 @@
 //'use strict';
 
 angular
-		.module('myApp.modal_Editar_Maquina',
+		.module('myApp.modalEditarMaquina',
 				[ 'ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap' ])
 
 		.controller(
-				'modal_Editar_MaquinaCtrl',
+				'ModalEditarMaquinaCtrl',
 				[
 						'$scope',
 						'$http',
@@ -24,6 +24,14 @@ angular
 										cantidad : {
 											type : 'number',
 											title : 'Cantidad de máquinas'
+										},
+										minutosXPersona : {
+											type : 'number',
+											title : 'Minutos por persona'
+										},
+										personasXMaquina : {
+											type : 'number',
+											title : 'Personas por máquina'
 										}
 									}
 								};
@@ -35,7 +43,7 @@ angular
 							$scope.maquinaForm = angular
 									.copy(maquina);
 
-							$scope.form = [ 'descMaquina', 'cantidad' ];
+							$scope.form = [ 'descMaquina', 'cantidad','minutosXPersona','personasXMaquina'];
 
 							$scope.save = function() {
 
@@ -43,7 +51,10 @@ angular
 								data = {
 									idMaquina : $scope.maquinaForm.idMaquina,
 									descMaquina : $scope.maquinaForm.descMaquina,
-									cantidad : $scope.maquinaForm.cantidad
+									cantidad : $scope.maquinaForm.cantidad,
+									minutosXPersona : $scope.maquinaForm.minutosXPersona,
+									personasXMaquina : $scope.maquinaForm.personasXMaquina
+
 								};
 								
 

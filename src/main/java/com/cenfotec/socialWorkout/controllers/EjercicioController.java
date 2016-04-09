@@ -6,111 +6,119 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.cenfotec.socialWorkout.contracts.EjercicioRequest;
 import com.cenfotec.socialWorkout.contracts.EjercicioResponse;
-import com.cenfotec.socialWorkout.contracts.MaquinaRequest;
-import com.cenfotec.socialWorkout.contracts.MaquinaResponse;
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
-import com.cenfotec.socialWorkout.ejb.Ejercicio;
-import com.cenfotec.socialWorkout.ejb.Maquina;
+import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioResponse;
 import com.cenfotec.socialWorkout.services.EjercicioServiceInterface;
 
 @RestController
 @RequestMapping(value = "rest/protected/Ejercicios")
 public class EjercicioController {
 
-	@Autowired
-	private EjercicioServiceInterface ejercicioService;
-	
-	@Autowired
-	private HttpServletRequest request;
+ @Autowired
+ private EjercicioServiceInterface ejercicioService;
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
-	public EjercicioResponse getAll() {
-		EjercicioResponse ere = new EjercicioResponse();
-		ere.setCode(200);
-		ere.setEjercicios(ejercicioService.getAll());
-		return ere;
-	}
+ @Autowired
+ private HttpServletRequest request;
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public EjercicioResponse create(@RequestBody EjercicioRequest er) {
+ @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+ public EjercicioResponse getAll() {
+  EjercicioResponse ejercicioResponse = new EjercicioResponse();
+  ejercicioResponse.setCode(200);
+  ejercicioResponse.setEjercicios(ejercicioService.getAll());
+  return ejercicioResponse;
+ }
 
-		EjercicioResponse ere = new EjercicioResponse();
-		Boolean state = ejercicioService.saveEjercicio(er);
+ @RequestMapping(value = "/create", method = RequestMethod.POST)
+ public EjercicioResponse create(@RequestBody EjercicioRequest ejercicioRequest) {
 
-		if (state) {
-			ere.setCode(200);
-			ere.setCodeMessage("Ejercicio creado correctamente.");
-		}
-		return ere;
+  EjercicioResponse ejercicioResponse = new EjercicioResponse();
+  Boolean state = ejercicioService.saveEjercicio(ejercicioRequest);
 
-	}
+  if (state) {
+   ejercicioResponse.setCode(200);
+   ejercicioResponse.setCodeMessage("Ejercicio creado correctamente.");
+  }
+  return ejercicioResponse;
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public EjercicioResponse edit(@RequestBody EjercicioRequest er) {
+ }
 
-		EjercicioResponse ere = new EjercicioResponse();
-		
-		if(ejercicioService.exists(er.getEjercicio().getIdEjercicio())){
-			if (ejercicioService.saveEjercicio(er)){
-				ere.setCode(200);
-				ere.setCodeMessage("La información del ejercicio fue modificada correctamente.");
-			}else{
-				ere.setCode(500);
-				ere.setCodeMessage("La información del ejercicio no fue modificada.");
-				
-			}
-		}
-		return ere;
-	}
+ @RequestMapping(value = "/edit", method = RequestMethod.POST)
+ public EjercicioResponse edit(@RequestBody EjercicioRequest ejercicioRequest) {
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public EjercicioResponse delete(@RequestBody EjercicioRequest er) {
+  EjercicioResponse ejercicioResponse = new EjercicioResponse();
 
-		EjercicioResponse ere = new EjercicioResponse();
+  if (ejercicioService.exists(ejercicioRequest.getEjercicio().getIdEjercicio())) {
+   if (ejercicioService.saveEjercicio(ejercicioRequest)) {
+    ejercicioResponse.setCode(200);
+    ejercicioResponse.setCodeMessage("La información del ejercicio fue modificada correctamente.");
+   } else {
+    ejercicioResponse.setCode(500);
+    ejercicioResponse.setCodeMessage("La información del ejercicio no fue modificada.");
 
-		if (ejercicioService.exists(er.getEjercicio().getIdEjercicio())) {
-				ejercicioService.deleteMaquinasAsignadas(er);
-			if (ejercicioService.delete(er.getEjercicio().getIdEjercicio())) {
-				ere.setCode(200);
-				ere.setCodeMessage("El unidad medida fue eliminado exitosamente");
-			} else {
-				ere.setCode(500);
-				ere.setCodeMessage("Hubo un error al momento de eliminar la unidad");
-			}
+   }
+  }
+  return ejercicioResponse;
+ }
 
-		} else {
+ @RequestMapping(value = "/delete", method = RequestMethod.POST)
+ public EjercicioResponse delete(@RequestBody EjercicioRequest ejercicioRequest) {
 
-			ere.setCode(404);
-			ere.setCodeMessage("La unidad de medida no existe");
-		}
+   EjercicioResponse ejercicioResponse = new EjercicioResponse();
 
-		return ere;
+   if (ejercicioService.exists(ejercicioRequest.getEjercicio().getIdEjercicio())) {
+    ejercicioService.deleteAllMaquinasAsignadas(ejercicioRequest);
+    if (ejercicioService.delete(ejercicioRequest.getEjercicio().getIdEjercicio())) {
+     ejercicioResponse.setCode(200);
+     ejercicioResponse.setCodeMessage("El unidad medida fue eliminado exitosamente");
+    } else {
+     ejercicioResponse.setCode(500);
+     ejercicioResponse.setCodeMessage("Hubo un error al momento de eliminar la unidad");
+    }
 
-	}
-	
-	@RequestMapping(value = "/assignMachine", method = RequestMethod.POST)
-	public EjercicioResponse assignMachine(@RequestBody EjercicioRequest er) {
+   } else {
 
-		EjercicioResponse ere = new EjercicioResponse();
-		Boolean state = ejercicioService.setMaquinaEjercicio(er);
+    ejercicioResponse.setCode(404);
+    ejercicioResponse.setCodeMessage("La unidad de medida no existe");
+   }
 
-		if (state) {
-			ere.setCode(200);
-			ere.setCodeMessage("Ejercicio creado correctamente.");
-		}
-		return ere;
+   return ejercicioResponse;
 
-	}
+  }
 
-	@RequestMapping(value = "/deleteAssignedMachines", method = RequestMethod.POST)
-	public void deleteAssignedMachine(@RequestBody EjercicioRequest er) {
+ @RequestMapping(value = "/assignMachine", method = RequestMethod.POST)
+ public MaquinahasejercicioResponse assignMachine(@RequestBody MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-		ejercicioService.deleteMaquinasAsignadas(er);
+  MaquinahasejercicioResponse maquinaEjercicioResponse = new MaquinahasejercicioResponse();
+  Boolean state = ejercicioService.setMaquinaEjercicio(maquinaEjercicioRequest);
 
-	}
+  if (state) {
+   maquinaEjercicioResponse.setCode(200);
+   maquinaEjercicioResponse.setCodeMessage("Ejercicio creado correctamente.");
+  }
+  return maquinaEjercicioResponse;
 
-	
+ }
+
+ 
+ @RequestMapping(value = "/deleteAllAssignedMachines", method = RequestMethod.POST)
+ public void deleteAllAssignedMachine(@RequestBody MaquinahasejercicioRequest maquinaEjercicioRequest) {
+
+  ejercicioService.deleteAllMaquinasAsignadas(maquinaEjercicioRequest);
+
+ }
+
+ 
+ @RequestMapping(value = "/getMaquinasEjercicio", method = RequestMethod.POST)
+ public MaquinahasejercicioResponse getMaquinasEjercicio(@RequestBody MaquinahasejercicioRequest maquinaEjercicioRequest) {
+ 
+  MaquinahasejercicioResponse maquinaEjercicioResponse = new MaquinahasejercicioResponse();
+
+  maquinaEjercicioResponse.setMaquinaEjercicio(ejercicioService.getMaquinasEjercicio(maquinaEjercicioRequest));
+
+  return maquinaEjercicioResponse;
+
+ }
+
 }

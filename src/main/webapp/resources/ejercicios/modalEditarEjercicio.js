@@ -1,10 +1,10 @@
 //'use strict';
 
-angular.module('myApp.modal_Editar_Ejercicio',
+angular.module('myApp.modalEditarEjercicio',
 		[ 'ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap' ])
 
 .controller(
-		'modal_Editar_EjercicioCtrl',
+		'ModalEditarEjercicioCtrl',
 		[ '$scope', '$http', '$uibModalInstance', 'ejercicio', '$route',
 				function($scope, $http, $uibModalInstance, ejercicio, $route) {
 					$scope.ejercicioSchema = {

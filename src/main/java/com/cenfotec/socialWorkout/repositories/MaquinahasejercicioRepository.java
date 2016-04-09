@@ -9,5 +9,7 @@ import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
 public interface MaquinahasejercicioRepository extends CrudRepository <Maquinahasejercicio,Integer>{
 
  List <Maquinahasejercicio> findByEjercicioIdEjercicio(int idEjercicio);
-	
+
+ Maquinahasejercicio findByEjercicioIdEjercicioAndMaquinaIdMaquina(int idEjercicio,int idMaquina);
+ 
 }
