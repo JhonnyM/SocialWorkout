@@ -39,6 +39,7 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 			MaquinahasejercicioPOJO dto = new MaquinahasejercicioPOJO();
 			BeanUtils.copyProperties(ta, dto);
 			dto.setEjercicio(ejercicioDto);
+			dto.setMaquina(maquinaDto);
 			dtos.add(dto);
 			
 		});
