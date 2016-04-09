@@ -115,15 +115,19 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     resolve: {
                         usuario: function() {
                             return usuario
-                        },
-                        route: $route
+                        }
                     }
                 };
-
-                $uibModal.open(dialogOpts)
-
+   
+                $uibModal.open(dialogOpts).result.finally(function() {
+                    alert('Registro de medida ingresado correctamente.');   
+                	$scope.read();
+                  });
             };
 
+            $scope.reload()
+
+            
             $scope.edit = function(row) {
                 var dialogOpts = {
                     backdrop: 'static',
@@ -139,12 +143,14 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                         registroMedida: function() {
                             return row.entity
                         },
-                        route: $route
+                        
                     }
                 };
 
-                $uibModal.open(dialogOpts)
-
+                $uibModal.open(dialogOpts).result.finally(function() {
+                    alert('Registro de medida actualizado correctamente.');   
+                	$scope.read();
+                  });
             };
 
 

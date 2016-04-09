@@ -13,19 +13,25 @@ angular
         function($scope, $http, $uibModalInstance, usuario, registroMedida, $route) {
 
             $scope.registroMedidaSchema = {
-                "type": "object",
-                properties: {
+                    "type": "object",
+                    properties: {
 
-                    fecha: {
-                        title: 'Fecha de medición'
+                        fechaMedida: {
+                            title: 'Fecha de medición'
+                        },
+
+                        registroMedida: {
+                            type: 'number',
+                            title: 'Registro',
+                            minimum : 0,
+    						pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+    	                    validationMessage: 'Registro de medida no válido'
+
+                        }
                     },
-
-                    cantidad: {
-                        type: 'number',
-                        title: 'Registro'
-                    }
-                }
-            };
+                    
+                   required: ['fechaMedida', 'registroMedida']
+                };
 
             $scope.reload = function() {
                 $route.reload();
@@ -34,18 +40,31 @@ angular
             $scope.lugaresMedicion = [];
             $scope.usuarioForm = angular.copy(usuario);
             $scope.registroMedidaForm = angular.copy(registroMedida);
-            $scope.registroMedidaForm.fecha = new Date(registroMedida.fecha);
+            $scope.registroMedidaForm.fechaMedida = new Date(registroMedida.fecha);
+            $scope.registroMedidaForm.registroMedida = $scope.registroMedidaForm.cantidad;
             $scope.lugarMedicionRegistro = $scope.registroMedidaForm.lugarmedicionPOJO.idLugarMedicion
 
-            $scope.form = [{
-                    "title": "Fecha de medición:",
-                    "key": "fecha",
-                    "type": "date"
-                },
-                'cantidad'
-            ];
+	            $scope.form = [{
+	                "title": "Fecha de medición:",
+	                "key": "fechaMedida",
+	                "type": "date",
+	                "onChange": "validarFecha(form)"
+		        },
+		            'registroMedida'
+		        ];
 
 
+            $scope.validarFecha = function(form){
+            	
+            	var todayDate = new Date();
+            	
+                if($scope.registroMedidaForm.fechaMedida > todayDate || $scope.registroMedidaForm.fechaMedida == null){
+                	$scope.registroMedidaForm.fechaMedida = todayDate
+                }else{
+                	
+                }
+            }
+            
             $scope.cargarLugaresMedicion = function() {
                 $http.get('rest/protected/lugarMedicion/getAll2')
                     .success(function(response) {
@@ -58,12 +77,11 @@ angular
             $scope.cargarLugaresMedicion();
 
             $scope.save = function() {
-            	console.log("LUGARMEDICION",$scope.lugarMedicionRegistro)
                 $scope.data = {};
 
                 data = {
                     idRegistroMedida: $scope.registroMedidaForm.idRegistroMedida,
-                    cantidad: $scope.registroMedidaForm.cantidad,
+                    cantidad: $scope.registroMedidaForm.registroMedida,
                     fecha: $scope.registroMedidaForm.fecha,
                     lugarmedicionPOJO: {
                         idLugarMedicion: $scope.lugarMedicionRegistro,
@@ -85,6 +103,10 @@ angular
 
                 };
 
+                $scope.valid = tv4.validate($scope.registroMedidaForm, $scope.registroMedidaSchema);
+    			
+                if($scope.valid){
+                
                 console.log("$scope.data", $scope.data)
                 $http.post(
                     'rest/protected/RegistrosMedidas/edit', {
@@ -93,6 +115,8 @@ angular
                     function(data, status, config) {
                         $scope.message = data;
                         $scope.dismissModal = $scope.reload();
+                        $uibModalInstance.close();
+
                     }).error(
                     function(data, status, config) {
                         console.log("$scope.data",
@@ -102,7 +126,10 @@ angular
                                 data: data
                             }));
                     });
-                $uibModalInstance.close();
-            };
+                }else{
+                	
+                }
+                
+                };
         }
     ]);
