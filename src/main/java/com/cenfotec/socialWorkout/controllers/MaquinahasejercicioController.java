@@ -3,9 +3,10 @@ package com.cenfotec.socialWorkout.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.cenfotec.socialWorkout.contracts.EjercicioRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioRequest;
 import com.cenfotec.socialWorkout.contracts.MaquinahasejercicioResponse;
+import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 import com.cenfotec.socialWorkout.services.MaquinahasejercicioServiceInterface;
 
 import javax.servlet.http.HttpServletRequest;
@@ -105,6 +106,16 @@ public class MaquinahasejercicioController {
 		}
 		return claseResponse;
 
+	}
+
+	@RequestMapping(value ="/find", method = RequestMethod.POST)
+	public MaquinahasejercicioResponse findOne(@RequestBody EjercicioRequest request){	
+		
+		MaquinahasejercicioResponse response = new MaquinahasejercicioResponse();
+		response.setCode(200);
+		response.setCodeMessage("relation fetch success");
+		response.setMaquinaEjercicio(relationService.findByIdEjercicio(request.getEjercicio().getIdEjercicio()));
+		return response;
 	}
 
 	
