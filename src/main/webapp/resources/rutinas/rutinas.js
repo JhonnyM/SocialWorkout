@@ -10,7 +10,7 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
 }])
 
 .controller('rutinasCtrl', ['$scope','$http','$uibModal', '$filter','$route', function($scope,$http,$uibModal,$filter,$route) {
-	$scope.rutinas = [];
+  $scope.rutinas = [];
   $scope.rutina = $filter('orderBy')($scope.rutinas, 'first')[0];
   $scope.rutinaAEditar = {};
   $scope.users = [];
@@ -23,10 +23,17 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   $scope.excludeEmptyDetalles = {};
   $scope.idRelation = [];
   $scope.rutinaMaestroMaquinaHasEjercicio = [];
+  $scope.maquinaHasEjercicios = {};
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","rutinas": {}};
 
 
   $scope.read = function(){
+    
+    $http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
+      $scope.maquinaHasEjercicios = response.maquinaEjercicio;
+      console.log("Relation: ", $scope.maquinaHasEjercicios);
+    });
+
     $http.get('rest/protected/plantillas/all').success(function(response) {
       $scope.rutinas = response.plantillas;
     }, function(){
@@ -45,17 +52,9 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
     $http.get('rest/protected/Maquinas/getAll').then(function(response) {
       $scope.maquinas = response.data.maquinas;
-      for(var i=0; i < $scope.maquinas.length; i++){
-        if($scope.maquinas[i].maquinahasejercicios.length > 0){
-          $scope.relationHas.push($scope.maquinas[i]);
-
-        }
-
-      }
     });
 
   };
-
 
 
   $scope.read();
@@ -126,11 +125,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     }
   };
 
-  $scope.generateRandomInstructor = function(){
-    var rand = $scope.instructores[Math.floor(Math.random() * $scope.instructores.length)];
-    return rand;
-  };
-
  $scope.findObjetivo = function (objetivo) { 
     return objetivo.idObjetivo === $scope.requestObject.idObjetivo;
   };
@@ -181,9 +175,8 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
       item.selected = false;
     });
     $scope.rutinaAEditar = item;
-    $scope.findId($scope.rutinaAEditar)
-    //$scope.findMaquinaHasEjercicio($scope.relationHas);
-    console.log($scope.updateEjercicio);
+    $scope.setGlobalSelecteIdRelation($scope.rutinaAEditar);
+    //$scope.findId($scope.rutinaAEditar)
     $scope.rutinaAEditar.selected = true;
     $scope.filter = item.name;
   };
@@ -253,39 +246,20 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     return ejercicio.maquinahasejercicios.idEjercicioXMaquina === selectedEjercicioRelation.maquinahasejercicios.idEjercicioXMaquina;
   };
 
-  // $scope.findMaquinaHasEjercicio = function(maquina) {
-  //   for(var i =0; i< $scope.idRelation.length; i++){
-  //     for(var j =0; j < maquina.length; j++){
-  //       var ejercicios = maquina[j].maquinahasejercicios
-  //       for(var k =0; k < ejercicios.length; k++){
-  //         if(ejercicios[k].idEjercicioXMaquina === $scope.idRelation[i]){
-  //           $scope.updateEjercicio = ejercicios[k].ejercicio;
-  //           break;
-  //         }else{
-  //           continue;
-  //         }
-  //       }
-  //     }
-  //   }
-    
-  // };
+  $scope.findMaquinaHasEjercicio = function(rutina) {
+    return rutina.idEjercicioXMaquina === $scope.requestObject.idEjercicio;
+  };
 
-  $scope.findId = function(rutina) {
-
-    if(rutina.plantillarutinadetalles.length > 0) {
-      for(var i =0; i<rutina.plantillarutinadetalles.length; i++) {
-        for(var j = 0; j< $scope.relationHas.length; j++){
-          var relation = $scope.relationHas[j].maquinahasejercicios
-          for(var k =0; k < relation.length; k++){
-            if(rutina.plantillarutinadetalles[i].maquinahasejercicio.idEjercicioXMaquina === relation[k].idEjercicioXMaquina){
-              rutina.plantillarutinadetalles[i].nombreEjercicio = relation[k].ejercicio.descEjercicio;
-              rutina.plantillarutinadetalles[i].maquinahasejercicio = relation[k];
-            }
-
+  $scope.setGlobalSelecteIdRelation = function(){
+    if($scope.rutinaAEditar.plantillarutinadetalles.length > 0){
+      for(var j = 0; j< $scope.rutinaAEditar.plantillarutinadetalles.length;j++){
+        var idToComparre = $scope.rutinaAEditar.plantillarutinadetalles[j].maquinahasejercicio.idEjercicioXMaquina;
+        for(var f =0; f< $scope.maquinaHasEjercicios.length; f++){
+          if(idToComparre === $scope.maquinaHasEjercicios[f].idEjercicioXMaquina){
+            $scope.rutinaAEditar.plantillarutinadetalles[j].maquinahasejercicio = $scope.maquinaHasEjercicios[f];
           }
-
         }
-      };
+      }
     }
   };
 
