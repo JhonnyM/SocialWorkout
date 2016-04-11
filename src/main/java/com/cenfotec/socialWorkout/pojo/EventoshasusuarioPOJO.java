@@ -1,4 +1,5 @@
 package com.cenfotec.socialWorkout.pojo;
+
 import java.io.Serializable;
 import javax.persistence.*;
 

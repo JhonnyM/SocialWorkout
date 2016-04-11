@@ -6,9 +6,10 @@ import com.cenfotec.socialWorkout.ejb.Ejercicio;
 import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
 
-public interface EjercicioRepository extends CrudRepository <Ejercicio,Integer>{
-	
+public interface EjercicioRepository extends CrudRepository<Ejercicio, Integer> {
+
 	List<Ejercicio> findAll();
+
 	List<Ejercicio> findBymaquinahasejercicios(Maquinahasejercicio relation);
 
 }

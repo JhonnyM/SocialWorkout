@@ -28,7 +28,7 @@ angular
 
                 for (i = 0; i < $scope.maquinas.length; i++) {
                     for (j = 0; j < $scope.maquinaEjercicio.length; j++) {
-                        if ($scope.maquinas[i].idMaquina == $scope.maquinaEjercicio[j].maquinaPOJO.idMaquina) {
+                        if ($scope.maquinas[i].idMaquina == $scope.maquinaEjercicio[j].maquina.idMaquina) {
                             $scope.toggle(maquinas[i], $scope.maquinasSeleccionadas);
                         }
                     }
@@ -42,10 +42,10 @@ angular
 
                 maquinaHasEjercicio = {
                     idEjercicioXMaquina: 0,
-                    ejercicioPOJO: {
+                    ejercicio: {
                         idEjercicio: $scope.ejercicioForm.idEjercicio
                     },
-                    maquinaPOJO: {
+                    maquina: {
                         idMaquina: 0
                     }
 
@@ -156,11 +156,11 @@ angular
 
                     		idEjercicioXMaquina: 0,
                             
-                    		ejercicioPOJO: {
+                    		ejercicio: {
                                 idEjercicio: $scope.ejercicioForm.idEjercicio
                             
                     		},
-                            maquinaPOJO: {
+                            maquina: {
                                 idMaquina: 0
                             }
                         };
@@ -177,10 +177,10 @@ angular
                         maquinaHasEjercicio = {
                             idEjercicioXMaquina: 0,
 
-                            ejercicioPOJO: {
+                            ejercicio: {
                                 idEjercicio: $scope.ejercicioForm.idEjercicio
                             },
-                            maquinaPOJO: {
+                            maquina: {
                                 idMaquina: $scope.maquinasSeleccionadas[i].idMaquina
                             }
                         };

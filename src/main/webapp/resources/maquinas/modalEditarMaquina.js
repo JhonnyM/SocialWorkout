@@ -19,23 +19,38 @@ angular
 
 										descMaquina : {
 											type : 'string',
-											title : 'Descripción'
+											title : 'Descripción',
+					                        validationMessage: 'Descripción de máquina inválida',
+					                        pattern: "^[A-Za-z0-9 áéíóú.!=/-]+$",
+					                        maxLength: 255
 										},
 										cantidad : {
 											type : 'number',
-											title : 'Cantidad de máquinas'
+											title : 'Cantidad de máquinas',
+											pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+						                    validationMessage: 'Cantidad no válida'
 										},
 										minutosXPersona : {
 											type : 'number',
-											title : 'Minutos por persona'
+											title : 'Minutos por persona',
+											pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+							                validationMessage: 'Cantidad de minutos por persona no válida'
 										},
 										personasXMaquina : {
 											type : 'number',
-											title : 'Personas por máquina'
+											title : 'Personas por máquina',
+											pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+							                validationMessage: 'Cantidad de personas por máquina no válida'
+
 										}
-									}
-								};
-							
+									},
+					                required : [
+					                             'descMaquina',
+					                             'cantidad',
+					                             'minutosXPersona',
+					                             'personasXMaquina'
+								               ]
+								};							
 							$scope.reload = function(){
 								 $route.reload();
 							};
@@ -57,7 +72,9 @@ angular
 
 								};
 								
-
+				    			$scope.valid = tv4.validate($scope.maquinaForm, $scope.maquinaSchema);
+				    			
+				                if($scope.valid){
 								console.log("$scope.data", $scope.data)
 								$http.post(
 										'rest/protected/Maquinas/edit',
@@ -75,5 +92,9 @@ angular
 													}));
 										});
 							    $uibModalInstance.close();
-							};
+				                }else{
+				                	
+				                }
+				                
+				                };
 						} ]);

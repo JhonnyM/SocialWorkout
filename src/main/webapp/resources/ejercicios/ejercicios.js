@@ -68,7 +68,8 @@ angular
 										{
 											field : 'Acciones',
 											displayName : 'Acciones',
-											cellTemplate : '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteE(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button><button ng-click="grid.appScope.assignMachine(row)" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Asignar máquina</button>', enableFiltering: false, enableSorting: false, width: 350},
+											cellTemplate : '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.assignMachine(row)" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Asignar máquina</button>', enableFiltering: false, enableSorting: false, width: 350},
+											//cellTemplate : '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteE(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button><button ng-click="grid.appScope.assignMachine(row)" class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Asignar máquina</button>', enableFiltering: false, enableSorting: false, width: 350},
 										 ]
 							};
 
