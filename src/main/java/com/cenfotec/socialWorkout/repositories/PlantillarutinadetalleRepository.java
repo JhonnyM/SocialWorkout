@@ -9,5 +9,5 @@ import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
 public interface PlantillarutinadetalleRepository  extends CrudRepository<Plantillarutinadetalle,Integer>{
 	List<Plantillarutinadetalle> findAll();
 	List<Plantillarutinadetalle> findByplantillarutinamaestro(Plantillarutinamaestro rutinaMaestro);
-
+	List<Plantillarutinadetalle> findByplantillarutinamaestroIdRutina(int idRutina);
 }

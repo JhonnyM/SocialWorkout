@@ -9,12 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cenfotec.socialWorkout.contracts.PlantillarutinadetalleRequest;
+import com.cenfotec.socialWorkout.ejb.Ejercicio;
+import com.cenfotec.socialWorkout.ejb.Maquina;
 import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinadetalle;
 import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
+import com.cenfotec.socialWorkout.ejb.Promediorutinasmaquina;
+import com.cenfotec.socialWorkout.pojo.MaquinaPOJO;
 import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinadetallePOJO;
 import com.cenfotec.socialWorkout.pojo.PlantillarutinamaestroPOJO;
+import com.cenfotec.socialWorkout.pojo.PromedioRutinasMaquinaPOJO;
+import com.cenfotec.socialWorkout.pojo.EjercicioPOJO;
 import com.cenfotec.socialWorkout.repositories.PlantillarutinadetalleRepository;
 import com.cenfotec.socialWorkout.repositories.PlantillarutinamaestroRepository;
 
@@ -73,4 +79,42 @@ public class PlantillarutinadetalleService implements PlantillarutinadetalleServ
 		plantillaRutinaDetalle.delete(idPlantilla);
 		return !plantillaRutinaDetalle.exists(idPlantilla);
 	}
+
+	
+	
+	
+	
+	@Override
+	public List<PlantillarutinadetallePOJO> getPlantillaRutinaDetalleXIdRutina(int idRutina) {
+		List<Plantillarutinadetalle> detalles =  plantillaRutinaDetalle.findByplantillarutinamaestroIdRutina(idRutina);
+		return generatePlantillaRutinaDetalleDtos(detalles);
+	}
+	
+	private List<PlantillarutinadetallePOJO> generatePlantillaRutinaDetalleDtos(List<Plantillarutinadetalle> plantillasDetalle){
+		List<PlantillarutinadetallePOJO> uiPlantillasDetalle = new ArrayList<PlantillarutinadetallePOJO>();
+		plantillasDetalle.stream().forEach(u -> {
+			PlantillarutinadetallePOJO dto = new PlantillarutinadetallePOJO();
+			Maquinahasejercicio maqHasEjer = new Maquinahasejercicio();
+			MaquinahasejercicioPOJO maqHasEjerPOJO = new MaquinahasejercicioPOJO();
+			Maquina maq = new Maquina();
+			MaquinaPOJO maqPOJO = new MaquinaPOJO();
+			Ejercicio ejercicio = new Ejercicio();
+			EjercicioPOJO ejercicioPOJO = new EjercicioPOJO();
+			if (!(u==null)){
+				maqHasEjer = u.getMaquinahasejercicio();
+				maq = maqHasEjer.getMaquina();
+				ejercicio = maqHasEjer.getEjercicio();
+				BeanUtils.copyProperties(maqHasEjer,maqHasEjerPOJO);
+				BeanUtils.copyProperties(maq,maqPOJO);
+				BeanUtils.copyProperties(ejercicio,ejercicioPOJO);
+				BeanUtils.copyProperties(u,dto);
+				maqHasEjerPOJO.setMaquinaPOJO(maqPOJO);
+				maqHasEjerPOJO.setEjercicioPOJO(ejercicioPOJO);
+			    dto.setMaquinahasejercicio(maqHasEjerPOJO);
+			}
+			uiPlantillasDetalle.add(dto);
+		});	
+		return uiPlantillasDetalle;
+	}
+	
 }

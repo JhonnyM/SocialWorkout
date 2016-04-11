@@ -21,8 +21,8 @@ public class RutinaHasUsuarioPOJO {
 	private Date fechaInicio;
 	private Date fechaVencimiento;
 	private Time hora;
-	private Plantillarutinamaestro plantillarutinamaestro;
-	private Usuario usuario;
+	private PlantillarutinamaestroPOJO plantillarutinamaestroPOJO;
+	private UsuarioPOJO usuario;
 
 	
 	public RutinaHasUsuarioPOJO() {
@@ -80,13 +80,23 @@ public class RutinaHasUsuarioPOJO {
 	}
 
 
-	public Plantillarutinamaestro getPlantillarutinamaestro() {
-		return plantillarutinamaestro;
+	public PlantillarutinamaestroPOJO getPlantillarutinamaestroPOJO() {
+		return plantillarutinamaestroPOJO;
 	}
 
 
-	public void setPlantillarutinamaestro(Plantillarutinamaestro plantillarutinamaestro) {
-		this.plantillarutinamaestro = plantillarutinamaestro;
+	public void setPlantillarutinamaestroPOJO(PlantillarutinamaestroPOJO plantillarutinamaestroPOJO) {
+		this.plantillarutinamaestroPOJO = plantillarutinamaestroPOJO;
+	}
+
+
+	public UsuarioPOJO getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(UsuarioPOJO usuario) {
+		this.usuario = usuario;
 	}
 
 }

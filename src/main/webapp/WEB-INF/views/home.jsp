@@ -165,11 +165,16 @@
                                  </a>
                                  <ul class="nav nav-sub dk">
                                     <li class="nav-sub-header"></li>
-                                    <li><a href="app#/ocupacion"> <span>Ocupaci&#243n</span>
+                                    <li><a href="app#/ocupacion"> <span>Ocupaci&#243n mi visita</span>
                                        </a>
                                     </li>
-                                    <li><a href="#"> <span>Mis
-                                       rutinas</span>
+                                    <li><a href="app#/ocupacionGeneral"> <span>Ocupaci&#243n general</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/ocupacionMaquinas"> <span>Ocupaci&#243n mis rutinas</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/misRutinas"> <span>Consultar mis rutinas</span>
                                        </a>
                                     </li>
                                  </ul>
@@ -384,9 +389,6 @@
                <script src="resources/ocupacion/ocupacion.js"></script>
                <script src="resources/lugarMedicion/lugarMedicion.js"></script>
                <script src="resources/lugarMedicion/modalControllerLugarMedicion.js"></script>
-	 	<script src="resources/rutinas/rutinas.js"></script>
-  		<script src="resources/rutinas/rutinaMaestroCtrl.js"></script>
-  		<script src="resources/rutinas/rutinaDetalleModal.js"></script>
                <script src="resources/components/version/version.js"></script>
                <script src="resources/components/version/version-directive.js"></script>
                <script src="resources/components/version/interpolate-filter.js"></script>
@@ -418,5 +420,7 @@
                <script src="resources/historialAsistencia/historialAsistencia.js"></script>
                <script src="resources/historialMedidas/historialMedidas.js"></script>
                <script src="resources/ocupacionGeneral/ocupacionGeneral.js"></script>
+               <script src="resources/ocupacionMaquinas/ocupacionMaquinas.js"></script>
+               <script src="resources/misRutinas/misRutinas.js"></script>
             </body>
          </html>

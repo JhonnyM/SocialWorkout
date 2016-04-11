@@ -43,7 +43,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 		ejercicios.stream().forEach(e -> {
 			EjercicioPOJO dto = new EjercicioPOJO();
 			BeanUtils.copyProperties(e, dto);
-			dto.setMaquinahasejercicios(generateMaquinasHasEjercicioDtos(e.getMaquinahasejercicios()));
+			//dto.setMaquinahasejercicios(generateMaquinasHasEjercicioDtos(e.getMaquinahasejercicios()));
 			uiEjercicios.add(dto);
 		});
 		return uiEjercicios;
@@ -103,23 +103,23 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 		EjercicioPOJO ejercicioDTO = er.getEjercicio();
 
-		List<MaquinahasejercicioPOJO> maquinahasEjercicioPOJO = er.getEjercicio().getMaquinahasejercicios();
+		//List<MaquinahasejercicioPOJO> maquinahasEjercicioPOJO = er.getEjercicio().getMaquinahasejercicios();
 
 		List<Maquinahasejercicio> maquinahasEjercicio = new ArrayList<Maquinahasejercicio>();
 		
-		maquinahasEjercicioPOJO.stream().forEach(mh -> {
+		/*maquinahasEjercicioPOJO.stream().forEach(mh -> {
 			
 			Maquinahasejercicio ejb = new Maquinahasejercicio();
 			
-			ejb.setEjercicio(ejercicioRepository.findOne(mh.getEjercicio().getIdEjercicio()));
+			ejb.setEjercicio(ejercicioRepository.findOne(mh.getEjercicioPOJO().getIdEjercicio()));
 
-			ejb.setMaquina(maquinaRepository.findOne(mh.getMaquina().getIdMaquina()));
+			ejb.setMaquina(maquinaRepository.findOne(mh.getMaquinaPOJO().getIdMaquina()));
 						
 			maquinahasejercicioRepository.save(ejb);
 
 			maquinahasEjercicio.add(ejb);
 		
-		});
+		});*/
 
 		Ejercicio ejercicio = new Ejercicio();
 

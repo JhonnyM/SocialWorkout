@@ -39,7 +39,7 @@ public class MaquinaService implements MaquinaServiceInterface {
 		maquinas.stream().forEach(m -> {
 			MaquinaPOJO dto = new MaquinaPOJO();
 			BeanUtils.copyProperties(m, dto);
-			dto.setMaquinahasejercicios(generateMaquinasHasEjercicioDtos(m.getMaquinahasejercicios()));
+			//dto.setMaquinahasejercicios(generateMaquinasHasEjercicioDtos(m.getMaquinahasejercicios()));
 			uiMaquinas.add(dto);
 		});
 		return uiMaquinas;
@@ -60,11 +60,11 @@ public class MaquinaService implements MaquinaServiceInterface {
 			BeanUtils.copyProperties(m.getMaquina(), mdto);
 			BeanUtils.copyProperties(m.getEjercicio(), edto);
 
-			dto.setMaquina(mdto);
-			dto.setEjercicio(edto);
+			dto.setMaquinaPOJO(mdto);
+			dto.setEjercicioPOJO(edto);
 			
-			dto.getMaquina().setMaquinahasejercicios(null);
-			dto.getEjercicio().setMaquinahasejercicios(null);
+			//dto.getMaquinaPOJO().setMaquinahasejercicios(null);
+			//dto.getEjercicioPOJO().setMaquinahasejercicios(null);
 			
 			uiMaquinaEjercicios.add(dto);
 

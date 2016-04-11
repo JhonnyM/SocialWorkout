@@ -15,7 +15,7 @@ public class MaquinaPOJO {
 
 	private int personasXMaquina;
 
-	private List<MaquinahasejercicioPOJO> maquinahasejercicios;
+	//private List<MaquinahasejercicioPOJO> maquinahasejercicios;
 
 	public MaquinaPOJO() {
 	}
@@ -60,13 +60,13 @@ public class MaquinaPOJO {
 		this.personasXMaquina = personasXMaquina;
 	}
 
-	public List<MaquinahasejercicioPOJO> getMaquinahasejercicios() {
+	/*public List<MaquinahasejercicioPOJO> getMaquinahasejercicios() {
 		return this.maquinahasejercicios;
 	}
 
 	public void setMaquinahasejercicios(List<MaquinahasejercicioPOJO> maquinahasejercicios) {
 		this.maquinahasejercicios = maquinahasejercicios;
-	}
+	}*/
 
 
 }

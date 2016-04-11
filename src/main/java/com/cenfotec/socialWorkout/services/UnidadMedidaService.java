@@ -78,6 +78,7 @@ public class UnidadMedidaService implements UnidadMedidaServiceInterface {
 		return unidadMedidaRepository.exists(idUnidadMedida);
 
 	}
+
 	@Override
 	public UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida) {
 		UnidadmedidaPOJO unidadMedidaPOJO = new UnidadmedidaPOJO();

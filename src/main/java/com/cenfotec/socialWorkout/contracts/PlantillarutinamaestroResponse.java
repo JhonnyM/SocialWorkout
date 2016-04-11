@@ -7,6 +7,7 @@ public class PlantillarutinamaestroResponse extends BaseResponse {
 	
 	private List<PlantillarutinamaestroPOJO> plantillas;
 	private PlantillarutinamaestroPOJO plantilla;
+	private int nulo;
 
 	public PlantillarutinamaestroResponse() {
 		super();
@@ -26,6 +27,14 @@ public class PlantillarutinamaestroResponse extends BaseResponse {
 
 	public void setPlantilla(PlantillarutinamaestroPOJO plantilla) {
 		this.plantilla = plantilla;
+	}
+
+	public int getNulo() {
+		return nulo;
+	}
+
+	public void setNulo(int nulo) {
+		this.nulo = nulo;
 	}
 
 }

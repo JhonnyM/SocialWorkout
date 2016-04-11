@@ -7,5 +7,6 @@ import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
 
 public interface PlantillarutinamaestroRepository  extends CrudRepository<Plantillarutinamaestro,Integer>{
 	List<Plantillarutinamaestro> findAll();
+	Plantillarutinamaestro findByIdRutina(int idRutina);
 
 }

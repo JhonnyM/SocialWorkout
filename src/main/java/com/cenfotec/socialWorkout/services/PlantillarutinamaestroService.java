@@ -52,8 +52,8 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 			ObjetivoPOJO objDto = new ObjetivoPOJO();
 			BeanUtils.copyProperties(objetivo,objDto);
 			BeanUtils.copyProperties(ta, dto);
-			dto.setPlantillarutinadetalles(detalledtos);
-			dto.setObjetivo(objDto);
+			//dto.setPlantillarutinadetalles(detalledtos);
+			//dto.setObjetivo(objDto);
 			dtos.add(dto);
 			
 		});
@@ -64,9 +64,9 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 	public boolean save (PlantillarutinamaestroRequest request){
 		PlantillarutinamaestroPOJO plantillaDTO = request.getPlantillaRutinaMaestro();
 		Plantillarutinamaestro plantilla = new Plantillarutinamaestro();
-		ObjetivoPOJO objetivoDTO = request.getPlantillaRutinaMaestro().getObjetivo();
+		//ObjetivoPOJO objetivoDTO = request.getPlantillaRutinaMaestro().getObjetivo();
 		Objetivo objetivo = new Objetivo();
-		BeanUtils.copyProperties(objetivoDTO, objetivo);
+	//	BeanUtils.copyProperties(objetivoDTO, objetivo);
 		BeanUtils.copyProperties(plantillaDTO, plantilla);
 		plantilla.setObjetivo(objetivo);
 		Plantillarutinamaestro s = plantillaMaestroRepository.save(plantilla);
@@ -83,6 +83,19 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 	public boolean delete(Integer idPlantilla) {	
 		plantillaMaestroRepository.delete(idPlantilla);
 		return !plantillaMaestroRepository.exists(idPlantilla);
+	}
+
+	
+	@Override
+	@Transactional
+	public PlantillarutinamaestroPOJO getRutinaXId(int idRutina) {
+		PlantillarutinamaestroPOJO plantillaDTO = new PlantillarutinamaestroPOJO();
+		Plantillarutinamaestro plantilla = new Plantillarutinamaestro();
+		plantilla = plantillaMaestroRepository.findByIdRutina(idRutina);
+		if (!(plantilla==null)){
+			BeanUtils.copyProperties(plantilla, plantillaDTO);
+		}
+		return plantillaDTO;
 	}
 
 }

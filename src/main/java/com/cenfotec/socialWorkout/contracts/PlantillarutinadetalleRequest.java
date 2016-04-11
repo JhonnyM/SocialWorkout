@@ -1,5 +1,4 @@
 package com.cenfotec.socialWorkout.contracts;
-
 import com.cenfotec.socialWorkout.pojo.PlantillarutinadetallePOJO;
 
 public class PlantillarutinadetalleRequest {

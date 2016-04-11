@@ -1,17 +1,38 @@
-'use strict';
 
-angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.bootstrap'])
+angular.module('myApp.misRutinas', ['ngRoute', 'ui.bootstrap'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/ocupacion', {
-    templateUrl: 'resources/ocupacion/ocupacion.html',
-    controller: 'miOcupacionCtrl'
+  $routeProvider.when('/misRutinas', {
+    templateUrl: 'resources/misRutinas/misRutinas.html',
+    controller: 'misRutinasCtrl'
   });  
 }])
 
-.controller('miOcupacionCtrl', ['$scope','$http','$uibModal','$route' , function($scope,$http,$uibModal, $route) {
+.controller('misRutinasCtrl', ['$scope','$http','$route' , function($scope,$http,$route) {
+	$scope.consultar = function(event) {
+		$scope.data = {};
+		data = {
+				idPLantillaRutinaDetalle:0,
+  	    		cantidadPeso:0,
+  	    		cantidadRepeticiones:0,
+  	    		cantidadSeries:0,
+  	    		maquinahasejercicio: {
+  	    			idEjercicioXMaquina: 0
+  	    		},
+				plantillarutinamaestro : {
+					idRutina : $scope.misRutinasTotales[event].plantillarutinamaestroPOJO.idRutina,
+				}
+	  	};
 
+		$http.post('rest/protected/rutinas/getEjerciciosXRutina',{plantillaRutinaDetalle: data})
+		.success(function(response) {
+	   			console.log("response",response);
+	   			$scope.ejercicios = response.plantillasDetalle;
+	   			console.log("EJERCICIOS",$scope.ejercicios);       
+	   });
+};	
 	
+
 	$scope.usuario = {};
 	 $http.post('rest/protected/users/usuarioSet')
 		.success(function(response) {
@@ -86,5 +107,30 @@ angular.module('myApp.ocupacion', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui
 			$scope.promedioTotalMaquinas = "";
 		}
 	});	
-	 		
+	
+	$scope.misRutinasDelDia = {};		 
+	$http.post('rest/protected/rutinas/getRutinasDia')
+	.success(function(response) {
+		console.log(response.nulo,"AQUI VERIFICA PROMEDIO TOTAL PARQUEO");
+		if(response.nulo==0){
+			$scope.misRutinasDelDia = response.rutinasHasUsuarioPOJO;
+			console.log(response,"MisRutinasDELDIA");
+		}else{
+			$scope.misRutinasDelDia = "";
+		}
+	});	
+	$scope.misRutinasTotales = {};		 
+	$http.post('rest/protected/rutinas/getRutinasUsuario')
+	.success(function(response) {
+		console.log(response.nulo,"verificar NULO");
+		if(response.nulo==0){
+			$scope.misRutinasTotales = response.rutinasHasUsuarioPOJO;
+			console.log(response,"MisRutinasTOTALES");
+		}else{
+			$scope.misRutinasTotales = "";
+		}
+	});	 
+	
+	
+
 }]);

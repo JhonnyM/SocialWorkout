@@ -12,4 +12,6 @@ import com.cenfotec.socialWorkout.ejb.Usuario;
 
 public interface RutinaHasUsuarioServiceInterface {
 	List<RutinaHasUsuarioPOJO> getRutinaDia(String dia, UsuarioPOJO usuarioPOJO);
+	List<RutinaHasUsuarioPOJO> getRutinaWithPlantilla(String dia, UsuarioPOJO usuarioPOJO);
+	List<RutinaHasUsuarioPOJO> getRutinaWithPlantillaUsuario(UsuarioPOJO usuarioPOJO);
 }

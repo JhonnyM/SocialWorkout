@@ -11,4 +11,6 @@ public interface PlantillarutinadetalleServiceInterface {
 	public boolean exists (Integer id);
 	public boolean save(PlantillarutinadetalleRequest request);
 	public boolean delete(Integer idPlantilla);
+	List<PlantillarutinadetallePOJO> getPlantillaRutinaDetalleXIdRutina(int idRutina);
+	
 }

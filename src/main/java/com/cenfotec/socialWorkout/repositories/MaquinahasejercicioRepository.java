@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import com.cenfotec.socialWorkout.ejb.Maquinahasejercicio;
 
-public interface MaquinahasejercicioRepository extends CrudRepository<Maquinahasejercicio,Integer>{
+public interface MaquinahasejercicioRepository extends CrudRepository <Maquinahasejercicio,Integer>{
 
  List <Maquinahasejercicio> findByEjercicioIdEjercicio(int idEjercicio);
- List <Maquinahasejercicio> findAll();
+ List <Maquinahasejercicio> findByIdEjercicioXMaquina(Integer idEjercicioXMaquina);
 	
 }
