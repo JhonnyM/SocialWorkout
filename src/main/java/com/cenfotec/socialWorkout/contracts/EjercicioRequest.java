@@ -5,15 +5,15 @@ import com.cenfotec.socialWorkout.pojo.EjercicioPOJO;
 public class EjercicioRequest {
 
 	private EjercicioPOJO ejercicio;
-	
+
 	public EjercicioRequest() {
 		super();
 	}
-	
+
 	public EjercicioPOJO getEjercicio() {
 		return ejercicio;
 	}
-	
+
 	public void setEjercicio(EjercicioPOJO ejercicio) {
 		this.ejercicio = ejercicio;
 	}
@@ -22,5 +22,5 @@ public class EjercicioRequest {
 	public String toString() {
 		return "Ejercicio request: [ejercicio=" + ejercicio + "]";
 	}
-	
+
 }

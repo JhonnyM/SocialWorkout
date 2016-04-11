@@ -9,9 +9,11 @@ import com.cenfotec.socialWorkout.pojo.MaquinahasejercicioPOJO;
 public interface MaquinahasejercicioServiceInterface {
 
 	public List<MaquinahasejercicioPOJO> getAll();
-	public boolean save (MaquinahasejercicioRequest request);
-	public boolean delete(int idTipo);
-	public boolean exists (Integer idTipo);
 
-	
+	public boolean save(MaquinahasejercicioRequest request);
+
+	public boolean delete(int idTipo);
+
+	public boolean exists(Integer idTipo);
+
 }

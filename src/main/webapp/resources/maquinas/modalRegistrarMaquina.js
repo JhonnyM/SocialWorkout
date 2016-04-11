@@ -9,30 +9,45 @@ angular.module('myApp.modalRegistrarMaquina',
 				'$uibModalInstance',
 				'$route',
 				function($scope, $http, $uibModalInstance,$route) {
+					$scope.maquinaForm = {};
 					$scope.maquinaSchema = {
-						"type" : "object",
-						properties : {
+							"type" : "object",
+							properties : {
 
-							descMaquina : {
-								type : 'string',
-								title : 'Descripción'
-							},
-							cantidad : {
-								type : 'number',
-								title : 'Cantidad de máquinas'
-							},
-							minutosXPersona : {
-								type : 'number',
-								title : 'Minutos por persona'
-							},
-							personasXMaquina : {
-								type : 'number',
-								title : 'Personas por máquina'
-							}
-							
-						}
-					};
+								descMaquina : {
+									type : 'string',
+									title : 'Descripción',
+			                        validationMessage: 'Descripción de máquina inválida',
+			                        pattern: "^[A-Za-z0-9 áéíóú.!=/-]+$",
+			                        maxLength: 255
+								},
+								cantidad : {
+									type : 'number',
+									title : 'Cantidad de máquinas',
+									pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+				                    validationMessage: 'Cantidad no válida'
+								},
+								minutosXPersona : {
+									type : 'number',
+									title : 'Minutos por persona',
+									pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+					                validationMessage: 'Cantidad de minutos por persona no válida'
+								},
+								personasXMaquina : {
+									type : 'number',
+									title : 'Personas por máquina',
+									pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+					                validationMessage: 'Cantidad de personas por máquina no válida'
 
+								}
+							},
+			                required : [
+			                             'descMaquina',
+			                             'cantidad',
+			                             'minutosXPersona',
+			                             'personasXMaquina'
+						               ]
+						};
 					$scope.reload = function(){
 						 $route.reload();
 					};
@@ -45,19 +60,21 @@ angular.module('myApp.modalRegistrarMaquina',
 						var data = {};
 
 						data = {
-							descMaquina : $scope.form.descMaquina,
-							cantidad : $scope.form.cantidad,
-							minutosXPersona : $scope.form.minutosXPersona,
-							personasXMaquina : $scope.form.personasXMaquina
+							descMaquina : $scope.maquinaForm.descMaquina,
+							cantidad : $scope.maquinaForm.cantidad,
+							minutosXPersona : $scope.maquinaForm.minutosXPersona,
+							personasXMaquina : $scope.maquinaForm.personasXMaquina
 						};
 
-						console.log("$scope.data", $scope.data)
+		    			$scope.valid = tv4.validate($scope.maquinaForm, $scope.maquinaSchema);
+	
+		                if($scope.valid){
 						$http.post('rest/protected/Maquinas/create',
 								{maquina:data})
 								.success(function(data, status, config) {
 									$scope.message = data;
 									$scope.dismissModal = $scope.reload();	
-	
+								    $uibModalInstance.close();	
 								}).error(
 										function(data, status, config) {
 											alert("failure message: "
@@ -65,6 +82,8 @@ angular.module('myApp.modalRegistrarMaquina',
 														data : data
 													}));
 										});
-					    $uibModalInstance.close();
+		                }else{
+							
+						}	
 					};
 				} ]);

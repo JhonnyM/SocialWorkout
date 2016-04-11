@@ -11,7 +11,7 @@ public class EjercicioResponse extends BaseResponse {
 	public EjercicioResponse() {
 		super();
 	}
-	
+
 	public List<EjercicioPOJO> getEjercicios() {
 		return ejercicios;
 	}
@@ -19,5 +19,5 @@ public class EjercicioResponse extends BaseResponse {
 	public void setEjercicios(List<EjercicioPOJO> ejercicios) {
 		this.ejercicios = ejercicios;
 	}
-	
+
 }

@@ -11,16 +11,19 @@ angular
         '$route',
         function($scope, $http, $uibModalInstance, unidadMedida, $route) {
             $scope.unidadMedidaSchema = {
-                "type": "object",
+                type: 'object',
                 properties: {
                     descUnidadMedida: {
                         type: 'string',
                         title: 'Descripción',
-                        pattern: "^[A-Za-z0-9 ]{1,255}$",
-                        minLength: 1,
-                        validationMessage: "Descripción de unidad de medida inválida"                       
+                        validationMessage: 'Descripción de unidad de medida inválida',
+                        pattern: "^[A-Za-z0-9 áéíóú.!=/-]+$",
+                        maxLength: 255
                     }
-                }
+                },
+                required : [
+                            'descUnidadMedida'
+			               ]
             };
 
             $scope.reload = function() {

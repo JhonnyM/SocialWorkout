@@ -28,16 +28,16 @@ public class UsuarioAdministradorPOJO {
 		Date todayDate = new Date();
 
 		if (tipoUsuarioPOJO != null) {
-			if(tipoUsuarioPOJO.getIdTipoUsuario() == 1){
+			if (tipoUsuarioPOJO.getIdTipoUsuario() == 1) {
 				if (this.fechaPago.before(todayDate)) {
 					this.debePago = "Pago pendiente";
 				} else {
 					this.debePago = "Pago realizado";
-				}				
-			}else{
-				this.debePago = "No aplica para pago";				
+				}
+			} else {
+				this.debePago = "No aplica para pago";
 			}
-			
+
 		} else {
 			this.debePago = "No aplica para pago";
 		}

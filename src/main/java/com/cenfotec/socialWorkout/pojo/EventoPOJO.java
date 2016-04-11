@@ -14,8 +14,6 @@ public class EventoPOJO  {
 	private Date fechaHoraFinal;
 	private Date fechaHoraInicio;
 	private String observaciones;
-	private List<EventoshasusuarioPOJO> eventoshasusuarios;
-
 
 	public EventoPOJO() {
 	}
@@ -58,14 +56,6 @@ public class EventoPOJO  {
 
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
-	}
-
-	public List<EventoshasusuarioPOJO> getEventoshasusuarios() {
-		return this.eventoshasusuarios;
-	}
-
-	public void setEventoshasusuarios(List<EventoshasusuarioPOJO> eventoshasusuarios) {
-		this.eventoshasusuarios = eventoshasusuarios;
 	}
 
 }

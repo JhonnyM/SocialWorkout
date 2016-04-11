@@ -7,7 +7,6 @@ import com.cenfotec.socialWorkout.ejb.Usuario;
 
 import java.util.Date;
 
-
 /**
  * The persistent class for the registromedidas database table.
  * 
