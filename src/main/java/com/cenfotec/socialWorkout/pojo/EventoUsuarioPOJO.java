@@ -8,7 +8,7 @@ import org.springframework.beans.BeanUtils;
 public class EventoUsuarioPOJO {
 
 	private int idEvento;
-//	private int idUsuario;
+	// private int idUsuario;
 	private String descEvento;
 	private Date fechaHoraFinal;
 	private Date fechaHoraInicio;
@@ -16,7 +16,7 @@ public class EventoUsuarioPOJO {
 	private List<EventoshasusuarioPOJO> eventoshasusuarios;
 	private String inscrito;
 	private UsuarioPOJO usuario;
-	
+
 	public EventoUsuarioPOJO() {
 
 	}
@@ -29,14 +29,14 @@ public class EventoUsuarioPOJO {
 		this.idEvento = idEvento;
 	}
 
-//	public int getIdUsuario() {
-//		return this.idUsuario;
-//	}
-//
-//	public void setIdUsuario(int idUsuario) {
-//		this.idUsuario = idUsuario;
-//	}
-	
+	// public int getIdUsuario() {
+	// return this.idUsuario;
+	// }
+	//
+	// public void setIdUsuario(int idUsuario) {
+	// this.idUsuario = idUsuario;
+	// }
+
 	public String getDescEvento() {
 		return this.descEvento;
 	}
@@ -45,14 +45,14 @@ public class EventoUsuarioPOJO {
 		this.descEvento = descEvento;
 	}
 
-	public UsuarioPOJO getUsuario(){
+	public UsuarioPOJO getUsuario() {
 		return this.usuario;
 	}
-	
-	public void setUsuario(UsuarioPOJO usuario){
+
+	public void setUsuario(UsuarioPOJO usuario) {
 		this.usuario = usuario;
 	}
-	
+
 	public Date getFechaHoraFinal() {
 		return this.fechaHoraFinal;
 	}
@@ -91,8 +91,7 @@ public class EventoUsuarioPOJO {
 
 			this.eventoshasusuarios.stream().forEach(e -> {
 				if ((this.usuario.getIdUsuario() == e.getUsuarioPOJO().getIdUsuario())
-						&& this.idEvento == e.getEventoPOJO().getIdEvento()
-						) {
+						&& this.idEvento == e.getEventoPOJO().getIdEvento()) {
 					inscrito = "Evento ya inscrito";
 				} else {
 					inscrito = "Evento no inscrito";

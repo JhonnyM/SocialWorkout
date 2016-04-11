@@ -26,10 +26,10 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 
 	@Override
 	@Transactional
-	public List<MaquinahasejercicioPOJO> getAll() {		
+	public List<MaquinahasejercicioPOJO> getAll() {
 		List<Maquinahasejercicio> relationList = maquinaHasEjercicioRepository.findAll();
 		List<MaquinahasejercicioPOJO> dtos = new ArrayList<MaquinahasejercicioPOJO>();
-		relationList.stream().forEach(ta ->{
+		relationList.stream().forEach(ta -> {
 			EjercicioPOJO ejercicioDto = new EjercicioPOJO();
 			Ejercicio ejercicio = ta.getEjercicio();
 			BeanUtils.copyProperties(ejercicio, ejercicioDto);
@@ -41,28 +41,28 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 			dto.setEjercicio(ejercicioDto);
 			dto.setMaquina(maquinaDto);
 			dtos.add(dto);
-			
+
 		});
-		return dtos;	
+		return dtos;
 	}
 
 	@Override
-	public boolean save (MaquinahasejercicioRequest request){
+	public boolean save(MaquinahasejercicioRequest request) {
 		MaquinahasejercicioPOJO eventoDTO = request.getMaquinaEjercicio();
 		Maquinahasejercicio relation = new Maquinahasejercicio();
 		BeanUtils.copyProperties(eventoDTO, relation);
 		Maquinahasejercicio s = maquinaHasEjercicioRepository.save(relation);
 		return !(s == null);
-		
-	}
-	
-	@Override
-	public boolean exists (Integer idRelation){		
-		return maquinaHasEjercicioRepository.exists(idRelation);		
+
 	}
 
 	@Override
-	public boolean delete(int idRelation) {	
+	public boolean exists(Integer idRelation) {
+		return maquinaHasEjercicioRepository.exists(idRelation);
+	}
+
+	@Override
+	public boolean delete(int idRelation) {
 		maquinaHasEjercicioRepository.delete(idRelation);
 		return !maquinaHasEjercicioRepository.exists(idRelation);
 	}

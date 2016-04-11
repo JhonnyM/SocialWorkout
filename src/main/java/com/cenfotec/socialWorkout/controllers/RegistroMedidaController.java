@@ -29,50 +29,49 @@ public class RegistroMedidaController {
 	@RequestMapping(value = "/getAllByIdUsuario", method = RequestMethod.POST)
 
 	public RegistroMedidaResponse getAllByIdUsuario(@RequestBody RegistroMedidaRequest rmR) {
-		
+
 		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
-					
+
 		rmRe.setCode(200);
-		
+
 		rmRe.setRegistroMedidaPOJO(registroMedidaService.getAllById(rmR));
-		
+
 		return rmRe;
-		
+
 	}
-	
-	@RequestMapping(value ="/create", method = RequestMethod.POST)
-	public RegistroMedidaResponse create(@RequestBody RegistroMedidaRequest rmR){	
-		
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public RegistroMedidaResponse create(@RequestBody RegistroMedidaRequest rmR) {
+
 		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
 		Boolean state = registroMedidaService.saveRegistroMedida(rmR);
-	
-		if(state){
+
+		if (state) {
 			rmRe.setCode(200);
 			rmRe.setCodeMessage("Registro medida creado correctamente.");
 		}
 		return rmRe;
-		
+
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public RegistroMedidaResponse edit(@RequestBody RegistroMedidaRequest rmR) {
 
 		RegistroMedidaResponse rmRe = new RegistroMedidaResponse();
-		
-		if(registroMedidaService.exists(rmR.getRegistroMedida().getIdRegistroMedida())){
-			if (registroMedidaService.saveRegistroMedida(rmR)){
+
+		if (registroMedidaService.exists(rmR.getRegistroMedida().getIdRegistroMedida())) {
+			if (registroMedidaService.saveRegistroMedida(rmR)) {
 				rmRe.setCode(200);
 				rmRe.setCodeMessage("La información del registro de medida fue actualizada correctamente.");
-			}else{
+			} else {
 				rmRe.setCode(500);
 				rmRe.setCodeMessage("La información del registro de medida no fue modificada.");
-				
+
 			}
 		}
 		return rmRe;
 	}
-	
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public RegistroMedidaResponse delete(@RequestBody RegistroMedidaRequest rmR) {
 
@@ -95,6 +94,5 @@ public class RegistroMedidaController {
 		return rmRe;
 
 	}
-	
-	
+
 }

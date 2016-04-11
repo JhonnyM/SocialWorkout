@@ -2,57 +2,57 @@ package com.cenfotec.socialWorkout.pojo;
 
 public class MaquinaPOJO {
 
- private int idMaquina;
+	private int idMaquina;
 
- private int cantidad;
+	private int cantidad;
 
- private String descMaquina;
+	private String descMaquina;
 
- private int minutosXPersona;
+	private int minutosXPersona;
 
- private int personasXMaquina;
+	private int personasXMaquina;
 
- public MaquinaPOJO() {}
+	public MaquinaPOJO() {
+	}
 
- public int getIdMaquina() {
-  return this.idMaquina;
- }
+	public int getIdMaquina() {
+		return this.idMaquina;
+	}
 
- public void setIdMaquina(int idMaquina) {
-  this.idMaquina = idMaquina;
- }
+	public void setIdMaquina(int idMaquina) {
+		this.idMaquina = idMaquina;
+	}
 
- public int getCantidad() {
-  return this.cantidad;
- }
+	public int getCantidad() {
+		return this.cantidad;
+	}
 
- public void setCantidad(int cantidad) {
-  this.cantidad = cantidad;
- }
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
 
- public String getDescMaquina() {
-  return this.descMaquina;
- }
+	public String getDescMaquina() {
+		return this.descMaquina;
+	}
 
- public void setDescMaquina(String descMaquina) {
-  this.descMaquina = descMaquina;
- }
+	public void setDescMaquina(String descMaquina) {
+		this.descMaquina = descMaquina;
+	}
 
- public int getMinutosXPersona() {
-  return this.minutosXPersona;
- }
+	public int getMinutosXPersona() {
+		return this.minutosXPersona;
+	}
 
- public void setMinutosXPersona(int minutosXPersona) {
-  this.minutosXPersona = minutosXPersona;
- }
+	public void setMinutosXPersona(int minutosXPersona) {
+		this.minutosXPersona = minutosXPersona;
+	}
 
- public int getPersonasXMaquina() {
-  return this.personasXMaquina;
- }
+	public int getPersonasXMaquina() {
+		return this.personasXMaquina;
+	}
 
- public void setPersonasXMaquina(int personasXMaquina) {
-  this.personasXMaquina = personasXMaquina;
- }
-
+	public void setPersonasXMaquina(int personasXMaquina) {
+		this.personasXMaquina = personasXMaquina;
+	}
 
 }
