@@ -6,24 +6,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EjercicioPOJO {
 
- private int idEjercicio;
+	private int idEjercicio;
 
- private String descEjercicio;
+	private String descEjercicio;
 
- public int getIdEjercicio() {
-  return this.idEjercicio;
- }
+	public int getIdEjercicio() {
+		return this.idEjercicio;
+	}
 
- public void setIdEjercicio(int idEjercicio) {
-  this.idEjercicio = idEjercicio;
- }
+	public void setIdEjercicio(int idEjercicio) {
+		this.idEjercicio = idEjercicio;
+	}
 
- public String getDescEjercicio() {
-  return this.descEjercicio;
- }
+	public String getDescEjercicio() {
+		return this.descEjercicio;
+	}
 
- public void setDescEjercicio(String descEjercicio) {
-  this.descEjercicio = descEjercicio;
- }
+	public void setDescEjercicio(String descEjercicio) {
+		this.descEjercicio = descEjercicio;
+	}
 
 }

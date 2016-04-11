@@ -8,20 +8,20 @@ angular
         '$uibModalInstance',
         '$route',
         function($scope, $http, $uibModalInstance, $route) {
+        	$scope.unidadMedidaForm = {};
             $scope.unidadMedidaSchema = {
-                "type": "object",
+                type: 'object',
                 properties: {
                     descUnidadMedida: {
                         type: 'string',
-                        title: 'Descripción'
-//                        pattern: "^[A-Za-z0-9 ]{1,255}$",
-//                        minLength: 1,
-//                        validationMessage: "Descripción de unidad de medida inválida"
-
+                        title: 'Descripción',
+                        validationMessage: 'Descripción de unidad de medida inválida',
+                        pattern: "^[A-Za-z0-9 áéíóú.!=/-]+$",
+                        maxLength: 255
                     }
                 },
-                "required": [
-                             "descUnidadMedida"
+                required : [
+                             'descUnidadMedida'
 			               ]
             };
 
@@ -37,11 +37,10 @@ angular
                 $scope.data = {};
 
                 data = {
-                    descUnidadMedida: $scope.form.descUnidadMedida
+                    descUnidadMedida: $scope.unidadMedidaForm.descUnidadMedida
                 };
 
-    			$scope.valid = tv4.validate($scope.form, $scope.unidadMedidaSchema);
-                $scope.valid = true;
+    			$scope.valid = tv4.validate($scope.unidadMedidaForm, $scope.unidadMedidaSchema);
     			
                if($scope.valid){
                    $http.post('rest/protected/UnidadesMedidas/create', {

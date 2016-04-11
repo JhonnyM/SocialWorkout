@@ -39,7 +39,6 @@ public class EventoService implements EventoServiceInterface{
 		eventos.stream().forEach(ta ->{
 			EventoPOJO dto = new EventoPOJO();
 			BeanUtils.copyProperties(ta, dto);
-			dto.setEventoshasusuarios(null);
 			dtos.add(dto);
 			
 		});
@@ -54,7 +53,6 @@ public class EventoService implements EventoServiceInterface{
 		if(evento != null)
 		{
 			BeanUtils.copyProperties(evento, eve);
-			eve.setEventoshasusuarios(null);
 		}
 		return eve;
 	}
@@ -122,7 +120,6 @@ public class EventoService implements EventoServiceInterface{
 			BeanUtils.copyProperties(e, dto);
 			BeanUtils.copyProperties(e.getUsuario(), udto);
 			BeanUtils.copyProperties(e.getEvento(), edto);
-			edto.setEventoshasusuarios(null);
 			dto.setUsuarioPOJO(udto);
 			dto.setEventoPOJO(edto);
 			uiEventosUsuario.add(dto);

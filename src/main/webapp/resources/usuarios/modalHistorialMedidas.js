@@ -52,9 +52,6 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                 }).success(function(data, status, config) {
                     $scope.message = data;
                     $scope.registroMedidas = data.registroMedidaPOJO;
-                    console.log("DATA", data.registroMedidaPOJO);
-                    console.log("$scope.registroMedidas", $scope.gridOptions);
-
                 }).error(
                     function(data, status, config) {
                         console.log("$scope.data",
@@ -94,8 +91,14 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     {
                         field: 'Acciones',
                         displayName: 'Acciones',
-                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
+                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>', enableFiltering: false, enableSorting: false, width: 180
                     }
+                    
+//                    {
+//                        field: 'Acciones',
+//                        displayName: 'Acciones',
+//                        cellTemplate: '<button ng-click="grid.appScope.edit(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.deleteMe(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180
+//                    }
                 ]
             };
 
@@ -112,15 +115,19 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     resolve: {
                         usuario: function() {
                             return usuario
-                        },
-                        route: $route
+                        }
                     }
                 };
-
-                $uibModal.open(dialogOpts)
-
+   
+                $uibModal.open(dialogOpts).result.finally(function() {
+                    alert('Registro de medida ingresado correctamente.');   
+                	$scope.read();
+                  });
             };
 
+            $scope.reload()
+
+            
             $scope.edit = function(row) {
                 var dialogOpts = {
                     backdrop: 'static',
@@ -136,12 +143,14 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                         registroMedida: function() {
                             return row.entity
                         },
-                        route: $route
+                        
                     }
                 };
 
-                $uibModal.open(dialogOpts)
-
+                $uibModal.open(dialogOpts).result.finally(function() {
+                    alert('Registro de medida actualizado correctamente.');   
+                	$scope.read();
+                  });
             };
 
 
@@ -183,7 +192,6 @@ angular.module('myApp.modalHistorialMedida', ['ngRoute', 'ui.grid', 'schemaForm'
                     switch (response.data.code) {
                         case 200:
                         	$scope.gridApi.core.refresh();
-                        	//                            $scope.read();
                             break;
 
                         default:

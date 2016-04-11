@@ -6,18 +6,16 @@ import com.cenfotec.socialWorkout.pojo.UnidadmedidaPOJO;
 
 public interface UnidadMedidaServiceInterface {
 
- List < UnidadmedidaPOJO > getAll();
+	List<UnidadmedidaPOJO> getAll();
 
- UnidadmedidaPOJO getById(UnidadMedidaRequest umr);
+	UnidadmedidaPOJO getById(UnidadMedidaRequest umr);
 
- Boolean saveUnidadMedida(UnidadMedidaRequest umr);
+	Boolean saveUnidadMedida(UnidadMedidaRequest umr);
 
- UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida);
+	UnidadmedidaPOJO getByIdUnidad(int idUnidadMedida);
 
- public boolean delete(int idObj);
+	public boolean delete(int idObj);
 
- public boolean exists(Integer idObj);
-
-
+	public boolean exists(Integer idObj);
 
 }

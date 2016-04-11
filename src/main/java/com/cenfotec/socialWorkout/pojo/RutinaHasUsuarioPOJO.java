@@ -1,15 +1,14 @@
+
 package com.cenfotec.socialWorkout.pojo;
 
 import java.sql.Time;
 import java.util.Date;
-
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import com.cenfotec.socialWorkout.ejb.Plantillarutinamaestro;
 import com.cenfotec.socialWorkout.ejb.Usuario;
 

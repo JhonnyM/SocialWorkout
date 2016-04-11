@@ -53,7 +53,7 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 				.findByUsuarioIdUsuario(rmR.getRegistroMedida().getUsuarioPOJO().getIdUsuario());
 
 		registrosMedida.size();
-		
+
 		return generateEjercicioDtos(registrosMedida);
 	}
 
@@ -62,47 +62,45 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 		List<RegistroMedidaPOJO> uiRegistroMedida = new ArrayList<RegistroMedidaPOJO>();
 
 		registrosMedida.stream().forEach(rm -> {
-			
+
 			Hibernate.initialize(rm.getLugarmedicion());
-			
-			HibernateProxy proxy = (HibernateProxy)rm.getLugarmedicion();                
+
+			HibernateProxy proxy = (HibernateProxy) rm.getLugarmedicion();
 			Lugarmedicion lugarMedicion = new Lugarmedicion();
-			if (!(proxy ==null)){
-			lugarMedicion = (Lugarmedicion)proxy.getHibernateLazyInitializer().getImplementation();			
-			lugarMedicion.setRegistromedidas(null);
+			if (!(proxy == null)) {
+				lugarMedicion = (Lugarmedicion) proxy.getHibernateLazyInitializer().getImplementation();
+				lugarMedicion.setRegistromedidas(null);
 			}
 			RegistroMedidaPOJO dto = new RegistroMedidaPOJO();
-			if (!(rm==null)){
-			BeanUtils.copyProperties(rm, dto);
+			if (!(rm == null)) {
+				BeanUtils.copyProperties(rm, dto);
 			}
-			if (!(lugarMedicion==null)){
-			dto.setLugarmedicionPOJO(generateLugarMedicionDto(lugarMedicion));
-			dto.getLugarmedicionPOJO().setUnidadMedidaPOJO(generateUnidadMedidaDto(
-					unidadMedidaRepository.findOne(lugarMedicion.getUnidadmedida().getIdUnidadMedida())));
+			if (!(lugarMedicion == null)) {
+				dto.setLugarmedicionPOJO(generateLugarMedicionDto(lugarMedicion));
+				dto.getLugarmedicionPOJO().setUnidadMedidaPOJO(generateUnidadMedidaDto(
+						unidadMedidaRepository.findOne(lugarMedicion.getUnidadmedida().getIdUnidadMedida())));
 			}
 			dto.setUsuarioPOJO(null);
-			
-			
-			
+
 			uiRegistroMedida.add(dto);
-		
+
 		});
-		
+
 		return uiRegistroMedida;
 	}
 
 	private LugarMedicionPOJO generateLugarMedicionDto(Lugarmedicion lugarMedicion) {
 		LugarMedicionPOJO lugarMedicionPOJO = new LugarMedicionPOJO();
-		if (!(lugarMedicion==null)){
-		BeanUtils.copyProperties(lugarMedicion, lugarMedicionPOJO);
+		if (!(lugarMedicion == null)) {
+			BeanUtils.copyProperties(lugarMedicion, lugarMedicionPOJO);
 		}
 		return lugarMedicionPOJO;
 	}
 
 	private UnidadmedidaPOJO generateUnidadMedidaDto(Unidadmedida unidadMedida) {
 		UnidadmedidaPOJO unidadMedidaPOJO = new UnidadmedidaPOJO();
-		if (!(unidadMedida==null)){
-		BeanUtils.copyProperties(unidadMedida, unidadMedidaPOJO);
+		if (!(unidadMedida == null)) {
+			BeanUtils.copyProperties(unidadMedida, unidadMedidaPOJO);
 		}
 		return unidadMedidaPOJO;
 	}
@@ -112,19 +110,19 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 	public Boolean saveRegistroMedida(RegistroMedidaRequest rmR) {
 
 		RegistroMedidaPOJO registroDTO = rmR.getRegistroMedida();
-		Registromedida registroMedida  = new Registromedida();
-		
+		Registromedida registroMedida = new Registromedida();
+
 		LugarMedicionPOJO lugarMedicionDTO = rmR.getRegistroMedida().getLugarmedicionPOJO();
 		Lugarmedicion lugarMedicion = lugarMedicionRepository.findOne(lugarMedicionDTO.getIdLugarMedicion());
 
 		UsuarioPOJO usuarioPOJO = rmR.getRegistroMedida().getUsuarioPOJO();
 		Usuario usuario = usuarioRepository.findOne(usuarioPOJO.getIdUsuario());
-		if (!(registroDTO==null)){
-		BeanUtils.copyProperties(registroDTO, registroMedida);
+		if (!(registroDTO == null)) {
+			BeanUtils.copyProperties(registroDTO, registroMedida);
 		}
 		registroMedida.setLugarmedicion(lugarMedicion);
 		registroMedida.setUsuario(usuario);
-		
+
 		Registromedida nregistroMedida = registroMedidaRepository.save(registroMedida);
 		return (nregistroMedida == null) ? false : true;
 
@@ -140,5 +138,5 @@ public class RegistroMedidaService implements RegistroMedidaServiceInterface {
 	public boolean exists(Integer idRegistroMedida) {
 		return registroMedidaRepository.exists(idRegistroMedida);
 	}
-	
+
 }
