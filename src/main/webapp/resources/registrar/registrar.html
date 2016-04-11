@@ -1,0 +1,19 @@
+<div class="bg-white-only">
+  <div class="container">
+    <h1>Registrar Llegada</h1>
+    <div class="panel panel-default">
+      <div class="panel-heading font-bold">                  
+        Por favor ingrese su id de usuario
+      </div>
+      <div class="panel-body">
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <label class="sr-only">Id Usuario</label>
+            <input type="text" class="form-control" id="idUsuario" idUsuario="idUsuario" placeholder="Enter User ID" required ng-model="requestObject.idUsuario">
+          </div>
+          <button type="submit" class="btn btn-default" ng-click="save($event)">Registrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

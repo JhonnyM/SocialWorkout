@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<div id="content">
+	<div class="bg-white-only">
+		<div class="container">
+			<h1>Historial de medidas</h1>
+			<p>Mantenimiento de historial de medidas.</p>
+			<div class = "container">
+			
+				<div class = "col-md-3">
+					<div class = "row">
+					 	  <button type="button" class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="save()""><i class="fa fa-plus"></i>Agregar</button>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon" ng-click="$close()"><i class="icon-action-redo"></i>Salir</button>
+					</div>
+					
+				</div>
+			</div>
+			<div class="wrapper-md">
+				<div class="container">
+					<div class ="col-lg-8">
+						<div class="row">
+							<div ui-grid="gridOptions" ui-grid-move-columns class="myGrid" ui-grid-auto-resize></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+	</div>
+</div>
+

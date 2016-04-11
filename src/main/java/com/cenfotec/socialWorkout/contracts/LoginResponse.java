@@ -3,36 +3,36 @@ package com.cenfotec.socialWorkout.contracts;
 
 public class LoginResponse extends BaseResponse {
 	
-	private int idUser;
-	private String firstName;
-	private String lastName; 
+	private int idUsuario;
+	private String nombre;
+	private String apellidos; 
 
 	public LoginResponse() {
 		super();
 	}
 	
 	public int getIdUsuario() {
-		return idUser;
+		return idUsuario;
 	}
 
 	public void setIdUsuario(int idUsuario) {
-		this.idUser = idUsuario;
+		this.idUsuario = idUsuario;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getApellidos() {
+		return apellidos;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
 	}
 
 	

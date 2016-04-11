@@ -1,0 +1,103 @@
+<div class="bg-white-only">
+	<div class="container">
+		<div class="page-header">
+			<h2>Bienvenido a Socialworkout</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class='col-sx-6 '>Saludos {{usuario.nombre}}
+					{{usuario.apellidos}}.</h4>
+				<h5 class='col-sx-9'>En este momento se encuentran
+					{{ocupacion}} persona(s) en el gimnasio. Sobre una capacidad de
+					{{capacidad}} personas</h5>
+				<h5 class='col-sx-9'>Y se encuentran {{ocupacionParqueo}}
+					espacio(s) ocupados en el parqueo. Sobre una capacidad de
+					{{capacidadParqueo}} veh&#237culos</h5>
+				<h5 class='col-sx-9'>Nos complace informarle que para la visita
+					de hoy el gimnasio muestra la siguiente ocupaci&#243n</h5>
+				<div>
+				<br>
+					
+					<div class="row">
+						<div class="col-md-12">
+
+							<div class="col-md-5">
+								<div class="wrapper">
+									<ul class="timeline">
+										<li class="tl-header">
+											<h6>Pron&#243stico del d&#237a para el gimnasio</h6>
+											<div class="btn btn-info">Cierre</div>
+										</li>
+										<li class="tl-item"
+											ng-repeat="ocupacion in promedioTotal | orderBy:'hora':true">
+											<div class="tl-wrap b-info">
+												<span class="tl-date"> <span
+													class="label bg-dark pull-right">A las :
+														{{ocupacion.hora}}:00 hora(s)</span></span>
+												<div class="tl-content panel padder b-a w-md w-auto-xs">
+													<span class="arrow left pull-up"></span>
+													<div class="text-sm m-b-sm">{{ocupacion.promedio}}
+														Persona(s)</div>
+													<div class="panel-body pull-in b-t b-light">
+														<div class="text-center-folded">
+															<span class="pull-right pull-none-folded"><b
+																class="badge bg-success pull-left">{{ocupacion.promedio
+																	* 100/ocupacion.capacidad}}%</b></span> <span
+																class="hidden-folded">Ocupaci&#243n</span>
+														</div>
+														<div class="progress progress-xs m-t-sx dk">
+															<div class="progress-bar progress-bar-info"
+																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="wrapper">
+									<ul class="timeline">
+										<li class="tl-header">
+											<h6>Pron&#243stico del d&#237a para el parqueo</h6>
+											<div class="btn btn-primary">Cierre</div>
+										</li>
+										<li class="tl-item"
+											ng-repeat="ocupacion in promedioTotalParqueo | orderBy:'hora':true">
+											<div class="tl-wrap b-primary">
+												<span class="tl-date"> <span
+													class="label bg-dark pull-right">A las :
+														{{ocupacion.hora}}:00 hora(s)</span></span>
+												<div class="tl-content panel padder b-a w-md w-auto-xs">
+													<span class="arrow left pull-up"></span>
+													<div class="text-sm m-b-sm">{{ocupacion.promedio}}
+														Persona(s)</div>
+													<div class="panel-body pull-in b-t b-light">
+														<div class="text-center-folded">
+															<span class="pull-right pull-none-folded"><b
+																class="badge bg-success pull-left">{{ocupacion.promedio
+																	* 100/ocupacion.capacidad}}%</b></span> <span
+																class="hidden-folded">Ocupaci&#243n</span>
+														</div>
+														<div class="progress progress-xs m-t-sx dk">
+															<div class="progress-bar progress-bar-info"
+																style="width: {{ocupacion.promedio* 100/ocupacion.capacidad}}%"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
