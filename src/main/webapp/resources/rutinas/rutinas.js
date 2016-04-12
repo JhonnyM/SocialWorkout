@@ -23,6 +23,8 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   $scope.excludeEmptyDetalles = {};
   $scope.idRelation = [];
   $scope.rutinaMaestroMaquinaHasEjercicio = [];
+  $scope.detallesSeleccionados = [];
+  $scope.detallesDelItemSeleccionado = [];
   $scope.maquinaHasEjercicios = {};
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","rutinas": {}};
 
@@ -31,7 +33,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     
     $http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
       $scope.maquinaHasEjercicios = response.maquinaEjercicio;
-      console.log("Relation: ", $scope.maquinaHasEjercicios);
     });
 
     $http.get('rest/protected/plantillas/all').success(function(response) {
@@ -43,7 +44,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $http.get('rest/protected/plantillaDetalles/all').success(function(response) {
       $scope.detalles = response.plantillasDetalle;
       $scope.rutinaMaestroMaquinaHasEjercicio = $scope.detalles.maquinahasejercicios
-      console.log($scope.detalles);
     });
 
     $http.get('rest/protected/Ejercicios/getAll').then(function(response) {
@@ -61,7 +61,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
   $http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
     $scope.objetivos = response.objetivoList;
-    console.log("$scope.objetivos", $scope.objetivos)
   });
 
   $scope.gridOptions = {
@@ -171,21 +170,25 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   };
 
   $scope.selectGroup = function(item){    
-    angular.forEach($scope.rutinas, function(item) {
+    console.log("selectGroup parametro", item)   
+    angular.forEach($scope.rutinas, function(item) { 
       item.selected = false;
     });
     $scope.rutinaAEditar = item;
     $scope.setGlobalSelecteIdRelation($scope.rutinaAEditar);
-    //$scope.findId($scope.rutinaAEditar)
+    $scope.detallesSeleccionados = item.plantillarutinadetalles;
     $scope.rutinaAEditar.selected = true;
     $scope.filter = item.name;
   };
 
-  $scope.selectItem = function(item){    
-    angular.forEach($scope.rutinas, function(item) {
+  $scope.selectItem = function(item){ 
+    console.log("selectItem parametro", item)   
+    angular.forEach($scope.detallesSeleccionados, function(item) {
+      console.log("Item dentro del for", item) 
       item.selected = false;
       item.editing = false;
     });
+    $scope.detallesDelItemSeleccionado = item.plantillarutinadetalles;
     $scope.item = item;
     $scope.item.selected = true;
   };
@@ -261,6 +264,27 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
         }
       }
     }
+  };
+
+  $scope.editDetalle = function(item){
+    if($scope.rutinaAEditar.selected == true){
+      var dialogOpts = {
+       backdrop:'static',
+       keyboard:false,
+       templateUrl:'resources/rutinas/editar-rutina-detalle.html',
+       controller:'EditarRutinaDetalleCtrl',
+       size:"lg",
+       windowClass:"modal",
+       resolve:{
+            rutina: $scope.rutinaAEditar,
+            detalle: item,
+            route : $route,
+          }
+      };
+      $uibModal.open(dialogOpts)
+    } else {
+      alert("Seleccione una rutina");
+    };
   };
 
 }]);
