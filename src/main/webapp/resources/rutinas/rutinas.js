@@ -287,4 +287,23 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     };
   };
 
+  $scope.editItem = function(item){
+    if(item && item.selected){
+      var dialogOpts = {
+        backdrop:'static',
+        keyboard:false,
+        templateUrl:'resources/rutinas/editar-rutina-maestro.html',
+        controller:'EditarRutinaMaestroCtrl',
+        size:"sx",
+        windowClass:"modal",
+        resolve:{
+          rutina: item,
+          route : $route,
+        }
+      };
+      
+      $uibModal.open(dialogOpts)
+    }
+  };
+
 }]);

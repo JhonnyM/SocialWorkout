@@ -82,6 +82,7 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	    console.log("Ejercicios:",selectedEjercicioRelation);
 	    $scope.requestRelation(selectedEjercicioRelation);
 	    dataDetalle = {
+	      idPLantillaRutinaDetalle: $scope.rutinaDetalleForm.idPLantillaRutinaDetalle,
 	      cantidadPeso : parseFloat($scope.rutinaDetalleForm.cantidadPeso),
 	      plantillarutinamaestro : rutina,
 	      cantidadRepeticiones : parseInt($scope.rutinaDetalleForm.cantidadRepeticiones),
@@ -90,7 +91,7 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	      
 	    };
 	    console.log("Data to be send", dataDetalle);
-	    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
+	    $http.post('rest/protected/plantillaDetalles/update', {plantillaRutinaDetalle: dataDetalle})
 	    .then(function (response){
 
 	       switch(response.data.code)

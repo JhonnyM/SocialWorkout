@@ -390,6 +390,7 @@
   		         <script src="resources/rutinas/rutinaMaestroCtrl.js"></script>
   		         <script src="resources/rutinas/rutinaDetalleModal.js"></script>
                <script src="resources/rutinas/editarRutinaDetalleModal.js"></script>
+               <script src="resources/rutinas/editarRutinaMaestro.js"></script>
                <script src="resources/components/version/version.js"></script>
                <script src="resources/components/version/version-directive.js"></script>
                <script src="resources/components/version/interpolate-filter.js"></script>
