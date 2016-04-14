@@ -41,8 +41,6 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 		});
 
 		$scope.rutinaDetalleForm = angular.copy(detalle);
-		console.log("Mae este es el detalle ",detalle);
-		console.log("Mae esta es la rutina ",rutina);
 
 
 	};
@@ -78,20 +76,19 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	  
     $scope.save = function () {
 	    var dataDetalle = {};
-	    selectedEjercicioRelation = $scope.ejercicios.find($scope.findSelectedEjercicio);
+	    selectedEjercicioRelation = $scope.maquinaHasEjercicios.find($scope.findTest);
 	    console.log("Ejercicios:",selectedEjercicioRelation);
-	    $scope.requestRelation(selectedEjercicioRelation);
 	    dataDetalle = {
 	      idPLantillaRutinaDetalle: $scope.rutinaDetalleForm.idPLantillaRutinaDetalle,
 	      cantidadPeso : parseFloat($scope.rutinaDetalleForm.cantidadPeso),
 	      plantillarutinamaestro : rutina,
 	      cantidadRepeticiones : parseInt($scope.rutinaDetalleForm.cantidadRepeticiones),
 	      cantidadSeries: parseInt($scope.rutinaDetalleForm.cantidadSeries),
-	      maquinahasejercicio: $scope.relation[0]
+	      maquinahasejercicio: selectedEjercicioRelation
 	      
 	    };
 	    console.log("Data to be send", dataDetalle);
-	    $http.post('rest/protected/plantillaDetalles/update', {plantillaRutinaDetalle: dataDetalle})
+	    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
 	    .then(function (response){
 
 	       switch(response.data.code)
@@ -114,11 +111,15 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 		return ejercicio.idEjercicio === $scope.requestObject.idEjercicio;
 	};
 
-	$scope.requestRelation = function(ejercicio){
-		$http.post('rest/protected/Maquinahasejercicios/find', {ejercicio: ejercicio}).success(function(response) {
-	    	$scope.relation = response.maquinaEjercicio;
-		});
+	// $scope.requestRelation = function(ejercicio){
+	// 	$http.post('rest/protected/Maquinahasejercicios/find', {ejercicio: ejercicio}).success(function(response) {
+	//     	$scope.relation = response.maquinaEjercicio;
+	// 	});
 
+	// };
+
+	$scope.findTest = function(relation){
+		return relation.ejercicio.idEjercicio === $scope.requestObject.idEjercicio;
 	};
 
 }]);

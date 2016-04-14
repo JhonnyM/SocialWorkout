@@ -38,8 +38,6 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 	    	console.log("Relation: ", $scope.maquinaHasEjercicios)
 		});
 
-		console.log("Mae esta es la rutina ",rutina);
-
 
 	};
 
