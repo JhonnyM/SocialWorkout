@@ -67,4 +67,25 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 		return !maquinaHasEjercicioRepository.exists(idRelation);
 	}
 
+	@Override
+	public List<MaquinahasejercicioPOJO> findByIdEjercicio(int id){
+		List<MaquinahasejercicioPOJO> relationDtos = new ArrayList<MaquinahasejercicioPOJO>();
+		List<Maquinahasejercicio> relationList = maquinaHasEjercicioRepository.findByEjercicioIdEjercicio(id);
+		relationList.stream().forEach(ta ->{
+			EjercicioPOJO ejercicioDto = new EjercicioPOJO();
+			Ejercicio ejercicio = ta.getEjercicio();
+			BeanUtils.copyProperties(ejercicio, ejercicioDto);
+			MaquinaPOJO maquinaDto = new MaquinaPOJO();
+			Maquina maquina = ta.getMaquina();
+			BeanUtils.copyProperties(maquina, maquinaDto);
+			MaquinahasejercicioPOJO dto = new MaquinahasejercicioPOJO();
+			BeanUtils.copyProperties(ta, dto);
+			dto.setEjercicio(ejercicioDto);
+			dto.setMaquina(maquinaDto);
+			relationDtos.add(dto);
+			
+		});
+		return relationDtos;
+	}
+
 }

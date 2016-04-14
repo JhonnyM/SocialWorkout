@@ -13,7 +13,7 @@ public interface MaquinahasejercicioServiceInterface {
 	public boolean save(MaquinahasejercicioRequest request);
 
 	public boolean delete(int idTipo);
-
 	public boolean exists(Integer idTipo);
+	public List<MaquinahasejercicioPOJO> findByIdEjercicio(int id);
 
 }
