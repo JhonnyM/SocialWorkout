@@ -10,7 +10,6 @@
             <div class="list-group no-radius no-border no-bg m-b-none">
               <div class="list-group-item b-b">Rutinas</div>
               <a ng-repeat="item in rutinas" ng-dblclick="editItem(item)" class="list-group-item m-l hover-anchor b-a no-select" ng-class="{'focus m-l-none': item.selected}" ng-click="selectGroup(item)">
-                <span ng-click='deleteGroup(item)' class="pull-right text-muted hover-action"><i class="fa fa-times"></i></span>
                 <span class="block m-l-n" ng-class="{'m-n': item.selected }">{{ item.descRutina ? item.descRutina : 'Untitled' }}</span>
                 <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditing(item)" ng-model="item.descRutina" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
               </a>
@@ -30,7 +29,7 @@
       <div class="wrapper-xs b-b">
         <div class="input-group m-b-xxs">
           <span class="input-group-addon input-sm no-border no-bg"><i class="icon-magnifier text-md m-t-xxs"></i></span>
-          <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="Buscar {{group.name ? group.name : 'Todas las Rutinas'}}" ng-model="query">
+          <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="Buscar {{group.name ? group.name : 'Todas los Detalles'}}" ng-model="query">
         </div>
       </div>
       <div class="row-row lter b-r">
@@ -38,14 +37,15 @@
           <div class="cell-inner">
             <div class="m-t-n-xxs">
               <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
-                <a ng-repeat="item in rutinas | filter:{group:filter} | filter:query | orderBy:'first'" class="list-group-item m-l" ng-class="{'select m-l-none': item.selected }" ng-click="selectItem(item)" ng-if="item.selected">
-
-                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }">
-                    {{ item.objetivo.descObjetivo }}
+                <a ng-repeat="detalle in detallesSeleccionados | filter:{group:filter} | filter:query | orderBy:'ASC'" 
+                  class="list-group-item m-l" ng-class="{'select m-l-none': detalle.selected }" ng-click="selectItem(detalle)">
+                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': detalle.selected }">
+                    {{ detalle.maquinahasejercicio.ejercicio.descEjercicio }}  en <strong>{{ detalle.maquinahasejercicio.maquina.descMaquina }}</strong>
                   </span>
                 </a>
               </div>
             </div>
+            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(detallesSeleccionados | filter:{group:filter} | filter:query).length">No hay Detalles</div>
           </div>
         </div>
       </div>
@@ -56,9 +56,8 @@
     <div class="vbox">
       <div class="wrapper-sm b-b">
         <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
-          <a class="btn btn-xs btn-default pull-right" ng-hide="!item" ng-click="deleteItem(item)"><i class="fa fa-times"></i></a>
           <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="addRutinaDetalle()">Agregar Detalle</a>&nbsp;&nbsp;
-          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="addRutinaDetalle(detalle)">Editar</a>
+          <a class="btn btn-xs btn-default" ng-hide="item.editing" ng-click="editDetalle(item)">Editar</a>
           <a class="btn btn-xs btn-default" ng-show="item.editing" ng-click="doneEditing(item)">Finalizar</a>
         </div>
       </div>
@@ -66,38 +65,34 @@
         <div class="cell">
           <div class="cell-inner bg-white-only">
             <div class="wrapper-lg bg-white-only">
-              <div class="hbox h-auto m-b-lg">
-                <div class="col v-middle h1 font-thin">
-                  <div ng-hide="item.editing">{{item.descRutina}}</div>
-                </div>
-              </div>
-              <!-- fields -->
-              <div class="form-horizontal" ng-repeat=" detalle in item.plantillarutinadetalles">
-                <div class="form-group m-b-sm" >
-                  <label class="col-sm-3 control-label">Ejercicio:</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" >{{detalle.nombreEjercicio}}</p>
+              <div ng-show="item.selected">
+                <div class="hbox h-auto m-b-lg">
+                  <div class="col v-middle h1 font-thin">
+                    <div>Detalles:</div>
                   </div>
                 </div>
-                <div class="form-group m-b-sm" >
-                  <label class="col-sm-3 control-label">Peso:</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static" >{{detalle.cantidadPeso}}</p>
+                <!-- fields -->
+                <div class="form-horizontal">
+                  <div class="form-group m-b-sm" >
+                    <label class="col-sm-3 control-label">Peso:</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static" >{{item.cantidadPeso}}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group m-b-sm">
-                  <label class="col-sm-3 control-label">Repeticiones</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static">{{detalle.cantidadRepeticiones}}</p>
+                  <div class="form-group m-b-sm">
+                    <label class="col-sm-3 control-label">Repeticiones</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static">{{item.cantidadRepeticiones}}</p>
+                    </div>
                   </div>
-                </div>
-                <div class="form-group m-b-sm">
-                  <label class="col-sm-3 control-label">Series</label>
-                  <div class="col-sm-9">
-                    <p class="form-control-static">{{detalle.cantidadSeries}}</p>
+                  <div class="form-group m-b-sm">
+                    <label class="col-sm-3 control-label">Series</label>
+                    <div class="col-sm-9">
+                      <p class="form-control-static">{{item.cantidadSeries}}</p>
+                    </div>
                   </div>
+              
                 </div>
-            
               </div>
               <!-- / fields -->
             </div>

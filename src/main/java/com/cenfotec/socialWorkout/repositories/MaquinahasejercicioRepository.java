@@ -13,5 +13,6 @@ public interface MaquinahasejercicioRepository extends CrudRepository<Maquinahas
 	List<Maquinahasejercicio> findAll();
 
 	Maquinahasejercicio findByEjercicioIdEjercicioAndMaquinaIdMaquina(int idEjercicio, int idMaquina);
+ 	Maquinahasejercicio idEjercicioXMaquina(int id);
 
 }
