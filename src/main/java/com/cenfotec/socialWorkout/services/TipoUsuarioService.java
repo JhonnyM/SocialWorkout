@@ -75,7 +75,11 @@ public class TipoUsuarioService implements TipoUsuarioServiceInterface {
 	@Transactional
 	public TipoUsuarioPOJO getTipoUsuarioById(int idTipoUsuario) {
 		TipoUsuarioPOJO tipoUsuarioPOJO = new TipoUsuarioPOJO();
-		Utils.copyProperties(tipoUsuarioRepository.findByidTipoUsuario(idTipoUsuario),tipoUsuarioPOJO);
+		Tipousuario tipoUsuario = new Tipousuario();
+		tipoUsuario =  tipoUsuarioRepository.findByidTipoUsuario(idTipoUsuario);
+		if (!(tipoUsuario==null)){
+		Utils.copyProperties(tipoUsuario,tipoUsuarioPOJO);
+		}
 		return tipoUsuarioPOJO;
 	}
 

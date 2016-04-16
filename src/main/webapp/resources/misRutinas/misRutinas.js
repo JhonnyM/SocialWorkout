@@ -30,8 +30,23 @@ angular.module('myApp.misRutinas', ['ngRoute', 'ui.bootstrap'])
 	   			$scope.ejercicios = response.plantillasDetalle;
 	   			console.log("EJERCICIOS",$scope.ejercicios);       
 	   });
-};	
+	};	
 	
+	$scope.asignar = function(event) {
+		$scope.dataNew = {};
+		dataNew = {
+				idRegistroRutinaXUsuario:0,
+  	    		temporal:$scope.misRutinasTotales[event].plantillarutinamaestroPOJO.idRutina,
+  	    };
+		$http.post('rest/protected/rutinas/asignarNuevaRutina', {rutinaHasUsuarioPOJO : dataNew})
+		.success(function(response) {
+	   			console.log("response",response);
+	   			$scope.nuevaRutina = response.plantillasDetalle;
+	   			console.log("NUEVA RUTINA",$scope.nuevaRutina);      
+	   			$route.reload();
+	   });
+	};
+
 
 	$scope.usuario = {};
 	 $http.post('rest/protected/users/usuarioSet')

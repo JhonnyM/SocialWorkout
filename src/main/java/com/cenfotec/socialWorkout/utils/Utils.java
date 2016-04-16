@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.function.Supplier;
 
@@ -88,5 +91,11 @@ public class Utils {
 	public static void setId(int id) {
 		Utils.id = id;
 	}
+	
+	public static Date convertirADate(LocalDate date) {
+	    Instant instant = date.atStartOfDay().atZone(ZoneId.systemDefault())
+	        .toInstant();
+	    return Date.from(instant);
+	  }
 
 }

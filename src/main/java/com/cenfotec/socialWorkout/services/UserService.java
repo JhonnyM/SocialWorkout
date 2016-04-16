@@ -65,6 +65,14 @@ public class UserService implements UserServiceInterface{
 	
 	@Override
 	@Transactional
+	public UsuarioPOJO getUsuarioById(int idUsuario) {
+		UsuarioPOJO usuarioPOJO = new UsuarioPOJO();
+		Utils.copyProperties(usersRepository.findByidUsuario(idUsuario),usuarioPOJO);
+		return usuarioPOJO;
+	}
+		
+	@Override
+	@Transactional
 	public UsuarioPOJO getUsuarioSession() {
 		UsuarioPOJO usuarioPOJOlogueado = new UsuarioPOJO();
 		if (!(usersRepository.findByidUsuario(Utils.getId())==null)){
@@ -207,7 +215,7 @@ public class UserService implements UserServiceInterface{
 	@Override
 	public List<UsuarioPOJO> getInstructores() {
 		TipoUsuarioPOJO  tipoUsuarioPOJO = new TipoUsuarioPOJO();
-		tipoUsuarioPOJO = tipoUsuarioService.getTipoUsuarioById(3);
+		tipoUsuarioPOJO = tipoUsuarioService.getTipoUsuarioByDescTipoUsuario("Instructor");
 		Tipousuario tipoUsuario = new Tipousuario();
 		 if (!(tipoUsuarioPOJO==null)){
 		BeanUtils.copyProperties(tipoUsuarioPOJO, tipoUsuario);

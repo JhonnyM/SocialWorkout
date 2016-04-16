@@ -23,6 +23,7 @@ public class RutinaHasUsuarioPOJO {
 	private Time hora;
 	private PlantillarutinamaestroPOJO plantillarutinamaestroPOJO;
 	private UsuarioPOJO usuario;
+	private Integer temporal;
 
 	
 	public RutinaHasUsuarioPOJO() {
@@ -98,5 +99,18 @@ public class RutinaHasUsuarioPOJO {
 	public void setUsuario(UsuarioPOJO usuario) {
 		this.usuario = usuario;
 	}
+
+
+	public Integer getTemporal() {
+		return temporal;
+	}
+
+
+	public void setTemporal(Integer temporal) {
+		this.temporal = temporal;
+	}
+
+
+
 
 }

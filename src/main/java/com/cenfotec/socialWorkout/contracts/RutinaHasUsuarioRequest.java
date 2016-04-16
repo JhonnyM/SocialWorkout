@@ -9,11 +9,11 @@ public class RutinaHasUsuarioRequest extends BaseRequest {
 		super();
 	}
 	
-	public RutinaHasUsuarioPOJO getRegistroMedida(){
+	public RutinaHasUsuarioPOJO getRutinaHasUsuarioPOJO() {
 		return rutinaHasUsuarioPOJO;
 	}
-	
-	public void setRegistroMedida(RutinaHasUsuarioPOJO rutinaHasUsuarioPOJO){
+
+	public void setRutinaHasUsuarioPOJO(RutinaHasUsuarioPOJO rutinaHasUsuarioPOJO) {
 		this.rutinaHasUsuarioPOJO = rutinaHasUsuarioPOJO;
 	}
 

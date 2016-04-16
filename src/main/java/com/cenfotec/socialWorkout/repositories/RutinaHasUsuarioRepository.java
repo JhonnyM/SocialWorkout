@@ -8,4 +8,5 @@ public interface RutinaHasUsuarioRepository extends CrudRepository<Rutinahasusua
 	List<Rutinahasusuario> findAll();
     List<Rutinahasusuario>  findByDiaSemanalAgendadoAndUsuario(String dia, Usuario usuario);
     List<Rutinahasusuario>  findByUsuario(Usuario usuario);
+    Rutinahasusuario findByIdRegistroRutinaXUsuario(int idRegistroRutinaXUsuario);
 }

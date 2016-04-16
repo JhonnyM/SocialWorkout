@@ -15,6 +15,7 @@ public interface UserServiceInterface {
 	List<UsuarioPOJO> getInstructores();
 	public List<UsuarioPOJO> getAll();
 	UsuarioPOJO getUsuarioSession();
+	UsuarioPOJO getUsuarioById(int idUsuario);
 	
 
 }

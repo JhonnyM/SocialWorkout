@@ -21,7 +21,10 @@ import com.cenfotec.socialWorkout.contracts.PlantillarutinadetalleRequest;
 import com.cenfotec.socialWorkout.contracts.PlantillarutinadetalleResponse;
 import com.cenfotec.socialWorkout.contracts.PromedioOcupacionRequest;
 import com.cenfotec.socialWorkout.contracts.PromedioOcupacionResponse;
+import com.cenfotec.socialWorkout.contracts.RutinaHasUsuarioRequest;
 import com.cenfotec.socialWorkout.contracts.RutinaHasUsuarioResponse;
+import com.cenfotec.socialWorkout.contracts.TipoUsuarioRequest;
+import com.cenfotec.socialWorkout.contracts.TipoUsuarioResponse;
 import com.cenfotec.socialWorkout.contracts.UserRequest;
 import com.cenfotec.socialWorkout.ejb.Promedioocupacion;
 import com.cenfotec.socialWorkout.pojo.LugarMedicionPOJO;
@@ -72,6 +75,23 @@ public class RutinasController {
 		response.setPlantillasDetalle(listaEjercicios);
 		return response;		
 	}
+	
+	@RequestMapping(value ="/asignarNuevaRutina", method = RequestMethod.POST)
+	public RutinaHasUsuarioResponse edit(@RequestBody RutinaHasUsuarioRequest rutinaHasUsuarioRequest){	
+ 		
+		RutinaHasUsuarioResponse rutinaHasUsuario = new RutinaHasUsuarioResponse();
+		List<RutinaHasUsuarioPOJO> rutinas = new ArrayList<RutinaHasUsuarioPOJO>();
+		LocalDate date=LocalDate.now();
+		rutinas = null;
+		rutinas = rutinaHasUsuarioService.getRutinaWithPlantilla(date.getDayOfWeek()+"", usuarioService.getUsuarioSession());
+		Boolean state = rutinaHasUsuarioService.actualizaRutinaTemporal(rutinas.get(0).getIdRegistroRutinaXUsuario() ,
+				rutinaHasUsuarioRequest.getRutinaHasUsuarioPOJO().getTemporal());
+	    if(state){
+			rutinaHasUsuario.setCode(200);
+			rutinaHasUsuario.setCodeMessage("Tipo de usuario modificado satisfactoriamente ");
+		}
+		return rutinaHasUsuario;
+ 	}
 	
 	@RequestMapping(value ="/getRutinasDia", method = RequestMethod.POST)
 	public RutinaHasUsuarioResponse getRutinasDia(){	

@@ -29,7 +29,7 @@ public class Rutinahasusuario implements Serializable {
 
 	private Time hora;
 
-	private int idRutinaTemporal;
+	private Integer temporal;
 
 	//bi-directional many-to-one association to Plantillarutinamaestro
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -84,12 +84,12 @@ public class Rutinahasusuario implements Serializable {
 		this.hora = hora;
 	}
 
-	public int getIdRutinaTemporal() {
-		return this.idRutinaTemporal;
+	public Integer getTemporal() {
+		return this.temporal;
 	}
 
-	public void setIdRutinaTemporal(int idRutinaTemporal) {
-		this.idRutinaTemporal = idRutinaTemporal;
+	public void setTemporal(Integer temporal) {
+		this.temporal = temporal;
 	}
 
 	public Plantillarutinamaestro getPlantillarutinamaestro() {
