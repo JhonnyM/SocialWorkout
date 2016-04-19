@@ -7,7 +7,7 @@ public class PlantillarutinamaestroPOJO {
 	private int idRutina;
 	private String descRutina;
 	private boolean rutinaBase;
-	private List<PlantillarutinadetallePOJO> plantillarutinadetalles;
+	//private List<PlantillarutinadetallePOJO> plantillarutinadetalles;
 	private ObjetivoPOJO objetivo;
 	private PlantillarutinamaestroPOJO plantillarutinamaestro;
 	private List<PlantillarutinamaestroPOJO> plantillarutinamaestros;
@@ -40,7 +40,7 @@ public class PlantillarutinamaestroPOJO {
 		this.rutinaBase = rutinaBase;
 	}
 
-	public List<PlantillarutinadetallePOJO> getPlantillarutinadetalles() {
+	/*public List<PlantillarutinadetallePOJO> getPlantillarutinadetalles() {
 		return this.plantillarutinadetalles;
 	}
 
@@ -60,7 +60,7 @@ public class PlantillarutinamaestroPOJO {
 		plantillarutinadetalle.setPlantillarutinamaestro(null);
 
 		return plantillarutinadetalle;
-	}
+	}*/
 
 	public ObjetivoPOJO getObjetivo() {
 		return this.objetivo;

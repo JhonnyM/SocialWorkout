@@ -1,0 +1,82 @@
+<div class="bg-white-only">
+	<div class="container">
+		<div class="page-header">
+			<h2>Bienvenido a Socialworkout</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class='col-sx-6 '>Saludos {{usuario.nombre}}
+					{{usuario.apellidos}}.</h4>
+				<h5 class='col-sx-9'>Le brindamos la informaci&#243n del pron&#243stico de ocupaci&#243n de las m&#225quinas de sus rutinas
+				para el d&#237a de hoy, y la ocupaci&#243n general de las m&#225quinas durante todo el d&#237a</h5>
+				<div>
+				<br>
+					<div class="row">
+						<div class="col-md-5">
+							<span class="label bg-info pull-right m-t-xs">Ocupaci&#243n m&#225quinas del gimnasio - {{ocupaciones.length}} turno(s)</span>
+
+							<table class="table table-striped m-b-none">
+								<thead>
+									<tr>
+										<th class="text-center"><small class="text-muted block">Hora</small></th>
+										<th class="text-center"><small class="text-muted block">M&#225quina</small></th>
+										<th class="text-center"><small class="text-muted block">Ocupaci&#243n</small></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ocupacion in promedioTotalMaquinas">
+										<td class="text-center"><button class="btn m-b-xs btn-sm btn-default btn-addon">{{ocupacion.hora}}:00
+											</button></td>
+										<td class="text-center">{{ocupacion.maquina}}</td>
+										<td><div class="text-center-folded">
+												<span class="pull-right pull-none-folded"><b
+													class="badge bg-success pull-left">{{ocupacion.ocupacion}}%</b></span> <span class="hidden-folded">Ocupaci&#243n</span>
+											</div>
+											<div class="progress progress-xs m-t-sx dk">
+												<div class="progress-bar progress-bar-info"
+													style="width: {{ocupacion.ocupacion}}%"></div>
+											</div></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="col-md-5">
+							<span class="label bg-info pull-right m-t-xs">Ocupaci&#243n m&#225quinas todo el d&#237a</span>
+
+							<table class="table table-striped m-b-none">
+								<thead>
+									<tr>
+										<th class="text-center"><small class="text-muted block">Hora</small></th>
+										<th class="text-center"><small class="text-muted block">M&#225quina</small></th>
+										<th class="text-center"><small class="text-muted block">Ocupaci&#243n</small></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ocupacion in promedioDiaMaquinas | orderBy:['hora','maquina']"">
+										<td class="text-center"><button class="btn m-b-xs btn-sm btn-default btn-addon">{{ocupacion.hora}}:00
+											</button></td>
+										<td class="text-center">{{ocupacion.maquina}}</td>
+										<td><div class="text-center-folded">
+												<span class="pull-right pull-none-folded"><b
+													class="badge bg-success pull-left">{{ocupacion.ocupacion}}%</b></span> <span class="hidden-folded">Ocupaci&#243n</span>
+											</div>
+											<div class="progress progress-xs m-t-sx dk">
+												<div class="progress-bar progress-bar-info"
+													style="width: {{ocupacion.ocupacion}}%"></div>
+											</div></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

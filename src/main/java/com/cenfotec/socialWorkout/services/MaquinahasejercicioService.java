@@ -48,7 +48,7 @@ public class MaquinahasejercicioService implements MaquinahasejercicioServiceInt
 
 	@Override
 	public boolean save(MaquinahasejercicioRequest request) {
-		MaquinahasejercicioPOJO eventoDTO = request.getMaquinaEjercicio();
+		MaquinahasejercicioPOJO eventoDTO = request.getMaquinahasejercicio();
 		Maquinahasejercicio relation = new Maquinahasejercicio();
 		BeanUtils.copyProperties(eventoDTO, relation);
 		Maquinahasejercicio s = maquinaHasEjercicioRepository.save(relation);
