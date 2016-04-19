@@ -1,0 +1,110 @@
+2<div class="bg-white-only">
+	<div class="container">
+		<div class="page-header">
+			<h2>Bienvenido a Socialworkout</h2>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class='col-sx-6 '>Saludos {{usuario.nombre}}
+					{{usuario.apellidos}}.</h4>
+				<h5 class='col-sx-9'>En este momento se encuentran
+					{{ocupacion}} persona(s) en el gimnasio. Sobre una capacidad de
+					{{capacidad}} personas</h5>
+				<h5 class='col-sx-9'>Y se encuentran {{ocupacionParqueo}}
+					espacio(s) ocupados en el parqueo. Sobre una capacidad de
+					{{capacidadParqueo}} veh&#237culos</h5>
+				<h5 class='col-sx-9'>Nos complace informarle que para la visita
+					de hoy el gimnasio muestra la siguiente ocupaci&#243n</h5>
+				<div>
+				<br>
+					<div class="row">
+						<div class="col-md-5">
+							<span class="label bg-info pull-right m-t-xs">Mis rutinas para hoy - {{ocupaciones.length}} turno(s)</span>
+							
+							<table class="table table-striped m-b-none">
+								<thead>
+									<tr>
+										<th class="text-center"><small class="text-muted block">Hora</small></th>
+										<th class="text-center"><small class="text-muted block">Rutina</small></th>
+										<th class="text-center"><small class="text-muted block">Acci&#243n</small></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ocupacion in misRutinasDelDia">
+										<td class="text-center"><button class="btn m-b-sm btn-sm btn-default">
+												                     {{ocupacion.hora}}
+											                    </button>
+										</td>
+										
+										<td class="text-center"><h6>{{ocupacion.plantillarutinamaestroPOJO.descRutina}}</h6></td>
+										
+										<td><button class="btn m-b-xs btn-sm btn-success" ng-click="consultar($index)">Consultar</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+						<div class="col-md-5">
+							<span class="label bg-primary pull-right m-t-xs">Todas mis rutinas</span>
+							
+							<table class="table table-striped m-b-none">
+								<thead>
+									<tr>
+									    <th class="text-center"><small class="text-muted block">D&#237a</small></th>
+										<th class="text-center"><small class="text-muted block">Rutina</small></th>
+										<th class="text-center"><small class="text-muted block">Acci&#243n</small></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ocupacion in misRutinasTotales">
+										<td class="text-center"><h6>{{ocupacion.diaSemanalAgendado}} | {{ocupacion.hora}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.plantillarutinamaestroPOJO.descRutina}}</h6></td>
+										<td><button class="btn m-b-sm btn-sm btn-success" ng-click="consultar($index)">Consultar</button>
+										<button class="btn m-b-sm btn-sm btn-info" ng-click="asignar($index)">&nbsp&nbspAsignar&nbsp&nbsp</button></td>
+									</tr>
+								</tbody>
+							</table>
+							
+						</div>
+						<br>
+						<div class="col-md-8">
+							<span class="label bg-primary pull-center m-t-xs">Cunsulta ejecuci&#243n de mi rutina</span>
+							<div class="table-responsive">
+							<table class="table table-striped m-b-none">
+								<thead>
+									<tr>
+									    <th class="text-center"><small class="text-muted block">Ejercicio</small></th>
+										<th class="text-center"><small class="text-muted block">M&#225quina</small></th>
+										<th class="text-center"><small class="text-muted block">Series</small></th>
+										<th class="text-center"><small class="text-muted block">Repeticiones</small></th>
+										<th class="text-center"><small class="text-muted block">Peso</small></th>
+										<th class="text-center"><small class="text-muted block">Personas por turno</small></th>
+										<th class="text-center"><small class="text-muted block">Duraci&#243n minutos</small></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="ocupacion in ejercicios">
+										<td class="text-center"><h6>{{ocupacion.maquinahasejercicio.ejercicio.descEjercicio}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.maquinahasejercicio.maquina.descMaquina}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.cantidadSeries}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.cantidadRepeticiones}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.cantidadPeso}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.maquinahasejercicio.maquina.personasXMaquina}}</h6></td>
+										<td class="text-center"><h6>{{ocupacion.maquinahasejercicio.maquina.minutosXPersona}}</h6></td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
