@@ -178,6 +178,10 @@
                                     <li><a href="app#/misRutinas"> <span>Consultar mis rutinas</span>
                                        </a>
                                     </li>
+                                    <li><a href="app#/eventosUsuarios"> <span>Eventos del gimnasio</span>
+                                       </a>
+                                    </li>
+
                                  </ul>
                               </li>
                               <li ng-if='mostrarCliente'>

@@ -18,11 +18,11 @@ public class MaquinahasejercicioRequest {
  public void setMaquinaEjercicio(MaquinahasejercicioPOJO maquinaEjercicio) {
   this.maquinaEjercicio = maquinaEjercicio;
  }*/
- public MaquinahasejercicioPOJO getMaquinahasejercicio() {
+ public MaquinahasejercicioPOJO getMaquinaHasEjercicio() {
 		return maquinaHasEjercicio;
 	}
 	
-	public void setMaquinahasejercicio(MaquinahasejercicioPOJO maquinaHasEjercicio) {
+	public void setMaquinaHasEjercicio(MaquinahasejercicioPOJO maquinaHasEjercicio) {
 		this.maquinaHasEjercicio = maquinaHasEjercicio;
 	}
 /* @Override

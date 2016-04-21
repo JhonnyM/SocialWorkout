@@ -54,13 +54,13 @@ angular
                 $http
                     .post(
                         'rest/protected/Ejercicios/getMaquinasEjercicio', {
-                            maquinahasejercicio: maquinaHasEjercicio
+                        	maquinaHasEjercicio: maquinaHasEjercicio
                         })
                     .success(
                         function(data, status,
                             config) {
                             $scope.message = data;
-                            $scope.maquinaEjercicio = data.maquinahasjercicio;
+                            $scope.maquinaEjercicio = data.maquinaHasEjercicio;
                             $scope.setMachine($scope.maquinas, $scope.maquinaEjercicio);
                         })
                     .error(
@@ -131,7 +131,7 @@ angular
                     $http
                         .post(
                             'rest/protected/Ejercicios/deleteAllAssignedMachines', {
-                                maquinaEjercicio: maquinaHasEjercicio
+                            	maquinaHasEjercicio: maquinaHasEjercicio
                             })
                         .success(
                             function(data, status,
@@ -168,7 +168,7 @@ angular
                     $http
                     .post(
                         'rest/protected/Ejercicios/deleteAllAssignedMachines', {
-                            maquinaEjercicio: maquinaHasEjercicio
+                        	maquinaHasEjercicio: maquinaHasEjercicio
                         });
 
                     
@@ -188,7 +188,7 @@ angular
                     $http
                         .post(
                             'rest/protected/Ejercicios/assignMachine', {
-                                maquinaEjercicio: maquinaHasEjercicio
+                            	maquinaHasEjercicio: maquinaHasEjercicio
                             })
                         .success(
                             function(data, status,

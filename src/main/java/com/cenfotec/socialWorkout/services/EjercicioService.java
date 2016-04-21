@@ -118,8 +118,8 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 	public boolean setMaquinaEjercicio(MaquinahasejercicioRequest maquinaEjercicioRequest) {
 
-		EjercicioPOJO ejercicioDTO = maquinaEjercicioRequest.getMaquinahasejercicio().getEjercicio();
-		MaquinaPOJO maquinaDTO = maquinaEjercicioRequest.getMaquinahasejercicio().getMaquina();
+		EjercicioPOJO ejercicioDTO = maquinaEjercicioRequest.getMaquinaHasEjercicio().getEjercicio();
+		MaquinaPOJO maquinaDTO = maquinaEjercicioRequest.getMaquinaHasEjercicio().getMaquina();
 
 		Maquinahasejercicio maquinaEjercicioEJB = new Maquinahasejercicio();
 
@@ -139,8 +139,8 @@ public class EjercicioService implements EjercicioServiceInterface {
 
 		Maquinahasejercicio maquinaEjercicio = maquinahasejercicioRepository
 				.findByEjercicioIdEjercicioAndMaquinaIdMaquina(
-						maquinaEjercicioRequest.getMaquinahasejercicio().getEjercicio().getIdEjercicio(),
-						maquinaEjercicioRequest.getMaquinahasejercicio().getMaquina().getIdMaquina());
+						maquinaEjercicioRequest.getMaquinaHasEjercicio().getEjercicio().getIdEjercicio(),
+						maquinaEjercicioRequest.getMaquinaHasEjercicio().getMaquina().getIdMaquina());
 
 		maquinahasejercicioRepository.delete(maquinaEjercicio);
 
@@ -151,7 +151,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 		List<Maquinahasejercicio> maquinasAsignadas = new ArrayList<Maquinahasejercicio>();
 
 		maquinasAsignadas = maquinahasejercicioRepository.findByEjercicioIdEjercicio(
-				maquinaEjercicioRequest.getMaquinahasejercicio().getEjercicio().getIdEjercicio());
+				maquinaEjercicioRequest.getMaquinaHasEjercicio().getEjercicio().getIdEjercicio());
 
 		return generateMaquinasHasEjercicioDtos(maquinasAsignadas);
 
@@ -163,7 +163,7 @@ public class EjercicioService implements EjercicioServiceInterface {
 		List<Maquinahasejercicio> maquinasAsignadas = new ArrayList<Maquinahasejercicio>();
 
 		maquinasAsignadas = maquinahasejercicioRepository.findByEjercicioIdEjercicio(
-				maquinaEjercicioRequest.getMaquinahasejercicio().getEjercicio().getIdEjercicio());
+				maquinaEjercicioRequest.getMaquinaHasEjercicio().getEjercicio().getIdEjercicio());
 
 		maquinasAsignadas.stream().forEach(ma -> {
 
