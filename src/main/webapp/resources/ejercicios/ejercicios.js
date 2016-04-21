@@ -90,6 +90,7 @@ angular
 
 								$uibModal.open(dialogOpts)
 							};
+                            
 							$scope.read();
 
 							$scope.edit = function(row) {

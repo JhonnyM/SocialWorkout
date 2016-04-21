@@ -34,7 +34,9 @@ angular.module('myApp.tiposUsuario', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 
 	        fastWatch : true,
 	        columnDefs: [
 	           {field:'descTipoUsuario', displayName:'Descripción',}, 
-	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.borrar(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-minus-circle pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180},
+//	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button><button ng-click="grid.appScope.borrar(row)" class="btn m-b-xs btn-sm btn-warning btn-addon"><i class="fa fa-minus-circle pull-right"></i>Eliminar</button>', enableFiltering: false, enableSorting: false, width: 180},
+	           {name:'Acciones', displayName:'Acciones',cellTemplate: '<button ng-click="grid.appScope.editRow(row)" class="btn m-b-xs btn-sm btn-success btn-addon"><i class="fa fa-pencil-square-o pull-right"></i>Editar</button>', enableFiltering: false, enableSorting: false, width: 180},
+
 	           ]
 	    };
 	
