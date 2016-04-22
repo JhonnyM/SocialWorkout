@@ -52,7 +52,7 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 			ObjetivoPOJO objDto = new ObjetivoPOJO();
 			BeanUtils.copyProperties(objetivo,objDto);
 			BeanUtils.copyProperties(ta, dto);
-			//dto.setPlantillarutinadetalles(detalledtos);
+			dto.setPlantillarutinadetalles(detalledtos);
 			dto.setObjetivo(objDto);
 			dtos.add(dto);
 			
@@ -92,6 +92,9 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 		PlantillarutinamaestroPOJO plantillaDTO = new PlantillarutinamaestroPOJO();
 		Plantillarutinamaestro plantilla = new Plantillarutinamaestro();
 		plantilla = plantillaMaestroRepository.findByIdRutina(idRutina);
+		plantilla.setPlantillarutinadetalles(null);
+		plantilla.setRutinahasusuarios(null);
+		plantilla.setPlantillarutinamaestros(null);
 		if (!(plantilla==null)){
 			BeanUtils.copyProperties(plantilla, plantillaDTO);
 		}

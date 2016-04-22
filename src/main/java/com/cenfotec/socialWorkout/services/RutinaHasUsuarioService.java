@@ -86,10 +86,15 @@ public class RutinaHasUsuarioService implements RutinaHasUsuarioServiceInterface
 			PlantillarutinamaestroPOJO plantillaDTO = new PlantillarutinamaestroPOJO();
 		 	if (idRutina==0){
 		 		plantillaMaestro = u.getPlantillarutinamaestro();
+		 		plantillaMaestro.setPlantillarutinamaestros(null);
+		 		plantillaMaestro.setPlantillarutinadetalles(null);
+		 		plantillaMaestro.setRutinahasusuarios(null);
 				BeanUtils.copyProperties(plantillaMaestro,plantillaDTO);
 		 	}else{
 		 		PlantillarutinamaestroPOJO pmPOJO = new PlantillarutinamaestroPOJO();
 		 		pmPOJO = plantillaService.getRutinaXId(idRutina);
+		 		pmPOJO.setPlantillarutinadetalles(null);
+		 		pmPOJO.setPlantillarutinamaestros(null);
 				BeanUtils.copyProperties(pmPOJO,plantillaDTO);
 		 	}
 			RutinaHasUsuarioPOJO dto = new RutinaHasUsuarioPOJO();
@@ -112,6 +117,9 @@ public class RutinaHasUsuarioService implements RutinaHasUsuarioServiceInterface
 			Plantillarutinamaestro plantillaMaestro = new Plantillarutinamaestro();
 			PlantillarutinamaestroPOJO plantillaDTO = new PlantillarutinamaestroPOJO();
 			plantillaMaestro = u.getPlantillarutinamaestro();
+			plantillaMaestro.setPlantillarutinadetalles(null);
+			plantillaMaestro.setPlantillarutinamaestros(null);
+			plantillaMaestro.setRutinahasusuarios(null);
 			BeanUtils.copyProperties(plantillaMaestro,plantillaDTO);
 			RutinaHasUsuarioPOJO dto = new RutinaHasUsuarioPOJO();
 			BeanUtils.copyProperties(u,dto);

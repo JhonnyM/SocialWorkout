@@ -14,7 +14,7 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	$scope.relationHas = [];
 	$scope.relationHas = [];
 	$scope.maquinaHasEjercicios = {};
-	$scope.rutinaDetalleForm = angular.copy(detalle);
+	//$scope.rutinaDetalleForm = angular.copy(detalle);
 	$scope.relation = [];
 	$scope.reload = function(){
 		$route.reload();
@@ -23,21 +23,23 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	$scope.init = function() {
 		$http.get('rest/protected/Ejercicios/getAll').then(function(response) {
 			$scope.ejercicios = response.data.ejercicios;
-			console.log("Ejercicios",$scope.ejercicios);
+			console.log("Ejercicios: CHRIS",$scope.ejercicios);
 		});
 
 		$http.get('rest/protected/Maquinas/getAll').then(function(response) {
 			$scope.maquinas = response.data.maquinas;
+			console.log("MAQUINAS: CHRIS", $scope.maquinas)
 		});
 
 		$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
 	    	$scope.objetivos = response.objetivoList;
+	    	console.log("OBJETIVOS CHRIS", $scope.objetivos)
 		});
 
 
 		$http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
-	    	$scope.maquinaHasEjercicios = response.maquinaEjercicio;
-	    	console.log("Relation: ", $scope.maquinaHasEjercicios)
+	    	$scope.maquinaHasEjercicios = response.maquinahasejercicio;
+	    	console.log("MAQUINASHASEJERCICIOS: CHRIS", $scope.maquinaHasEjercicios)
 		});
 
 		$scope.rutinaDetalleForm = angular.copy(detalle);

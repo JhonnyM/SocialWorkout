@@ -34,8 +34,8 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 		});
 
 		$http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
-	    	$scope.maquinaHasEjercicios = response.maquinaEjercicio;
-	    	console.log("Relation: ", $scope.maquinaHasEjercicios)
+	    	$scope.maquinaHasEjercicios = response.maquinahasejercicio;
+	    	console.log("Relation:CHRIS ", $scope.maquinaHasEjercicios)
 		});
 
 

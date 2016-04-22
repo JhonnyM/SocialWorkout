@@ -54,13 +54,13 @@ angular
                 $http
                     .post(
                         'rest/protected/Ejercicios/getMaquinasEjercicio', {
-                            maquinaEjercicio: maquinaHasEjercicio
+                            maquinahasejercicio: maquinaHasEjercicio
                         })
                     .success(
                         function(data, status,
                             config) {
                             $scope.message = data;
-                            $scope.maquinaEjercicio = data.maquinaEjercicio;
+                            $scope.maquinaEjercicio = data.maquinahasjercicio;
                             $scope.setMachine($scope.maquinas, $scope.maquinaEjercicio);
                         })
                     .error(
