@@ -20,11 +20,11 @@ public class MaquinahasejercicioResponse extends BaseResponse {
  public void setMaquinaEjercicio(List < MaquinahasejercicioPOJO > maquinaEjercicio) {
   this.maquinaEjercicio = maquinaEjercicio;
  }*/
- public List<MaquinahasejercicioPOJO> getMaquinahasejercicio() {
+ public List<MaquinahasejercicioPOJO> getMaquinaHasEjercicio() {
 		return maquinaHasEjercicio;
 	}
 
-	public void setMaquinahasejercicio(List<MaquinahasejercicioPOJO> maquinaHasEjercicio) {
+	public void setMaquinaHasEjercicio(List<MaquinahasejercicioPOJO> maquinaHasEjercicio) {
 		this.maquinaHasEjercicio = maquinaHasEjercicio;
 	}
 

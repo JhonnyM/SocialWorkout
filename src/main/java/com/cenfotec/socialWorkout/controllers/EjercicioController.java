@@ -114,7 +114,7 @@ public class EjercicioController {
 
 		MaquinahasejercicioResponse maquinaEjercicioResponse = new MaquinahasejercicioResponse();
 
-		maquinaEjercicioResponse.setMaquinahasejercicio(ejercicioService.getMaquinasEjercicio(maquinaEjercicioRequest));
+		maquinaEjercicioResponse.setMaquinaHasEjercicio(ejercicioService.getMaquinasEjercicio(maquinaEjercicioRequest));
 		return maquinaEjercicioResponse;
 
 	}

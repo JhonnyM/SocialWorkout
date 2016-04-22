@@ -28,7 +28,7 @@ public class MaquinahasejercicioController {
 		MaquinahasejercicioResponse response = new MaquinahasejercicioResponse();
 		response.setCode(200);
 		response.setCodeMessage("clase fetch success");
-		response.setMaquinahasejercicio(relationService.getAll());
+		response.setMaquinaHasEjercicio(relationService.getAll());
 		return response;
 		
 	}
@@ -57,7 +57,7 @@ public class MaquinahasejercicioController {
 		
 		MaquinahasejercicioResponse claseResponse = new MaquinahasejercicioResponse();
 		
-		if (relationService.exists(request.getMaquinahasejercicio().getIdEjercicioXMaquina()))
+		if (relationService.exists(request.getMaquinaHasEjercicio().getIdEjercicioXMaquina()))
 		{
 			if(relationService.save(request))
 			{
@@ -86,9 +86,9 @@ public class MaquinahasejercicioController {
 
 		MaquinahasejercicioResponse claseResponse = new MaquinahasejercicioResponse();
 		
-		if (relationService.exists(request.getMaquinahasejercicio().getIdEjercicioXMaquina()))
+		if (relationService.exists(request.getMaquinaHasEjercicio().getIdEjercicioXMaquina()))
 		{
-			if(relationService.delete(request.getMaquinahasejercicio().getIdEjercicioXMaquina()))
+			if(relationService.delete(request.getMaquinaHasEjercicio().getIdEjercicioXMaquina()))
 			{
 				claseResponse.setCode(200);
 				claseResponse.setCodeMessage("La asignacion fue eliminada exitosamente");
@@ -114,7 +114,7 @@ public class MaquinahasejercicioController {
 		MaquinahasejercicioResponse response = new MaquinahasejercicioResponse();
 		response.setCode(200);
 		response.setCodeMessage("relation fetch success");
-		response.setMaquinahasejercicio(relationService.findByIdEjercicio(request.getEjercicio().getIdEjercicio()));
+		response.setMaquinaHasEjercicio(relationService.findByIdEjercicio(request.getEjercicio().getIdEjercicio()));
 		return response;
 	}
 
