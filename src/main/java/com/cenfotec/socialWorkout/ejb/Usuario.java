@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
 
 	private String correoElectronico;
 
-	private byte estatus;
+	private boolean estatus;
 
 	@Temporal(TemporalType.DATE)
 	private Date fechaIngreso;
@@ -40,7 +40,7 @@ public class Usuario implements Serializable {
 
 	private String nombre;
 
-	private byte poseeVehiculo;
+	private boolean poseeVehiculo;
 
 	//bi-directional many-to-one association to Actividadsistemahasusuario
 	@OneToMany(mappedBy="usuario")
@@ -147,11 +147,11 @@ public class Usuario implements Serializable {
 		this.correoElectronico = correoElectronico;
 	}
 
-	public byte getEstatus() {
+	public boolean getEstatus() {
 		return this.estatus;
 	}
 
-	public void setEstatus(byte estatus) {
+	public void setEstatus(boolean estatus) {
 		this.estatus = estatus;
 	}
 
@@ -195,11 +195,11 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public byte getPoseeVehiculo() {
+	public boolean getPoseeVehiculo() {
 		return this.poseeVehiculo;
 	}
 
-	public void setPoseeVehiculo(byte poseeVehiculo) {
+	public void setPoseeVehiculo(boolean poseeVehiculo) {
 		this.poseeVehiculo = poseeVehiculo;
 	}
 

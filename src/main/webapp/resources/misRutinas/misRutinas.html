@@ -63,7 +63,7 @@
 										<td class="text-center"><h6>{{ocupacion.diaSemanalAgendado}} | {{ocupacion.hora}}</h6></td>
 										<td class="text-center"><h6>{{ocupacion.plantillarutinamaestroPOJO.descRutina}}</h6></td>
 										<td><button class="btn m-b-sm btn-sm btn-success" ng-click="consultar($index)">Consultar</button>
-										<button class="btn m-b-sm btn-sm btn-info" ng-click="asignar($index)">&nbsp&nbspAsignar&nbsp&nbsp</button></td>
+										<button class="btn m-b-sm btn-sm btn-info" ng-if="puedeAsignar" ng-click="asignar($index)">&nbsp&nbspAsignar&nbsp&nbsp</button></td>
 									</tr>
 								</tbody>
 							</table>
