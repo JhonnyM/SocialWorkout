@@ -9,6 +9,7 @@ angular.module('myApp.misRutinas', ['ngRoute', 'ui.bootstrap'])
 }])
 
 .controller('misRutinasCtrl', ['$scope','$http','$route' , function($scope,$http,$route) {
+	$scope.puedeAsignar = true;
 	$scope.consultar = function(event) {
 		$scope.data = {};
 		data = {
@@ -130,6 +131,10 @@ angular.module('myApp.misRutinas', ['ngRoute', 'ui.bootstrap'])
 		if(response.nulo==0){
 			$scope.misRutinasDelDia = response.rutinasHasUsuarioPOJO;
 			console.log(response,"MisRutinasDELDIA");
+			if(!($scope.misRutinasDelDia.length > 0)){
+				$scope.puedeAsignar = false;	
+			}
+			
 		}else{
 			$scope.misRutinasDelDia = "";
 		}

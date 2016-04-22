@@ -1,4 +1,4 @@
-//'use strict';
+﻿//'use strict';
 angular
     .module('myApp.modalRegistrarMedida', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
@@ -115,7 +115,7 @@ angular
 
                 $scope.valid = tv4.validate($scope.registroMedidaForm, $scope.registroMedidaSchema);
     			
-                if($scope.valid){
+                if($scope.valid && $scope.lugarMedicionEscogido > 0){
 
                 console.log("$scope.data", $scope.data)
                 $http.post(
