@@ -174,8 +174,7 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $scope.rutinas.splice($scope.rutinas.indexOf(item), 1);
   };
 
-  $scope.selectGroup = function(item){    
-    console.log("selectGroup parametro", item)   
+  $scope.selectGroup = function(item){     
 
     angular.forEach($scope.rutinas, function(item) { 
       item.selected = false;
@@ -261,12 +260,6 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   };
 
   $scope.setGlobalSelecteIdRelation = function(){
-	  console.log("CHRIS1",$scope.maquinaHasEjercicios);
-	  console.log("CHRIS2",$scope.rutinas);
-	  console.log("CHRIS3",$scope.detalles);
-	  console.log("CHRIS4",$scope.rutinaMaestroMaquinaHasEjercicio);
-	  console.log("CHRIS5", $scope.ejercicios );
-	  console.log("CHRIS6", $scope.maquinas );
     if($scope.rutinaAEditar.plantillarutinadetalles.length > 0){
       for(var j = 0; j< $scope.rutinaAEditar.plantillarutinadetalles.length;j++){
         var idToComparre = $scope.rutinaAEditar.plantillarutinadetalles[j].maquinahasejercicio.idEjercicioXMaquina;

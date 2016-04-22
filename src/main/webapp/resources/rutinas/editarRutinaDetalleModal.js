@@ -23,23 +23,23 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	$scope.init = function() {
 		$http.get('rest/protected/Ejercicios/getAll').then(function(response) {
 			$scope.ejercicios = response.data.ejercicios;
-			console.log("Ejercicios: CHRIS",$scope.ejercicios);
+
 		});
 
 		$http.get('rest/protected/Maquinas/getAll').then(function(response) {
 			$scope.maquinas = response.data.maquinas;
-			console.log("MAQUINAS: CHRIS", $scope.maquinas)
+
 		});
 
 		$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
 	    	$scope.objetivos = response.objetivoList;
-	    	console.log("OBJETIVOS CHRIS", $scope.objetivos)
+
 		});
 
 
 		$http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
 	    	$scope.maquinaHasEjercicios = response.maquinahasejercicio;
-	    	console.log("MAQUINASHASEJERCICIOS: CHRIS", $scope.maquinaHasEjercicios)
+
 		});
 
 		$scope.rutinaDetalleForm = angular.copy(detalle);
@@ -52,10 +52,29 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
     $scope.RutinaDetalleSchema = {
 	  "type": "object",
 	  properties: {
-		cantidadPeso: { type: 'string', title: 'Peso' },
-		cantidadRepeticiones: { type: 'string', title: 'Repeticiones' },
-		cantidadSeries: { type: 'string', title: 'Series' }
-	   }
+		cantidadPeso: { 
+			type: 'number', 
+			title: 'Peso',
+            minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Peso no válido'
+		},
+		cantidadRepeticiones: { 
+			type: 'number', 
+			title: 'Repeticiones',
+			minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Repeticiones no válidas' 
+		},
+		cantidadSeries: { 
+			type: 'number', 
+			title: 'Series',
+			minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Series no válidas' 
+		}
+	   },
+	   required: ['cantidadPeso', 'cantidadRepeticiones', 'cantidadSeries']
 	};
     
     $scope.form = [
@@ -89,24 +108,27 @@ angular.module('myApp.editarRutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaF
 	      maquinahasejercicio: selectedEjercicioRelation
 	      
 	    };
-	    console.log("Data to be send", dataDetalle);
-	    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
-	    .then(function (response){
+	    $scope.valid = tv4.validate($scope.rutinaDetalleForm, $scope.RutinaDetalleSchema);
+		if($scope.valid){
+		    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
+		    .then(function (response){
 
-	       switch(response.data.code)
-	       {
-	         case 200:
-	           alert(response.data.codeMessage);
-	         break;
+		       switch(response.data.code)
+		       {
+		         case 200:
+		           alert(response.data.codeMessage);
+		         break;
 
-	         default:
-	           alert(response.data.codeMessage);
-	       }
-			$scope.dismissModal = $scope.reload();
-	    }, function (response){
-	       alert("Error al crear el detalle de la rutina");
-	    });
-	    $uibModalInstance.close();   
+		         default:
+		           alert(response.data.codeMessage);
+		       }
+				$scope.dismissModal = $scope.reload();
+		    }, function (response){
+		       alert("Error al crear el detalle de la rutina");
+		    });
+		    $uibModalInstance.close();  
+		}
+		$scope.valid = false;  
 	};
 
 	$scope.findSelectedEjercicio = function(ejercicio) {

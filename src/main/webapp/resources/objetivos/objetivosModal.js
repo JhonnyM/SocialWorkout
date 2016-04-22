@@ -2,14 +2,25 @@
 
 angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap'])
 
-.controller('ObjetivosModal', ['$scope','$http','$uibModalInstance','objetivo',  function($scope,$http,$uibModalInstance,objetivo)
+.controller('ObjetivosModal', ['$scope','$http','$uibModalInstance','objetivo','$route',  function($scope,$http,$uibModalInstance,objetivo,$route)
 {
+	$scope.reload = function() {
+    	$route.reload();
+  	};
 
 	$scope.ObjetivoSchema = {
 	  "type": "object",
 	  properties: {
-		  descObjetivo: { type: 'string', title: 'Descripción'}
-	  	}
+		descObjetivo: { 
+		  				type: 'string', 
+		  				title: 'Descripción',
+		  				validationMessage: 'Descripción del objetivo inválido',
+	                	pattern: "^[A-Za-z áéíóú.!=/-]+$", 
+	                	maxLength: 50
+		  			}
+
+	  	},
+	  	required : ['descObjetivo' ]
 	};
     
 	$scope.objetivoForm = angular.copy(objetivo);
@@ -26,14 +37,19 @@ angular.module('myApp.modal', ['ngRoute', 'ui.grid', 'schemaForm', 'ui.bootstrap
 	  	idObjetivo : $scope.objetivoForm.idObjetivo,
 		descObjetivo : $scope.objetivoForm.descObjetivo
 	  };
-
-		console.log("$scope.data", $scope.data)
-		$http.post('rest/protected/objetivos/edit',data).success(
-			function(data, status, config) {
-			$scope.message = data;
-			}).error(
-			function(data, status, config) {
-			  alert("failure message: "+ JSON.stringify({data : data}));
+	  $scope.valid = tv4.validate($scope.objetivoForm, $scope.ObjetivoSchema);
+		if($scope.valid){
+			$http.post('rest/protected/objetivos/edit',data).success(
+				function(data, status, config) {
+				$scope.message = data;
+				$scope.dismissModal = $scope.reload();
+				}).error(
+				function(data, status, config) {
+				  alert("failure message: "+ JSON.stringify({data : data}));
 			});
-	  	};
+			$uibModalInstance.close();
+		}
+		$scope.valid = false;	
+	};
+
 }]);

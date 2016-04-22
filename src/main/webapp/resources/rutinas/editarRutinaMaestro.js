@@ -26,8 +26,15 @@ angular.module('myApp.modalEditarRutinaMaestro', ['ngRoute', 'ui.grid', 'schemaF
     $scope.RutinaSchema = {
 	  "type": "object",
 	  properties: {
-		descRutina: { type: 'string', title: 'Descripcion' },
-	   }
+		descRutina: { 
+			type: 'string', 
+			title: 'Descripcion',
+			validationMessage: 'Descripción de rutina maestro inválido',
+	        pattern: "^[A-Za-z áéíóú.!=/-]+$", 
+	        maxLength: 50 
+		},
+	   },
+	   required: ['descRutina']
 	};
     
     $scope.form = [
@@ -49,25 +56,27 @@ angular.module('myApp.modalEditarRutinaMaestro', ['ngRoute', 'ui.grid', 'schemaF
 	      descRutina : $scope.rutinaForm.descRutina,
 	      rutinaBase : true
 	    };
-	    console.log(data);
-	    console.log($scope.rutinaForm);
-	    $http.post('rest/protected/plantillas/update', {plantillaRutinaMaestro: data})
-	    .then(function (response){
+	   	$scope.valid = tv4.validate($scope.form, $scope.RutinaSchema);
+		if($scope.valid){
+		    $http.post('rest/protected/plantillas/update', {plantillaRutinaMaestro: data})
+		    .then(function (response){
 
-	       switch(response.data.code)
-	       {
-	         case 200:
-	           alert(response.data.codeMessage);
-	         break;
+		       switch(response.data.code)
+		       {
+		         case 200:
+		           alert(response.data.codeMessage);
+		         break;
 
-	         default:
-	           alert(response.data.codeMessage);
-	       }
-			$scope.dismissModal = $scope.reload();
-	    }, function (response){
-	       alert("Error al crear la rutina");
-	    });
-	    $uibModalInstance.close();   
+		         default:
+		           alert(response.data.codeMessage);
+		       }
+				$scope.dismissModal = $scope.reload();
+		    }, function (response){
+		       alert("Error al crear la rutina");
+		    });
+		    $uibModalInstance.close();  
+		}
+		$scope.valid = false; 
 	};
 
 	$scope.findObjetivo = function (objetivo) { 
