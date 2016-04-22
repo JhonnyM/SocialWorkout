@@ -28,6 +28,8 @@ angular.module('myApp', [
   'myApp.rutinaDetalleModal',
   'myApp.historialAsistencia',
   'myApp.historialMedidas',
+  'myApp.ocupacionMaquinas',
+  'myApp.misRutinas',
   'ui.grid',
   'angularFileUpload',
   'myApp.unidadesMedidas',

@@ -147,6 +147,7 @@
                         </div>
                         <!-- / user -->
                         <!-- nav -->
+                        
                         <nav ui-nav class="navi clearfix">
                            <ul class="nav">
                               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -165,11 +166,16 @@
                                  </a>
                                  <ul class="nav nav-sub dk">
                                     <li class="nav-sub-header"></li>
-                                    <li><a href="app#/ocupacion"> <span>Ocupaci&#243n</span>
+                                    <li><a href="app#/ocupacion"> <span>Ocupaci&#243n mi visita</span>
                                        </a>
                                     </li>
-                                    <li><a href="#"> <span>Mis
-                                       rutinas</span>
+                                    <li><a href="app#/ocupacionGeneral"> <span>Ocupaci&#243n general</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/ocupacionMaquinas"> <span>Ocupaci&#243n mis rutinas</span>
+                                       </a>
+                                    </li>
+                                    <li><a href="app#/misRutinas"> <span>Consultar mis rutinas</span>
                                        </a>
                                     </li>
                                  </ul>
@@ -236,9 +242,10 @@
                                     </li>                                                                           
                                     <li><a href="app#/tiposUsuario"> <span>Tipos de usuario</span>
                                        </a>
-                                    </li>                                                                           
-                                    </li>                                    
-                                 </ul>
+                                    </li>        
+                                    </ul>                                                                   
+                                </li>                                    
+                                 
                               <li ng-if='mostrarAdministrador'>
                                  <a href class="auto">  
                                  <i
@@ -251,9 +258,9 @@
                                     <li><a href="app#/usuariosAdministrador"> <span>Usuarios del Gimnasio</span>
                                        </a>
                                     </li>  
-                             
+                             	</ul>
                               </li>   
-                              </li>
+                              
                               <li ng-if="mostrarInstructor">
                                  <a href class="auto"> <span
                                     class="pull-right text-muted"> <i
@@ -270,6 +277,7 @@
                                     
                                  </ul>
                               </li>
+                              
                               <li ng-if="mostrarInstructor">
                                  <a href class="auto"> <span
                                     class="pull-right text-muted"> <i
@@ -279,21 +287,13 @@
                                  rutinas</span>
                                  </a>
                                  <ul class="nav nav-sub dk">
-                                    <li class="nav-sub-header"><a href> <span>Table</span>
+                                    <li><a href="#"> <span>Underconstruction</span>
                                        </a>
                                     </li>
-                                    <li><a href="table_static.html"> <span>Table
-                                       static</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="table_datatable.html"> <span>Datatable</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="table_footable.html"> <span>Footable</span>
-                                       </a>
-                                    </li>
+                                    
                                  </ul>
                               </li>
+                              
                               <li ng-if="mostrarInstructor">
                                  <a href class="auto"> <span
                                     class="pull-right text-muted"> <i
@@ -303,18 +303,14 @@
                                  Rutinas</span>
                                  </a>
                                  <ul class="nav nav-sub dk">
-                                    <li class="nav-sub-header"><a href> <span>Form</span>
-                                       </a>
-                                    </li>
-                                    <li><a href="form_element.html"> <span>Form
-                                       elements</span>
+                                    <li><a href="app#/rutinas"> <span>Rutinas</span>
                                        </a>
                                     </li>
                                  </ul>
                               </li>
                               <li>
                               <li class="line dk hidden-folded"></li>
-                           </ul>
+                          
                         </nav>
                         <!-- nav -->
                         <!-- / aside footer -->
@@ -422,5 +418,7 @@
                <script src="resources/historialAsistencia/historialAsistencia.js"></script>
                <script src="resources/historialMedidas/historialMedidas.js"></script>
                <script src="resources/ocupacionGeneral/ocupacionGeneral.js"></script>
+               <script src="resources/ocupacionMaquinas/ocupacionMaquinas.js"></script>
+               <script src="resources/misRutinas/misRutinas.js"></script>
             </body>
          </html>

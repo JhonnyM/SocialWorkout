@@ -85,4 +85,19 @@ public class PlantillarutinamaestroService implements PlantillarutinamaestroServ
 		return !plantillaMaestroRepository.exists(idPlantilla);
 	}
 
+
+	@Override
+	@Transactional
+	public PlantillarutinamaestroPOJO getRutinaXId(int idRutina) {
+		PlantillarutinamaestroPOJO plantillaDTO = new PlantillarutinamaestroPOJO();
+		Plantillarutinamaestro plantilla = new Plantillarutinamaestro();
+		plantilla = plantillaMaestroRepository.findByIdRutina(idRutina);
+		plantilla.setPlantillarutinadetalles(null);
+		plantilla.setRutinahasusuarios(null);
+		plantilla.setPlantillarutinamaestros(null);
+		if (!(plantilla==null)){
+			BeanUtils.copyProperties(plantilla, plantillaDTO);
+		}
+		return plantillaDTO;
+	}
 }

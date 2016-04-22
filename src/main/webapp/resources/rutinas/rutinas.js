@@ -32,11 +32,14 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
   $scope.read = function(){
     
     $http.get('rest/protected/Maquinahasejercicios/all',$scope.requestObject).success(function(response) {
-      $scope.maquinaHasEjercicios = response.maquinaEjercicio;
+      $scope.maquinaHasEjercicios = response.maquinahasejercicio;
+      console.log("CHRIS1",response);
     });
 
     $http.get('rest/protected/plantillas/all').success(function(response) {
       $scope.rutinas = response.plantillas;
+      
+      
     }, function(){
       alert("Error obteniendo la informacion de las rutinas");
     });
@@ -44,19 +47,21 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $http.get('rest/protected/plantillaDetalles/all').success(function(response) {
       $scope.detalles = response.plantillasDetalle;
       $scope.rutinaMaestroMaquinaHasEjercicio = $scope.detalles.maquinahasejercicios
+      
     });
 
     $http.get('rest/protected/Ejercicios/getAll').then(function(response) {
       $scope.ejercicios = response.data.ejercicios;
+      console.log("CHRIS4",$scope.ejercicios);
     });
 
     $http.get('rest/protected/Maquinas/getAll').then(function(response) {
       $scope.maquinas = response.data.maquinas;
+      
     });
 
   };
-
-
+  
   $scope.read();
 
   $http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
@@ -169,8 +174,8 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $scope.rutinas.splice($scope.rutinas.indexOf(item), 1);
   };
 
-  $scope.selectGroup = function(item){    
-    console.log("selectGroup parametro", item)   
+  $scope.selectGroup = function(item){     
+
     angular.forEach($scope.rutinas, function(item) { 
       item.selected = false;
     });
@@ -183,6 +188,7 @@ angular.module('myApp.rutinas', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
   $scope.selectItem = function(item){ 
     console.log("selectItem parametro", item)   
+          
     angular.forEach($scope.detallesSeleccionados, function(item) {
       console.log("Item dentro del for", item) 
       item.selected = false;

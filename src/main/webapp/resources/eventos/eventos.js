@@ -10,6 +10,11 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 }])
 
 .controller('EventosCtrl', ['$scope','$http','$uibModal', function($scope,$http,$uibModal) {
+
+  $scope.reload = function() {
+    $route.reload();
+  };
+  
 	$scope.eventos = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","objetivo": {}};
 
@@ -62,30 +67,36 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     	
     var data = {};
   	console.log($scope.requestObject.desc);
-
-    data = {
-      descEvento : $scope.requestObject.desc,
-      fechaHoraInicio: $scope.requestObject.ini,
-      fechaHoraFinal: $scope.requestObject.fin,
-      observaciones: $scope.requestObject.obs,
-    };
+    if($scope.isNumeric($scope.requestObject.desc) && $scope.isNumeric($scope.requestObject.obs) && $scope.requestObject.ini != null && $scope.requestObject.fin != null){
+      data = {
+        descEvento : $scope.requestObject.desc,
+        fechaHoraInicio: $scope.requestObject.ini,
+        fechaHoraFinal: $scope.requestObject.fin,
+        observaciones: $scope.requestObject.obs,
+      };
   
-    $http.post('rest/protected/eventos/save', {evento: data})
-    .then(function (response){
+      $http.post('rest/protected/eventos/save', {evento: data})
+      .then(function (response){
 
-      switch(response.data.code)
-      {
-        case 200:
-          alert(response.data.codeMessage);
-        break;
+        switch(response.data.code)
+        {
+          case 200:
+            alert(response.data.codeMessage);
+          break;
 
-        default:
-          alert(response.data.codeMessage);
-      }
-      $scope.read();
-    }, function (response){
-      alert("Error al de guardar la información del nuevo evento");
-    });
+          default:
+            alert(response.data.codeMessage);
+        }
+        $scope.read();
+      }, function (response){
+        alert("Error al de guardar la información del nuevo evento");
+      });
+
+    }else {
+      alert("Pro favor no ingrese numeros en los textos o deje espacios sin llenar");
+    }
+    $scope.clearInputs();
+
   };
 
   $scope.borrar = function (row){
@@ -154,6 +165,17 @@ angular.module('myApp.eventos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 
   $scope.popup2 = {
     opened: false
+  };
+
+  $scope.isNumeric = function(n) {
+    return isNaN(parseFloat(n)) && !isFinite(n) && n != null;
+  };
+
+  $scope.clearInputs = function () {
+    $scope.requestObject.desc = null;
+    $scope.requestObject.ini= null;
+    $scope.requestObject.fin= null;
+    $scope.requestObject.obs= null;
   };
 
 

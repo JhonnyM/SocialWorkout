@@ -29,7 +29,7 @@ angular.module('myApp.registrar', ['ngRoute','ui.grid', 'ui.bootstrap'])
     	
     var data = {};
   	console.log($scope.requestObject.desc);
-    if ($scope.userExists($scope.requestObject.idUsuario) != null ){
+    if ($scope.userExists($scope.requestObject.idUsuario) != null && $scope.isNumeric($scope.requestObject.idUsuario)){
       var userToSave = $scope.userExists($scope.requestObject.idUsuario);
       var instructorToSave = $scope.generateRandomInstructor();
       data = {
@@ -91,5 +91,9 @@ angular.module('myApp.registrar', ['ngRoute','ui.grid', 'ui.bootstrap'])
     var rand = $scope.instructores[Math.floor(Math.random() * $scope.instructores.length)];
     return rand;
   };
+
+  $scope.isNumeric = function(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
 
 }]);

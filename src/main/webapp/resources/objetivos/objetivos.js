@@ -12,12 +12,15 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
 .controller('ObjetivosCtrl', ['$scope','$http','$uibModal', function($scope,$http,$uibModal) {
 	$scope.objetivos = [];
 	$scope.requestObject = {"pageNumber": 0,"pageSize": 0, "sortBy": [""],"searchColumn": "string","searchTerm": "","objetivo": {}};
-	$http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
-	console.log("response",response)
-	$scope.objetivos = response.objetivoList;
-	console.log("$scope.objetivos", $scope.gridOptions)
-		
-	});
+	
+  $scope.read = function(){
+    $http.post('rest/protected/objetivos/getAll',$scope.requestObject).success(function(response) {
+      $scope.objetivos = response.objetivoList;
+    });
+
+  };
+
+  $scope.read();
 
     $scope.gridOptions = {
         data:'objetivos',
@@ -59,13 +62,21 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
   	data = {
   			descObjetivo : $scope.requestObject.desc
   	};
-  	
-  	$http.post('rest/protected/objetivos/create', data)
-  	.success(function(data, status, config) {
-      $scope.message = data;
+
+    if($scope.isNumeric($scope.requestObject.desc)){
+      $http.post('rest/protected/objetivos/create', data)
+      .success(function(data, status, config) {
+        $scope.message = data;
       }).error(function(data, status, config) {
         alert( "failure message: " + JSON.stringify({data: data}));
-    }); 
+      }); 
+      $scope.read();
+
+    } else {
+      alert("Por favor ingresar todos los datos y no ingresar numeros")
+    }
+    $scope.clearInputs();
+  
   };
 
   $scope.del = function (row){
@@ -78,9 +89,6 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
     $http.post("rest/protected/objetivos/delete", {objetivo: data})
     .then(function (response){
 
-      /**
-       * Se muestra una notificación dependiendo del codigo de estatus recibido tras la llamada al servidor
-       */
       switch(response.data.code)
       {
         case 200:
@@ -91,17 +99,21 @@ angular.module('myApp.objetivos', ['ngRoute','ui.grid', 'ui.bootstrap'])
           alert(response.data.codeMessage);
       }
       
-      /**
-       * Se refresca la lista de todos los tipos de usuario existentes.
-       */
-      /**
-      Poner algo aqui para refrescar la lista
-      */
+      $scope.read();
 
     }, function (response){
 
       console.log(response);
     }); 
+  };
+
+
+  $scope.isNumeric = function(n) {
+    return isNaN(parseFloat(n)) && !isFinite(n) && n != null;
+  };
+
+  $scope.clearInputs = function () {
+    $scope.requestObject.desc = null;
   };
 
 }]);

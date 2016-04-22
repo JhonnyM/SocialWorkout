@@ -59,24 +59,30 @@ angular.module('myApp.clases', ['ngRoute','ui.grid', 'ui.bootstrap'])
     data = {
       descClase : $scope.requestObject.desc,
     };
-  
-    $http.post('rest/protected/clases/save', {clase: data})
-    .then(function (response){
 
-      switch(response.data.code)
-      {
-        case 200:
-          alert(response.data.codeMessage);
-        break;
+    if($scope.isNumeric($scope.requestObject.desc)){
+      $http.post('rest/protected/clases/save', {clase: data})
+      .then(function (response){
 
-        default:
-          alert(response.data.codeMessage);
-      }
-      $scope.read();
-    }, function (response){
-      alert("Error al guardar la información de la nueva clase");
-    });
-	}
+        switch(response.data.code)
+        {
+          case 200:
+            alert(response.data.codeMessage);
+          break;
+
+          default:
+            alert(response.data.codeMessage);
+        }
+        $scope.read();
+      }, function (response){
+        alert("Error al guardar la información de la nueva clase");
+      });
+
+    } else {
+      alert("Por favor ingresar datos validos");
+    }
+    $scope.clearInputs();
+	};
     
 	$scope.borrar = function (row){
 	    var data = {};
@@ -101,7 +107,15 @@ angular.module('myApp.clases', ['ngRoute','ui.grid', 'ui.bootstrap'])
 	    }, function (response){
 	      alert("Error al eliminar la información de la clase");
 	    }); 
-	  };
+	};
+
+  $scope.isNumeric = function(n) {
+    return isNaN(parseFloat(n)) && !isFinite(n) && n != null;
+  };
+
+  $scope.clearInputs = function () {
+    $scope.requestObject.desc = null;
+  };
   
 
 }]);

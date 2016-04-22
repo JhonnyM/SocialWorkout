@@ -11,7 +11,7 @@ public class PlantillarutinamaestroPOJO {
 	private ObjetivoPOJO objetivo;
 	private PlantillarutinamaestroPOJO plantillarutinamaestro;
 	private List<PlantillarutinamaestroPOJO> plantillarutinamaestros;
-//	private List<RutinahasusuarioPOJO> rutinahasusuarios;
+   //private List<RutinaHasUsuarioPOJO> rutinahasusuarios;
 
 	public PlantillarutinamaestroPOJO() {
 	}
