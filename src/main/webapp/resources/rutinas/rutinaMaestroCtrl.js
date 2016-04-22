@@ -33,7 +33,8 @@ angular.module('myApp.modalRutinaMaestro', ['ngRoute', 'ui.grid', 'schemaForm', 
 	        pattern: "^[A-Za-z áéíóú.!=/-]+$", 
 	        maxLength: 50 
 		},
-	   }
+	   },
+	   required: ['descRutina']
 	};
     
     $scope.form = [

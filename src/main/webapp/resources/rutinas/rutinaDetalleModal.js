@@ -53,10 +53,30 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
     $scope.RutinaDetalleSchema = {
 	  "type": "object",
 	  properties: {
-		cantidadPeso: { type: 'string', title: 'Peso' },
-		cantidadRepeticiones: { type: 'string', title: 'Repeticiones' },
-		cantidadSeries: { type: 'string', title: 'Series' }
-	   }
+		cantidadPeso: { 
+			type: 'number', 
+			title: 'Peso',
+            minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Peso no válido'
+		},
+		cantidadRepeticiones: { 
+			type: 'number', 
+			title: 'Repeticiones',
+			minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Repeticiones no válidas' 
+		},
+		cantidadSeries: { 
+			type: 'number', 
+			title: 'Series',
+			minimum : 0,
+			pattern : "^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$",
+            validationMessage: 'Series no válidas' 
+		}
+	   },
+	   required: ['cantidadPeso', 'cantidadRepeticiones', 'cantidadSeries']
+
 	};
     
     $scope.form = [
@@ -89,24 +109,27 @@ angular.module('myApp.rutinaDetalleModal', ['ngRoute', 'ui.grid', 'schemaForm', 
 	      maquinahasejercicio: $scope.selectedEjercicioRelation
 	      
 	    };
-	    console.log("Data to be send", dataDetalle);
-	    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
-	    .then(function (response){
+	   	$scope.valid = tv4.validate($scope.rutinaDetalleForm, $scope.RutinaDetalleSchema);
+		if($scope.valid){
+		    $http.post('rest/protected/plantillaDetalles/save', {plantillaRutinaDetalle: dataDetalle})
+		    .then(function (response){
 
-	       switch(response.data.code)
-	       {
-	         case 200:
-	           alert(response.data.codeMessage);
-	         break;
+		       switch(response.data.code)
+		       {
+		         case 200:
+		           alert(response.data.codeMessage);
+		         break;
 
-	         default:
-	           alert(response.data.codeMessage);
-	       }
-			$scope.dismissModal = $scope.reload();
-	    }, function (response){
-	       alert("Error al crear el detalle de la rutina");
-	    });
-	    $uibModalInstance.close();   
+		         default:
+		           alert(response.data.codeMessage);
+		       }
+				$scope.dismissModal = $scope.reload();
+		    }, function (response){
+		       alert("Error al crear el detalle de la rutina");
+		    });
+		    $uibModalInstance.close(); 
+		}
+		$scope.valid = false;  
 	};
 
 	$scope.findSelectedEjercicio = function(ejercicio) {
