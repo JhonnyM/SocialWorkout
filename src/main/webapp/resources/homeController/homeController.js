@@ -30,8 +30,12 @@ angular.module('myApp.home', ['ngRoute', 'ui.grid', 'ui.grid.cellNav' , 'ui.boot
 			if ($scope.descTipoUsuario == "Administrador"){
 				$scope.mostrarAdministrador = true
 			}
+			if ($scope.descTipoUsuario == "Ingreso"){
+				$scope.mostrarIngreso = true
+			}
 			console.log($scope.mostrarCliente,"CLIENTE"); 
 			console.log($scope.mostrarInstructor,"INSTRUCTOR"); 
 			console.log($scope.mostrarAdministrador,"ADMINISTRADOR"); 
+			console.log($scope.mostrarIngreso,"Ingreso"); 
 		});
 }]);

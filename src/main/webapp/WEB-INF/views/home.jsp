@@ -156,6 +156,18 @@
                               <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                                  <span>Opciones</span>
                               </li>
+                              <li ng-if="mostrarIngreso">
+                                 <a href class="auto"> <span
+                                    class="pull-right text-muted"> <i
+                                    class="fa fa-fw fa-angle-right text"></i> <i
+                                    class="fa fa-fw fa-angle-down text-active"></i></span>
+                                 <ul class="nav nav-sub dk">
+                                    <li class="nav-sub-header"></li>
+                                    <li><a href="app#/registrar"> <span>Ingreso</span>
+                                       </a>
+                                    </li>
+                                 </ul>
+                              </li>
                               <li ng-if="mostrarCliente">
                                  <a href class="auto"> <span
                                     class="pull-right text-muted"> <i
@@ -210,12 +222,9 @@
                                     class="glyphicon glyphicon-th-list"></i> <span>Gestiones</span>
                                  </a>
                                  <ul class="nav nav-sub dk">
-                                    <li class="nav-sub-header"><a href> <span>Layout</span>
+                                    <li class="nav-sub-header"><a href> <span>Admin</span>
                                        </a>
                                     </li>
-                                    <li><a href="#"> <span>Rutinas</span>
-                                       </a>
-                                    </li>  
                                     <li><a href="app#/ejercicios"> <span>Ejercicios</span>
                                        </a>
                                     </li>

@@ -60,7 +60,7 @@ angular
                         function(data, status,
                             config) {
                             $scope.message = data;
-                            $scope.maquinaEjercicio = data.maquinahasjercicio;
+                            $scope.maquinaEjercicio = data.maquinahasejercicio;
                             $scope.setMachine($scope.maquinas, $scope.maquinaEjercicio);
                         })
                     .error(
@@ -112,26 +112,24 @@ angular
             };
 
             $scope.save = function() {
-
-                $scope.data = {};
+            $scope.data = {};
                 var maquinaHasEjercicio = {};
 
                 if ($scope.maquinasSeleccionadas.length == 0) {
 
                     maquinaHasEjercicio = {
                         idEjercicioXMaquina: 0,
-                        ejercicioPOJO: {
+                        ejercicio: {
                             idEjercicio: $scope.ejercicioForm.idEjercicio
                         },
                         maquinaPOJO: {
                             idMaquina: 0
                         }
                     };
-
                     $http
                         .post(
                             'rest/protected/Ejercicios/deleteAllAssignedMachines', {
-                                maquinaEjercicio: maquinaHasEjercicio
+                                maquinahasejercicio: maquinaHasEjercicio
                             })
                         .success(
                             function(data, status,
@@ -164,11 +162,10 @@ angular
                                 idMaquina: 0
                             }
                         };
-
                     $http
                     .post(
                         'rest/protected/Ejercicios/deleteAllAssignedMachines', {
-                            maquinaEjercicio: maquinaHasEjercicio
+                            maquinahasejercicio: maquinaHasEjercicio
                         });
 
                     
@@ -188,7 +185,7 @@ angular
                     $http
                         .post(
                             'rest/protected/Ejercicios/assignMachine', {
-                                maquinaEjercicio: maquinaHasEjercicio
+                                maquinahasejercicio: maquinaHasEjercicio
                             })
                         .success(
                             function(data, status,
@@ -210,5 +207,6 @@ angular
                 };
                 };
             }
+           
         }
     ]);
